@@ -1,8 +1,10 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import fiuba.algo3.starcraft.logic.templates.Damage;
+
 public class Attack {
 	
-	private int damage; //TODO: Arreglar esto, existe dano en tierra y dano en espacio!!!
+	private Damage damage;
 	private int range;
 
 }

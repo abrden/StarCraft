@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
-public class MagicUnit extends Unit implements Transportable {
+public class MagicalUnit extends Unit implements Transportable {
 	
 	private int energy;
 
