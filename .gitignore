@@ -7,3 +7,7 @@ tmp/
 .settings/
 bin/
 build.xml.old
+*.iml
+out/
+.idea
+
