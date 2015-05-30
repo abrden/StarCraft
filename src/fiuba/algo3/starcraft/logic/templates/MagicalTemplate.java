@@ -1,5 +1,5 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-public class MagicalTemplate extends Template {
+public abstract class MagicalTemplate extends UnitTemplate {
 
 }

@@ -1,5 +1,5 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-public class MuggleTemplate extends Template {
+public abstract class MuggleTemplate extends UnitTemplate {
 
 }
