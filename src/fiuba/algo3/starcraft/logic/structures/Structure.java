@@ -1,10 +1,12 @@
 package fiuba.algo3.starcraft.logic.structures;
 
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.templates.Life;
 
 public abstract class Structure {
 	
-	private int size; // Radio de la circunferencia de tierra que ocupa? o mas feo... Lado del cuadrado de tierra que ocupa?
-	private Point position;
+	//protected int size; Radio de la circunferencia de tierra que ocupa? No es necesario por ahora pero, si se queda, no tendriamos que ponerle size tambien a las units?
+	protected Point position;
+	protected Life life;
 	
 }
