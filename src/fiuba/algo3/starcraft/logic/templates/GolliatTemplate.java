@@ -2,7 +2,7 @@ package fiuba.algo3.starcraft.logic.templates;
 
 public class GolliatTemplate extends MuggleTemplate {
 
-	private static GolliatTemplate instance = null;
+	private static GolliatTemplate instance = new GolliatTemplate();
 
 	private GolliatTemplate() {
 		value = new Value(100,50);
@@ -16,9 +16,6 @@ public class GolliatTemplate extends MuggleTemplate {
 	}
 
 	public static GolliatTemplate getInstance(){
-		if (instance == null){
-			instance = new GolliatTemplate();
-		}
 		return instance;
 	}
 
