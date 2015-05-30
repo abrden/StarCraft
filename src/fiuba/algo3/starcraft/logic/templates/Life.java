@@ -9,8 +9,14 @@ public class Life {
 		this.health = health;
 	}
 
-	Life(int health, Shield shield) {
+	Life(int health, int shield) {
 		this.health = health;
-		this.shield = shield;
+		this.shield = new Shield(shield);
 	}
+	
+	public int getHealth() {
+		return health;
+	}
+
+	//Faltan atributos para obtener el escudo, excepciones por si no lo tiene
 }
