@@ -12,4 +12,5 @@ public class ScoutTemplate extends MuggleTemplate {
 		damage = new Damage(8,14);
 		damageRange = 4;
 	}
+
 }
