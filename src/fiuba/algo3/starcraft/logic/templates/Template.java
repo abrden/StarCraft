@@ -6,4 +6,8 @@ public abstract class Template {
 	protected int constructionTime;
 	protected Life life;
 	
+	public Value getValue() {
+		return value;
+	}
+	
 }
