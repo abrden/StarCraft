@@ -5,8 +5,8 @@ import fiuba.algo3.starcraft.logic.templates.Life;
 
 public abstract class Unit {
 	
-	private int vision;
-	private int populationQuota; //suministro
-	private Life life;
-	private Point position;
+	protected int vision;
+	protected int populationQuota; //suministro
+	protected Life life;
+	protected Point position;
 }

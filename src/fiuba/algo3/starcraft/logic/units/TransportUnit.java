@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public class TransportUnit extends Unit {
 	
-	private Collection<Unit> transportados;
+	private Collection<Unit> passengers;
 	private int capacity;
 
 }

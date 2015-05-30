@@ -6,5 +6,10 @@ public class Attack {
 	
 	private Damage damage;
 	private int range;
+	
+	Attack(Damage damage, int range) {
+		this.damage = damage;
+		this.range = range;
+	}
 
 }
