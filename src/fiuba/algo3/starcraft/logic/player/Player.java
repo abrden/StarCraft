@@ -30,10 +30,11 @@ public class Player {
 	}
 	
 	public void newTurn() {
-		//Cada estructura de explotacion junta +10 de su recurso
-		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 		//Itera entre sus estructuras y pierde la referencia de las muertas
 		this.getRidOfDeadStructures();
+		
+		//Cada estructura de explotacion junta +10 de su recurso
+		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
 	
 	private void getRidOfDeadStructures() {
