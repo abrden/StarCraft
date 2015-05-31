@@ -6,7 +6,7 @@ import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class RefineriaTemplate extends StructureTemplate {
 	
-	public static RefineriaTemplate instance = new RefineriaTemplate();
+	private static RefineriaTemplate instance = new RefineriaTemplate();
 
 	private RefineriaTemplate() {
 		value = new Value(100,0);

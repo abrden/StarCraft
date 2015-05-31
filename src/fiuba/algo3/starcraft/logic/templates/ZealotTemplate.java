@@ -3,7 +3,7 @@ package fiuba.algo3.starcraft.logic.templates;
 
 public class ZealotTemplate extends MuggleTemplate {
 
-	public static ZealotTemplate instance = new ZealotTemplate();
+	private static ZealotTemplate instance = new ZealotTemplate();
 
 	private ZealotTemplate() {
 		value = new Value(100,0);

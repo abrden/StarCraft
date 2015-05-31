@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class PilonTemplate extends StructureTemplate {
 	
-	public static PilonTemplate instance = new PilonTemplate();
+	private static PilonTemplate instance = new PilonTemplate();
 
 	private PilonTemplate() {
 		value = new Value(100,0);
