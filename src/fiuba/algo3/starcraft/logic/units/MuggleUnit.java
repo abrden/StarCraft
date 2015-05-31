@@ -1,20 +1,28 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import fiuba.algo3.starcraft.logic.templates.Attack;
+import fiuba.algo3.starcraft.logic.templates.Life;
+
 public class MuggleUnit extends Unit implements Transportable {
 	
 	private Attack attack;
-	private boolean canFly;
+	private int transportationQuota;
 	
-	public void setCanFly(boolean canFly) {
-		this.canFly = canFly;
+	public MuggleUnit(Life life, int vision, Attack attack,
+			int transportationQuota, int populationQuota) {
+		this.life = life;
+		this.vision = vision;
+		this.attack = attack;
+		this.populationQuota = populationQuota;
+		this.transportationQuota = transportationQuota; 
 	}
 	
 	public int getTransportQuota() {
-		return -1; //TODO: Implementar esta redefinicion de Transportable
+		return transportationQuota;
 	}
 	
 	public boolean canFly() {
-		return canFly;
+		return (transportationQuota == 0);
 	}
 
 }
