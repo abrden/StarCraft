@@ -5,11 +5,14 @@ import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.StructureID;
+import fiuba.algo3.starcraft.logic.templates.Builder;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Player {
 	
 	private Resources resources;
 	private Collection<Structure> structures;
+	private Collection<Unit> units;
 	
 	private static final int resourcesProducedPerTurn = 10;
 	private static final int populationBonusPerDepot = 5;
@@ -18,7 +21,7 @@ public class Player {
 	public Player(Resources initialResources) {
 		resources = initialResources;
 		structures = new LinkedList<Structure>();
-		
+		units = new LinkedList<Unit>();
 	}
 	
 	public int getMineral() {
@@ -90,7 +93,11 @@ public class Player {
 	public void pays(int mineral, int gas) {
 		resources.remove(mineral, gas);
 	}
-
+	
+	public void newStructureWithID(StructureID id) {
+		this.newStructure(this.getRaceBuilder().getTemplate(id).create());
+	}
+	
 	public void newStructure(Structure structure) {
 		structures.add(structure);
 	}
