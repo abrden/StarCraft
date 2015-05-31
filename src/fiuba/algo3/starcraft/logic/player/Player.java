@@ -1,10 +1,10 @@
 package fiuba.algo3.starcraft.logic.player;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.structures.Structure;
+import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class Player {
 	
@@ -37,31 +37,38 @@ public class Player {
 	}
 	
 	private void getRidOfDeadStructures() {
-		Iterator<Structure> iterator = structures.iterator();
-		Structure structure;
-		while (iterator.hasNext()) {
-			structure = iterator.next();
-			if (!structure.itsAlive()) {
-				structures.remove(structure);
-			}
+		LinkedList<Structure> dead = new LinkedList<Structure>();
+		for (Structure structure : structures)
+			if (!structure.itsAlive())
+				dead.add(structure);
+		for (Structure structure : dead) 
+			structures.remove(structure);
 		}
-	}
 	
 	public int populationQuota() {
-		return (this.DepotQuantity() * populationBonusPerDepot);
+		return (this.depotQuantity() * populationBonusPerDepot);
 	}
 	
-	//TODO: Implementar estos metodos
+	//TODO: Implementar estos 3 metodos
 	private int mineralExploitationStructuresQuantity() {
-		return 4;
+		return 1;
 	}
 	
 	private int gasExploitationStructuresQuantity() {
 		return 2;
 	}
 	
-	private int DepotQuantity() {
-		return 1;
+	private LinkedList<Structure> getDepots() {
+		LinkedList<Structure> depots = new LinkedList<Structure>();
+		for (Structure structure : structures) {
+			if (structure.getId() == StructureID.Depot)
+				depots.add(structure);
+		}
+		return depots;
+	}
+	
+	private int depotQuantity() {
+		return (this.getDepots()).size();
 	}
 
 	public void gains(int mineral, int gas) {
