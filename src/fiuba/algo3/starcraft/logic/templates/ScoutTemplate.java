@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+
 public class ScoutTemplate extends MuggleTemplate {
 
 	public static ScoutTemplate instance = new ScoutTemplate();

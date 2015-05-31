@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+
 public class GolliatTemplate extends MuggleTemplate {
 
 	private static GolliatTemplate instance = new GolliatTemplate();

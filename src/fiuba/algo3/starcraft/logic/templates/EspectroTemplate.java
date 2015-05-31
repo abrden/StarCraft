@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+
 public class EspectroTemplate extends MuggleTemplate {
 
 	public static EspectroTemplate instance = null;

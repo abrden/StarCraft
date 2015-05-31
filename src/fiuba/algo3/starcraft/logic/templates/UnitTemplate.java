@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+
 public abstract class UnitTemplate extends Template {
 
 	protected int vision;

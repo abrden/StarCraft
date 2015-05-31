@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+
 public class MarineTemplate extends MuggleTemplate {
 
 	private static MarineTemplate instance = null;
