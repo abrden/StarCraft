@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
+import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 
 public class NexoMineralTemplate extends StructureTemplate {
@@ -21,6 +22,10 @@ public class NexoMineralTemplate extends StructureTemplate {
 	public MineralExploiter create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
 		return new MineralExploiter(new Life(health, shield));
+	}
+
+	public StructureID getStructureId() {
+		return StructureID.MineralExploiter;
 	}
 
 }
