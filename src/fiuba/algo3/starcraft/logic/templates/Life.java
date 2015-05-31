@@ -17,6 +17,20 @@ public class Life {
 	public int getHealth() {
 		return health;
 	}
+	
+	public int getShield() {
+		return shield.getShield();
+	}
+	
+	public void regenerateShield() {
+		shield.regenerate();
+	}
 
-	//Faltan atributos para obtener el escudo, excepciones por si no lo tiene
+	public void reduce(int damage) {
+		for(int i = 0; i < damage; i++) {
+			if (!shield.isGone()) shield.reduce(1);
+			else health -= 1;
+		}
+	}
+	//TODO: Faltan excepciones por si no tiene escudo (Es Terran).
 }
