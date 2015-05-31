@@ -4,5 +4,6 @@ public enum StructureID {
 
 	Depot(),
 	ConstructionStructure(),
-	ExploitationStructure();
+	MineralExploiter(),
+	GasExploiter();
 }
