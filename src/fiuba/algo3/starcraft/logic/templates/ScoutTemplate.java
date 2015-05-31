@@ -9,7 +9,8 @@ public class ScoutTemplate extends MuggleTemplate {
 		constructionTime = 9;
 		vision = 7;
 		populationQuota = 3;
-		life = new Life(100,150);
+		health = 100;
+		shield = 150;
 		transportationQuota = 0;
 		damage = new Damage(8,14);
 		damageRange = 4;

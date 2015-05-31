@@ -9,7 +9,7 @@ public class RefineriaTemplate extends StructureTemplate {
 	private RefineriaTemplate() {
 		value = new Value(100,0);
 		constructionTime = 6;
-		life = new Life(750);
+		health = 750;
 	}
 	
 	public static RefineriaTemplate getInstance() {
@@ -18,6 +18,6 @@ public class RefineriaTemplate extends StructureTemplate {
 	
 	public ExploitationStructure create() {
 		// TODO Resolver tiempo de construccion
-		return new ExploitationStructure(life);
+		return new ExploitationStructure(new Life(health));
 	}
 }

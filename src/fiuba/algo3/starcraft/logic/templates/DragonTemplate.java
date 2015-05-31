@@ -9,7 +9,8 @@ public class DragonTemplate extends MuggleTemplate {
 		constructionTime = 6;
 		vision = 8;
 		populationQuota = 2;
-		life = new Life(80,100);
+		health = 80;
+		shield = 100;
 		transportationQuota = 4;
 		damage = new Damage(20,20);
 		damageRange = 4;

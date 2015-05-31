@@ -9,7 +9,7 @@ public class CentroMineralTemplate extends StructureTemplate {
 	private CentroMineralTemplate() {
 		value = new Value(50,0);
 		constructionTime = 4;
-		life = new Life(500);
+		health = 500;
 	}
 	
 	public static CentroMineralTemplate getInstance() {
@@ -18,6 +18,6 @@ public class CentroMineralTemplate extends StructureTemplate {
 	
 	public ExploitationStructure create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
-		return new ExploitationStructure(life);
+		return new ExploitationStructure(new Life(health));
 	}
 }

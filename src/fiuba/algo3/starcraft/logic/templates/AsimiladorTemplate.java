@@ -9,7 +9,8 @@ public class AsimiladorTemplate extends StructureTemplate {
 	private AsimiladorTemplate() {
 		value = new Value(100,0);
 		constructionTime = 6;
-		life = new Life(450,450);
+		health = 450;
+		shield = 450;
 	}
 	
 	public static AsimiladorTemplate getInstance() {
@@ -18,6 +19,6 @@ public class AsimiladorTemplate extends StructureTemplate {
 	
 	public ExploitationStructure create() {
 		// TODO Solucionar tiempo de construccion
-		return new ExploitationStructure(life);
+		return new ExploitationStructure(new Life(health, shield));
 	}
 }

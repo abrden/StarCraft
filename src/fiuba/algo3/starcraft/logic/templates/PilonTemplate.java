@@ -9,7 +9,8 @@ public class PilonTemplate extends StructureTemplate {
 	private PilonTemplate() {
 		value = new Value(100,0);
 		constructionTime = 5;
-		life = new Life(300,300);
+		health = 300;
+		shield = 300;
 	}
 
 	public static PilonTemplate getInstance() {
@@ -18,6 +19,6 @@ public class PilonTemplate extends StructureTemplate {
 	
 	public Depot create() {
 		// TODO Resolver tiempo de construccion
-		return new Depot(life);
+		return new Depot(new Life(health,shield));
 	}
 }

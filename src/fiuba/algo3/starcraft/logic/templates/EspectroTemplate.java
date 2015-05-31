@@ -9,7 +9,7 @@ public class EspectroTemplate extends MuggleTemplate {
 		constructionTime = 8;
 		vision = 7;
 		populationQuota = 2;
-		life = new Life(120);
+		health = 120;
 		transportationQuota = 0;
 		damage = new Damage(8,20);
 		damageRange = 5;

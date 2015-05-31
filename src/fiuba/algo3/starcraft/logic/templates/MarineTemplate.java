@@ -9,7 +9,7 @@ public class MarineTemplate extends MuggleTemplate {
 		constructionTime = 3;
 		vision = 7;
 		populationQuota = 1;
-		life = new Life(40);
+		health = 40;
 		transportationQuota = 1;
 		damage = new Damage(6,6);
 		damageRange = 4;
