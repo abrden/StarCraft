@@ -13,12 +13,14 @@ public abstract class Structure {
 		this.life = life;
 	}
 	
+	public abstract StructureID getId();
+	
 	public boolean itsAlive() {
-		return (life.getHealth() != 0);
+		return (life.getHealth() > 0);
 	}
 	
 	public void reduceLife(int damage) {
 		life.reduce(damage);
 	}
-	
+
 }

@@ -7,4 +7,8 @@ public class Depot extends Structure {
 	public Depot(Life life) {
 		super(life);
 	}
+
+	public StructureID getId() {
+		return StructureID.Depot;
+	}
 }

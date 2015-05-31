@@ -13,4 +13,7 @@ public class ConstructionStructure extends Structure {
 		super(life);
 	}
 	
+	public StructureID getId() {
+		return StructureID.ConstructionStructure;
+	}
 }
