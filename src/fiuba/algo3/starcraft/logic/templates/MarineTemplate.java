@@ -17,9 +17,6 @@ public class MarineTemplate extends MuggleTemplate {
 	}
 
 	public static MarineTemplate getInstance(){
-		if (instance == null){
-			instance = new MarineTemplate();
-		}
 		return instance;
 	}
 

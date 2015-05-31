@@ -3,7 +3,7 @@ package fiuba.algo3.starcraft.logic.templates;
 
 public class EspectroTemplate extends MuggleTemplate {
 
-	public static EspectroTemplate instance = null;
+	private static EspectroTemplate instance = new EspectroTemplate();
 
 	private EspectroTemplate() {
 		value = new Value(150,100);
@@ -17,9 +17,6 @@ public class EspectroTemplate extends MuggleTemplate {
 	}
 
 	public static EspectroTemplate getInstance(){
-		if (instance == null){
-			instance = new EspectroTemplate();
-		}
 		return instance;
 	}
 }

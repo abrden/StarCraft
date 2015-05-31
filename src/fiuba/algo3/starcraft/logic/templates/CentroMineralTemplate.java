@@ -4,7 +4,7 @@ import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
 
 public class CentroMineralTemplate extends StructureTemplate {
 
-	public static CentroMineralTemplate instance = new CentroMineralTemplate();
+	private static CentroMineralTemplate instance = new CentroMineralTemplate();
 
 	private CentroMineralTemplate() {
 		value = new Value(50,0);

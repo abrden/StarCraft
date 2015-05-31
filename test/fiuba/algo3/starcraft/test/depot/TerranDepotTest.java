@@ -15,7 +15,7 @@ public class TerranDepotTest {
 	public void testPopulationQuotais5With1Pilon() {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
+		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
 		Depot depot = templateDepositoSuministro.create();
 		
 		player.pays(100,0);
@@ -28,7 +28,7 @@ public class TerranDepotTest {
 	public void testPopulationQuotais10With2Pilon() {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
+		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
 		
 		for(int i = 0; i < 2; i++) {
 			Depot depot = templateDepositoSuministro.create();
@@ -43,7 +43,7 @@ public class TerranDepotTest {
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
+		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
 		for(int i = 0; i < 2; i++) {
 			Depot depot = templateDepositoSuministro.create();
 			player.pays(100,0);
@@ -59,7 +59,7 @@ public class TerranDepotTest {
 	public void testPopulationQuotais10With2PilonsAnd0IfBothAreDestroyed() {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
+		DepositoSuministroTemplate templateDepositoSuministro =  DepositoSuministroTemplate.getInstance();
 		Depot depot1 = templateDepositoSuministro.create();
 		player.pays(100,0);
 		player.newStructure(depot1);

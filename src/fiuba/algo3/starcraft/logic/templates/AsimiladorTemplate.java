@@ -4,7 +4,7 @@ import fiuba.algo3.starcraft.logic.structures.GasExploiter;
 
 public class AsimiladorTemplate extends StructureTemplate {
 
-	public static AsimiladorTemplate instance = new AsimiladorTemplate();
+	private static AsimiladorTemplate instance = new AsimiladorTemplate();
 
 	private AsimiladorTemplate() {
 		value = new Value(100,0);
