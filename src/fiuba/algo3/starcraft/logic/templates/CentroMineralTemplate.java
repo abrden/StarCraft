@@ -11,11 +11,11 @@ public class CentroMineralTemplate extends StructureTemplate {
 		constructionTime = 4;
 		life = new Life(500);
 	}
-
-	public static CentroMineralTemplate getInstance(){
+	
+	public static CentroMineralTemplate getInstance() {
 		return instance;
 	}
-
+	
 	public ExploitationStructure create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
 		return new ExploitationStructure(life);

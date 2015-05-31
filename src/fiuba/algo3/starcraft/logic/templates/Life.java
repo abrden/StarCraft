@@ -28,7 +28,7 @@ public class Life {
 
 	public void reduce(int damage) {
 		for(int i = 0; i < damage; i++) {
-			if (!shield.isGone()) shield.reduce(1);
+			if ((shield != null) && (!shield.isGone())) shield.reduce(1);
 			else health -= 1;
 		}
 	}

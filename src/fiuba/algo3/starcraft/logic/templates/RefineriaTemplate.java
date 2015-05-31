@@ -11,7 +11,7 @@ public class RefineriaTemplate extends StructureTemplate {
 		constructionTime = 6;
 		life = new Life(750);
 	}
-
+	
 	public static RefineriaTemplate getInstance() {
 		return instance;
 	}
