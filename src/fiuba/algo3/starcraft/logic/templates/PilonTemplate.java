@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.Depot;
+import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class PilonTemplate extends StructureTemplate {
 	
@@ -20,5 +21,10 @@ public class PilonTemplate extends StructureTemplate {
 	public Depot create() {
 		// TODO Resolver tiempo de construccion
 		return new Depot(new Life(health,shield));
+	}
+
+	@Override
+	public StructureID getStructureId() {
+		return StructureID.Depot;
 	}
 }

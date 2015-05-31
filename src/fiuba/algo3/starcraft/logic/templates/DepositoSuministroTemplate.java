@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.Depot;
+import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class DepositoSuministroTemplate extends StructureTemplate {
 	
@@ -18,5 +19,9 @@ public class DepositoSuministroTemplate extends StructureTemplate {
 	}
 	public static DepositoSuministroTemplate getInstance() {
 		return instance;
+	}
+
+	public StructureID getStructureId() {
+		return StructureID.Depot;
 	}
 }

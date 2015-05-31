@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.GasExploiter;
+import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 
 public class RefineriaTemplate extends StructureTemplate {
@@ -20,5 +21,10 @@ public class RefineriaTemplate extends StructureTemplate {
 	public GasExploiter create() {
 		// TODO Resolver tiempo de construccion
 		return new GasExploiter(new Life(health));
+	}
+
+	@Override
+	public StructureID getStructureId() {
+		return StructureID.GasExploiter;
 	}
 }

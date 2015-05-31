@@ -1,9 +1,10 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class MarineTemplate extends MuggleTemplate {
 
-	private static MarineTemplate instance = null;
+	private static MarineTemplate instance = new MarineTemplate();
 
 	private MarineTemplate() {
 		value = new Value(50,0);
@@ -14,10 +15,15 @@ public class MarineTemplate extends MuggleTemplate {
 		transportationQuota = 1;
 		damage = new Damage(6,6);
 		damageRange = 4;
+		attack = new Attack(damage, damageRange);
 	}
 
 	public static MarineTemplate getInstance(){
 		return instance;
+	}
+
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
 	}
 
 

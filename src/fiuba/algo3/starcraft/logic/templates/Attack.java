@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.logic.units;
+package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.templates.Damage;
 
