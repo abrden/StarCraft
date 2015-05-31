@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-import fiuba.algo3.starcraft.logic.structures.ExploitationStructure;
+import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
 
 public class CentroMineralTemplate extends StructureTemplate {
 
@@ -16,8 +16,8 @@ public class CentroMineralTemplate extends StructureTemplate {
 		return instance;
 	}
 	
-	public ExploitationStructure create() {
+	public MineralExploiter create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
-		return new ExploitationStructure(new Life(health));
+		return new MineralExploiter(new Life(health));
 	}
 }
