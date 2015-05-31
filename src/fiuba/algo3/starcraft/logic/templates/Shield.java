@@ -3,8 +3,10 @@ package fiuba.algo3.starcraft.logic.templates;
 public class Shield {
 	
 	private int shield;
+	private int maximumShield;
 	
 	Shield(int shield) {
+		this.maximumShield = shield;
 		this.shield = shield;
 	}
 	
@@ -12,6 +14,16 @@ public class Shield {
 		return shield;
 	}
 	
-	//Faltan metodos para regenerar el escudo
+	public void regenerate() {
+		shield = maximumShield;
+	}
+
+	public void reduce(int damage) {
+		shield -= damage;
+	}
+	
+	public boolean isGone() {
+		return (shield <= 0);
+	}
 	
 }

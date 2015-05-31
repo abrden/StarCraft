@@ -1,18 +1,26 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-import fiuba.algo3.starcraft.logic.structures.ExploitationStructure;
+import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
+
 
 public class NexoMineralTemplate extends StructureTemplate {
-	
-	public NexoMineralTemplate() {
+
+	public static NexoMineralTemplate instance = new NexoMineralTemplate();
+
+	private NexoMineralTemplate() {
 		value = new Value(50,0);
 		constructionTime = 4;
-		life = new Life(250,250);
+		health = 250;
+		shield = 250;
 	}
 	
-	public ExploitationStructure create() {
+	public static NexoMineralTemplate getInstance() {
+		return instance;
+	}
+
+	public MineralExploiter create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
-		return new ExploitationStructure(life);
+		return new MineralExploiter(new Life(health, shield));
 	}
 
 }
