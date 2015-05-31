@@ -49,26 +49,37 @@ public class Player {
 		return (this.depotQuantity() * populationBonusPerDepot);
 	}
 	
-	//TODO: Implementar estos 3 metodos
 	private int mineralExploitationStructuresQuantity() {
-		return 1;
+		return (this.getMineralExploiters()).size();
 	}
 	
 	private int gasExploitationStructuresQuantity() {
-		return 2;
-	}
-	
-	private LinkedList<Structure> getDepots() {
-		LinkedList<Structure> depots = new LinkedList<Structure>();
-		for (Structure structure : structures) {
-			if (structure.getId() == StructureID.Depot)
-				depots.add(structure);
-		}
-		return depots;
+		return (this.getGasExploiters()).size();
 	}
 	
 	private int depotQuantity() {
 		return (this.getDepots()).size();
+	}
+	
+	private LinkedList<Structure> getMineralExploiters() {
+		return getStructuresWithID(StructureID.MineralExploiter);
+	}
+	
+	private LinkedList<Structure> getGasExploiters() {
+		return getStructuresWithID(StructureID.GasExploiter);
+	}
+	
+	private LinkedList<Structure> getDepots() {
+		return getStructuresWithID(StructureID.Depot);
+	}
+	
+	private LinkedList<Structure> getStructuresWithID(StructureID id) {
+		LinkedList<Structure> wanted = new LinkedList<Structure>();
+		for (Structure structure : structures) {
+			if (structure.getId() == id)
+				wanted.add(structure);
+		}
+		return wanted;
 	}
 
 	public void gains(int mineral, int gas) {
