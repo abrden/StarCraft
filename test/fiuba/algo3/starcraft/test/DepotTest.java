@@ -19,7 +19,7 @@ public class DepotTest {
 	
 	@Test
 	public void testProtossDepotStartsEmpty() {
-		PilonTemplate template = new PilonTemplate();
+		PilonTemplate template = PilonTemplate.getInstance();
 		Depot depot = template.create();
 		assertTrue(depot.isEmpty());
 	}
