@@ -9,4 +9,16 @@ public abstract class Structure {
 	protected Point position;
 	protected Life life;
 	
+	Structure(Life life) {
+		this.life = life;
+	}
+	
+	public boolean itsAlive() {
+		return (life.getHealth() != 0);
+	}
+	
+	public void reduceLife(int damage) {
+		life.reduce(damage);
+	}
+	
 }
