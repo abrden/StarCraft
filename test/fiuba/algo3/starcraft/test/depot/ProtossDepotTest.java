@@ -69,7 +69,7 @@ public class ProtossDepotTest {
 		
 		pilon2.reduceLife(600);
 		player.newTurn();
-			
+		
 		assertEquals(player.populationQuota(), 5);		
 	}
 	
