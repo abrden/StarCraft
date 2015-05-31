@@ -11,7 +11,7 @@ public class SingletonTest {
         DragonTemplate instanceA = DragonTemplate.getInstance();
         DragonTemplate instanceB = DragonTemplate.getInstance();
 
-        Assert.assertEquals(true,(instanceA == instanceB));
+        Assert.assertEquals(instanceA, instanceB);
 
     }
 
