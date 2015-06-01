@@ -3,9 +3,9 @@ package fiuba.algo3.starcraft.logic.player;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.StructureID;
-import fiuba.algo3.starcraft.logic.templates.Builder;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Player {
@@ -16,7 +16,7 @@ public class Player {
 	
 	private static final int resourcesProducedPerTurn = 10;
 	private static final int populationBonusPerDepot = 5;
-	//private static final int populationMaximum = 200;
+	private static final int populationMaximum = 200;
 	
 	public Player(Resources initialResources) {
 		resources = initialResources;
@@ -30,6 +30,10 @@ public class Player {
 
 	public int getGas() {
 		return resources.getGas();
+	}
+	
+	public Resources getResources() {
+		return resources;
 	}
 	
 	public void newTurn() {
@@ -49,8 +53,18 @@ public class Player {
 			structures.remove(structure);
 		}
 	
+	public int populationSpace() {
+		return (this.populationQuota() - this.population());
+	}
+	
+	public int population() {
+		return units.size();
+	}
+	
 	public int populationQuota() {
-		return (this.depotQuantity() * populationBonusPerDepot);
+		int populationQuota = (this.depotQuantity() * populationBonusPerDepot);
+		if (populationQuota < populationMaximum) return populationQuota;
+		else return populationMaximum;
 	}
 	
 	private int mineralExploitationStructuresQuantity() {
@@ -90,12 +104,23 @@ public class Player {
 		resources.add(mineral, gas);
 	}
 	
-	public void pays(int mineral, int gas) {
+	public void pays(int mineral, int gas) throws InsufficientResources {
 		resources.remove(mineral, gas);
+	}
+
+	/*
+	private Builder getRaceBuilder() {
+		//TODO: implementar este metodo
+		return null;
 	}
 	
 	public void newStructureWithID(StructureID id) {
 		this.newStructure(this.getRaceBuilder().getTemplate(id).create());
+	}
+	*/
+	
+	public void newUnit(Unit unit) {
+		units.add(unit);
 	}
 	
 	public void newStructure(Structure structure) {
