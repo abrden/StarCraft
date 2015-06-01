@@ -37,11 +37,23 @@ public class Player {
 	}
 	
 	public void newTurn() {
+		//Itera entre sus units y pierde la referencia de las muertas
+		this.getRidOfDeadUnits();
+		
 		//Itera entre sus estructuras y pierde la referencia de las muertas
 		this.getRidOfDeadStructures();
 		
 		//Cada estructura de explotacion junta +10 de su recurso
 		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
+	}
+	
+	private void getRidOfDeadUnits() {
+		LinkedList<Unit> dead = new LinkedList<Unit>();
+		for (Unit unit : units)
+			if (!unit.itsAlive())
+				dead.add(unit);
+		for (Unit unit : dead) 
+			units.remove(unit);
 	}
 	
 	private void getRidOfDeadStructures() {
@@ -51,7 +63,7 @@ public class Player {
 				dead.add(structure);
 		for (Structure structure : dead) 
 			structures.remove(structure);
-		}
+	}
 	
 	public int populationSpace() {
 		return (this.populationQuota() - this.population());
