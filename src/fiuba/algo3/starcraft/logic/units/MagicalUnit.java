@@ -20,7 +20,7 @@ public class MagicalUnit extends Unit implements Transportable {
 	}
 
 	public int getTransportQuota() {
-		return transportationQuota; //TODO: Implementar esta redefinicion de Transportable
+		return transportationQuota;
 	}
 	
 	public boolean canFly() {
