@@ -9,6 +9,7 @@ import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
+import fiuba.algo3.starcraft.logic.templates.ArchivosTemplariosTemplate;
 import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
 import fiuba.algo3.starcraft.logic.templates.PuertoEstelarProtossTemplate;
@@ -52,7 +53,6 @@ public class UnitCreationTest {
 		assertTrue(!espectro.itsAlive());
 	}
 	
-	/*
 	@Test
 	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources {
 		Resources resources = new Resources(100,225);
@@ -63,7 +63,6 @@ public class UnitCreationTest {
 		
 		assertTrue(!nave.itsAlive());
 	}
-	*/
 	
 	@Test
 	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources {
@@ -120,7 +119,6 @@ public class UnitCreationTest {
 		assertTrue(!nave.itsAlive());
 	}
 	
-	/*
 	@Test
 	public void testCreateWithAltoTemplarioTemplateReturnsAltoTemplario() throws QuotaExceeded, InsufficientResources {
 		Resources resources = new Resources(50,150);
@@ -131,6 +129,4 @@ public class UnitCreationTest {
 		
 		assertTrue(!templario.itsAlive());
 	}
-	*/
-
 }
