@@ -10,7 +10,7 @@ import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
 import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
 
-public class StructuresDependence {
+public class StructuresDependenceTest {
 
 	@Test(expected = Exception.class)
 	public void testFactoryNeedsBarraca() throws InsufficientResources {
