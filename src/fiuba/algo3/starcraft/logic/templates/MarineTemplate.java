@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 public class MarineTemplate extends MuggleTemplate {
 
 	private static MarineTemplate instance = new MarineTemplate();
-
+	
 	private MarineTemplate() {
 		value = new Value(50,0);
 		constructionTime = 3;

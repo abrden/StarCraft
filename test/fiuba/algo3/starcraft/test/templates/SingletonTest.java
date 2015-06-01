@@ -13,7 +13,6 @@ public class SingletonTest {
         DragonTemplate instanceB = DragonTemplate.getInstance();
 
         Assert.assertEquals(instanceA, instanceB);
-
     }
 
 }

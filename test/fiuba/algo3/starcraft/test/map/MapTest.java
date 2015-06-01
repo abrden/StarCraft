@@ -2,6 +2,8 @@ package fiuba.algo3.starcraft.test.map;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
@@ -18,8 +20,19 @@ public class MapTest {
 	}
 	
 	@Test
-	public void testMapDeterminesWhetherAPointIsIncideARadiousOfOtherPoint() {
+	public void testMapDeterminesWhetherAPointIsInsideARadiousOfOtherPoint() {
 		assertTrue(map.isPointInsideRadiousOfPivotePoint(new Point(0,0), 10, new Point(1,0)));
+	}
+	
+	@Test 
+	public void testMapCreatesParcelPathBetweenTwoPoints() {
+		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
+		for (Parcel parcel : parcelPath) {
+			
+		}
+		
+		
+		assertTrue();
 	}
 
 }
