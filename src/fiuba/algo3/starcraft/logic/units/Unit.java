@@ -9,4 +9,10 @@ public abstract class Unit {
 	protected int populationQuota; //suministro
 	protected Life life;
 	protected Point position;
+	
+	Unit(Life life, int vision, int populationQuota) {
+		this.life = life;
+		this.vision = vision;
+		this.populationQuota = populationQuota;
+	}
 }
