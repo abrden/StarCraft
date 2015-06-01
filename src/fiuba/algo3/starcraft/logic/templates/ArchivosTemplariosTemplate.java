@@ -13,6 +13,7 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
         constructionTime = 9;
         health = 500;
         shield = 500;
+        enabledTemplates = new LinkedList<UnitTemplate>();
 		enabledTemplates = new LinkedList<UnitTemplate>();
 		//enabledTemplates.add(AltosTemplariosTemplate.getInstance());
     }

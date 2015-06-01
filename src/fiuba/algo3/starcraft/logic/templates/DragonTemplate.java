@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+
 
 public class DragonTemplate extends MuggleTemplate {
 
@@ -19,5 +21,13 @@ public class DragonTemplate extends MuggleTemplate {
 
 	public static DragonTemplate getInstance(){
 		return instance;
+	}
+
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
+	}
+	
+	public TemplateID getId() {
+		return TemplateID.DragonTemplate;
 	}
 }

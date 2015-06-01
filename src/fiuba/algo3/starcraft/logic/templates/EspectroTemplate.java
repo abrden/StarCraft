@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+
 
 public class EspectroTemplate extends MuggleTemplate {
 
@@ -18,5 +20,13 @@ public class EspectroTemplate extends MuggleTemplate {
 
 	public static EspectroTemplate getInstance(){
 		return instance;
+	}
+
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
+	}
+	
+	public TemplateID getId() {
+		return TemplateID.EspectroTemplate;
 	}
 }

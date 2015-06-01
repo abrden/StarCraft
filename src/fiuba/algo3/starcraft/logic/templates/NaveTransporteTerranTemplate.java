@@ -23,4 +23,9 @@ public class NaveTransporteTerranTemplate extends TransportUnitTemplate {
         // TODO Resolver tiempo de construccion
     	return new TransportUnit(new Life(health, shield), vision, populationQuota, capacity);
     }
+
+	public TemplateID getId() {
+		return TemplateID.NaveTransporteTerranTemplate;
+	}
+       
 }
