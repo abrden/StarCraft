@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.templates.Life;
+import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.templates.UnitTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -16,12 +17,28 @@ public class ConstructionStructure extends Structure {
 		this.templates = templates;
 	}
 
-	public Unit buildWith(Resources resources) {
-		//TODO: Completar metodo
+	private UnitTemplate getTemplateWithId(TemplateID id) {
+		for (UnitTemplate template : templates) {
+			if (template.getId() == id)
+				return template;
+		}
 		return null;
+	}
+	
+	private void populationSpaceCheck(UnitTemplate template, int populationSpace) throws QuotaExceeded {
+		if (populationSpace < template.getPopulationQuota())
+			throw new QuotaExceeded();
+	}
+	
+	public Unit createUnit(TemplateID id, Resources resources, int populationSpace) throws QuotaExceeded, InsufficientResources {
+		UnitTemplate template = this.getTemplateWithId(id);
+		populationSpaceCheck(template, populationSpace);
+		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
+		return template.create();
 	}
 	
 	public StructureID getId() {
 		return StructureID.ConstructionStructure;
 	}
+
 }
