@@ -12,4 +12,15 @@ public class Attack {
 		this.range = range;
 	}
 
+	public int getLandDamage() {
+		return damage.getLandDamage();
+	}
+	
+	public int getSpaceDamage() {
+		return damage.getSpaceDamage();
+	}
+	
+	public int getRange() {
+		return range;
+	}
 }

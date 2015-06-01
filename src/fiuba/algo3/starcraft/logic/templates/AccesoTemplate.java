@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class AccesoTemplate extends ConstructionTemplate {
 
@@ -12,7 +11,8 @@ public class AccesoTemplate extends ConstructionTemplate {
         constructionTime = 8;
         health = 500;
         shield = 500;
-        //faltan las enabled units
+        enabledTemplates.add(ZealotTemplate.getInstance());
+        enabledTemplates.add(DragonTemplate.getInstance());
     }
 
     public static AccesoTemplate getInstance() {
@@ -20,11 +20,6 @@ public class AccesoTemplate extends ConstructionTemplate {
     }
     public ConstructionStructure create() {
         // TODO Resolver tiempo de construccion
-        return new ConstructionStructure(new Life(health));
-    }
-
-    @Override
-    public StructureID getStructureId() {
-        return StructureID.ConstructionStructure;
+        return new ConstructionStructure(new Life(health), enabledTemplates);
     }
 }

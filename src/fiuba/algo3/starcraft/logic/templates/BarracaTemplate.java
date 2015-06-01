@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import java.util.LinkedList;
+
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 
 public class BarracaTemplate extends ConstructionTemplate {
@@ -10,6 +12,7 @@ public class BarracaTemplate extends ConstructionTemplate {
 		value = new Value(150,0);
 		constructionTime = 12;
 		health = 1000;
+		enabledTemplates = new LinkedList<UnitTemplate>();
 		enabledTemplates.add(MarineTemplate.getInstance());
 	}
 	

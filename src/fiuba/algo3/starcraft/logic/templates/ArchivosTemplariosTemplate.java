@@ -1,7 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import java.util.LinkedList;
+
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class ArchivosTemplariosTemplate extends ConstructionTemplate {
 
@@ -12,6 +13,8 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
         constructionTime = 9;
         health = 500;
         shield = 500;
+		enabledTemplates = new LinkedList<UnitTemplate>();
+		//enabledTemplates.add(AltosTemplariosTemplate.getInstance());
     }
 
     public static ArchivosTemplariosTemplate getInstance() {
@@ -19,11 +22,6 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
     }
     public ConstructionStructure create() {
         // TODO Resolver tiempo de construccion
-        return new ConstructionStructure(new Life(health));
-    }
-
-    @Override
-    public StructureID getStructureId() {
-        return StructureID.ConstructionStructure;
+        return new ConstructionStructure(new Life(health), enabledTemplates);
     }
 }

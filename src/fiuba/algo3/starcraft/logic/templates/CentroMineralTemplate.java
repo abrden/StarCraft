@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class CentroMineralTemplate extends StructureTemplate {
 

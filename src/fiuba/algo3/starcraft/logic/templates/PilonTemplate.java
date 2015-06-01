@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.Depot;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class PilonTemplate extends StructureTemplate {
 	

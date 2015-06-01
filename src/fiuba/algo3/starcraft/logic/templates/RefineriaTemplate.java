@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.GasExploiter;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 
 public class RefineriaTemplate extends StructureTemplate {

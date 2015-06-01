@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
 
@@ -12,16 +11,16 @@ public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
         constructionTime = 10;
         health = 600;
         shield = 600;
+        enabledTemplates.add(ScoutTemplate.getInstance());
+        enabledTemplates.add(NaveTransporteProtossTemplate.getInstance());
     }
 
     public static PuertoEstelarProtossTemplate getInstance() {
         return instance;
     }
 
-
-    @Override
-    public StructureID getStructureId() {
-        return StructureID.ConstructionStructure;
-    }
+	public ConstructionStructure create() {
+		return new ConstructionStructure(new Life(health, shield), enabledTemplates);
+	}
 }
 

@@ -1,8 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-
-import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
+import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
 public class NaveTransporteProtossTemplate extends TransportUnitTemplate {
 
@@ -11,6 +9,8 @@ public class NaveTransporteProtossTemplate extends TransportUnitTemplate {
     private NaveTransporteProtossTemplate() {
         value = new Value(200,0);
         constructionTime = 8;
+        vision = 8;
+        populationQuota = 2;
         health = 80;
         shield = 60;
         capacity = 8;
@@ -19,12 +19,9 @@ public class NaveTransporteProtossTemplate extends TransportUnitTemplate {
     public static NaveTransporteProtossTemplate getInstance() {
         return instance;
     }
-    public ConstructionStructure create() {
+    
+    public TransportUnit create() {
         // TODO Resolver tiempo de construccion
-        return new ConstructionStructure(new Life(health));
-    }
-    @Override
-    public StructureID getStructureId() {
-        return StructureID.ConstructionStructure;
+        return new TransportUnit(new Life(health, shield), vision, populationQuota, capacity);
     }
 }

@@ -1,7 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import java.util.LinkedList;
+
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 
 public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
 
@@ -11,6 +12,10 @@ public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
             value = new Value(150,100);
             constructionTime = 10;
             health = 1300;
+            enabledTemplates = new LinkedList<UnitTemplate>();
+            enabledTemplates.add(EspectroTemplate.getInstance());
+            enabledTemplates.add(NaveTransporteTerranTemplate.getInstance());
+            //enabledTemplates.add(NaveDeCienciaTemplate.getInstance());
         }
 
         public static PuertoEstelarTerranTemplate getInstance() {
@@ -18,11 +23,6 @@ public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
         }
         public ConstructionStructure create() {
             // TODO Resolver tiempo de construccion
-            return new ConstructionStructure(new Life(health));
-        }
-
-        @Override
-        public StructureID getStructureId() {
-            return StructureID.ConstructionStructure;
+            return new ConstructionStructure(new Life(health), enabledTemplates);
         }
 }
