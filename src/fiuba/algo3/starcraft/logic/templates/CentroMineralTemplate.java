@@ -22,7 +22,4 @@ public class CentroMineralTemplate extends StructureTemplate {
 		return new MineralExploiter(new Life(health));
 	}
 
-	public StructureID getStructureId() {
-		return StructureID.MineralExploiter;
-	}
 }

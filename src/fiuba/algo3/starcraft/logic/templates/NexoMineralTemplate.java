@@ -24,8 +24,4 @@ public class NexoMineralTemplate extends StructureTemplate {
 		return new MineralExploiter(new Life(health, shield));
 	}
 
-	public StructureID getStructureId() {
-		return StructureID.MineralExploiter;
-	}
-
 }

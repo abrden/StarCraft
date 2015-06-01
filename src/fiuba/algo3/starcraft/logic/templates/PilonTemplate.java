@@ -23,8 +23,4 @@ public class PilonTemplate extends StructureTemplate {
 		return new Depot(new Life(health,shield));
 	}
 
-	@Override
-	public StructureID getStructureId() {
-		return StructureID.Depot;
-	}
 }

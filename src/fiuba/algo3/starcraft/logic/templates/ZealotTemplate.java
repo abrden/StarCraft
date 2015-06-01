@@ -1,6 +1,5 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-
 public class ZealotTemplate extends MuggleTemplate {
 
 	private static ZealotTemplate instance = new ZealotTemplate();

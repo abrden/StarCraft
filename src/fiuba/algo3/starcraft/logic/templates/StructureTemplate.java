@@ -1,9 +1,9 @@
 package fiuba.algo3.starcraft.logic.templates;
 
-import fiuba.algo3.starcraft.logic.structures.StructureID;
+import fiuba.algo3.starcraft.logic.structures.Structure;
 
 public abstract class StructureTemplate extends Template {
 
-	public abstract StructureID getStructureId();
+	public abstract Structure create();
 
 }

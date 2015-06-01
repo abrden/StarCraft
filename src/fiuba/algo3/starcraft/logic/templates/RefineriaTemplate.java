@@ -23,8 +23,4 @@ public class RefineriaTemplate extends StructureTemplate {
 		return new GasExploiter(new Life(health));
 	}
 
-	@Override
-	public StructureID getStructureId() {
-		return StructureID.GasExploiter;
-	}
 }
