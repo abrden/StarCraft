@@ -15,4 +15,12 @@ public abstract class Unit {
 		this.vision = vision;
 		this.populationQuota = populationQuota;
 	}
+	
+	public void reduceLife(int damage) {
+		life.reduce(damage);
+	}
+
+	public boolean itsAlive() {
+		return (life.getHealth() > 0);
+	}
 }
