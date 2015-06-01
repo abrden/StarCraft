@@ -39,7 +39,7 @@ public class EspectroTest {
 		Unit espectro = puerto.createUnit(TemplateID.EspectroTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(espectro);
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 2);
 	}
 
 }

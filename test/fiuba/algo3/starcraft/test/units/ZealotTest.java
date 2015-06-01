@@ -31,7 +31,7 @@ public class ZealotTest {
 		Unit zealot = acceso.createUnit(TemplateID.ZealotTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(zealot);
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 2);
 	}
 	
 	@Test(expected = QuotaExceeded.class)
