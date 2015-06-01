@@ -70,7 +70,11 @@ public class Player {
 	}
 	
 	public int population() {
-		return units.size();
+		int pop = 0;
+		for (Unit unit : units)
+			pop += unit.getPopulationQuota();
+		return pop;
+		//return units.size();
 	}
 	
 	public int populationQuota() {
