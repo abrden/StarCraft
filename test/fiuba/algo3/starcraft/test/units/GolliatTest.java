@@ -39,7 +39,7 @@ public class GolliatTest {
 	}
 
 	@Test
-	public void testCantCreateAThirdGolliatWithOnlyOneDeposit() throws InsufficientResources, QuotaExceeded {
+	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(750,250);
 		Player player = new Player(initialResources);
 		player.pays(100, 0);
