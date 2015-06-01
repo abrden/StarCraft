@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.depot;
+package fiuba.algo3.starcraft.test.structures.depot;
 
 import static org.junit.Assert.*;
 
@@ -8,19 +8,19 @@ import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
+import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
 
-public class TerranDepotTest {
+public class ProtossDepotTest {
 
 	@Test
 	public void testPopulationQuotais5With1Pilon() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
-		Depot depot = templateDepositoSuministro.create();
+		PilonTemplate templatePilon = PilonTemplate.getInstance();
+		Depot pilon = templatePilon.create();
 		
 		player.pays(100,0);
-		player.newStructure(depot);
+		player.newStructure(pilon);
 		
 		assertEquals(player.populationQuota(), 5);
 	}
@@ -29,12 +29,12 @@ public class TerranDepotTest {
 	public void testPopulationQuotais10With2Pilon() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
+		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		
 		for(int i = 0; i < 2; i++) {
-			Depot depot = templateDepositoSuministro.create();
+			Depot pilon = templatePilon.create();
 			player.pays(100,0);
-			player.newStructure(depot);
+			player.newStructure(pilon);
 		}
 		
 		assertEquals(player.populationQuota(), 10);
@@ -44,11 +44,11 @@ public class TerranDepotTest {
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro = DepositoSuministroTemplate.getInstance();
+		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		for(int i = 0; i < 2; i++) {
-			Depot depot = templateDepositoSuministro.create();
+			Depot pilon = templatePilon.create();
 			player.pays(100,0);
-			player.newStructure(depot);
+			player.newStructure(pilon);
 		}
 		
 		for(int i = 0; i < 46; i++) player.newTurn();
@@ -57,22 +57,21 @@ public class TerranDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
+	public void testPopulationQuotais10With2PilonsAnd5IfOneIsDestroyed() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(initialResources);
-		DepositoSuministroTemplate templateDepositoSuministro =  DepositoSuministroTemplate.getInstance();
-		Depot depot1 = templateDepositoSuministro.create();
+		PilonTemplate templatePilon = PilonTemplate.getInstance();
+		Depot pilon1 = templatePilon.create();
 		player.pays(100,0);
-		player.newStructure(depot1);
-		Depot depot2 = templateDepositoSuministro.create();
+		player.newStructure(pilon1);
+		Depot pilon2 = templatePilon.create();
 		player.pays(100,0);
-		player.newStructure(depot2);
+		player.newStructure(pilon2);
 		
-		depot1.reduceLife(500);
-		depot2.reduceLife(500);
+		pilon2.reduceLife(600);
 		player.newTurn();
 		
-		assertEquals(player.populationQuota(), 0);		
+		assertEquals(player.populationQuota(), 5);		
 	}
-
+	
 }
