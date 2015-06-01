@@ -26,7 +26,7 @@ public class ConstructionStructure extends Structure {
 	}
 	
 	private void populationSpaceCheck(UnitTemplate template, int populationSpace) throws QuotaExceeded {
-		if (populationSpace < template.getPopulationQuota())
+		if ((populationSpace == 0) || (populationSpace < template.getPopulationQuota()))
 			throw new QuotaExceeded();
 	}
 	
