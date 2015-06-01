@@ -35,7 +35,35 @@ public class GolliatTest {
 		Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(golliat);
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.population(), 2);
 	}
-	
+
+	@Test
+	public void testCantCreateAThirdGolliatWithOnlyOneDeposit() throws InsufficientResources, QuotaExceeded {
+		Resources initialResources = new Resources(750,250);
+		Player player = new Player(initialResources);
+		player.pays(100, 0);
+		Depot depot = DepositoSuministroTemplate.getInstance().create();
+		player.newStructure(depot);
+		player.pays(150, 0);
+		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
+		player.newStructure(barraca);
+		player.pays(200, 100);
+		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
+		player.newStructure(fabrica);
+
+		for (int i = 0; i < 2; i++) {
+			Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+			player.newUnit(golliat);
+		}
+		try {
+			Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+			player.newUnit(golliat);
+		}
+		catch (QuotaExceeded e){
+		}
+		finally {
+			assertEquals(player.population(), 4);
+		}
+	}
 }

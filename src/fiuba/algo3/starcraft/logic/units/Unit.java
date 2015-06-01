@@ -23,4 +23,8 @@ public abstract class Unit {
 	public boolean itsAlive() {
 		return (life.getHealth() > 0);
 	}
+
+	public int getPopulationQuota() {
+		return populationQuota;
+	}
 }
