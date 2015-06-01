@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
 
 public class NexoMineralTemplate extends StructureTemplate {
 
-	public static NexoMineralTemplate instance = new NexoMineralTemplate();
+	private static NexoMineralTemplate instance = new NexoMineralTemplate();
 
 	private NexoMineralTemplate() {
 		value = new Value(50,0);

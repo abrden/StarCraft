@@ -1,5 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+
+
 public class GolliatTemplate extends MuggleTemplate {
 
 	private static GolliatTemplate instance = new GolliatTemplate();
@@ -17,6 +20,14 @@ public class GolliatTemplate extends MuggleTemplate {
 
 	public static GolliatTemplate getInstance(){
 		return instance;
+	}
+
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
+	}
+	
+	public TemplateID getId() {
+		return TemplateID.GolliatTemplate;
 	}
 
 }

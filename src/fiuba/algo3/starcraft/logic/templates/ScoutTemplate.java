@@ -1,8 +1,11 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+
+
 public class ScoutTemplate extends MuggleTemplate {
 
-	public static ScoutTemplate instance = new ScoutTemplate();
+	private static ScoutTemplate instance = new ScoutTemplate();
 
 	private ScoutTemplate() {
 		value = new Value(300,150);
@@ -18,5 +21,13 @@ public class ScoutTemplate extends MuggleTemplate {
 
 	public static ScoutTemplate getInstance(){
 		return instance;
+	}
+	
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+	}
+
+	public TemplateID getId() {
+		return TemplateID.ScoutTemplate;
 	}
 }

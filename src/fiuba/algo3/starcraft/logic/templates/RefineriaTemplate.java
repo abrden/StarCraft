@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.structures.GasExploiter;
 
 public class RefineriaTemplate extends StructureTemplate {
 	
-	public static RefineriaTemplate instance = new RefineriaTemplate();
+	private static RefineriaTemplate instance = new RefineriaTemplate();
 
 	private RefineriaTemplate() {
 		value = new Value(100,0);
@@ -21,4 +21,5 @@ public class RefineriaTemplate extends StructureTemplate {
 		// TODO Resolver tiempo de construccion
 		return new GasExploiter(new Life(health));
 	}
+
 }

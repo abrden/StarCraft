@@ -1,8 +1,10 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+
 public class ZealotTemplate extends MuggleTemplate {
 
-	public static ZealotTemplate instance = new ZealotTemplate();
+	private static ZealotTemplate instance = new ZealotTemplate();
 
 	private ZealotTemplate() {
 		value = new Value(100,0);
@@ -20,4 +22,11 @@ public class ZealotTemplate extends MuggleTemplate {
 		return instance;
 	}
 
+	public MuggleUnit create() {
+		return new MuggleUnit(new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+	}
+
+	public TemplateID getId() {
+		return TemplateID.ZealotTemplate;
+	}
 }
