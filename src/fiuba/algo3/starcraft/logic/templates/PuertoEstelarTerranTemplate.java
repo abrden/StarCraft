@@ -15,7 +15,7 @@ public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
             enabledTemplates = new LinkedList<UnitTemplate>();
             enabledTemplates.add(EspectroTemplate.getInstance());
             enabledTemplates.add(NaveTransporteTerranTemplate.getInstance());
-            //enabledTemplates.add(NaveDeCienciaTemplate.getInstance());
+            enabledTemplates.add(NaveCienciaTemplate.getInstance());
         }
 
         public static PuertoEstelarTerranTemplate getInstance() {

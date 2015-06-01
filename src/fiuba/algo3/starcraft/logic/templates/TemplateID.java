@@ -6,10 +6,10 @@ public enum TemplateID {
 	GolliatTemplate(),
 	EspectroTemplate(),
 	NaveTransporteTerranTemplate(),
-	//NaveCienciaTemplate(),
+	NaveCienciaTemplate(),
 	ZealotTemplate(),
 	DragonTemplate(),
 	ScoutTemplate(),
-	NaveTransporteProtossTemplate();
-	//AltoTemplarioTemplate();
+	NaveTransporteProtossTemplate(),
+	AltoTemplarioTemplate();
 }

@@ -14,8 +14,7 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
         health = 500;
         shield = 500;
         enabledTemplates = new LinkedList<UnitTemplate>();
-		enabledTemplates = new LinkedList<UnitTemplate>();
-		//enabledTemplates.add(AltosTemplariosTemplate.getInstance());
+		enabledTemplates.add(AltoTemplarioTemplate.getInstance());
     }
 
     public static ArchivosTemplariosTemplate getInstance() {
