@@ -37,7 +37,7 @@ public class ScoutTest {
 		
 		assertEquals(player.getMineral(), 0);
 		assertEquals(player.getGas(), 0);
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 3);
 	}
 
 }

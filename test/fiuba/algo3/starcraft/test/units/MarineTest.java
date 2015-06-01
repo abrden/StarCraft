@@ -31,7 +31,7 @@ public class MarineTest {
 		Unit marine = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(marine);
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 1);
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class MarineTest {
 		Unit marine2 = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(marine2);
 		
-		assertEquals(player.population(), 2);
+		assertEquals(player.currentPopulation(), 2);
 	}
 	
 	@Test(expected = InsufficientResources.class)
@@ -81,7 +81,7 @@ public class MarineTest {
 		Unit marine1 = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(marine1);
 		
-		assertEquals(player.population(), 2);
+		assertEquals(player.currentPopulation(), 2);
 	}
 	
 	@Test
@@ -98,12 +98,12 @@ public class MarineTest {
 		player.newUnit(marine1);
 		Unit marine2 = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(marine2);
-		assertEquals(player.population(), 2);
+		assertEquals(player.currentPopulation(), 2);
 		
 		marine2.reduceLife(40);
 		player.newTurn();
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 1);
 	}
 	
 	@Test
@@ -121,12 +121,12 @@ public class MarineTest {
 			Unit marine = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 			player.newUnit(marine);
 			
-			assertEquals(player.population(), 1);
+			assertEquals(player.currentPopulation(), 1);
 			marine.reduceLife(40);
 			player.newTurn();
 		}
 		
-		assertEquals(player.population(), 0);
+		assertEquals(player.currentPopulation(), 0);
 	}
 	
 	@Test
@@ -145,9 +145,9 @@ public class MarineTest {
 		for (int i = 0; i < 7; i++) {
 			Unit marine = barraca.createUnit(TemplateID.MarineTemplate, player.getResources(), player.populationSpace());
 			player.newUnit(marine);
-			assertEquals(player.population(), i + 1);
+			assertEquals(player.currentPopulation(), i + 1);
 		}
 		
-		assertEquals(player.population(), 7);
+		assertEquals(player.currentPopulation(), 7);
 	}
 }

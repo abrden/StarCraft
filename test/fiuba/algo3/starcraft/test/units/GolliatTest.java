@@ -35,7 +35,7 @@ public class GolliatTest {
 		Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(golliat);
 		
-		assertEquals(player.population(), 2);
+		assertEquals(player.currentPopulation(), 2);
 	}
 
 	@Test
@@ -56,15 +56,9 @@ public class GolliatTest {
 			Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
 			player.newUnit(golliat);
 		}
-		try {
-			Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
-			player.newUnit(golliat);
-		}
-		catch (QuotaExceeded e){
-		}
-		finally {
-			assertEquals(player.population(), 4);
-		}
+
+		Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+		player.newUnit(golliat);
 	}
 
 	@Test
@@ -84,12 +78,12 @@ public class GolliatTest {
 		player.newUnit(golliat1);
 		Unit golliat2 = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(golliat2);
-		assertEquals(player.population(), 4);
+		assertEquals(player.currentPopulation(), 4);
 		
 		golliat2.reduceLife(125);
 		player.newTurn();
 		
-		assertEquals(player.population(), 2);
+		assertEquals(player.currentPopulation(), 2);
 	}
 
 }

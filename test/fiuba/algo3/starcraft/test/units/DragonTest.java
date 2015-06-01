@@ -33,7 +33,6 @@ public class DragonTest {
 		assertEquals(player.getMineral(), 0);
 		assertEquals(player.getGas(), 0);
 		
-		assertEquals(player.population(), 1);
+		assertEquals(player.currentPopulation(), 2);
 	}
-
 }

@@ -38,7 +38,7 @@ public class NaveTransporteTerranTest {
 		
 		Unit nave = puerto.createUnit(TemplateID.NaveTransporteTerranTemplate, player.getResources(), player.populationSpace());
 		player.newUnit(nave);
-		
-		assertEquals(player.population(), 1);
+
+		assertEquals(player.currentPopulation(), 2);
 	}
 }

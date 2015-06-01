@@ -66,13 +66,13 @@ public class Player {
 	}
 	
 	public int populationSpace() {
-		return (this.populationQuota() - this.population());
+		return (this.populationQuota() - this.currentPopulation());
 	}
 	
-	public int population() {
+	public int currentPopulation() {
 		int pop = 0;
 		for (Unit unit : units)
-			pop += unit.getPopulationQuota();
+			pop = pop + unit.getPopulationQuota();
 		return pop;
 	}
 	

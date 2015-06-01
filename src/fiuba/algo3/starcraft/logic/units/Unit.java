@@ -25,6 +25,6 @@ public abstract class Unit {
 	}
 
 	public int getPopulationQuota() {
-		return populationQuota;
+		return this.populationQuota;
 	}
 }
