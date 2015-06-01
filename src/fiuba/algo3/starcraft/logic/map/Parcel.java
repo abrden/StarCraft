@@ -41,6 +41,6 @@ public class Parcel {
 	}
 	
 	public boolean canPassThrough(Transportable unit) {
-		return surface.canPassThrough(unit);
+		return surface.canPassThrough(unit) && (structure == null || surface.canPassThrough(unit));
 	}
 }
