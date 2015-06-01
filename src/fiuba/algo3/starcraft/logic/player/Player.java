@@ -74,7 +74,6 @@ public class Player {
 		for (Unit unit : units)
 			pop += unit.getPopulationQuota();
 		return pop;
-		//return units.size();
 	}
 	
 	public int populationQuota() {
@@ -125,6 +124,7 @@ public class Player {
 	}
 
 	/*
+	idea loca
 	private Builder getRaceBuilder() {
 		//TODO: implementar este metodo
 		return null;
