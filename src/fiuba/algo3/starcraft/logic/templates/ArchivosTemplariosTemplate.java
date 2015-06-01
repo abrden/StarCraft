@@ -23,6 +23,6 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
     }
     public ConstructionStructure create() {
         // TODO Resolver tiempo de construccion
-        return new ConstructionStructure(new Life(health), enabledTemplates);
+        return new ConstructionStructure(new Life(health, shield), enabledTemplates);
     }
 }
