@@ -38,7 +38,12 @@ public class Map {
 	public ArrayList<Parcel> getParcelsContainedInARect(Point point, int side) {
 		ArrayList<Parcel> parcels = new ArrayList<Parcel>();
 		
-		
+		for (int x = (int)point.getX() ; x < (int)point.getX() + side ; x += PARCEL_SIDE) {
+			for (int y = (int)point.getY() ; y < (int)point.getY() + side ; y += PARCEL_SIDE) {	
+				Parcel parcel = getParcelContainingPoint(new Point(x,y));
+				parcels.add(parcel);
+			}
+		}
 		
 		return parcels;
 	}
