@@ -16,4 +16,7 @@ public abstract class Template {
 		return value;
 	}
 	
+	public int getConstructionTime() {
+		return constructionTime;
+	}
 }
