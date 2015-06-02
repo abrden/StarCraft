@@ -24,13 +24,16 @@ public class Parcel {
 	}
 	
 	public void setStructure(Structure structure) {
+		
 		this.structure = structure;
 	}
 	
 	public void setSurface(LandType landType) {
 		switch (landType) {
 		case air : surface = new Air();
+			break;
 		case land : surface = new Land();
+			break;
 		}
 	}
 	
@@ -40,7 +43,12 @@ public class Parcel {
 		return isInXRange && isInYRange;
 	}
 	
-	public boolean canPassThrough(Transportable unit) {
-		return surface.canPassThrough(unit) && (structure == null || surface.canPassThrough(unit));
+	public boolean letPass(Transportable unit) {
+		//FIXME: Try to avoid if {} else {} blocks
+		if (unit.canFly()) {
+			return true;
+		} else {
+			return surface.letPass(unit) && (structure == null);
+		}
 	}
 }

@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.units.Transportable;
 public class Land extends Surface {
 
 	@Override
-	public boolean canPassThrough(Transportable unit) {
+	public boolean letPass(Transportable unit) {
 		return true;
 	}
 	

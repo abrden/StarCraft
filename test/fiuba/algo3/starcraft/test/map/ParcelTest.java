@@ -22,8 +22,9 @@ public class ParcelTest {
 	@Test 
 	public void testParcelHasToDisablePassingThroughALandUnitWhenIsOfAirType() {
 		parcel.setSurface(LandType.air);
-		MuggleUnit marine = (new MarineTemplate()).create();
+		MuggleUnit marine = (MarineTemplate.getInstance()).create();
 		
+		assertTrue(parcel.canPassThrough(marine));
 	}
 
 }
