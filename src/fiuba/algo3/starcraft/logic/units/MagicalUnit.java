@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
-import fiuba.algo3.starcraft.logic.templates.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class MagicalUnit extends Unit implements Transportable {
 	

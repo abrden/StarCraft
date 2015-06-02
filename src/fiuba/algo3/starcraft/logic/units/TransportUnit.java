@@ -3,7 +3,7 @@ package fiuba.algo3.starcraft.logic.units;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import fiuba.algo3.starcraft.logic.templates.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class TransportUnit extends Unit {
 	

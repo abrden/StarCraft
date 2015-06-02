@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import fiuba.algo3.starcraft.logic.structures.Builder;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.MissingStructureRequired;
-import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.StructureID;
-import fiuba.algo3.starcraft.logic.structures.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.structures.builders.Builder;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Player {

@@ -4,8 +4,11 @@ import java.util.Collection;
 
 import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Resources;
-import fiuba.algo3.starcraft.logic.templates.Life;
-import fiuba.algo3.starcraft.logic.templates.UnitTemplate;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 
 public class ConstructionStructure extends Structure {
 	
