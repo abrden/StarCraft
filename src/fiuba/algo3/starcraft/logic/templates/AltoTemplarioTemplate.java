@@ -7,7 +7,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static AltoTemplarioTemplate instance = new AltoTemplarioTemplate();
 	
 	private AltoTemplarioTemplate() {
-		name = "AltoTemplario";
+		name = "Alto Templario";
 		value = new Value(50, 150);
 		constructionTime = 7;
 		health = 40;

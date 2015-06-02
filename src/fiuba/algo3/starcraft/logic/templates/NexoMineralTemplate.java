@@ -8,7 +8,7 @@ public class NexoMineralTemplate extends StructureTemplate {
 	private static NexoMineralTemplate instance = new NexoMineralTemplate();
 
 	private NexoMineralTemplate() {
-		name = "NexoMineral";
+		name = "Nexo Mineral";
 		value = new Value(50,0);
 		constructionTime = 4;
 		health = 250;

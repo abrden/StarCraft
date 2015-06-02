@@ -7,7 +7,6 @@ public abstract class Template {
 	protected int constructionTime;
 	protected int health;
 	protected int shield;
-	protected String name;
 	
 	public String getName() {
 		return name;
