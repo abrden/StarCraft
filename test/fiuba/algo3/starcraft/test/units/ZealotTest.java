@@ -12,7 +12,6 @@ import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ZealotTest {
@@ -28,7 +27,7 @@ public class ZealotTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.newStructure(acceso);
 		
-		Unit zealot = acceso.createUnit(TemplateID.ZealotTemplate, player.getResources(), player.populationSpace());
+		Unit zealot = acceso.createUnit("Zealot", player.getResources(), player.populationSpace());
 		player.newUnit(zealot);
 		
 		assertEquals(player.currentPopulation(), 2);
@@ -42,7 +41,7 @@ public class ZealotTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.newStructure(acceso);
 		
-		acceso.createUnit(TemplateID.ZealotTemplate, player.getResources(), player.populationSpace());
+		acceso.createUnit("Zealot", player.getResources(), player.populationSpace());
 	}
 
 }

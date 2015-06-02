@@ -14,7 +14,6 @@ import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
 import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
 import fiuba.algo3.starcraft.logic.templates.PuertoEstelarTerranTemplate;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class NaveTransporteTerranTest {
@@ -36,7 +35,7 @@ public class NaveTransporteTerranTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		player.newStructure(puerto);
 		
-		Unit nave = puerto.createUnit(TemplateID.NaveTransporteTerranTemplate, player.getResources(), player.populationSpace());
+		Unit nave = puerto.createUnit("Nave Transporte", player.getResources(), player.populationSpace());
 		player.newUnit(nave);
 
 		assertEquals(player.currentPopulation(), 2);

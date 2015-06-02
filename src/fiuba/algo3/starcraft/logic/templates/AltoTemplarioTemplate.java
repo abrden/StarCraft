@@ -7,7 +7,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static AltoTemplarioTemplate instance = new AltoTemplarioTemplate();
 	
 	private AltoTemplarioTemplate() {
-		name = "AltoTemplario";
+		name = "Alto Templario";
 		value = new Value(50, 150);
 		constructionTime = 7;
 		health = 40;
@@ -19,10 +19,6 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		transportationQuota = 2;
 		populationQuota = 2;
 		//Faltan poderes y habilidades
-	}
-	
-	public TemplateID getId() {
-		return TemplateID.AltoTemplarioTemplate;
 	}
 
 	public MagicalUnit create() {

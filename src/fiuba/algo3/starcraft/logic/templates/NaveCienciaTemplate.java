@@ -7,7 +7,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 	private static NaveCienciaTemplate instance = new NaveCienciaTemplate();
 
 	private NaveCienciaTemplate() {
-		name = "NaveCiencia";
+		name = "Nave Ciencia";
 		value = new Value(100, 225);
 		constructionTime = 10;
 		health = 200;
@@ -18,10 +18,6 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 		transportationQuota = 0;
 		populationQuota = 2;
 		//Faltan poderes y habilidades
-	}
-	
-	public TemplateID getId() {
-		return TemplateID.NaveCienciaTemplate;
 	}
 
 	public MagicalUnit create() {

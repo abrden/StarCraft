@@ -26,8 +26,4 @@ public class ZealotTemplate extends MuggleTemplate {
 	public MuggleUnit create() {
 		return new MuggleUnit(new Life(health, shield), vision, attack, transportationQuota, populationQuota);
 	}
-
-	public TemplateID getId() {
-		return TemplateID.ZealotTemplate;
-	}
 }

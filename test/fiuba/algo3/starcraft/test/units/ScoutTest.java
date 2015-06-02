@@ -13,7 +13,6 @@ import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
 import fiuba.algo3.starcraft.logic.templates.PuertoEstelarProtossTemplate;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ScoutTest {
@@ -32,7 +31,7 @@ public class ScoutTest {
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		player.newStructure(puerto);
 		
-		Unit scout = puerto.createUnit(TemplateID.ScoutTemplate, player.getResources(), player.populationSpace());
+		Unit scout = puerto.createUnit("Scout", player.getResources(), player.populationSpace());
 		player.newUnit(scout);
 		
 		assertEquals(player.getMineral(), 0);

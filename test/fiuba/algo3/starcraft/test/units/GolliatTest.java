@@ -13,7 +13,6 @@ import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
 import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class GolliatTest {
@@ -32,7 +31,7 @@ public class GolliatTest {
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		player.newStructure(fabrica);
 		
-		Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+		Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
 		player.newUnit(golliat);
 		
 		assertEquals(player.currentPopulation(), 2);
@@ -53,11 +52,11 @@ public class GolliatTest {
 		player.newStructure(fabrica);
 
 		for (int i = 0; i < 2; i++) {
-			Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+			Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
 			player.newUnit(golliat);
 		}
 
-		Unit golliat = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+		Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
 		player.newUnit(golliat);
 	}
 
@@ -74,9 +73,9 @@ public class GolliatTest {
 		player.pays(200, 100);
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		player.newStructure(fabrica);
-		Unit golliat1 = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+		Unit golliat1 = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
 		player.newUnit(golliat1);
-		Unit golliat2 = fabrica.createUnit(TemplateID.GolliatTemplate, player.getResources(), player.populationSpace());
+		Unit golliat2 = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
 		player.newUnit(golliat2);
 		assertEquals(player.currentPopulation(), 4);
 		

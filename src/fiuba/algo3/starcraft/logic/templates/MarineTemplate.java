@@ -27,8 +27,4 @@ public class MarineTemplate extends MuggleTemplate {
 		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
 	}
 
-	public TemplateID getId() {
-		return TemplateID.MarineTemplate;
-	}
-
 }

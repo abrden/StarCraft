@@ -26,8 +26,4 @@ public class EspectroTemplate extends MuggleTemplate {
 	public MuggleUnit create() {
 		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
 	}
-	
-	public TemplateID getId() {
-		return TemplateID.EspectroTemplate;
-	}
 }
