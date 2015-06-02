@@ -6,6 +6,4 @@ import fiuba.algo3.starcraft.logic.templates.Template;
 public abstract class StructureTemplate extends Template {
 
 	public abstract Structure create();
-
-
 }
