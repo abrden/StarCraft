@@ -1,13 +1,13 @@
 package fiuba.algo3.starcraft.logic.units;
 
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.templates.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public abstract class Unit {
 	
 	protected String name;
 	protected int vision;
-	protected int populationQuota; //suministro
+	protected int populationQuota;
 	protected Life life;
 	protected Point position;
 	

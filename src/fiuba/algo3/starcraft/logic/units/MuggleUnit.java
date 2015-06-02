@@ -1,7 +1,7 @@
 package fiuba.algo3.starcraft.logic.units;
 
-import fiuba.algo3.starcraft.logic.templates.Attack;
-import fiuba.algo3.starcraft.logic.templates.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class MuggleUnit extends Unit implements Transportable {
 	

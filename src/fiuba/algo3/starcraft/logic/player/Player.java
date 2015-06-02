@@ -4,10 +4,14 @@ import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import fiuba.algo3.starcraft.logic.structures.Builder;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.StructureID;
+import fiuba.algo3.starcraft.logic.structures.builders.Builder;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Player {
@@ -18,6 +22,7 @@ public class Player {
 	private Resources resources;
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
+	private ConstructionQueue constructionQueue;
 	
 	private static final int resourcesProducedPerTurn = 10;
 	private static final int populationBonusPerDepot = 5;
@@ -30,6 +35,15 @@ public class Player {
 		this.resources = initialResources;
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
+		this.constructionQueue = new ConstructionQueue();
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public Color getColor() {
+		return color;
 	}
 	
 	public int getMineral() {
@@ -51,6 +65,9 @@ public class Player {
 		//Itera entre sus estructuras y pierde la referencia de las muertas
 		this.getRidOfDeadStructures();
 		
+		//Visitar cola de construccion
+		this.updateConstructionQueue();
+		
 		//Cada estructura de explotacion junta +10 de su recurso
 		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
@@ -71,6 +88,15 @@ public class Player {
 				dead.add(structure);
 		for (Structure structure : dead) 
 			structures.remove(structure);
+	}
+	
+	private void updateConstructionQueue() {
+		// Gather finished constructions
+		structures.addAll(constructionQueue.gatherFinishedStructures());
+		units.addAll(constructionQueue.gatherFinishedUnits());
+		
+		// Lower releases
+		constructionQueue.lowerReleases();
 	}
 	
 	public int populationSpace() {
@@ -131,22 +157,20 @@ public class Player {
 		resources.remove(mineral, gas);
 	}
 
-	/*
-	idea loca
-	private Builder getRaceBuilder() {
-		//TODO: implementar este metodo
-		return null;
+
+	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
+		constructionQueue.addUnit(structure.create(name, resources, this.populationSpace()));
 	}
 	
-	public void newStructureWithID(StructureID id) {
-		this.newStructure(this.getRaceBuilder().getTemplate(id).create());
+	public void newStructureWithName(String name) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+		constructionQueue.addStructure(builder.create(name, resources, structures));
 	}
-	*/
 	
+	// TODO ver si solo sirve para pruebas
 	public void newUnit(Unit unit) {
 		units.add(unit);
 	}
-	
+	// TODO ver si solo sirve para pruebas
 	public void newStructure(Structure structure) {
 		structures.add(structure);
 	}

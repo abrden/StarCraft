@@ -2,10 +2,13 @@ package fiuba.algo3.starcraft.logic.structures;
 
 import java.util.Collection;
 
+import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Resources;
-import fiuba.algo3.starcraft.logic.templates.Life;
-import fiuba.algo3.starcraft.logic.templates.UnitTemplate;
-import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 
 public class ConstructionStructure extends Structure {
 	
@@ -16,12 +19,12 @@ public class ConstructionStructure extends Structure {
 		this.templates = templates;
 	}
 
-	private UnitTemplate getTemplateWithName(String name) {
+	private UnitTemplate getTemplateWithName(String name) throws TemplateNotFound {
 		for (UnitTemplate template : templates) {
 			if (template.getName() == name)
 				return template;
 		}
-		return null;
+		throw new TemplateNotFound();
 	}
 	
 	private void populationSpaceCheck(UnitTemplate template, int populationSpace) throws QuotaExceeded {
@@ -29,11 +32,12 @@ public class ConstructionStructure extends Structure {
 			throw new QuotaExceeded();
 	}
 	
-	public Unit createUnit(String name, Resources resources, int populationSpace) throws QuotaExceeded, InsufficientResources {
+	public Construction create(String name, Resources resources, int populationSpace) throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		UnitTemplate template = this.getTemplateWithName(name);
 		populationSpaceCheck(template, populationSpace);
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
-		return template.create();
+		
+		return new Construction(template.create(), template.getConstructionTime());
 	}
 	
 	public StructureID getId() {

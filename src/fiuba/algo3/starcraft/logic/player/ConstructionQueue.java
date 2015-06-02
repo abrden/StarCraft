@@ -16,6 +16,14 @@ public class ConstructionQueue {
 		units = new LinkedList<Construction>();
 	}
 	
+	public void addUnit(Construction construction) {
+		units.add(construction);
+	}
+	
+	public void addStructure(Construction construction) {
+		structures.add(construction);
+	}
+	
 	public void lowerReleases() {
 		for (Construction construction : structures)
 			construction.lowerRelease();
@@ -23,12 +31,19 @@ public class ConstructionQueue {
 			construction.lowerRelease();
 	}
 	
-	// TODO Implementar
 	public Collection<Unit> gatherFinishedUnits() {
-		return null;
+		Collection<Unit> releases = new LinkedList<Unit>();
+		for (Construction construction : units)
+			if (construction.itsFinished())
+				releases.add((Unit) construction.gather());
+		return releases;
 	}
 	
 	public Collection<Structure> gatherFinishedStructures() {
-		return null;
+		Collection<Structure> releases = new LinkedList<Structure>();
+		for (Construction construction : structures)
+			if (construction.itsFinished())
+				releases.add((Structure) construction.gather());
+		return releases;
 	}
 }

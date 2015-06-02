@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.logic.player;
 
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 
 public class Resources {
 

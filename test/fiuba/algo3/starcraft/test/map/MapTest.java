@@ -23,6 +23,7 @@ public class MapTest {
 	}
 
 	@Test 
+	// TODO Implementar
 	public void testMapCreatesParcelPathBetweenTwoPoints() {
 /*		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
 		for (Parcel parcel : parcelPath) {

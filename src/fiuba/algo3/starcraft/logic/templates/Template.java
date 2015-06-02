@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates;
 
+import fiuba.algo3.starcraft.logic.templates.qualities.Value;
+
 public abstract class Template {
 	
 	protected String name;
@@ -16,4 +18,7 @@ public abstract class Template {
 		return value;
 	}
 	
+	public int getConstructionTime() {
+		return constructionTime;
+	}
 }

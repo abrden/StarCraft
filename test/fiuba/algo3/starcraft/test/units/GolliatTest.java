@@ -4,21 +4,23 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Depot;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
-import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.DepositoSuministroTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.FabricaTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class GolliatTest {
 
 	@Test
-	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded {
+	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		Resources initialResources = new Resources(550,150);
 		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
@@ -31,14 +33,18 @@ public class GolliatTest {
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		player.newStructure(fabrica);
 		
-		Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
+		Construction construction = fabrica.create("Golliat", player.getResources(), player.populationSpace());
+		while(!construction.itsFinished()) {
+			construction.lowerRelease();
+		}
+		Unit golliat = (Unit) construction.gather();
 		player.newUnit(golliat);
 		
 		assertEquals(player.currentPopulation(), 2);
 	}
 
 	@Test(expected = QuotaExceeded.class)
-	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded {
+	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		Resources initialResources = new Resources(750,250);
 		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
@@ -52,16 +58,24 @@ public class GolliatTest {
 		player.newStructure(fabrica);
 
 		for (int i = 0; i < 2; i++) {
-			Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
+			Construction construction = fabrica.create("Golliat", player.getResources(), player.populationSpace());
+			while(!construction.itsFinished()) {
+				construction.lowerRelease();
+			}
+			Unit golliat = (Unit) construction.gather();
 			player.newUnit(golliat);
 		}
 
-		Unit golliat = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
+		Construction construction = fabrica.create("Golliat", player.getResources(), player.populationSpace());
+		while(!construction.itsFinished()) {
+			construction.lowerRelease();
+		}
+		Unit golliat = (Unit) construction.gather();
 		player.newUnit(golliat);
 	}
 
 	@Test
-	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded {
+	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		Resources initialResources = new Resources(650,200);
 		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
@@ -73,9 +87,17 @@ public class GolliatTest {
 		player.pays(200, 100);
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		player.newStructure(fabrica);
-		Unit golliat1 = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
+		Construction construction = fabrica.create("Golliat", player.getResources(), player.populationSpace());
+		while(!construction.itsFinished()) {
+			construction.lowerRelease();
+		}
+		Unit golliat1 = (Unit) construction.gather();
 		player.newUnit(golliat1);
-		Unit golliat2 = fabrica.createUnit("Golliat", player.getResources(), player.populationSpace());
+		Construction construction1 = fabrica.create("Golliat", player.getResources(), player.populationSpace());
+		while(!construction1.itsFinished()) {
+			construction1.lowerRelease();
+		}
+		Unit golliat2 = (Unit) construction1.gather();
 		player.newUnit(golliat2);
 		assertEquals(player.currentPopulation(), 4);
 		

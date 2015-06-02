@@ -11,7 +11,7 @@ import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.templates.MarineTemplate;
+import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 

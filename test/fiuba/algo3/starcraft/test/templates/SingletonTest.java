@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.test.templates;
 
-import fiuba.algo3.starcraft.logic.templates.DragonTemplate;
+import fiuba.algo3.starcraft.logic.templates.units.protoss.DragonTemplate;
 
 import org.junit.Assert;
 import org.junit.Test;
