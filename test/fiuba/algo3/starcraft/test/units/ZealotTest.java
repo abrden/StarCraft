@@ -19,7 +19,7 @@ public class ZealotTest {
 	@Test
 	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(350,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot pilon = PilonTemplate.getInstance().create();
 		player.newStructure(pilon);
@@ -36,7 +36,7 @@ public class ZealotTest {
 	@Test(expected = QuotaExceeded.class)
 	public void testZealotCreationIsImpossibleWithoutPilon() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(150,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(150, 0);
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.newStructure(acceso);

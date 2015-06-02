@@ -15,7 +15,7 @@ public class StructuresDependenceTest {
 	@Test(expected = Exception.class)
 	public void testFactoryNeedsBarraca() throws InsufficientResources {
 		Resources initialResources = new Resources(450,150);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(200, 100);
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		player.newStructure(fabrica);

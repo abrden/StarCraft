@@ -1,8 +1,10 @@
 package fiuba.algo3.starcraft.logic.player;
 
+import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.structures.Builder;
 import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.StructureID;
@@ -10,6 +12,9 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Player {
 	
+	private Builder builder;
+	private Color color;
+	private String name;
 	private Resources resources;
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
@@ -18,10 +23,13 @@ public class Player {
 	private static final int populationBonusPerDepot = 5;
 	private static final int populationMaximum = 200;
 	
-	public Player(Resources initialResources) {
-		resources = initialResources;
-		structures = new LinkedList<Structure>();
-		units = new LinkedList<Unit>();
+	public Player(String name, Color color, Builder builder, Resources initialResources) {
+		this.name = name;
+		this.color = color;
+		this.builder = builder;
+		this.resources = initialResources;
+		this.structures = new LinkedList<Structure>();
+		this.units = new LinkedList<Unit>();
 	}
 	
 	public int getMineral() {

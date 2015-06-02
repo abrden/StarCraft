@@ -21,7 +21,7 @@ public class NaveTransporteTerranTest {
 	@Test
 	public void testNaveCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(700,300);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
