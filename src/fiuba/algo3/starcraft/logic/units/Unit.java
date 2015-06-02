@@ -5,12 +5,14 @@ import fiuba.algo3.starcraft.logic.templates.Life;
 
 public abstract class Unit {
 	
+	protected String name;
 	protected int vision;
 	protected int populationQuota; //suministro
 	protected Life life;
 	protected Point position;
 	
-	Unit(Life life, int vision, int populationQuota) {
+	Unit(String name, Life life, int vision, int populationQuota) {
+		this.name = name;
 		this.life = life;
 		this.vision = vision;
 		this.populationQuota = populationQuota;

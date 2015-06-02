@@ -8,9 +8,9 @@ public class MuggleUnit extends Unit implements Transportable {
 	private Attack attack;
 	private int transportationQuota;
 	
-	public MuggleUnit(Life life, int vision, Attack attack, 
+	public MuggleUnit(String name, Life life, int vision, Attack attack, 
 			int transportationQuota, int populationQuota) {
-		super(life, vision, populationQuota);
+		super(name, life, vision, populationQuota);
 			this.attack = attack;
 			this.transportationQuota = transportationQuota; 
 	}

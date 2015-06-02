@@ -23,6 +23,6 @@ public class NaveTransporteProtossTemplate extends TransportUnitTemplate {
     
     public TransportUnit create() {
         // TODO Resolver tiempo de construccion
-        return new TransportUnit(new Life(health, shield), vision, populationQuota, capacity);
+        return new TransportUnit(name, new Life(health, shield), vision, populationQuota, capacity);
     }
 }

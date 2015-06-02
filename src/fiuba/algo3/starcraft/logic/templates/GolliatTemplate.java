@@ -24,7 +24,7 @@ public class GolliatTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(new Life(health), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
 	}
 
 }

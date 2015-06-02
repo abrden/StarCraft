@@ -22,7 +22,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(new Life(health, shield), vision,
+		return new MagicalUnit(name, new Life(health, shield), vision,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

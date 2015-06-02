@@ -21,7 +21,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(new Life(health), vision,
+		return new MagicalUnit(name, new Life(health), vision,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

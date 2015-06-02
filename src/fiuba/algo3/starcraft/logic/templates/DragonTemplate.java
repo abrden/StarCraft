@@ -25,6 +25,6 @@ public class DragonTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health, shield), vision, attack, transportationQuota, populationQuota);
 	}
 }
