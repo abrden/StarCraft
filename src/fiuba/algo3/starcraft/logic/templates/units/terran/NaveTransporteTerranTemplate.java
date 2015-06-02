@@ -2,10 +2,10 @@ package fiuba.algo3.starcraft.logic.templates.units.terran;
 
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
-import fiuba.algo3.starcraft.logic.templates.units.TransportUnitTemplate;
+import fiuba.algo3.starcraft.logic.templates.units.TransportTemplate;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
-public class NaveTransporteTerranTemplate extends TransportUnitTemplate {
+public class NaveTransporteTerranTemplate extends TransportTemplate {
 
     private static NaveTransporteTerranTemplate instance = new NaveTransporteTerranTemplate();
 
