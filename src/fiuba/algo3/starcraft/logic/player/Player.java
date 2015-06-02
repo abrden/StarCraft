@@ -18,6 +18,7 @@ public class Player {
 	private Resources resources;
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
+	private ConstructionQueue constructionQueue;
 	
 	private static final int resourcesProducedPerTurn = 10;
 	private static final int populationBonusPerDepot = 5;
@@ -30,6 +31,7 @@ public class Player {
 		this.resources = initialResources;
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
+		this.constructionQueue = new ConstructionQueue();
 	}
 	
 	public int getMineral() {
@@ -132,13 +134,7 @@ public class Player {
 	}
 
 	/*
-	idea loca
-	private Builder getRaceBuilder() {
-		//TODO: implementar este metodo
-		return null;
-	}
-	
-	public void newStructureWithID(StructureID id) {
+	public void newStructureWithName(StructureID id) {
 		this.newStructure(this.getRaceBuilder().getTemplate(id).create());
 	}
 	*/

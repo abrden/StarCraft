@@ -23,12 +23,21 @@ public class ConstructionQueue {
 			construction.lowerRelease();
 	}
 	
-	// TODO Implementar
 	public Collection<Unit> gatherFinishedUnits() {
-		return null;
+		Collection<Unit> releases = new LinkedList<Unit>();
+		for (Construction construction : units)
+			if (construction.itsFinished())
+				releases.add((Unit) construction.gather());
+		return releases;
 	}
 	
 	public Collection<Structure> gatherFinishedStructures() {
-		return null;
+		Collection<Structure> releases = new LinkedList<Structure>();
+		for (Construction construction : structures)
+			if (construction.itsFinished())
+				releases.add((Structure) construction.gather());
+		return releases;
 	}
+	
+	
 }
