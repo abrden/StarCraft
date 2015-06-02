@@ -38,7 +38,7 @@ public class GolliatTest {
 		assertEquals(player.currentPopulation(), 2);
 	}
 
-	@Test
+	@Test(expected = QuotaExceeded.class)
 	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(750,250);
 		Player player = new Player(initialResources);
