@@ -8,5 +8,10 @@ public class Air extends Surface {
 	public boolean letPass(Transportable unit) {
 		return unit.canFly();
 	}
+
+	@Override
+	public Resource extractResource() throws NoResourcesToExtractException {
+		throw new NoResourcesToExtractException();
+	}
 	
 }

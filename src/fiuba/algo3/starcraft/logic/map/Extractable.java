@@ -1,5 +1,5 @@
 package fiuba.algo3.starcraft.logic.map;
 
 public interface Extractable {
-	public Resource extractResource();
+	public Resource extractResource() throws NoResourcesToExtractException;
 }

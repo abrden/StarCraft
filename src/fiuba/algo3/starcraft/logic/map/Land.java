@@ -27,12 +27,11 @@ public class Land extends Surface {
 		return true;
 	}
 	
-	public Resource extract(){
-		return  extractableSurface.extractResource();
+	public Resource extractResource() throws NoResourcesToExtractException {
+		if (extractableSurface != null) {
+			return extractableSurface.extractResource();
+		} else {
+			throw new NoResourcesToExtractException();
+		}
 	}
-	
-	public boolean canBeExploted() {
-		return extractableSurface != null;
-	}
-	
 }

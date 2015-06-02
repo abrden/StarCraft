@@ -8,6 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.ExtractableType;
 import fiuba.algo3.starcraft.logic.map.Land;
 import fiuba.algo3.starcraft.logic.map.LandType;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.MarineTemplate;
@@ -44,7 +45,10 @@ public class ParcelTest {
 		parcel.setSurface(ExtractableType.volcano);
 		
 		Land landWithVolcano = parcel.getLandForExplotation();
-		assertTrue(landWithVolcano.extract().getValue() == 10);
+		try {
+			assertTrue(landWithVolcano.extractResource().getValue() == 10);
+		} catch (NoResourcesToExtractException e) {
+			e.printStackTrace();
+		}
 	}
-
 }
