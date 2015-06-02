@@ -27,7 +27,7 @@ public class DragonTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.newStructure(acceso);
 		
-		Unit dragon = acceso.createUnit("Acceso", player.getResources(), player.populationSpace());
+		Unit dragon = acceso.createUnit("Dragon", player.getResources(), player.populationSpace());
 		player.newUnit(dragon);
 		assertEquals(player.getMineral(), 0);
 		assertEquals(player.getGas(), 0);

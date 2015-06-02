@@ -35,7 +35,7 @@ public class EspectroTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		player.newStructure(puerto);
 		
-		Unit espectro = puerto.createUnit("Puerto Estelar", player.getResources(), player.populationSpace());
+		Unit espectro = puerto.createUnit("Espectro", player.getResources(), player.populationSpace());
 		player.newUnit(espectro);
 		
 		assertEquals(player.currentPopulation(), 2);
