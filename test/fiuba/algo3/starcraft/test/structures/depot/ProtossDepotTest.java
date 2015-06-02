@@ -15,7 +15,7 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais5With1Pilon() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		Depot pilon = templatePilon.create();
 		
@@ -28,7 +28,7 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2Pilon() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		
 		for(int i = 0; i < 2; i++) {
@@ -43,7 +43,7 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		for(int i = 0; i < 2; i++) {
 			Depot pilon = templatePilon.create();
@@ -59,7 +59,7 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2PilonsAnd5IfOneIsDestroyed() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		PilonTemplate templatePilon = PilonTemplate.getInstance();
 		Depot pilon1 = templatePilon.create();
 		player.pays(100,0);

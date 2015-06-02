@@ -20,7 +20,7 @@ public class NaveTransporteProtossTest {
 	@Test
 	public void testNaveCreationWith1Pilon1Acceso1PuertoAnd200M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(600,150);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot pilon = PilonTemplate.getInstance().create();
 		player.newStructure(pilon);

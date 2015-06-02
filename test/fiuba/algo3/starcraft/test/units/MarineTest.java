@@ -19,7 +19,7 @@ public class MarineTest {
 	@Test
 	public void testMarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -36,7 +36,7 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd100M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -55,7 +55,7 @@ public class MarineTest {
 	@Test(expected = InsufficientResources.class)
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -72,7 +72,7 @@ public class MarineTest {
 	@Test(expected = QuotaExceeded.class)
 	public void testMarineCreationWith1BarracaAnd50M() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(150, 0);
 		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
 		player.newStructure(barraca);
@@ -86,7 +86,7 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationAnd1MarineDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -108,7 +108,7 @@ public class MarineTest {
 	@Test
 	public void test4MarineCreationAnd4MarineDeadLeavesPopulationAt0() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -131,7 +131,7 @@ public class MarineTest {
 	@Test
 	public void test7MarineCreationAnd49TurnsLeavesPopulationAt7() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot1 = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot1);

@@ -19,7 +19,7 @@ public class DragonTest {
 	@Test
 	public void testDragonCreationWith1Pilon1AccesoAnd120M50G() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(375,50);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot pilon = PilonTemplate.getInstance().create();
 		player.newStructure(pilon);
@@ -27,7 +27,7 @@ public class DragonTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.newStructure(acceso);
 		
-		Unit dragon = acceso.createUnit("Acceso", player.getResources(), player.populationSpace());
+		Unit dragon = acceso.createUnit("Dragon", player.getResources(), player.populationSpace());
 		player.newUnit(dragon);
 		assertEquals(player.getMineral(), 0);
 		assertEquals(player.getGas(), 0);

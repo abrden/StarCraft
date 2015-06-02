@@ -27,8 +27,10 @@ public abstract class Builder {
 	}
 
 	private boolean structureRequiredExists(String name, Collection<Structure> built) {
-		//TODO implementar
+		for (Structure structure : built)
+			if (structure.getName().equals(name))
+				return true;
 		return false;
 	}
-	
+
 }

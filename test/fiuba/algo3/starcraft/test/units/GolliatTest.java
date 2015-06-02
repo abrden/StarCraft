@@ -20,7 +20,7 @@ public class GolliatTest {
 	@Test
 	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(550,150);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -37,10 +37,10 @@ public class GolliatTest {
 		assertEquals(player.currentPopulation(), 2);
 	}
 
-	@Test
+	@Test(expected = QuotaExceeded.class)
 	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(750,250);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -63,7 +63,7 @@ public class GolliatTest {
 	@Test
 	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(650,200);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);

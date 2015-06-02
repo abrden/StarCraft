@@ -21,7 +21,7 @@ public class EspectroTest {
 	@Test
 	public void testEspectroCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded {
 		Resources initialResources = new Resources(750,300);
-		Player player = new Player(initialResources);
+		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
 		player.newStructure(depot);
@@ -35,7 +35,7 @@ public class EspectroTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		player.newStructure(puerto);
 		
-		Unit espectro = puerto.createUnit("Puerto Estelar", player.getResources(), player.populationSpace());
+		Unit espectro = puerto.createUnit("Espectro", player.getResources(), player.populationSpace());
 		player.newUnit(espectro);
 		
 		assertEquals(player.currentPopulation(), 2);

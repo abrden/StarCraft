@@ -23,7 +23,7 @@ public class MapTest {
 	public void testMapDeterminesWhetherAPointIsInsideARadiousOfOtherPoint() {
 		assertTrue(map.isPointInsideRadiousOfPivotePoint(new Point(0,0), 10, new Point(1,0)));
 	}
-	
+
 	@Test 
 	public void testMapCreatesParcelPathBetweenTwoPoints() {
 /*		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
