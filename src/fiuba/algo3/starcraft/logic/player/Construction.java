@@ -1,11 +1,11 @@
 package fiuba.algo3.starcraft.logic.player;
 
-public abstract class Construction {
+public class Construction {
 
 	private Object construction;
 	private int releaseIn;
 	
-	Construction(Object constructed, int releaseTurn) {
+	public Construction(Object constructed, int releaseTurn) {
 		this.construction = constructed;
 		this.releaseIn = releaseTurn;
 	}

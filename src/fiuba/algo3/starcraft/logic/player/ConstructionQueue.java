@@ -16,6 +16,14 @@ public class ConstructionQueue {
 		units = new LinkedList<Construction>();
 	}
 	
+	public void addUnit(Construction construction) {
+		units.add(construction);
+	}
+	
+	public void addStructure(Construction construction) {
+		structures.add(construction);
+	}
+	
 	public void lowerReleases() {
 		for (Construction construction : structures)
 			construction.lowerRelease();
@@ -38,6 +46,4 @@ public class ConstructionQueue {
 				releases.add((Structure) construction.gather());
 		return releases;
 	}
-	
-	
 }
