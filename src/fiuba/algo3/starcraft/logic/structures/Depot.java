@@ -4,8 +4,8 @@ import fiuba.algo3.starcraft.logic.templates.Life;
 
 public class Depot extends Structure {
 	
-	public Depot(Life life) {
-		super(life);
+	public Depot(String name, Life life) {
+		super(name, life);
 	}
 
 	public StructureID getId() {

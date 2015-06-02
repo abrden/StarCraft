@@ -11,8 +11,8 @@ public class ConstructionStructure extends Structure {
 	
 	private Collection<UnitTemplate> templates;
 	
-	public ConstructionStructure(Life life, Collection<UnitTemplate> templates) {
-		super(life);
+	public ConstructionStructure(String name, Life life, Collection<UnitTemplate> templates) {
+		super(name, life);
 		this.templates = templates;
 	}
 

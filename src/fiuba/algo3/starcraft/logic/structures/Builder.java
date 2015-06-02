@@ -11,10 +11,11 @@ public abstract class Builder {
 	protected Collection<StructureTemplate> templates;
 	protected Map<String,String> dependsOn;
 	
-	public Structure create(String name, Resources resources, Collection<Structure> built) throws MissingStructureRequired {
+	public Structure create(String name, Resources resources, Collection<Structure> built) throws MissingStructureRequired, InsufficientResources {
 		if (this.structureRequiredExists(name, built)) {
 			StructureTemplate template = this.getTemplateWithName(name);
-			return template.getInstance().create(); //no le kb 1
+			resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
+			return template.create();
 		} else throw new MissingStructureRequired();
 	}
 	
@@ -27,10 +28,15 @@ public abstract class Builder {
 	}
 
 	private boolean structureRequiredExists(String name, Collection<Structure> built) {
-		for (Structure structure : built)
-			if (structure.getName().equals(name))
-				return true;
-		return false;
+		if (!dependsOn.containsKey(name)) return true;
+		else {
+			String structureRequired = dependsOn.get(name);
+			for (Structure structure : built) {
+				if (structure.getName().equals(structureRequired))
+					return this.structureRequiredExists(structureRequired, built);
+			}
+			return false;
+		}
 	}
 
 }

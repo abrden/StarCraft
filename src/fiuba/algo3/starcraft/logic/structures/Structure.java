@@ -10,7 +10,8 @@ public abstract class Structure {
 	protected Life life;
 	protected String name;
 	
-	Structure(Life life) {
+	Structure(String name, Life life) {
+		this.name = name;
 		this.life = life;
 	}
 	
