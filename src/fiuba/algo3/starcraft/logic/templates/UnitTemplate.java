@@ -10,8 +10,6 @@ public abstract class UnitTemplate extends Template {
 	protected int transportationQuota; //transporte
 	protected Damage damage;
 	protected int damageRange; //TODO: VER COMO HACEMOS CON EL GOLLIAT QUE ES EL UNICO QUE TIENE RANGOS DIFERENTES EN SPACE Y LAND
-	
-	public abstract TemplateID getId();
 
 	public int getPopulationQuota() {
 		return populationQuota;

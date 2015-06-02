@@ -19,10 +19,6 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		populationQuota = 2;
 		//Faltan poderes y habilidades
 	}
-	
-	public TemplateID getId() {
-		return TemplateID.AltoTemplarioTemplate;
-	}
 
 	public MagicalUnit create() {
 		return new MagicalUnit(new Life(health, shield), vision, 

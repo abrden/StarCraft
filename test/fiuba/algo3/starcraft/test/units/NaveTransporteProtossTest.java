@@ -13,7 +13,6 @@ import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
 import fiuba.algo3.starcraft.logic.templates.PuertoEstelarProtossTemplate;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class NaveTransporteProtossTest {
@@ -32,7 +31,7 @@ public class NaveTransporteProtossTest {
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		player.newStructure(puerto);
 		
-		Unit nave = puerto.createUnit(TemplateID.NaveTransporteProtossTemplate, player.getResources(), player.populationSpace());
+		Unit nave = puerto.createUnit("Nave Transporte", player.getResources(), player.populationSpace());
 		player.newUnit(nave);
 		
 		assertEquals(player.getMineral(), 0);
