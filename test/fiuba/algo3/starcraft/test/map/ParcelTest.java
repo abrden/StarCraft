@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.test.map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -9,6 +10,8 @@ import fiuba.algo3.starcraft.logic.map.Land;
 import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.templates.MarineTemplate;
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 
 public class ParcelTest {
