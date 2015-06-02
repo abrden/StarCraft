@@ -11,7 +11,7 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 
 public class MapTest {
-	Map map = new Map(1000);
+	Map map = new Map(10000);
 	@Test
 	public void testMapIniticalicesWithParcels() {
 		Point point = new Point(25,25);
