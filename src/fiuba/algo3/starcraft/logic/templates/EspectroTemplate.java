@@ -8,6 +8,7 @@ public class EspectroTemplate extends MuggleTemplate {
 	private static EspectroTemplate instance = new EspectroTemplate();
 
 	private EspectroTemplate() {
+		name = "Espectro";
 		value = new Value(150,100);
 		constructionTime = 8;
 		vision = 7;

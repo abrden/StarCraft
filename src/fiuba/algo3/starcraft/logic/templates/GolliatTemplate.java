@@ -8,6 +8,7 @@ public class GolliatTemplate extends MuggleTemplate {
 	private static GolliatTemplate instance = new GolliatTemplate();
 
 	private GolliatTemplate() {
+		name = "Golliat";
 		value = new Value(100,50);
 		constructionTime = 6;
 		vision = 8;

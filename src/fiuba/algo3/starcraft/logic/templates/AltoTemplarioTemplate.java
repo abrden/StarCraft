@@ -7,6 +7,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static AltoTemplarioTemplate instance = new AltoTemplarioTemplate();
 	
 	private AltoTemplarioTemplate() {
+		name = "AltoTemplario";
 		value = new Value(50, 150);
 		constructionTime = 7;
 		health = 40;
@@ -21,7 +22,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(new Life(health, shield), vision, 
+		return new MagicalUnit(new Life(health, shield), vision,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

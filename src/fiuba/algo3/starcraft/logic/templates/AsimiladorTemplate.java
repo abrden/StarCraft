@@ -8,6 +8,7 @@ public class AsimiladorTemplate extends StructureTemplate {
 	private static AsimiladorTemplate instance = new AsimiladorTemplate();
 
 	private AsimiladorTemplate() {
+		name = "Asimilador";
 		value = new Value(100,0);
 		constructionTime = 6;
 		health = 450;

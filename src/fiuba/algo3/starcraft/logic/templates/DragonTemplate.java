@@ -8,6 +8,7 @@ public class DragonTemplate extends MuggleTemplate {
 	private static DragonTemplate instance = new DragonTemplate();
 
 	private DragonTemplate() {
+		name = "Dragon";
 		value = new Value(125,50);
 		constructionTime = 6;
 		vision = 8;

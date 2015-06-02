@@ -9,6 +9,7 @@ public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
     private static PuertoEstelarProtossTemplate instance = new PuertoEstelarProtossTemplate();
 
     private PuertoEstelarProtossTemplate() {
+        name = "PuertoEstelarProtoss";
         value = new Value(150,150);
         constructionTime = 10;
         health = 600;

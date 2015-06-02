@@ -7,6 +7,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 	private static NaveCienciaTemplate instance = new NaveCienciaTemplate();
 
 	private NaveCienciaTemplate() {
+		name = "NaveCiencia";
 		value = new Value(100, 225);
 		constructionTime = 10;
 		health = 200;
@@ -24,7 +25,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(new Life(health), vision, 
+		return new MagicalUnit(new Life(health), vision,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

@@ -7,6 +7,7 @@ public class NaveTransporteTerranTemplate extends TransportUnitTemplate {
     private static NaveTransporteTerranTemplate instance = new NaveTransporteTerranTemplate();
 
     private NaveTransporteTerranTemplate() {
+        name = "NaveTransporteTerran";
         value = new Value(100,100);
         constructionTime = 7;
         vision = 8;

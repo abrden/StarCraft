@@ -9,9 +9,11 @@ public class FabricaTemplate extends ConstructionTemplate {
     private static FabricaTemplate instance = new FabricaTemplate();
 
     private FabricaTemplate() {
+        name = "Fabrica";
         value = new Value(200,100);
         constructionTime = 12;
         health = 1250;
+
 		enabledTemplates = new LinkedList<UnitTemplate>();
 		enabledTemplates.add(GolliatTemplate.getInstance());
     }
@@ -23,5 +25,4 @@ public class FabricaTemplate extends ConstructionTemplate {
         // TODO Resolver tiempo de construccion
         return new ConstructionStructure(new Life(health), enabledTemplates);
     }
-
 }
