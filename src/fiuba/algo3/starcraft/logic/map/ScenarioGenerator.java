@@ -2,6 +2,8 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.Random;
 
+import fiuba.algo3.starcraft.logic.structures.Structure;
+
 public class ScenarioGenerator {
 	private Map map;
 
@@ -20,5 +22,14 @@ public class ScenarioGenerator {
 			Parcel parcel = map.getParcelContainingPoint(new Point(randomX,randomY));
 			parcel.setSurface(isWithVolcano ? ExtractableType.volcano : ExtractableType.reservoir);
 		}
+	}
+	
+	public void assignAirSurfaceDistributionInRect(Point origin, int side) {
+		
+	}
+	
+	public void buildStructureInPoint(Structure structure, Point point) {
+		Parcel parcel = map.getParcelContainingPoint(point);
+		parcel.setStructure(structure);
 	}
 }

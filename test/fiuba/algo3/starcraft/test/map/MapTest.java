@@ -9,7 +9,7 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 
 public class MapTest {
-	Map map = new Map(100);
+	Map map = new Map(1000);
 	@Test
 	public void testMapIniticalicesWithParcels() {
 		Point point = new Point(25,25);
@@ -21,17 +21,15 @@ public class MapTest {
 	public void testMapDeterminesWhetherAPointIsInsideARadiousOfOtherPoint() {
 		assertTrue(map.isPointInsideRadiousOfPivotePoint(new Point(0,0), 10, new Point(1,0)));
 	}
+	/*
+	@Test void testMapReturnsParcelsIncideARect() {
+		assertTrue(true);
+	}
 
 	@Test 
 	// TODO Implementar
 	public void testMapCreatesParcelPathBetweenTwoPoints() {
-/*		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
-		for (Parcel parcel : parcelPath) {
-			
-		}
-		
-		
-		assertTrue();*/
-	}
+		assertTrue(true);
+	}*/
 
 }

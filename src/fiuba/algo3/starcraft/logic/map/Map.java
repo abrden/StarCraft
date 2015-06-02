@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import fiuba.algo3.starcraft.logic.structures.Structure;
 
@@ -9,8 +8,8 @@ public class Map {
 	final double PARCEL_SIDE = 10;
 
 	private ArrayList<Parcel> parcels = new ArrayList<Parcel>();
-	
-	private double side;	
+
+	private double side;
 	
 	public Map(double side) {
 		this.side = side;
@@ -36,12 +35,15 @@ public class Map {
 		throw new IndexOutOfBoundsException();
 	}
 	
-	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
-		return (pivotePoint.distance(otherPoint)) <= radious;
+	public ArrayList<Parcel> getParcelsContainedInARect(Point point, int side) {
+		ArrayList<Parcel> parcels = new ArrayList<Parcel>();
+		
+		
+		
+		return parcels;
 	}
 	
-	public void buildStructureInPoint(Structure structure, Point point) {
-		Parcel parcel = getParcelContainingPoint(point);
-		parcel.setStructure(structure);
+	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
+		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 }
