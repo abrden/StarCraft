@@ -7,15 +7,15 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.TemplateNotFound;
-import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
-import fiuba.algo3.starcraft.logic.templates.ArchivosTemplariosTemplate;
-import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
-import fiuba.algo3.starcraft.logic.templates.PuertoEstelarProtossTemplate;
-import fiuba.algo3.starcraft.logic.templates.PuertoEstelarTerranTemplate;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.ArchivosTemplariosTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.FabricaTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.PuertoEstelarTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class UnitCreationTest {

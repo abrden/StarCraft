@@ -9,18 +9,18 @@ import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Resources;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.MissingStructureRequired;
-import fiuba.algo3.starcraft.logic.structures.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.Structure;
-import fiuba.algo3.starcraft.logic.structures.TemplateNotFound;
-import fiuba.algo3.starcraft.logic.structures.TerranBuilder;
-import fiuba.algo3.starcraft.logic.templates.AccesoTemplate;
-import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
-import fiuba.algo3.starcraft.logic.templates.FabricaTemplate;
-import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
-import fiuba.algo3.starcraft.logic.templates.PuertoEstelarProtossTemplate;
+import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
+import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.PilonTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.DepositoSuministroTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.FabricaTemplate;
 
 public class StructuresDependenceTest {
 

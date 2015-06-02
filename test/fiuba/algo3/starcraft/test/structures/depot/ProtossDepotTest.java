@@ -7,8 +7,8 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Depot;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.templates.PilonTemplate;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.PilonTemplate;
 
 public class ProtossDepotTest {
 

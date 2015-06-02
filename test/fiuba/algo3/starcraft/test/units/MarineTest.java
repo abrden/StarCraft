@@ -9,11 +9,11 @@ import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Depot;
-import fiuba.algo3.starcraft.logic.structures.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.TemplateNotFound;
-import fiuba.algo3.starcraft.logic.templates.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.templates.DepositoSuministroTemplate;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
+import fiuba.algo3.starcraft.logic.templates.structures.terran.DepositoSuministroTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class MarineTest {
