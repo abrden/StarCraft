@@ -7,6 +7,7 @@ public class MarineTemplate extends MuggleTemplate {
 	private static MarineTemplate instance = new MarineTemplate();
 	
 	private MarineTemplate() {
+		name = "Marine";
 		value = new Value(50,0);
 		constructionTime = 3;
 		vision = 7;

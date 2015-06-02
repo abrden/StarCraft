@@ -8,6 +8,7 @@ public class ScoutTemplate extends MuggleTemplate {
 	private static ScoutTemplate instance = new ScoutTemplate();
 
 	private ScoutTemplate() {
+		name = "Scout";
 		value = new Value(300,150);
 		constructionTime = 9;
 		vision = 7;

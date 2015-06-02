@@ -7,6 +7,7 @@ public class ZealotTemplate extends MuggleTemplate {
 	private static ZealotTemplate instance = new ZealotTemplate();
 
 	private ZealotTemplate() {
+		name = "Zealot";
 		value = new Value(100,0);
 		constructionTime = 4;
 		vision = 7;

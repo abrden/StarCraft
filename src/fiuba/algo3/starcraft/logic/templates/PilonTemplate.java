@@ -7,6 +7,7 @@ public class PilonTemplate extends StructureTemplate {
 	private static PilonTemplate instance = new PilonTemplate();
 
 	private PilonTemplate() {
+		name = "Pilon";
 		value = new Value(100,0);
 		constructionTime = 5;
 		health = 300;

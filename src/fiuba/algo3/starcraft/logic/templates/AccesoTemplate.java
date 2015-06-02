@@ -9,6 +9,7 @@ public class AccesoTemplate extends ConstructionTemplate {
     private static AccesoTemplate instance = new AccesoTemplate();
 
     private AccesoTemplate() {
+        name = "Acceso";
         value = new Value(150,0);
         constructionTime = 8;
         health = 500;

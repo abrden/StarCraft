@@ -9,6 +9,7 @@ public class BarracaTemplate extends ConstructionTemplate {
 	private static BarracaTemplate instance = new BarracaTemplate();
 
 	private BarracaTemplate() {
+		name = "Barraca";
 		value = new Value(150,0);
 		constructionTime = 12;
 		health = 1000;

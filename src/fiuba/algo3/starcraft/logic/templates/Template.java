@@ -6,6 +6,7 @@ public abstract class Template {
 	protected int constructionTime;
 	protected int health;
 	protected int shield;
+	protected String name;
 	
 	public Value getValue() {
 		return value;

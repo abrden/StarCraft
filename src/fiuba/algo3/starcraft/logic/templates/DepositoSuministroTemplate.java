@@ -7,6 +7,7 @@ public class DepositoSuministroTemplate extends StructureTemplate {
 	private static DepositoSuministroTemplate instance = new DepositoSuministroTemplate();
 
 	private DepositoSuministroTemplate() {
+		name = "DepositoSuministro";
 		value = new Value(100,0);
 		constructionTime = 6;
 		health = 500;

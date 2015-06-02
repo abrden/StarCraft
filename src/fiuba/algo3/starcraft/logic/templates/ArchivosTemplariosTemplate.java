@@ -9,6 +9,7 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
     private static ArchivosTemplariosTemplate instance = new ArchivosTemplariosTemplate();
 
     private ArchivosTemplariosTemplate() {
+        name = "ArchivosTemplarios";
         value = new Value(150,200);
         constructionTime = 9;
         health = 500;

@@ -7,6 +7,7 @@ public class CentroMineralTemplate extends StructureTemplate {
 	private static CentroMineralTemplate instance = new CentroMineralTemplate();
 
 	private CentroMineralTemplate() {
+		name = "CentroMineral";
 		value = new Value(50,0);
 		constructionTime = 4;
 		health = 500;

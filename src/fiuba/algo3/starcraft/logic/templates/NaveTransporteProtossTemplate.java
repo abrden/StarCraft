@@ -7,6 +7,7 @@ public class NaveTransporteProtossTemplate extends TransportUnitTemplate {
     private static NaveTransporteProtossTemplate instance = new NaveTransporteProtossTemplate();
 
     private NaveTransporteProtossTemplate() {
+        name = "NaveTransporteProtoss";
         value = new Value(200,0);
         constructionTime = 8;
         vision = 8;
