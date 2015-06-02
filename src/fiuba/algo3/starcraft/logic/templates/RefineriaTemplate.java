@@ -20,7 +20,7 @@ public class RefineriaTemplate extends StructureTemplate {
 	
 	public GasExploiter create() {
 		// TODO Resolver tiempo de construccion
-		return new GasExploiter(new Life(health));
+		return new GasExploiter(name, new Life(health));
 	}
 
 }

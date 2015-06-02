@@ -24,7 +24,7 @@ public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
     }
 
 	public ConstructionStructure create() {
-		return new ConstructionStructure(new Life(health, shield), enabledTemplates);
+		return new ConstructionStructure(name, new Life(health, shield), enabledTemplates);
 	}
 }
 

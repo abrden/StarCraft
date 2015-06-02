@@ -22,6 +22,6 @@ public class BarracaTemplate extends ConstructionTemplate {
 	}
 
 	public ConstructionStructure create() {
-		return new ConstructionStructure(new Life(health), enabledTemplates);
+		return new ConstructionStructure(name, new Life(health), enabledTemplates);
 	}
 }

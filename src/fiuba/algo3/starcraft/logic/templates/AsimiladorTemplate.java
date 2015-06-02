@@ -21,7 +21,7 @@ public class AsimiladorTemplate extends StructureTemplate {
 	
 	public GasExploiter create() {
 		// TODO Solucionar tiempo de construccion
-		return new GasExploiter(new Life(health, shield));
+		return new GasExploiter(name, new Life(health, shield));
 	}
 
 	public StructureID getStructureId() {

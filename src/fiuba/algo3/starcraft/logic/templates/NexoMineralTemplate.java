@@ -21,7 +21,7 @@ public class NexoMineralTemplate extends StructureTemplate {
 
 	public MineralExploiter create() {
 		// TODO: Resolver el tiempo que tarda en construirlo
-		return new MineralExploiter(new Life(health, shield));
+		return new MineralExploiter(name, new Life(health, shield));
 	}
 
 }
