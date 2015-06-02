@@ -7,7 +7,7 @@ public class NaveTransporteTerranTemplate extends TransportUnitTemplate {
     private static NaveTransporteTerranTemplate instance = new NaveTransporteTerranTemplate();
 
     private NaveTransporteTerranTemplate() {
-        name = "NaveTransporteTerran";
+        name = "Nave Transporte";
         value = new Value(100,100);
         constructionTime = 7;
         vision = 8;
@@ -24,9 +24,5 @@ public class NaveTransporteTerranTemplate extends TransportUnitTemplate {
         // TODO Resolver tiempo de construccion
     	return new TransportUnit(new Life(health, shield), vision, populationQuota, capacity);
     }
-
-	public TemplateID getId() {
-		return TemplateID.NaveTransporteTerranTemplate;
-	}
        
 }

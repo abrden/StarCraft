@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.logic.templates;
 
 import fiuba.algo3.starcraft.logic.templates.Damage;
 import fiuba.algo3.starcraft.logic.templates.Template;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 
