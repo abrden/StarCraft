@@ -21,6 +21,7 @@ public class AccesoTemplate extends ConstructionTemplate {
     public static AccesoTemplate getInstance() {
         return instance;
     }
+    
     public ConstructionStructure create() {
         // TODO Resolver tiempo de construccion
         return new ConstructionStructure(new Life(health, shield), enabledTemplates);
