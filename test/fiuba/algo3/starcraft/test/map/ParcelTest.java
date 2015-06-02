@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.ExtractableType;
+import fiuba.algo3.starcraft.logic.map.Land;
 import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -23,8 +25,25 @@ public class ParcelTest {
 	public void testParcelHasToDisablePassingThroughALandUnitWhenIsOfAirType() {
 		parcel.setSurface(LandType.air);
 		MuggleUnit marine = (MarineTemplate.getInstance()).create();
+
+		assertFalse(parcel.letPass(marine));
+	}
+	
+	@Test
+	public void testParcelCanBuildABuildingIncideAParcel() {
 		
-		assertTrue(parcel.canPassThrough(marine));
+	}
+	
+	@Test
+	public void testParcelHasToDisablePassingThroughALandWithABuilding() {
+	}
+	
+	@Test
+	public void testParcelHasMinerals() {
+		parcel.setSurface(ExtractableType.volcano);
+		
+		Land landWithVolcano = parcel.getLandForExplotation();
+		assertTrue(landWithVolcano.extract().getValue() == 10);
 	}
 
 }

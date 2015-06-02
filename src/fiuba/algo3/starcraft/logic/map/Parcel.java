@@ -24,18 +24,22 @@ public class Parcel {
 	}
 	
 	public void setStructure(Structure structure) {
-		
 		this.structure = structure;
 	}
 	
 	public void setSurface(LandType landType) {
-		switch (landType) {
-		case air : surface = new Air();
-			break;
+		switch (landType) {	
+		case air : surface = new Air();		
+		break;
 		case land : surface = new Land();
-			break;
+		break;
 		}
 	}
+	
+	public void setSurface(ExtractableType extractableType) {
+		surface = new Land(extractableType);
+	}
+	
 	
 	public boolean containsPoint(Point point) {
 		boolean isInXRange = (point.getX() >= origin.getX()) && (point.getX() <= side + origin.getX());
@@ -50,5 +54,8 @@ public class Parcel {
 		} else {
 			return surface.letPass(unit) && (structure == null);
 		}
+	}
+	public Land getLandForExplotation() {
+		return (Land)surface;
 	}
 }

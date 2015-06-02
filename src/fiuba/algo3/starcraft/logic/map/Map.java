@@ -7,8 +7,9 @@ import fiuba.algo3.starcraft.logic.structures.Structure;
 public class Map {
 	final double PARCEL_SIDE = 10;
 
-	private ArrayList<Parcel> parcels = new ArrayList<Parcel>();	
-	private double side;
+	private ArrayList<Parcel> parcels = new ArrayList<Parcel>();
+	
+	private double side;	
 	
 	public Map(double side) {
 		this.side = side;
@@ -44,4 +45,6 @@ public class Map {
 		Parcel parcel = getParcelContainingPoint(point);
 		parcel.setStructure(structure);
 	}
+	
+	
 }
