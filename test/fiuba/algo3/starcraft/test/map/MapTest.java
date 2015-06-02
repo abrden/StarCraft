@@ -26,13 +26,13 @@ public class MapTest {
 
 	@Test 
 	public void testMapCreatesParcelPathBetweenTwoPoints() {
-		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
+/*		ArrayList<Parcel> parcelPath = map.getParcelsThatIntersectsRectBetweenPoints(new Point(5, 5), new Point(35, 35));
 		for (Parcel parcel : parcelPath) {
 			
 		}
 		
 		
-		assertTrue();
+		assertTrue();*/
 	}
 
 }
