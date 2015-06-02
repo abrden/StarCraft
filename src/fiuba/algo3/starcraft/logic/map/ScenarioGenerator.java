@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.map;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -24,8 +25,20 @@ public class ScenarioGenerator {
 		}
 	}
 	
-	public void assignAirSurfaceDistributionInRect(Point origin, int side) {
+	public void assignSurfaceDistributionInRect(LandType landType ,Point origin, int side) {
+		ArrayList<Parcel>parcels = map.getParcelsContainedInARect(origin, side);
 		
+		for (Parcel parcel : parcels) {
+			parcel.setSurface(landType);
+		}
+	}
+	
+	public void assignSurfaceDistributionInRect(ExtractableType extractableType,Point origin, int side) {
+		ArrayList<Parcel>parcels = map.getParcelsContainedInARect(origin, side);
+		
+		for (Parcel parcel : parcels) {
+			parcel.setSurface(extractableType);
+		}
 	}
 	
 	public void buildStructureInPoint(Structure structure, Point point) {
