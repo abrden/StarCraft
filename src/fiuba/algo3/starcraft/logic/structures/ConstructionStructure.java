@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.templates.Life;
-import fiuba.algo3.starcraft.logic.templates.TemplateID;
 import fiuba.algo3.starcraft.logic.templates.UnitTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -17,9 +16,9 @@ public class ConstructionStructure extends Structure {
 		this.templates = templates;
 	}
 
-	private UnitTemplate getTemplateWithId(TemplateID id) {
+	private UnitTemplate getTemplateWithName(String name) {
 		for (UnitTemplate template : templates) {
-			if (template.getId() == id)
+			if (template.getName() == name)
 				return template;
 		}
 		return null;
@@ -30,8 +29,8 @@ public class ConstructionStructure extends Structure {
 			throw new QuotaExceeded();
 	}
 	
-	public Unit createUnit(TemplateID id, Resources resources, int populationSpace) throws QuotaExceeded, InsufficientResources {
-		UnitTemplate template = this.getTemplateWithId(id);
+	public Unit createUnit(String name, Resources resources, int populationSpace) throws QuotaExceeded, InsufficientResources {
+		UnitTemplate template = this.getTemplateWithName(name);
 		populationSpaceCheck(template, populationSpace);
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 		return template.create();
