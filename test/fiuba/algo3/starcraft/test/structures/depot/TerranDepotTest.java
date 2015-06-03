@@ -57,7 +57,7 @@ public class TerranDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
+	public void testPopulationQuotais0With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(null, null, null, initialResources);
 		DepositoSuministroTemplate templateDepositoSuministro =  DepositoSuministroTemplate.getInstance();
