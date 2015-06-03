@@ -61,10 +61,9 @@ public class Player {
 	public void newTurn() {
 		//Itera entre sus units y pierde la referencia de las muertas
 		this.getRidOfDeadUnits();
-		
 		//Itera entre sus estructuras y pierde la referencia de las muertas
 		this.getRidOfDeadStructures();
-		
+
 		//Visitar cola de construccion
 		this.updateConstructionQueue();
 		
@@ -72,6 +71,7 @@ public class Player {
 		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
 	
+
 	private void getRidOfDeadUnits() {
 		LinkedList<Unit> dead = new LinkedList<Unit>();
 		for (Unit unit : units)
