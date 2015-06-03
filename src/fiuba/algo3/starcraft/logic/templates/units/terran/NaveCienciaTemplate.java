@@ -8,7 +8,7 @@ import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 public class NaveCienciaTemplate extends MagicalTemplate {
 	
 	private static NaveCienciaTemplate instance = new NaveCienciaTemplate();
-
+	
 	private NaveCienciaTemplate() {
 		name = "Nave Ciencia";
 		value = new Value(100, 225);
@@ -20,6 +20,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 		energyGainPerTurn = 10;
 		transportationQuota = 0;
 		populationQuota = 2;
+		
 		//Faltan poderes y habilidades
 	}
 
