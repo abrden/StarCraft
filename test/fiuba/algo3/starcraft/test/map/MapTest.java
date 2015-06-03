@@ -13,7 +13,7 @@ import fiuba.algo3.starcraft.logic.map.Point;
 public class MapTest {
 	Map map = new Map(1000);
 	@Test
-	public void testMapIniticalicesWithParcels() {
+	public void testMapInitialicesWithParcels() {
 		Point point = new Point(25,25);
 		Parcel parcel = map.getParcelContainingPoint(point);
 		assertTrue(parcel.containsPoint(point));
@@ -25,17 +25,17 @@ public class MapTest {
 	}
 	
 	@Test 
-	public void testMapReturnsParcelsIncideARect() {
+	public void testMapReturnsParcelsInsideARect() {
 		ArrayList<Parcel> parcels = map.getParcelsContainedInARect(new Point(25, 25), 100);
 		
 		Parcel interiorParcel = map.getParcelContainingPoint(new Point(50,50));
 		assertTrue(parcels.contains(interiorParcel) && (parcels.size() == 100));
 	}
-/*
+
 	@Test 
 	// TODO Implementar
 	public void testMapCreatesParcelPathBetweenTwoPoints() {
 		assertTrue(true);
-	}*/
+	}
 
 }
