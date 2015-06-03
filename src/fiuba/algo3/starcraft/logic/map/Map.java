@@ -2,8 +2,6 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.starcraft.logic.structures.Structure;
-
 public class Map {
 	final double PARCEL_SIDE = 10;
 
@@ -23,6 +21,12 @@ public class Map {
 				parcel.setSurface(LandType.land);
 				parcels.add(parcel);
 			}
+		}
+	}
+	
+	public void resetMap() {
+		for (Parcel parcel : parcels) {
+			parcel.setSurface(LandType.land);
 		}
 	}
 	

@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.ExtractableType;
-import fiuba.algo3.starcraft.logic.map.Land;
 import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.Surface;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
@@ -44,7 +44,7 @@ public class ParcelTest {
 	public void testParcelHasMinerals() {
 		parcel.setSurface(ExtractableType.volcano);
 		
-		Land landWithVolcano = parcel.getLandForExplotation();
+		Surface landWithVolcano = parcel.getLandForExplotation();
 		try {
 			assertTrue(landWithVolcano.extractResource().getValue() == 10);
 		} catch (NoResourcesToExtractException e) {

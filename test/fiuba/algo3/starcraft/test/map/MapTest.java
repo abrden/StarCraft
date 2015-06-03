@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 
@@ -31,11 +32,17 @@ public class MapTest {
 		Parcel interiorParcel = map.getParcelContainingPoint(new Point(50,50));
 		assertTrue(parcels.contains(interiorParcel) && (parcels.size() == 100));
 	}
-/*
-	@Test 
-	// TODO Implementar
-	public void testMapCreatesParcelPathBetweenTwoPoints() {
-		assertTrue(true);
-	}*/
 
+	@Test
+	public void testMapIsResetedAndHasNoMinerals() {
+		map.resetMap();
+		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000)) {
+			try {
+				parcel.getLandForExplotation().extractResource();
+				assertTrue(false);
+			} catch (NoResourcesToExtractException e){
+			}
+		}
+		assertTrue(true);
+	}
 }

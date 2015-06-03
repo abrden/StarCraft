@@ -18,7 +18,7 @@ public class ScenarioGeneratorTest {
 	ScenarioGenerator scenario = new ScenarioGenerator(map);
 	@Test
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
-		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 0.3);
+		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 0.9);
 		
 		int ammountOfVolcanoInMap = 0;
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 100);
@@ -30,9 +30,18 @@ public class ScenarioGeneratorTest {
 			} catch (NoResourcesToExtractException e) {
 				
 			}
-		}
-		
-		assertTrue(ammountOfVolcanoInMap > 0 && ammountOfVolcanoInMap < 32);
+		}		
+		System.out.println(ammountOfVolcanoInMap);
+		assertTrue(ammountOfVolcanoInMap == 100);
 	}
+	
+	@Test
+	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
+		
+	}
+	
+	
+	
+	
 
 }

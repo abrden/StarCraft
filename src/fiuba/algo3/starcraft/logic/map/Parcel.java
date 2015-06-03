@@ -55,7 +55,7 @@ public class Parcel {
 			return surface.letPass(unit) && (structure == null);
 		}
 	}
-	public Land getLandForExplotation() {
-		return (Land)surface;
+	public Surface getLandForExplotation() {
+		return surface;
 	}
 }
