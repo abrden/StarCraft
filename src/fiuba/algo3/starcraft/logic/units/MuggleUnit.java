@@ -22,4 +22,12 @@ public class MuggleUnit extends Unit implements Transportable {
 	public boolean canFly() {
 		return (transportationQuota == 0);
 	}
+	
+	public int getAttackLandDamage() {
+		return attack.getLandDamage();
+	}
+	
+	public int getAttackSpaceDamage() {
+		return attack.getSpaceDamage();
+	}
 }

@@ -29,4 +29,12 @@ public abstract class Unit {
 	public int getPopulationQuota() {
 		return this.populationQuota;
 	}
+	
+	public int getVision() {
+		return this.vision;
+	}
+	
+	public int getShield() {
+		return this.life.getShield();
+	}
 }

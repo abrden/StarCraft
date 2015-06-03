@@ -32,11 +32,12 @@ public class ParcelTest {
 	}
 	
 	@Test
-	public void testParcelCanBuildABuildingIncideAParcel() {
-		
+	// TODO Implementar
+	public void testParcelCanBuildABuildingInsideAParcel() {
 	}
 	
 	@Test
+	// TODO Implementar
 	public void testParcelHasToDisablePassingThroughALandWithABuilding() {
 	}
 	

@@ -20,18 +20,18 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class UnitCreationTest {
 
-	//Por el momento, pruebo que la unidad deseada es la creada segun su precio, su vida y su suministro.
+	//Pruebo que la unidad creada es la deseada segun su valor, vida, suministro y tiempo de construccion.
 	@Test
 	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(50,0);
+		Resources resources = new Resources(50,0); // Valor = 50M
 		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
 		
-		Construction construction = barraca.create("Marine", resources, 1);
-		while(!construction.itsFinished()) {
+		Construction construction = barraca.create("Marine", resources, 1); // Suministro = 1
+		for(int i = 0; i < 3; i++) { // Tiempo de construccion = 3
 			construction.lowerRelease();
 		}
 		Unit marine = (Unit) construction.gather();
-		marine.reduceLife(40);
+		marine.reduceLife(40); // Vida = 40
 		
 		assertTrue(!marine.itsAlive());
 	}
@@ -42,7 +42,7 @@ public class UnitCreationTest {
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		
 		Construction construction = fabrica.create("Golliat", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
 		Unit golliat = (Unit) construction.gather();
@@ -57,7 +57,7 @@ public class UnitCreationTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
 		Construction construction = puerto.create("Espectro", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
 		Unit espectro = (Unit) construction.gather();
@@ -72,7 +72,7 @@ public class UnitCreationTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
 		Construction construction = puerto.create("Nave Ciencia", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 10; i++) {
 			construction.lowerRelease();
 		}
 		Unit nave = (Unit) construction.gather();
@@ -87,7 +87,7 @@ public class UnitCreationTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
 		Construction construction = puerto.create("Nave Transporte", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}
 		Unit nave = (Unit) construction.gather();
@@ -102,7 +102,7 @@ public class UnitCreationTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		
 		Construction construction = acceso.create("Zealot", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 4; i++) {
 			construction.lowerRelease();
 		}
 		Unit zealot = (Unit) construction.gather();
@@ -117,7 +117,7 @@ public class UnitCreationTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		
 		Construction construction = acceso.create("Dragon", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
 		Unit dragon = (Unit) construction.gather();
@@ -132,7 +132,7 @@ public class UnitCreationTest {
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		
 		Construction construction = puerto.create("Scout", resources, 3);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 9; i++) {
 			construction.lowerRelease();
 		}
 		Unit scout = (Unit) construction.gather();
@@ -147,7 +147,7 @@ public class UnitCreationTest {
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		
 		Construction construction = puerto.create("Nave Transporte", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
 		Unit nave = (Unit) construction.gather();
@@ -162,7 +162,7 @@ public class UnitCreationTest {
 		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
 		
 		Construction construction = archivos.create("Alto Templario", resources, 2);
-		while(!construction.itsFinished()) {
+		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}
 		Unit templario = (Unit) construction.gather();

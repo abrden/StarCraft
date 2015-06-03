@@ -15,5 +15,21 @@ public class TransportUnit extends Unit {
 		passengers = new LinkedList<Unit>();
 		this.capacity = capacity;
 	}
-
+/*
+	public void embark(Unit unit) {
+		if (this.theresSpaceForPassenger(unit))
+			passengers.add(unit);
+	}
+	
+	private boolean theresSpaceForPassenger(Unit unit) {
+		return (this.freeSpace() >= unit.getTransportQuota());
+	}
+	
+	private int freeSpace() {
+		int spaceTaken = 0;
+		for (Unit unit : passengers)
+			spaceTaken = spaceTaken + unit.getTransportQuota();
+		return (capacity - spaceTaken);
+	}
+*/
 }
