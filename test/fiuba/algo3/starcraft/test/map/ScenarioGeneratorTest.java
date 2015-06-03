@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.ExtractableType;
+import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
+import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
+import fiuba.algo3.starcraft.logic.units.Transportable;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ScenarioGeneratorTest {
 	Map map = new Map(1000);
@@ -31,17 +35,23 @@ public class ScenarioGeneratorTest {
 				
 			}
 		}		
-		System.out.println(ammountOfVolcanoInMap);
 		assertTrue(ammountOfVolcanoInMap == 100);
 	}
 	
 	@Test
 	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
+		map = new Map(1000);
 		
-	}
-	
-	
-	
-	
+		scenario = new ScenarioGenerator(map);
+		
+		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 1000, 0.2);
+		for (int i = 0 ; i < 1000/30 ; i++) {
+			scenario.assignSurfaceDistributionInRect(LandType.air,new Point(485, 30 * i), 30, 1);
+		}
+		Parcel parcel = map.getParcelContainingPoint(new Point(500,500));
 
+		Transportable marine = MarineTemplate.getInstance().create();
+		
+		assertTrue(!parcel.letPass(marine));
+	}
 }

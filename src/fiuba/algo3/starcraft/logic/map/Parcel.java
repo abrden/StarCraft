@@ -36,6 +36,8 @@ public class Parcel {
 		}
 	}
 	
+	
+	
 	public void setSurface(ExtractableType extractableType) {
 		surface = new Land(extractableType);
 	}
