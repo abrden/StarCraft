@@ -13,10 +13,10 @@ public class ScenarioGenerator {
 	}
 	
 	//FIXME: repetition of code due to separation of landType and extractableType
-	public void assignSurfaceDistributionInRect(LandType landType ,Point origin, int side, double dencity) {
+	public void assignSurfaceDistributionInRect(LandType landType ,Point origin, int side, double density) {
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(origin, side);
 		Random random = new Random();
-		for (int i = 0 ; i < (side * side )*dencity/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
+		for (int i = 0 ; i < (side * side)*density/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
 			int randomIndex = random.nextInt(parcelsInRect.size());
 			Parcel chosenParcel = parcelsInRect.get(randomIndex);
 			chosenParcel.setSurface(landType);
@@ -24,10 +24,10 @@ public class ScenarioGenerator {
 		}
 	}
 	
-	public void assignSurfaceDistributionInRect(ExtractableType extractableType,Point origin, int side, double dencity) {
+	public void assignSurfaceDistributionInRect(ExtractableType extractableType,Point origin, int side, double density) {
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(origin, side);
 		Random random = new Random();
-		for (int i = 0 ; i < (side * side )*dencity/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
+		for (int i = 0 ; i < (side * side )*density/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
 			int randomIndex = random.nextInt(parcelsInRect.size());
 			Parcel chosenParcel = parcelsInRect.get(randomIndex);
 			chosenParcel.setSurface(extractableType);

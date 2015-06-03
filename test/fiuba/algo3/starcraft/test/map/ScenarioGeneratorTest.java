@@ -16,9 +16,9 @@ import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
 public class ScenarioGeneratorTest {
 	Map map = new Map(1000);
 	ScenarioGenerator scenario = new ScenarioGenerator(map);
-	@Test
+	@Test	//ammountOfVolcanoInMap no tendria que ser un valor random cuando se usa una densidad != a 1.
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
-		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 0.9);
+		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 1);
 		
 		int ammountOfVolcanoInMap = 0;
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 100);
@@ -30,16 +30,15 @@ public class ScenarioGeneratorTest {
 			} catch (NoResourcesToExtractException e) {
 				
 			}
-		}		
-		System.out.println(ammountOfVolcanoInMap);
+		}
 		assertTrue(ammountOfVolcanoInMap == 100);
 	}
-	
+	/*
 	@Test
 	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
 		
 	}
-	
+	*/
 	
 	
 	
