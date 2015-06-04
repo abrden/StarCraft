@@ -15,14 +15,13 @@ import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.Transportable;
-import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ScenarioGeneratorTest {
 	Map map = new Map(1000);
 	ScenarioGenerator scenario = new ScenarioGenerator(map);
 	@Test
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
-		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 0.9);
+		scenario.assignSurfaceDistributionInRect(ExtractableType.volcano, new Point(0,0), 100, 1);
 		
 		int ammountOfVolcanoInMap = 0;
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 100);

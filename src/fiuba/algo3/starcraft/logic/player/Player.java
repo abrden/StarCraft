@@ -6,7 +6,6 @@ import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 import fiuba.algo3.starcraft.logic.structures.builders.Builder;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
@@ -23,10 +22,7 @@ public class Player {
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
-	
-	private static final int resourcesProducedPerTurn = 10;
-	private static final int populationBonusPerDepot = 5;
-	private static final int populationMaximum = 200;
+	private int populationQuota;
 	
 	public Player(String name, Color color, Builder builder, Resources initialResources) {
 		this.name = name;
@@ -59,6 +55,8 @@ public class Player {
 	}
 	
 	public void newTurn() {
+		this.updateStructures();
+		
 		//Itera entre sus units y pierde la referencia de las muertas
 		this.getRidOfDeadUnits();
 		//Itera entre sus estructuras y pierde la referencia de las muertas
@@ -68,9 +66,15 @@ public class Player {
 		this.updateConstructionQueue();
 		
 		//Cada estructura de explotacion junta +10 de su recurso
-		this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
+		//this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
 	
+
+	private void updateStructures() {
+		populationQuota = 0;
+		for (Structure structure : structures)
+			structure.update(this);
+	}
 
 	private void getRidOfDeadUnits() {
 		LinkedList<Unit> dead = new LinkedList<Unit>();
@@ -100,7 +104,7 @@ public class Player {
 	}
 	
 	public int populationSpace() {
-		return (this.populationQuota() - this.currentPopulation());
+		return (populationQuota - this.currentPopulation());
 	}
 	
 	public int currentPopulation() {
@@ -111,11 +115,13 @@ public class Player {
 	}
 	
 	public int populationQuota() {
-		int populationQuota = (this.depotQuantity() * populationBonusPerDepot);
-		if (populationQuota < populationMaximum) return populationQuota;
-		else return populationMaximum;
+		return populationQuota;
+		//int populationQuota = (this.depotQuantity() * populationBonusPerDepot);
+		//if (populationQuota < populationMaximum) return populationQuota;
+		//else return populationMaximum;
 	}
 	
+	/*
 	private int mineralExploitationStructuresQuantity() {
 		return (this.getMineralExploiters()).size();
 	}
@@ -127,6 +133,7 @@ public class Player {
 	private int depotQuantity() {
 		return (this.getDepots()).size();
 	}
+	
 	
 	private LinkedList<Structure> getMineralExploiters() {
 		return getStructuresWithID(StructureID.MineralExploiter);
@@ -148,6 +155,7 @@ public class Player {
 		}
 		return wanted;
 	}
+	*/
 
 	public void gains(int mineral, int gas) {
 		resources.add(mineral, gas);
@@ -159,7 +167,7 @@ public class Player {
 
 
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		constructionQueue.addUnit(structure.create(name, resources, this.populationSpace()));
+		constructionQueue.addUnit(structure.create(name, resources, this.currentPopulation(), populationQuota));
 	}
 	
 	public void newStructureWithName(String name) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
@@ -173,5 +181,9 @@ public class Player {
 	// TODO ver si solo sirve para pruebas
 	public void newStructure(Structure structure) {
 		structures.add(structure);
+	}
+
+	public void increasePopulationQuota(int populationQuotaIncrement) {
+		populationQuota += 5;
 	}
 }
