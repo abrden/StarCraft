@@ -23,6 +23,7 @@ public class EspectroTemplate extends MuggleTemplate {
 		damage = new Damage(8,20);
 		damageRange = 5;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 8;
 	}
 
 	public static EspectroTemplate getInstance(){
@@ -30,6 +31,6 @@ public class EspectroTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

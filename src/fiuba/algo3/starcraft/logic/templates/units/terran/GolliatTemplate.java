@@ -23,6 +23,7 @@ public class GolliatTemplate extends MuggleTemplate {
 		damage = new Damage(12,10);
 		damageRange = 6; //TODO: ARREGLAR ESTO, TIENE DANO POR AIRES TAMBIEN!
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 6;
 	}
 
 	public static GolliatTemplate getInstance(){
@@ -30,7 +31,7 @@ public class GolliatTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 
 }

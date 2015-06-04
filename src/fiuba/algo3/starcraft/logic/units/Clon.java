@@ -8,7 +8,7 @@ public class Clon extends Unit {
 	private Life life;
 	
 	Clon(Unit clonado, String name) {
-		super(name, new Life(0, clonado.getShield()), clonado.getVision(), 0);
+		super(name, new Life(0, clonado.getShield()), clonado.getVision(), clonado.getStepsPerTurn(), 0);
 		this.clonado = clonado;
 	}
 

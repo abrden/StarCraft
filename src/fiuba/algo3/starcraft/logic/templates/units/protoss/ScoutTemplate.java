@@ -24,6 +24,7 @@ public class ScoutTemplate extends MuggleTemplate {
 		damage = new Damage(8,14);
 		damageRange = 4;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 9;
 	}
 
 	public static ScoutTemplate getInstance(){
@@ -31,6 +32,6 @@ public class ScoutTemplate extends MuggleTemplate {
 	}
 	
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health, shield), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

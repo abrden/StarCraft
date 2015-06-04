@@ -24,6 +24,7 @@ public class DragonTemplate extends MuggleTemplate {
 		damage = new Damage(20,20);
 		damageRange = 4;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 6;
 	}
 
 	public static DragonTemplate getInstance(){
@@ -31,6 +32,6 @@ public class DragonTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health, shield), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

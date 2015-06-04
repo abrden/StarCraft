@@ -10,11 +10,13 @@ public abstract class Unit {
 	protected int populationQuota;
 	protected Life life;
 	protected Point position;
+	protected int stepsPerTurn;
 	
-	Unit(String name, Life life, int vision, int populationQuota) {
+	Unit(String name, Life life, int vision, int stepsPerTurn, int populationQuota) {
 		this.name = name;
 		this.life = life;
 		this.vision = vision;
+		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
 	}
 	
@@ -26,6 +28,10 @@ public abstract class Unit {
 		return (life.getHealth() > 0);
 	}
 
+	public int getStepsPerTurn() {
+		return stepsPerTurn;
+	}
+	
 	public int getPopulationQuota() {
 		return this.populationQuota;
 	}

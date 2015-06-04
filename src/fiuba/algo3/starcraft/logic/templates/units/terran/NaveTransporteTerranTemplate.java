@@ -17,6 +17,7 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
         populationQuota = 2;
         health = 150;
         capacity = 8;
+        stepsPerTurn = 7;
     }
 
     public static NaveTransporteTerranTemplate getInstance() {
@@ -24,7 +25,7 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
     }
     
     public TransportUnit create() {
-    	return new TransportUnit(name, new Life(health, shield), vision, populationQuota, capacity);
+    	return new TransportUnit(name, new Life(health, shield), vision, stepsPerTurn, populationQuota, capacity);
     }
        
 }

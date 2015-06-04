@@ -21,11 +21,13 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		energyGainPerTurn = 15;
 		transportationQuota = 2;
 		populationQuota = 2;
+		stepsPerTurn = 7;
+		
 		//Faltan poderes y habilidades
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(name, new Life(health, shield), vision,
+		return new MagicalUnit(name, new Life(health, shield), vision, stepsPerTurn, 
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

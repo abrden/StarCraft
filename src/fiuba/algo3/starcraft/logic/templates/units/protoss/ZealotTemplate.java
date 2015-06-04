@@ -23,6 +23,7 @@ public class ZealotTemplate extends MuggleTemplate {
 		damage = new Damage(8,0);
 		damageRange = 1;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 4;
 	}
 
 	public static ZealotTemplate getInstance(){
@@ -30,6 +31,6 @@ public class ZealotTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health, shield), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

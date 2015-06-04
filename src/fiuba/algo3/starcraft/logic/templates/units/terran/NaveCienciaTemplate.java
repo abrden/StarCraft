@@ -20,12 +20,12 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 		energyGainPerTurn = 10;
 		transportationQuota = 0;
 		populationQuota = 2;
-		
+		stepsPerTurn = 10;
 		//Faltan poderes y habilidades
 	}
 
 	public MagicalUnit create() {
-		return new MagicalUnit(name, new Life(health), vision,
+		return new MagicalUnit(name, new Life(health), vision, stepsPerTurn,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

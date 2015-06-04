@@ -22,6 +22,7 @@ public class MarineTemplate extends MuggleTemplate {
 		damage = new Damage(6,6);
 		damageRange = 4;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 3;
 	}
 
 	public static MarineTemplate getInstance(){
@@ -29,7 +30,7 @@ public class MarineTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 
 }

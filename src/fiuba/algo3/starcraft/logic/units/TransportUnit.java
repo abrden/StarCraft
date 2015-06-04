@@ -10,8 +10,8 @@ public class TransportUnit extends Unit {
 	private Collection<Unit> passengers;
 	private int capacity;
 	
-	public TransportUnit(String name, Life life, int vision, int populationQuota, int capacity) {
-		super(name, life, vision, populationQuota);
+	public TransportUnit(String name, Life life, int vision, int stepsPerTurn, int populationQuota, int capacity) {
+		super(name, life, vision, stepsPerTurn, populationQuota);
 		passengers = new LinkedList<Unit>();
 		this.capacity = capacity;
 	}
