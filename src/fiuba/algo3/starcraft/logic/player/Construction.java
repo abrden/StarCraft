@@ -1,11 +1,11 @@
 package fiuba.algo3.starcraft.logic.player;
 
-public class Construction {
+public class Construction<T> {
 
-	private Object construction;
+	private T construction;
 	private int releaseIn;
 	
-	public Construction(Object constructed, int releaseTurn) {
+	public Construction(T constructed, int releaseTurn) {
 		this.construction = constructed;
 		this.releaseIn = releaseTurn;
 	}
@@ -18,7 +18,7 @@ public class Construction {
 		return (releaseIn == 0);
 	}
 
-	public Object gather() {
+	public T gather() {
 		return construction;
 	}
 }

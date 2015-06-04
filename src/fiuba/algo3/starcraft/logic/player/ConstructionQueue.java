@@ -4,46 +4,51 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.structures.Structure;
+import fiuba.algo3.starcraft.logic.structures.Updatable;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class ConstructionQueue {
+public class ConstructionQueue implements Updatable {
 
-	private Collection<Construction> structures;
-	private Collection<Construction> units;
+	private Collection<Construction<Structure>> structures;
+	private Collection<Construction<Unit>> units;
 	
 	public ConstructionQueue() {
-		structures = new LinkedList<Construction>();
-		units = new LinkedList<Construction>();
+		structures = new LinkedList<Construction<Structure>>();
+		units = new LinkedList<Construction<Unit>>();
 	}
 	
-	public void addUnit(Construction construction) {
+	public void addUnit(Construction<Unit> construction) {
 		units.add(construction);
 	}
 	
-	public void addStructure(Construction construction) {
+	public void addStructure(Construction<Structure> construction) {
 		structures.add(construction);
 	}
 	
 	public void lowerReleases() {
-		for (Construction construction : structures)
+		for (Construction<Structure> construction : structures)
 			construction.lowerRelease();
-		for (Construction construction : units)
+		for (Construction<Unit> construction : units)
 			construction.lowerRelease();
 	}
 	
 	public Collection<Unit> gatherFinishedUnits() {
 		Collection<Unit> releases = new LinkedList<Unit>();
-		for (Construction construction : units)
+		for (Construction<Unit> construction : units)
 			if (construction.itsFinished())
-				releases.add((Unit) construction.gather());
+				releases.add(construction.gather());
 		return releases;
 	}
 	
 	public Collection<Structure> gatherFinishedStructures() {
 		Collection<Structure> releases = new LinkedList<Structure>();
-		for (Construction construction : structures)
+		for (Construction<Structure> construction : structures)
 			if (construction.itsFinished())
-				releases.add((Structure) construction.gather());
+				releases.add(construction.gather());
 		return releases;
+	}
+
+	public void update(Player player) {
+		this.lowerReleases();	
 	}
 }
