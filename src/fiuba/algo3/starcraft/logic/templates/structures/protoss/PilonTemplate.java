@@ -22,7 +22,6 @@ public class PilonTemplate extends StructureTemplate {
 	}
 	
 	public Depot create() {
-		// TODO Resolver tiempo de construccion
 		return new Depot(name, new Life(health,shield));
 	}
 

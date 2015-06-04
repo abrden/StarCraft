@@ -30,7 +30,6 @@ public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
             return instance;
         }
         public ConstructionStructure create() {
-            // TODO Resolver tiempo de construccion
             return new ConstructionStructure(name, new Life(health), enabledTemplates);
         }
 }

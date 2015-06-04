@@ -21,7 +21,6 @@ public class CentroMineralTemplate extends StructureTemplate {
 	}
 	
 	public MineralExploiter create() {
-		// TODO: Resolver el tiempo que tarda en construirlo
 		return new MineralExploiter(name, new Life(health));
 	}
 
