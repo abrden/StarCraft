@@ -26,7 +26,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(50,0); // Valor = 50M
 		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
 		
-		Construction construction = barraca.create("Marine", resources, 1); // Suministro = 1
+		Construction<Unit> construction = barraca.create("Marine", resources, 0, 1); // Suministro = 1
 		for(int i = 0; i < 3; i++) { // Tiempo de construccion = 3
 			construction.lowerRelease();
 		}
@@ -41,7 +41,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(100,50);
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
 		
-		Construction construction = fabrica.create("Golliat", resources, 2);
+		Construction<Unit> construction = fabrica.create("Golliat", resources, 0, 2);
 		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
@@ -56,7 +56,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(150,100);
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
-		Construction construction = puerto.create("Espectro", resources, 2);
+		Construction<Unit> construction = puerto.create("Espectro", resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
@@ -71,7 +71,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(100,225);
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
-		Construction construction = puerto.create("Nave Ciencia", resources, 2);
+		Construction<Unit> construction = puerto.create("Nave Ciencia", resources, 0, 2);
 		for(int i = 0; i < 10; i++) {
 			construction.lowerRelease();
 		}
@@ -86,7 +86,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(100,100);
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		
-		Construction construction = puerto.create("Nave Transporte", resources, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte", resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}
@@ -101,7 +101,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(100,0);
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		
-		Construction construction = acceso.create("Zealot", resources, 2);
+		Construction<Unit> construction = acceso.create("Zealot", resources, 0, 2);
 		for(int i = 0; i < 4; i++) {
 			construction.lowerRelease();
 		}
@@ -116,7 +116,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(125,50);
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		
-		Construction construction = acceso.create("Dragon", resources, 2);
+		Construction<Unit> construction = acceso.create("Dragon", resources, 0, 2);
 		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
@@ -131,7 +131,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(300,150);
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		
-		Construction construction = puerto.create("Scout", resources, 3);
+		Construction<Unit> construction = puerto.create("Scout", resources, 0, 3);
 		for(int i = 0; i < 9; i++) {
 			construction.lowerRelease();
 		}
@@ -146,7 +146,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(200,0);
 		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
 		
-		Construction construction = puerto.create("Nave Transporte", resources, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte", resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
@@ -161,7 +161,7 @@ public class UnitCreationTest {
 		Resources resources = new Resources(50,150);
 		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
 		
-		Construction construction = archivos.create("Alto Templario", resources, 2);
+		Construction<Unit> construction = archivos.create("Alto Templario", resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}

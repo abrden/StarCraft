@@ -49,7 +49,7 @@ public class StructuresDependenceTest {
 		built.add(BarracaTemplate.getInstance().create());
 		built.add(FabricaTemplate.getInstance().create());
 		
-		Construction construction = TerranBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		Construction<Structure> construction = TerranBuilder.getInstance().create("Puerto Estelar", initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -65,7 +65,7 @@ public class StructuresDependenceTest {
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(BarracaTemplate.getInstance().create());
 		
-		Construction construction = TerranBuilder.getInstance().create("Fabrica", initialResources, built);
+		Construction<Structure> construction = TerranBuilder.getInstance().create("Fabrica", initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -98,7 +98,7 @@ public class StructuresDependenceTest {
 		built.add(AccesoTemplate.getInstance().create());
 		built.add(PuertoEstelarProtossTemplate.getInstance().create());
 		
-		Construction construction = ProtossBuilder.getInstance().create("Archivos Templarios", initialResources, built);
+		Construction<Structure> construction = ProtossBuilder.getInstance().create("Archivos Templarios", initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -112,7 +112,7 @@ public class StructuresDependenceTest {
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(AccesoTemplate.getInstance().create());
 		
-		Construction construction = ProtossBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		Construction<Structure> construction = ProtossBuilder.getInstance().create("Puerto Estelar", initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

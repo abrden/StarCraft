@@ -8,41 +8,37 @@ import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.Depot;
+import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
-import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.ArchivosTemplariosTemplate;
-import fiuba.algo3.starcraft.logic.templates.structures.protoss.PilonTemplate;
-import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class AltoTemplarioTest {
 
 	@Test
-	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
+	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired {
 		Resources initialResources = new Resources(600,500);
-		Player player = new Player(null, null, null, initialResources);
-		player.pays(100, 0);
-		Depot pilon = PilonTemplate.getInstance().create();
-		player.newStructure(pilon);
-		player.pays(150, 0);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
-		player.newStructure(acceso);
-		player.pays(150, 150);
-		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
-		player.newStructure(puerto);
-		player.pays(150, 200);
-		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
-		player.newStructure(puerto);
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), initialResources);
+		player.newStructureWithName("Pilon");
+		for(int i = 0; i < 6; i++) player.newTurn();
+		player.newStructureWithName("Acceso");
+		for(int i = 0; i < 9; i++) player.newTurn();
+		player.newStructureWithName("Puerto Estelar");
+		for(int i = 0; i < 11; i++) player.newTurn();
 		
-		Construction construction = archivos.create("Alto Templario", player.getResources(), player.populationSpace());
+		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
+		player.pays(150, 200);
+		player.receiveNewStructure(archivos);
+		
+		Construction<Unit> construction = archivos.create("Alto Templario", player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
-		Unit templario = (Unit) construction.gather();
-		player.newUnit(templario);
+		Unit templario = construction.gather();
+		player.receiveNewUnit(templario);
 		
 		assertEquals(player.currentPopulation(), 2);
 	}

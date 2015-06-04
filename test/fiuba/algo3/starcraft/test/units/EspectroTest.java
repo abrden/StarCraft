@@ -26,16 +26,16 @@ public class EspectroTest {
 		Player player = new Player(null, null, null, initialResources);
 		player.pays(100, 0);
 		Depot depot = DepositoSuministroTemplate.getInstance().create();
-		player.newStructure(depot);
+		player.receiveNewStructure(depot);
 		player.pays(150, 0);
 		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
-		player.newStructure(barraca);
+		player.receiveNewStructure(barraca);
 		player.pays(200, 100);
 		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
-		player.newStructure(fabrica);
+		player.receiveNewStructure(fabrica);
 		player.pays(150, 100);
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
-		player.newStructure(puerto);
+		player.receiveNewStructure(puerto);
 		
 		Construction construction = puerto.create("Espectro", player.getResources(), player.populationSpace());
 		while(!construction.itsFinished()) {
