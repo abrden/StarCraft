@@ -55,22 +55,29 @@ public class Player {
 	}
 	
 	public void newTurn() {
-		this.updateStructures();
+		this.update();
+		
+		//Visitar cola de construccion
+		//this.updateConstructionQueue();
 		
 		//Itera entre sus units y pierde la referencia de las muertas
-		this.getRidOfDeadUnits();
+		//this.getRidOfDeadUnits();
 		//Itera entre sus estructuras y pierde la referencia de las muertas
-		this.getRidOfDeadStructures();
-
-		//Visitar cola de construccion
-		this.updateConstructionQueue();
+		//this.getRidOfDeadStructures();
 		
 		//Cada estructura de explotacion junta +10 de su recurso
 		//this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
-	
 
-	private void updateStructures() {
+	private void update() {
+		// Pierde referencia a Units y Structures muertas
+		this.getRidOfDeadUnits();
+		this.getRidOfDeadStructures();
+		
+		// Recolecta las nuevas Units y Structures y disminuye la release de las que siguen en construccion
+		constructionQueue.update(this);
+		
+		// Sus estructuras le dan los recursos recolectados y redefinen su cupa poblacional
 		populationQuota = 0;
 		for (Structure structure : structures)
 			structure.update(this);
@@ -94,31 +101,30 @@ public class Player {
 			structures.remove(structure);
 	}
 	
+	/*
 	private void updateConstructionQueue() {
 		// Gather finished constructions
-		structures.addAll(constructionQueue.gatherFinishedStructures());
-		units.addAll(constructionQueue.gatherFinishedUnits());
+		structures.addAll(constructionQueue.finishedStructures());
+		units.addAll(constructionQueue.finishedUnits());
 		
 		// Lower releases
 		constructionQueue.lowerReleases();
 	}
+	*/
 	
 	public int populationSpace() {
 		return (populationQuota - this.currentPopulation());
 	}
 	
 	public int currentPopulation() {
-		int pop = 0;
+		int population = 0;
 		for (Unit unit : units)
-			pop = pop + unit.getPopulationQuota();
-		return pop;
+			population = population + unit.getPopulationQuota();
+		return population;
 	}
 	
 	public int populationQuota() {
 		return populationQuota;
-		//int populationQuota = (this.depotQuantity() * populationBonusPerDepot);
-		//if (populationQuota < populationMaximum) return populationQuota;
-		//else return populationMaximum;
 	}
 	
 	/*
@@ -161,10 +167,10 @@ public class Player {
 		resources.add(mineral, gas);
 	}
 	
+	// TODO ver si se usa solo en pruebas
 	public void pays(int mineral, int gas) throws InsufficientResources {
 		resources.remove(mineral, gas);
 	}
-
 
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		constructionQueue.addUnit(structure.create(name, resources, this.currentPopulation(), populationQuota));
@@ -174,16 +180,16 @@ public class Player {
 		constructionQueue.addStructure(builder.create(name, resources, structures));
 	}
 	
-	// TODO ver si solo sirve para pruebas
-	public void newUnit(Unit unit) {
+	public void receiveNewUnit(Unit unit) {
 		units.add(unit);
 	}
-	// TODO ver si solo sirve para pruebas
-	public void newStructure(Structure structure) {
+
+	public void receiveNewStructure(Structure structure) {
 		structures.add(structure);
 	}
 
 	public void increasePopulationQuota(int populationQuotaIncrement) {
 		populationQuota += 5;
 	}
+
 }
