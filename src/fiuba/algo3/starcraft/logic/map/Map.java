@@ -48,7 +48,6 @@ public class Map {
 				parcels.add(parcel);
 			}
 		}
-		
 		return parcels;
 	}
 	
