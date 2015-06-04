@@ -44,10 +44,6 @@ public class ConstructionStructure extends Structure {
 		
 		return new Construction<Unit>(template.create(), template.getConstructionTime());
 	}
-	
-	public StructureID getId() {
-		return StructureID.ConstructionStructure;
-	}
 
 	public void update(Player player) {
 		return;

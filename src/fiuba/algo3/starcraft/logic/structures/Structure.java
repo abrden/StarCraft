@@ -15,8 +15,6 @@ public abstract class Structure implements Updatable {
 		this.life = life;
 	}
 	
-	public abstract StructureID getId();
-	
 	public boolean itsAlive() {
 		return (life.getHealth() > 0);
 	}
