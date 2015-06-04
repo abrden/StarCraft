@@ -32,7 +32,7 @@ public class ConstructionQueue implements Updatable {
 			construction.lowerRelease();
 	}
 	
-	public Collection<Unit> gatherFinishedUnits() {
+	public Collection<Unit> finishedUnits() {
 		Collection<Unit> releases = new LinkedList<Unit>();
 		for (Construction<Unit> construction : units)
 			if (construction.itsFinished())
@@ -40,7 +40,7 @@ public class ConstructionQueue implements Updatable {
 		return releases;
 	}
 	
-	public Collection<Structure> gatherFinishedStructures() {
+	public Collection<Structure> finishedStructures() {
 		Collection<Structure> releases = new LinkedList<Structure>();
 		for (Construction<Structure> construction : structures)
 			if (construction.itsFinished())
@@ -49,6 +49,11 @@ public class ConstructionQueue implements Updatable {
 	}
 
 	public void update(Player player) {
-		this.lowerReleases();	
+		for (Unit unit : this.finishedUnits())
+			player.receiveNewUnit(unit);
+		for (Structure structure : this.finishedStructures())
+			player.receiveNewStructure(structure);
+		
+		this.lowerReleases();
 	}
 }

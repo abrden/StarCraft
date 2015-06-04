@@ -10,6 +10,7 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ConstructionStructure extends Structure {
 	
@@ -36,12 +37,12 @@ public class ConstructionStructure extends Structure {
 			throw new QuotaExceeded();
 	}
 	
-	public Construction create(String name, Resources resources, int currentPopulation, int populationQuota) throws QuotaExceeded, InsufficientResources, TemplateNotFound {
+	public Construction<Unit> create(String name, Resources resources, int currentPopulation, int populationQuota) throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		UnitTemplate template = this.getTemplateWithName(name);
 		populationSpaceCheck(template, currentPopulation, populationQuota);
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 		
-		return new Construction(template.create(), template.getConstructionTime());
+		return new Construction<Unit>(template.create(), template.getConstructionTime());
 	}
 	
 	public StructureID getId() {
