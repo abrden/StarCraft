@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.logic.structures;
 
 import java.util.Collection;
 
-import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
