@@ -1,14 +1,15 @@
-package fiuba.algo3.starcraft.logic.test.units;
+package fiuba.algo3.starcraft.logic.test.player.integration.units;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
+import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
+import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
@@ -19,7 +20,7 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 public class NaveCienciaTest {
 
 	@Test
-	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired {
+	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(700,425);
 		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
 		player.newStructureWithName("Deposito Suministro");

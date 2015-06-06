@@ -7,11 +7,12 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import fiuba.algo3.starcraft.logic.player.Construction;
 import fiuba.algo3.starcraft.logic.player.Resources;
+import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
+import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
@@ -43,7 +44,7 @@ public class StructuresDependenceTest {
 	}
 	
 	@Test
-	public void testPuertoEstelarNeedsFabricaAndBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
+	public void testPuertoEstelarNeedsFabricaAndBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,100);
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(BarracaTemplate.getInstance().create());
@@ -54,13 +55,13 @@ public class StructuresDependenceTest {
 			construction.lowerRelease();
 		}
 		
-		assertEquals(((Structure) construction.gather()).getName(), "Puerto Estelar");
+		assertEquals((construction.gather()).getName(), "Puerto Estelar");
 		assertEquals(initialResources.getMineral(), 0);
 		assertEquals(initialResources.getGas(), 0);
 	}
 	
 	@Test
-	public void testFabricaNeedsBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
+	public void testFabricaNeedsBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(200,100);
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(BarracaTemplate.getInstance().create());
@@ -70,7 +71,7 @@ public class StructuresDependenceTest {
 			construction.lowerRelease();
 		}
 		
-		assertEquals(((Structure) construction.gather()).getName(), "Fabrica");
+		assertEquals((construction.gather()).getName(), "Fabrica");
 	}
 	
 	@Test(expected = MissingStructureRequired.class)
@@ -92,7 +93,7 @@ public class StructuresDependenceTest {
 	}
 	
 	@Test
-	public void testArchivosTemplariosNeedsPuertoEstelarAndAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
+	public void testArchivosTemplariosNeedsPuertoEstelarAndAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,200);
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(AccesoTemplate.getInstance().create());
@@ -103,11 +104,11 @@ public class StructuresDependenceTest {
 			construction.lowerRelease();
 		}
 		
-		assertEquals(((Structure) construction.gather()).getName(), "Archivos Templarios");
+		assertEquals((construction.gather()).getName(), "Archivos Templarios");
 	}
 	
 	@Test
-	public void testPuertoEstelarNeedsAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
+	public void testPuertoEstelarNeedsAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,150);
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(AccesoTemplate.getInstance().create());
@@ -117,7 +118,7 @@ public class StructuresDependenceTest {
 			construction.lowerRelease();
 		}
 		
-		assertEquals(((Structure) construction.gather()).getName(), "Puerto Estelar");
+		assertEquals((construction.gather()).getName(), "Puerto Estelar");
 		assertEquals(initialResources.getMineral(), 0);
 		assertEquals(initialResources.getGas(), 0);
 	}
