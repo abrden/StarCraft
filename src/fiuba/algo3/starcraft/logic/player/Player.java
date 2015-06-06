@@ -13,6 +13,7 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
@@ -88,6 +89,10 @@ public class Player {
 		populationQuota = 0;
 		for (Structure structure : structures)
 			structure.update(this);
+		
+		// Regeneracion de escudos, ganancia de energia, ...
+		for (Unit unit : units)
+			unit.update();
 	}
 
 	private void getRidOfDeadUnits() {
@@ -152,10 +157,11 @@ public class Player {
 		structures.add(structure);
 	}
 
+	/* Manipulacion de unidades */
+	
 	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
 		unit.setPosition(destination);
 	}
-	
 	
 	//TODO Implementar todos estos metodos
 	public void attack(MuggleUnit unit) {
@@ -163,8 +169,10 @@ public class Player {
 		//Get enemies in the attack range, pick the closest and reduce life
 	}
 	
-	public void usePower(MagicalUnit unit) {
-		
+	public void usePower(MagicalUnit unit, Power power) {
+		//int range = power.getRange();
+		//Collection <Unit> affectedUnits = unitsInRange(range);
+		//power.activate(affectedUnits);
 	}
 	
 	public void embark(TransportUnit transport, Transportable unit) {
