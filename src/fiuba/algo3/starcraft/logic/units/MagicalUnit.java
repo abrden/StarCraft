@@ -9,10 +9,10 @@ import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 public class MagicalUnit extends Unit implements Transportable {
 	
 	private int energy;
-	private int maximumEnergy;
-	private int energyGainPerTurn;
-	private int transportationQuota;
-	private Collection<Power> powers;
+	private final int  maximumEnergy;
+	private final int energyGainPerTurn;
+	private final int transportationQuota;
+	private final Collection<Power> powers;
 	
 	public MagicalUnit(String name, Life life, int vision, int stepsPerTurn,
 			Collection<Power> powers,

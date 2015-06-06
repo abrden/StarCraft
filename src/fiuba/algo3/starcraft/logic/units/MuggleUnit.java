@@ -5,8 +5,8 @@ import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class MuggleUnit extends Unit implements Transportable {
 	
-	private Attack attack;
-	private int transportationQuota;
+	private final Attack attack;
+	private final int transportationQuota;
 	
 	public MuggleUnit(String name, Life life, int vision, int stepsPerTurn,Attack attack, 
 			int transportationQuota, int populationQuota) {
@@ -21,6 +21,10 @@ public class MuggleUnit extends Unit implements Transportable {
 	
 	public boolean canFly() {
 		return (transportationQuota == 0);
+	}
+	
+	public int getAttackRange() {
+		return attack.getRange();
 	}
 	
 	public int getAttackLandDamage() {
