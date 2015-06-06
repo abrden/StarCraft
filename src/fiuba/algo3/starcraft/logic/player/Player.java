@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -12,7 +13,12 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.units.MagicalUnit;
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+import fiuba.algo3.starcraft.logic.units.TransportUnit;
+import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Player {
 	
@@ -102,17 +108,6 @@ public class Player {
 			structures.remove(structure);
 	}
 	
-	/*
-	private void updateConstructionQueue() {
-		// Gather finished constructions
-		structures.addAll(constructionQueue.finishedStructures());
-		units.addAll(constructionQueue.finishedUnits());
-		
-		// Lower releases
-		constructionQueue.lowerReleases();
-	}
-	*/
-	
 	public int populationSpace() {
 		return (populationQuota - this.currentPopulation());
 	}
@@ -127,43 +122,11 @@ public class Player {
 	public int populationQuota() {
 		return populationQuota;
 	}
-	
-	/*
-	private int mineralExploitationStructuresQuantity() {
-		return (this.getMineralExploiters()).size();
-	}
-	
-	private int gasExploitationStructuresQuantity() {
-		return (this.getGasExploiters()).size();
-	}
-	
-	private int depotQuantity() {
-		return (this.getDepots()).size();
-	}
-	
-	
-	private LinkedList<Structure> getMineralExploiters() {
-		return getStructuresWithID(StructureID.MineralExploiter);
-	}
-	
-	private LinkedList<Structure> getGasExploiters() {
-		return getStructuresWithID(StructureID.GasExploiter);
-	}
-	
-	private LinkedList<Structure> getDepots() {
-		return getStructuresWithID(StructureID.Depot);
-	}
-	
-	private LinkedList<Structure> getStructuresWithID(StructureID id) {
-		LinkedList<Structure> wanted = new LinkedList<Structure>();
-		for (Structure structure : structures) {
-			if (structure.getId() == id)
-				wanted.add(structure);
-		}
-		return wanted;
-	}
-	*/
 
+	public void increasePopulationQuota(int populationQuotaIncrement) {
+		populationQuota += 5;
+	}
+	
 	public void gains(int mineral, int gas) {
 		resources.add(mineral, gas);
 	}
@@ -189,8 +152,26 @@ public class Player {
 		structures.add(structure);
 	}
 
-	public void increasePopulationQuota(int populationQuotaIncrement) {
-		populationQuota += 5;
+	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+		unit.setPosition(destination);
 	}
-
+	
+	
+	//TODO Implementar todos estos metodos
+	public void attack(MuggleUnit unit) {
+		//int range = unit.getAttackRange();
+		//Get enemies in the attack range, pick the closest and reduce life
+	}
+	
+	public void usePower(MagicalUnit unit) {
+		
+	}
+	
+	public void embark(TransportUnit transport, Transportable unit) {
+		transport.embark(unit);
+	}
+	
+	public void disembark(TransportUnit transport, Transportable unit) {
+		transport.disembark(unit);
+	}
 }
