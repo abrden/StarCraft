@@ -55,5 +55,7 @@ public abstract class Unit {
 	public void setPosition(Point destination) throws StepsLimitExceeded {
 		if (this.iCanGetThere(destination)) this.position = destination;
 	}
+	
+	public abstract void update();
 
 }

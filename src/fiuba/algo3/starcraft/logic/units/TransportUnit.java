@@ -35,4 +35,8 @@ public class TransportUnit extends Unit {
 			spaceTaken = spaceTaken + unit.getTransportQuota();
 		return (capacity - spaceTaken);
 	}
+	
+	public void update() {
+		life.regenerateShield();
+	}
 }

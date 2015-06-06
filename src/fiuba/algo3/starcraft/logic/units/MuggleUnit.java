@@ -34,4 +34,8 @@ public class MuggleUnit extends Unit implements Transportable {
 	public int getAttackSpaceDamage() {
 		return attack.getSpaceDamage();
 	}
+	
+	public void update() {
+		life.regenerateShield();
+	}
 }

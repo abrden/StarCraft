@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
 import java.util.Collection;
-import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
@@ -32,5 +31,15 @@ public class MagicalUnit extends Unit implements Transportable {
 	
 	public boolean canFly() {
 		return (transportationQuota == 0);
+	}
+	
+	public void update() {
+		// Gana energia del turno
+		energy += energyGainPerTurn;
+		
+		// Regenera escudo
+		life.regenerateShield();
+		
+		// Actualiza poderes en curso??
 	}
 }

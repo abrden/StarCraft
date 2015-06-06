@@ -15,5 +15,9 @@ public class Clon extends Unit {
 	public boolean itsAlive() {
 		return (life.getShield() > 0);
 	}
+	
+	public void update() {
+		life.regenerateShield();
+	}
 
 }
