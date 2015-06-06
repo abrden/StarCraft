@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.structures.depot;
+package fiuba.algo3.starcraft.logic.test.structures;
 
 import static org.junit.Assert.*;
 

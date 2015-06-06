@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.structures;
+package fiuba.algo3.starcraft.logic.test.structures.builders;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.structures.construction;
+package fiuba.algo3.starcraft.logic.test.structures;
 
 import static org.junit.Assert.*;
 
@@ -13,89 +13,11 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.ArchivosTemplariosTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
-import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.templates.structures.terran.FabricaTemplate;
-import fiuba.algo3.starcraft.logic.templates.structures.terran.PuertoEstelarTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class UnitCreationTest {
+public class ProtossConstructionStructureTest {
 
 	//Pruebo que la unidad creada es la deseada segun su valor, vida, suministro y tiempo de construccion.
-	@Test
-	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(50,0); // Valor = 50M
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
-		
-		Construction<Unit> construction = barraca.create("Marine", resources, 0, 1); // Suministro = 1
-		for(int i = 0; i < 3; i++) { // Tiempo de construccion = 3
-			construction.lowerRelease();
-		}
-		Unit marine = (Unit) construction.gather();
-		marine.reduceLife(40); // Vida = 40
-		
-		assertTrue(!marine.itsAlive());
-	}
-	
-	@Test
-	public void testCreateWithGolliatTemplateReturnsGolliat() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(100,50);
-		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
-		
-		Construction<Unit> construction = fabrica.create("Golliat", resources, 0, 2);
-		for(int i = 0; i < 6; i++) {
-			construction.lowerRelease();
-		}
-		Unit golliat = (Unit) construction.gather();
-		golliat.reduceLife(125);
-		
-		assertTrue(!golliat.itsAlive());
-	}
-	
-	@Test
-	public void testCreateWithEspectroTemplateReturnsEspectro() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(150,100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
-		
-		Construction<Unit> construction = puerto.create("Espectro", resources, 0, 2);
-		for(int i = 0; i < 8; i++) {
-			construction.lowerRelease();
-		}
-		Unit espectro = (Unit) construction.gather();
-		espectro.reduceLife(120);
-		
-		assertTrue(!espectro.itsAlive());
-	}
-	
-	@Test
-	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(100,225);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
-		
-		Construction<Unit> construction = puerto.create("Nave Ciencia", resources, 0, 2);
-		for(int i = 0; i < 10; i++) {
-			construction.lowerRelease();
-		}
-		Unit nave = (Unit) construction.gather();
-		nave.reduceLife(200);
-		
-		assertTrue(!nave.itsAlive());
-	}
-	
-	@Test
-	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
-		Resources resources = new Resources(100,100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
-		
-		Construction<Unit> construction = puerto.create("Nave Transporte", resources, 0, 2);
-		for(int i = 0; i < 7; i++) {
-			construction.lowerRelease();
-		}
-		Unit nave = (Unit) construction.gather();
-		nave.reduceLife(150);
-		
-		assertTrue(!nave.itsAlive());
-	}
-	
 	@Test
 	public void testCreateWithZealotTemplateReturnsZealot() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		Resources resources = new Resources(100,0);
@@ -170,4 +92,5 @@ public class UnitCreationTest {
 		
 		assertTrue(!templario.itsAlive());
 	}
+
 }

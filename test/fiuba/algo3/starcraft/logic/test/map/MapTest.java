@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.map;
+package fiuba.algo3.starcraft.logic.test.map;
 
 import static org.junit.Assert.*;
 

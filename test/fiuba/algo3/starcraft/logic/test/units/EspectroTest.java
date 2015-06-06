@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.units;
+package fiuba.algo3.starcraft.logic.test.units;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +16,11 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.PuertoEstelarTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class NaveCienciaTest {
+public class EspectroTest {
 
 	@Test
-	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired {
-		Resources initialResources = new Resources(700,425);
+	public void testEspectroCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired {
+		Resources initialResources = new Resources(750,300);
 		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
 		player.newStructureWithName("Deposito Suministro");
 		for(int i = 0; i < 7; i++) player.newTurn();
@@ -33,12 +33,12 @@ public class NaveCienciaTest {
 		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
 		player.receiveNewStructure(puerto);
 		
-		Construction<Unit> construction = puerto.create("Nave Ciencia", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = puerto.create("Espectro", player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
-		Unit nave = construction.gather();
-		player.receiveNewUnit(nave);
+		Unit espectro = (Unit) construction.gather();
+		player.receiveNewUnit(espectro);
 		
 		assertEquals(player.currentPopulation(), 2);
 	}

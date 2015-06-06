@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.test.units;
+package fiuba.algo3.starcraft.logic.test.units;
 
 import static org.junit.Assert.*;
 

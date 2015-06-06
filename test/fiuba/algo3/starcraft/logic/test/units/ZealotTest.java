@@ -1,6 +1,6 @@
-package fiuba.algo3.starcraft.test.units;
+package fiuba.algo3.starcraft.logic.test.units;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -16,11 +16,11 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class DragonTest {
+public class ZealotTest {
 
 	@Test
-	public void testDragonCreationWith1Pilon1AccesoAnd120M50G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired {
-		Resources initialResources = new Resources(375,50);
+	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired {
+		Resources initialResources = new Resources(350,0);
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), initialResources);
 		player.newStructureWithName("Pilon");
 		for(int i = 0; i < 6; i++) player.newTurn();
@@ -29,14 +29,25 @@ public class DragonTest {
 		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
 		player.receiveNewStructure(acceso);
 		
-		Construction<Unit> construction = acceso.create("Dragon", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = acceso.create("Zealot", player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
-		Unit dragon = (Unit) construction.gather();
-		player.receiveNewUnit(dragon);
-		assertEquals(player.getMineral(), 0);
-		assertEquals(player.getGas(), 0);
+		Unit zealot = (Unit) construction.gather();
+		player.receiveNewUnit(zealot);
+		
 		assertEquals(player.currentPopulation(), 2);
 	}
+	
+	@Test(expected = QuotaExceeded.class)
+	public void testZealotCreationIsImpossibleWithoutPilon() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
+		Resources initialResources = new Resources(150,0);
+		Player player = new Player(null, null, null, initialResources);
+		player.pays(150, 0);
+		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
+		player.receiveNewStructure(acceso);
+		
+		acceso.create("Zealot", player.getResources(), player.currentPopulation(), player.populationQuota());
+	}
+
 }
