@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -28,9 +29,9 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		//Faltan poderes y habilidades
 	}
 
-	public MagicalUnit create() {
-		return new MagicalUnit(name, new Life(health, shield), vision, 
-				stepsPerTurn, powers,
+	public MagicalUnit create(Point position) {
+		return new MagicalUnit(name, new Life(health, shield), position,
+				vision, stepsPerTurn, powers,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

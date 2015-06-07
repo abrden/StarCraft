@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.logic.units;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
@@ -12,8 +13,8 @@ public class TransportUnit extends Unit {
 	private Collection<Transportable> passengers;
 	private final int capacity;
 	
-	public TransportUnit(String name, Life life, int vision, int stepsPerTurn, int populationQuota, int capacity) {
-		super(name, life, vision, stepsPerTurn, populationQuota);
+	public TransportUnit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota, int capacity) {
+		super(name, life, position, vision, stepsPerTurn, populationQuota);
 		passengers = new LinkedList<Transportable>();
 		this.capacity = capacity;
 	}

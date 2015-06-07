@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.units;
 
 import java.util.Collection;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 
@@ -13,11 +14,11 @@ public class MagicalUnit extends Unit implements Transportable {
 	private final int transportationQuota;
 	private final Collection<Power> powers;
 	
-	public MagicalUnit(String name, Life life, int vision, int stepsPerTurn,
+	public MagicalUnit(String name, Life life, Point position, int vision, int stepsPerTurn,
 			Collection<Power> powers,
 			int initialEnergy, int maximumEnergy, int energyGainPerTurn, 
 			int transportationQuota, int populationQuota) {
-		super(name, life, vision, stepsPerTurn, populationQuota);
+		super(name, life, position, vision, stepsPerTurn, populationQuota);
 		this.energy = initialEnergy;
 		this.transportationQuota = transportationQuota;
 		this.maximumEnergy = maximumEnergy;

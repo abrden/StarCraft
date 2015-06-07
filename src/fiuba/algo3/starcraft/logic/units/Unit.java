@@ -13,9 +13,10 @@ public abstract class Unit {
 	protected Point position;
 	protected final int stepsPerTurn;
 	
-	Unit(String name, Life life, int vision, int stepsPerTurn, int populationQuota) {
+	Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		this.name = name;
 		this.life = life;
+		this.position = position;
 		this.vision = vision;
 		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
@@ -50,7 +51,7 @@ public abstract class Unit {
 	}
 	
 	private boolean iCanGetThere(Point destination) throws StepsLimitExceeded {
-		double distance = Math.sqrt((destination.getX()*destination.getX()) + (destination.getY()*destination.getY()));
+		double distance = position.distance(destination);
 		
 		if (distance < stepsPerTurn) return true;
 		else throw new StepsLimitExceeded();

@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.structures.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -22,8 +23,8 @@ public class NexoMineralTemplate extends StructureTemplate {
 		return instance;
 	}
 
-	public MineralExploiter create() {
-		return new MineralExploiter(name, new Life(health, shield));
+	public MineralExploiter create(Point position) {
+		return new MineralExploiter(name, new Life(health, shield), position);
 	}
 
 }

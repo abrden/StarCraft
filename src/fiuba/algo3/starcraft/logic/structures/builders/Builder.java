@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -18,7 +19,7 @@ public abstract class Builder {
 	protected Collection<StructureTemplate> templates = new LinkedList<StructureTemplate>();
 	protected Map<String,String> dependsOn = new HashMap<String,String>();
 	
-	public Construction<Structure> create(String name, Resources resources, Iterable<Structure> built) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
 		
 		this.structureRequiredExists(name, built);
 		
@@ -26,7 +27,7 @@ public abstract class Builder {
 		
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 			
-		return new Construction<Structure>(template.create(), template.getConstructionTime());
+		return new Construction<Structure>(template.create(position), template.getConstructionTime());
 	}
 	
 	private StructureTemplate getTemplateWithName(String name) throws TemplateNotFound {

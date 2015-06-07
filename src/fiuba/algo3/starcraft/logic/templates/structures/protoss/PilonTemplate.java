@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.structures.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -21,8 +22,8 @@ public class PilonTemplate extends StructureTemplate {
 		return instance;
 	}
 	
-	public Depot create() {
-		return new Depot(name, new Life(health,shield));
+	public Depot create(Point position) {
+		return new Depot(name, new Life(health,shield), position);
 	}
 
 }

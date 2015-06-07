@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.structures.terran;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.MineralExploiter;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -20,8 +21,8 @@ public class CentroMineralTemplate extends StructureTemplate {
 		return instance;
 	}
 	
-	public MineralExploiter create() {
-		return new MineralExploiter(name, new Life(health));
+	public MineralExploiter create(Point position) {
+		return new MineralExploiter(name, new Life(health), position);
 	}
 
 }

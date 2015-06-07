@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
@@ -8,9 +9,9 @@ public class MuggleUnit extends Unit implements Transportable {
 	private final Attack attack;
 	private final int transportationQuota;
 	
-	public MuggleUnit(String name, Life life, int vision, int stepsPerTurn,Attack attack, 
+	public MuggleUnit(String name, Life life, Point position, int vision, int stepsPerTurn,Attack attack, 
 			int transportationQuota, int populationQuota) {
-		super(name, life, vision, stepsPerTurn, populationQuota);
+		super(name, life, position, vision, stepsPerTurn, populationQuota);
 			this.attack = attack;
 			this.transportationQuota = transportationQuota; 
 	}

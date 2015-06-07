@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.templates.structures.protoss;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -29,8 +30,8 @@ public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
         return instance;
     }
 
-	public ConstructionStructure create() {
-		return new ConstructionStructure(name, new Life(health, shield), enabledTemplates);
+	public ConstructionStructure create(Point position) {
+		return new ConstructionStructure(name, new Life(health, shield), position, enabledTemplates);
 	}
 }
 

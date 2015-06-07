@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.terran;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
@@ -30,8 +31,8 @@ public class GolliatTemplate extends MuggleTemplate {
 		return instance;
 	}
 
-	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, stepsPerTurn, attack, transportationQuota, populationQuota);
+	public MuggleUnit create(Point position) {
+		return new MuggleUnit(name, new Life(health), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 
 }

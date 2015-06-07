@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.structures.terran;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -16,8 +17,8 @@ public class DepositoSuministroTemplate extends StructureTemplate {
 		health = 500;
 	}
 
-	public Depot create() {
-		return new Depot(name, new Life(health));
+	public Depot create(Point position) {
+		return new Depot(name, new Life(health), position);
 	}
 	public static DepositoSuministroTemplate getInstance() {
 		return instance;
