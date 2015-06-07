@@ -21,7 +21,7 @@ public class GolliatTemplate extends MuggleTemplate {
 		health = 125;
 		transportationQuota = 2;
 		damage = new Damage(12,10);
-		damageRange = 6; //TODO: ARREGLAR ESTO, TIENE DANO POR AIRES TAMBIEN!
+		damageRange = 6;
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 6;
 	}
