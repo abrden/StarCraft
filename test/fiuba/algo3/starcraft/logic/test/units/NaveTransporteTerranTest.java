@@ -12,7 +12,7 @@ import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import org.junit.Test;
 
-public class NaveTransporteTerranUnitaryTest {
+public class NaveTransporteTerranTest {
 
     @Test
     public void testNaveTransporteTerranEmbarksMarineFreeSpaceDownTo7() throws NoMoreSpaceInUnit{

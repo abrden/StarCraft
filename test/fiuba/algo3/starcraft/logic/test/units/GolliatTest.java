@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GolliatUnitaryTest {
+public class GolliatTest {
 
     @Test
     public void testCreateGolliatAndReduce50HealthNowHealthEquals75(){
