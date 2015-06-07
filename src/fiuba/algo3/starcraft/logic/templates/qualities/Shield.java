@@ -4,6 +4,7 @@ public class Shield {
 	
 	private int shield;
 	private int maximumShield;
+	private final int shieldRegen = 20;
 	
 	Shield(int shield) {
 		this.maximumShield = shield;
@@ -15,7 +16,11 @@ public class Shield {
 	}
 	
 	public void regenerate() {
-		shield = maximumShield;
+		shield += shieldRegen;
+		if (shield > maximumShield)
+			shield = maximumShield;
+
+
 	}
 
 	public void reduce(int damage) {
