@@ -13,5 +13,6 @@ public class Depot extends Structure {
 
 	public void update(Player player) {
 		player.increasePopulationQuota(POPULATION_QUOTA_INCREMENT);
+		life.regenerateShield();
 	}
 }

@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.structures;
 
 import java.util.Collection;
-import java.util.Objects;
 
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -46,7 +45,7 @@ public class ConstructionStructure extends Structure {
 	}
 
 	public void update(Player player) {
-		return;
+		life.regenerateShield();
 	}
 
 }
