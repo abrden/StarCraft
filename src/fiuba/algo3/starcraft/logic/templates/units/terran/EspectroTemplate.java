@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.terran;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
@@ -23,13 +24,14 @@ public class EspectroTemplate extends MuggleTemplate {
 		damage = new Damage(8,20);
 		damageRange = 5;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 8;
 	}
 
 	public static EspectroTemplate getInstance(){
 		return instance;
 	}
 
-	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
+	public MuggleUnit create(Point position) {
+		return new MuggleUnit(name, new Life(health), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

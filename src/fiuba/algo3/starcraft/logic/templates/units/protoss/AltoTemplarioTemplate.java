@@ -1,6 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates.units.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.units.MagicalTemplate;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
@@ -21,11 +23,15 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		energyGainPerTurn = 15;
 		transportationQuota = 2;
 		populationQuota = 2;
+		stepsPerTurn = 7;
+		powers.add(new Power(75, 7)); //Tormenta psionica
+		powers.add(new Power(100, 0)); //Alucinacion
 		//Faltan poderes y habilidades
 	}
 
-	public MagicalUnit create() {
-		return new MagicalUnit(name, new Life(health, shield), vision,
+	public MagicalUnit create(Point position) {
+		return new MagicalUnit(name, new Life(health, shield), position,
+				vision, stepsPerTurn, powers,
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

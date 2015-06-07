@@ -3,33 +3,48 @@ package fiuba.algo3.starcraft.logic.units;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
+import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 
 public class TransportUnit extends Unit {
 	
-	private Collection<Unit> passengers;
-	private int capacity;
+	private Collection<Transportable> passengers;
+	private final int capacity;
 	
-	public TransportUnit(String name, Life life, int vision, int populationQuota, int capacity) {
-		super(name, life, vision, populationQuota);
-		passengers = new LinkedList<Unit>();
+	public TransportUnit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota, int capacity) {
+		super(name, life, position, vision, stepsPerTurn, populationQuota);
+		passengers = new LinkedList<Transportable>();
 		this.capacity = capacity;
 	}
-/*
-	public void embark(Unit unit) {
+		
+	public void embark(Transportable unit) throws NoMoreSpaceInUnit {
 		if (this.theresSpaceForPassenger(unit))
 			passengers.add(unit);
+		else
+			throw new NoMoreSpaceInUnit();
 	}
-	
-	private boolean theresSpaceForPassenger(Unit unit) {
+
+	public void disembark(Transportable unit) throws NoUnitToRemove {
+		if (passengers.size() > 0)
+			passengers.remove(unit);
+		else
+			throw new NoUnitToRemove();
+	}
+
+	private boolean theresSpaceForPassenger(Transportable unit) {
 		return (this.freeSpace() >= unit.getTransportQuota());
 	}
 	
-	private int freeSpace() {
+	public int freeSpace() {
 		int spaceTaken = 0;
-		for (Unit unit : passengers)
+		for (Transportable unit : passengers)
 			spaceTaken = spaceTaken + unit.getTransportQuota();
 		return (capacity - spaceTaken);
 	}
-*/
+	
+	public void update() {
+		life.regenerateShield();
+	}
 }

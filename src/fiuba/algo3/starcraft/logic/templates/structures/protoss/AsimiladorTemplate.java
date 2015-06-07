@@ -1,7 +1,7 @@
 package fiuba.algo3.starcraft.logic.templates.structures.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.GasExploiter;
-import fiuba.algo3.starcraft.logic.structures.StructureID;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.structures.StructureTemplate;
@@ -22,12 +22,8 @@ public class AsimiladorTemplate extends StructureTemplate {
 		return instance;
 	}
 	
-	public GasExploiter create() {
-		// TODO Solucionar tiempo de construccion
-		return new GasExploiter(name, new Life(health, shield));
+	public GasExploiter create(Point position) {
+		return new GasExploiter(name, new Life(health, shield), position);
 	}
 
-	public StructureID getStructureId() {
-		return StructureID.GasExploiter;
-	}
 }

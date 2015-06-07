@@ -5,17 +5,15 @@ import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public abstract class Structure implements Updatable {
 	
-	//protected int size; Radio de la circunferencia de tierra que ocupa? No es necesario por ahora pero, si se queda, no tendriamos que ponerle size tambien a las units?
 	protected Point position;
 	protected Life life;
 	protected String name;
 	
-	Structure(String name, Life life) {
+	Structure(String name, Life life, Point position) {
 		this.name = name;
 		this.life = life;
+		this.position = position;
 	}
-	
-	public abstract StructureID getId();
 	
 	public boolean itsAlive() {
 		return (life.getHealth() > 0);

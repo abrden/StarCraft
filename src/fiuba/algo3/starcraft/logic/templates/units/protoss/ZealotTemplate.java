@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
@@ -23,13 +24,14 @@ public class ZealotTemplate extends MuggleTemplate {
 		damage = new Damage(8,0);
 		damageRange = 1;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 4;
 	}
 
 	public static ZealotTemplate getInstance(){
 		return instance;
 	}
 
-	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health, shield), vision, attack, transportationQuota, populationQuota);
+	public MuggleUnit create(Point position) {
+		return new MuggleUnit(name, new Life(health, shield), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 }

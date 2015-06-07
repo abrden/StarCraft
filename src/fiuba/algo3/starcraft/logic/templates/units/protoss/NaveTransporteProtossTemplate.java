@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.protoss;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.units.TransportTemplate;
@@ -18,14 +19,14 @@ public class NaveTransporteProtossTemplate extends TransportTemplate {
         health = 80;
         shield = 60;
         capacity = 8;
+        stepsPerTurn = 8;
     }
 
     public static NaveTransporteProtossTemplate getInstance() {
         return instance;
     }
     
-    public TransportUnit create() {
-        // TODO Resolver tiempo de construccion
-        return new TransportUnit(name, new Life(health, shield), vision, populationQuota, capacity);
+    public TransportUnit create(Point position) {
+        return new TransportUnit(name, new Life(health, shield), position, vision, stepsPerTurn, populationQuota, capacity);
     }
 }

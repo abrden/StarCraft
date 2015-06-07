@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.templates.units.terran;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
@@ -22,14 +23,15 @@ public class MarineTemplate extends MuggleTemplate {
 		damage = new Damage(6,6);
 		damageRange = 4;
 		attack = new Attack(damage, damageRange);
+		stepsPerTurn = 3;
 	}
 
 	public static MarineTemplate getInstance(){
 		return instance;
 	}
 
-	public MuggleUnit create() {
-		return new MuggleUnit(name, new Life(health), vision, attack, transportationQuota, populationQuota);
+	public MuggleUnit create(Point position) {
+		return new MuggleUnit(name, new Life(health), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
 	}
 
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.templates.structures.terran;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
@@ -26,8 +27,7 @@ public class FabricaTemplate extends ConstructionTemplate {
     public static FabricaTemplate getInstance() {
         return instance;
     }
-    public ConstructionStructure create() {
-        // TODO Resolver tiempo de construccion
-        return new ConstructionStructure(name, new Life(health), enabledTemplates);
+    public ConstructionStructure create(Point position) {
+        return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
     }
 }
