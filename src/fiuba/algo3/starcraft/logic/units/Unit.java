@@ -44,6 +44,10 @@ public abstract class Unit {
 	public int getShield() {
 		return this.life.getShield();
 	}
+
+	public int getHealth() {
+		return this.life.getHealth();
+	}
 	
 	private boolean iCanGetThere(Point destination) throws StepsLimitExceeded {
 		double distance = Math.sqrt((destination.getX()*destination.getX()) + (destination.getY()*destination.getY()));

@@ -19,6 +19,8 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
+import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Player {
@@ -175,11 +177,11 @@ public class Player {
 		//power.activate(affectedUnits);
 	}
 	
-	public void embark(TransportUnit transport, Transportable unit) {
+	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit{
 		transport.embark(unit);
 	}
 	
-	public void disembark(TransportUnit transport, Transportable unit) {
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove{
 		transport.disembark(unit);
 	}
 }
