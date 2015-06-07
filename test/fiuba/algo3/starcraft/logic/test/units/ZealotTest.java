@@ -10,7 +10,7 @@ public class ZealotTest {
 
     @Test
     public void testCreateZealotAndReduce50HealthNowShieldIs50AndHealth60() {
-        Unit zealot = ZealotTemplate.getInstance().create();
+        Unit zealot = ZealotTemplate.getInstance().create(null);
 
         zealot.reduceLife(50);
 
@@ -19,7 +19,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal110DamageToZealotNowShieldIs0AndHealth50() {
-        Unit zealot = ZealotTemplate.getInstance().create();
+        Unit zealot = ZealotTemplate.getInstance().create(null);
 
         zealot.reduceLife(110);
 
@@ -28,7 +28,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal160DamageZealotIsNowDead() {
-        Unit zealot = ZealotTemplate.getInstance().create();
+        Unit zealot = ZealotTemplate.getInstance().create(null);
 
         zealot.reduceLife(160);
 
@@ -37,7 +37,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo100() {
-        Unit zealot = ZealotTemplate.getInstance().create();
+        Unit zealot = ZealotTemplate.getInstance().create(null);
 
         zealot.reduceLife(100);
         for (int i = 0; i < 5; i++)
