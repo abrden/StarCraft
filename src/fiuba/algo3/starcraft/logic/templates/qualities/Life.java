@@ -19,11 +19,13 @@ public class Life {
 	}
 	
 	public int getShield() {
-		return shield.getShield();
+		if (shield != null) return shield.getShield();
+		else return 0;
 	}
 	
 	public void regenerateShield() {
-		shield.regenerate();
+		if (shield != null) shield.regenerate();
+		else return;
 	}
 
 	public void reduce(int damage) {
