@@ -29,15 +29,17 @@ public class Player {
 	private Color color;
 	private String name;
 	private Resources resources;
+	private Point base;
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
 	private int populationQuota;
 	
-	public Player(String name, Color color, Builder builder, Resources initialResources) {
+	public Player(String name, Color color, Builder builder, Point base, Resources initialResources) {
 		this.name = name;
 		this.color = color;
 		this.builder = builder;
+		this.base = base;
 		this.resources = initialResources;
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
@@ -144,11 +146,11 @@ public class Player {
 	}
 
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		constructionQueue.addUnit(structure.create(name, resources, this.currentPopulation(), populationQuota));
+		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), populationQuota));
 	}
 	
-	public void newStructureWithName(String name) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		constructionQueue.addStructure(builder.create(name, resources, structures));
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+		constructionQueue.addStructure(builder.create(name, position, resources, structures));
 	}
 	
 	public void receiveNewUnit(Unit unit) {
