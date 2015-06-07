@@ -22,18 +22,18 @@ public class ScoutTest {
 	@Test
 	public void testScoutCreationWith1Pilon1Acceso1PuertoAnd300M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(700,300);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), initialResources);
-		player.newStructureWithName("Pilon");
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
-		player.newStructureWithName("Acceso");
+		player.newStructureWithName("Acceso", null);
 		for(int i = 0; i < 9; i++) player.newTurn();
 		
 		
 		player.pays(150, 150);
-		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create(null);
 		player.receiveNewStructure(puerto);
 		
-		Construction<Unit> construction = puerto.create("Scout", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = puerto.create("Scout", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

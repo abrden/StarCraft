@@ -22,19 +22,19 @@ public class AltoTemplarioTest {
 	@Test
 	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(600,500);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), initialResources);
-		player.newStructureWithName("Pilon");
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
-		player.newStructureWithName("Acceso");
+		player.newStructureWithName("Acceso", null);
 		for(int i = 0; i < 9; i++) player.newTurn();
-		player.newStructureWithName("Puerto Estelar");
+		player.newStructureWithName("Puerto Estelar", null);
 		for(int i = 0; i < 11; i++) player.newTurn();
 		
-		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
+		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create(null);
 		player.pays(150, 200);
 		player.receiveNewStructure(archivos);
 		
-		Construction<Unit> construction = archivos.create("Alto Templario", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = archivos.create("Alto Templario", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

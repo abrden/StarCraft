@@ -22,9 +22,9 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testCreateWithZealotTemplateReturnsZealot() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,0);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
+		ConstructionStructure acceso = AccesoTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = acceso.create("Zealot", resources, 0, 2);
+		Construction<Unit> construction = acceso.create("Zealot", null, resources, 0, 2);
 		for(int i = 0; i < 4; i++) {
 			construction.lowerRelease();
 		}
@@ -37,9 +37,9 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testCreateWithDragonTemplateReturnsDragon() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(125,50);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
+		ConstructionStructure acceso = AccesoTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = acceso.create("Dragon", resources, 0, 2);
+		Construction<Unit> construction = acceso.create("Dragon", null, resources, 0, 2);
 		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
@@ -52,9 +52,9 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testCreateWithScoutTemplateReturnsScout() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(300,150);
-		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = puerto.create("Scout", resources, 0, 3);
+		Construction<Unit> construction = puerto.create("Scout", null, resources, 0, 3);
 		for(int i = 0; i < 9; i++) {
 			construction.lowerRelease();
 		}
@@ -67,9 +67,9 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testCreateWithNaveProtossTemplateReturnsNaveProtoss() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(200,0);
-		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarProtossTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte", null, resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
@@ -82,9 +82,9 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testCreateWithAltoTemplarioTemplateReturnsAltoTemplario() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(50,150);
-		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create();
+		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = archivos.create("Alto Templario", resources, 0, 2);
+		Construction<Unit> construction = archivos.create("Alto Templario", null, resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}

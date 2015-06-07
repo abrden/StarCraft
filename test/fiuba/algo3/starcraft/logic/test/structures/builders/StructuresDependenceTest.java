@@ -29,28 +29,28 @@ public class StructuresDependenceTest {
 	public void testFabricaCantBeBuiltWithoutBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(300,100);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(DepositoSuministroTemplate.getInstance().create());
+		built.add(DepositoSuministroTemplate.getInstance().create(null));
 		
-		TerranBuilder.getInstance().create("Fabrica", initialResources, built);
+		TerranBuilder.getInstance().create("Fabrica", null, initialResources, built);
 	}
 
 	@Test(expected = MissingStructureRequired.class)
 	public void testPuertoEstelarCantBeBuiltWithFabricaAndNoBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(150,100);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(FabricaTemplate.getInstance().create());
+		built.add(FabricaTemplate.getInstance().create(null));
 		
-		TerranBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		TerranBuilder.getInstance().create("Puerto Estelar", null, initialResources, built);
 	}
 	
 	@Test
 	public void testPuertoEstelarNeedsFabricaAndBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,100);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(BarracaTemplate.getInstance().create());
-		built.add(FabricaTemplate.getInstance().create());
+		built.add(BarracaTemplate.getInstance().create(null));
+		built.add(FabricaTemplate.getInstance().create(null));
 		
-		Construction<Structure> construction = TerranBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		Construction<Structure> construction = TerranBuilder.getInstance().create("Puerto Estelar", null, initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -64,9 +64,9 @@ public class StructuresDependenceTest {
 	public void testFabricaNeedsBarraca() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(200,100);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(BarracaTemplate.getInstance().create());
+		built.add(BarracaTemplate.getInstance().create(null));
 		
-		Construction<Structure> construction = TerranBuilder.getInstance().create("Fabrica", initialResources, built);
+		Construction<Structure> construction = TerranBuilder.getInstance().create("Fabrica", null, initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -78,28 +78,28 @@ public class StructuresDependenceTest {
 	public void testPuertoEstelarCantBeBuiltWithoutAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(250,150);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(PilonTemplate.getInstance().create());
+		built.add(PilonTemplate.getInstance().create(null));
 		
-		TerranBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		TerranBuilder.getInstance().create("Puerto Estelar", null, initialResources, built);
 	}
 
 	@Test(expected = MissingStructureRequired.class)
 	public void testArchivosTemplariosCantBeBuiltWithPuertoEstelarAndNoAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(150,200);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(PuertoEstelarProtossTemplate.getInstance().create());
+		built.add(PuertoEstelarProtossTemplate.getInstance().create(null));
 		
-		ProtossBuilder.getInstance().create("Archivos Templarios", initialResources, built);
+		ProtossBuilder.getInstance().create("Archivos Templarios", null, initialResources, built);
 	}
 	
 	@Test
 	public void testArchivosTemplariosNeedsPuertoEstelarAndAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,200);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(AccesoTemplate.getInstance().create());
-		built.add(PuertoEstelarProtossTemplate.getInstance().create());
+		built.add(AccesoTemplate.getInstance().create(null));
+		built.add(PuertoEstelarProtossTemplate.getInstance().create(null));
 		
-		Construction<Structure> construction = ProtossBuilder.getInstance().create("Archivos Templarios", initialResources, built);
+		Construction<Structure> construction = ProtossBuilder.getInstance().create("Archivos Templarios", null, initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -111,9 +111,9 @@ public class StructuresDependenceTest {
 	public void testPuertoEstelarNeedsAcceso() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(150,150);
 		Collection<Structure> built = new LinkedList<Structure>();
-		built.add(AccesoTemplate.getInstance().create());
+		built.add(AccesoTemplate.getInstance().create(null));
 		
-		Construction<Structure> construction = ProtossBuilder.getInstance().create("Puerto Estelar", initialResources, built);
+		Construction<Structure> construction = ProtossBuilder.getInstance().create("Puerto Estelar", null, initialResources, built);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

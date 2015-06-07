@@ -22,19 +22,19 @@ public class EspectroTest {
 	@Test
 	public void testEspectroCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(750,300);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
-		player.newStructureWithName("Deposito Suministro");
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
-		player.newStructureWithName("Barraca");
+		player.newStructureWithName("Barraca", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
-		player.newStructureWithName("Fabrica");
+		player.newStructureWithName("Fabrica", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
 		
 		player.pays(150, 100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create(null);
 		player.receiveNewStructure(puerto);
 		
-		Construction<Unit> construction = puerto.create("Espectro", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = puerto.create("Espectro", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

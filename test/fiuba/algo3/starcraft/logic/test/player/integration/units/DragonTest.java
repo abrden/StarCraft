@@ -22,15 +22,15 @@ public class DragonTest {
 	@Test
 	public void testDragonCreationWith1Pilon1AccesoAnd120M50G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(375,50);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), initialResources);
-		player.newStructureWithName("Pilon");
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		
 		player.pays(150, 0);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create();
+		ConstructionStructure acceso = AccesoTemplate.getInstance().create(null);
 		player.receiveNewStructure(acceso);
 		
-		Construction<Unit> construction = acceso.create("Dragon", player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = acceso.create("Dragon", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

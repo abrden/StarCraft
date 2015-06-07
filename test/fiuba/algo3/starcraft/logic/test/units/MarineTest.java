@@ -10,7 +10,7 @@ public class MarineTest {
 
 	@Test
 	public void test() {
-		MuggleUnit marine = new MuggleUnit(null, null, 0, 0, null, 0, 0);
+		MuggleUnit marine = new MuggleUnit(null, null, null, 0, 0, null, 0, 0);
 		
 		
 		

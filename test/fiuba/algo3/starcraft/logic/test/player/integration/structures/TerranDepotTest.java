@@ -18,9 +18,9 @@ public class TerranDepotTest {
 	@Test
 	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
 		
-		player.newStructureWithName("Deposito Suministro");
+		player.newStructureWithName("Deposito Suministro", null);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 
@@ -30,10 +30,10 @@ public class TerranDepotTest {
 	@Test
 	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
 		
-		player.newStructureWithName("Deposito Suministro");
-		player.newStructureWithName("Deposito Suministro");
+		player.newStructureWithName("Deposito Suministro", null);
+		player.newStructureWithName("Deposito Suministro", null);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -43,9 +43,9 @@ public class TerranDepotTest {
 	@Test
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);	
-		player.newStructureWithName("Deposito Suministro");
-		player.newStructureWithName("Deposito Suministro");
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);	
+		player.newStructureWithName("Deposito Suministro", null);
+		player.newStructureWithName("Deposito Suministro", null);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -57,16 +57,16 @@ public class TerranDepotTest {
 	@Test
 	public void testPopulationQuotais0With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
 		DepositoSuministroTemplate templateDepositoSuministro =  DepositoSuministroTemplate.getInstance();
 		
-		Depot depot1 = templateDepositoSuministro.create();
+		Depot depot1 = templateDepositoSuministro.create(null);
 		player.pays(100,0);
 		player.receiveNewStructure(depot1);
 		player.newTurn();
 		assertEquals(player.populationQuota(), 5);		
 		
-		Depot depot2 = templateDepositoSuministro.create();
+		Depot depot2 = templateDepositoSuministro.create(null);
 		player.pays(100,0);
 		player.receiveNewStructure(depot2);
 		player.newTurn();

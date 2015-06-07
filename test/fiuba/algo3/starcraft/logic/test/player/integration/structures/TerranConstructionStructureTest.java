@@ -22,9 +22,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(50,0); // Valor = 50M
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create();
+		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = barraca.create("Marine", resources, 0, 1); // Suministro = 1
+		Construction<Unit> construction = barraca.create("Marine", null, resources, 0, 1); // Suministro = 1
 		for(int i = 0; i < 3; i++) { // Tiempo de construccion = 3
 			construction.lowerRelease();
 		}
@@ -37,9 +37,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithGolliatTemplateReturnsGolliat() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,50);
-		ConstructionStructure fabrica = FabricaTemplate.getInstance().create();
+		ConstructionStructure fabrica = FabricaTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = fabrica.create("Golliat", resources, 0, 2);
+		Construction<Unit> construction = fabrica.create("Golliat", null, resources, 0, 2);
 		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
@@ -52,9 +52,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithEspectroTemplateReturnsEspectro() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(150,100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = puerto.create("Espectro", resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Espectro", null, resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
@@ -67,9 +67,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,225);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = puerto.create("Nave Ciencia", resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Ciencia", null, resources, 0, 2);
 		for(int i = 0; i < 10; i++) {
 			construction.lowerRelease();
 		}
@@ -82,9 +82,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create();
+		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create(null);
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte", null, resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}

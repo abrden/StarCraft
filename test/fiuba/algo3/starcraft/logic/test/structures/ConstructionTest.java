@@ -12,7 +12,7 @@ public class ConstructionTest {
 
 	@Test
 	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5TurnLeavesItFinished() {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -21,7 +21,7 @@ public class ConstructionTest {
 
 	@Test
 	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5EnablesGathering() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -30,7 +30,7 @@ public class ConstructionTest {
 	
 	@Test(expected = ConstructionNotFinished.class)
 	public void testGatheringConstructionBeforeReleaseThrowsConstructionNotFinishedException() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
 		
 		construction.gather();
 	}

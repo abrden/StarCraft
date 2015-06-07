@@ -16,28 +16,28 @@ public class PlayerTest {
 
 	@Test
 	public void testPlayerStartsWithPopulation0() {
-		Player player = new Player(null, null, null, null);
+		Player player = new Player(null, null, null, null, null);
 		
 		assertEquals(player.currentPopulation(), 0);
 	}
 	
 	@Test
 	public void testPlayerStartsWithPopulationSpace0() {
-		Player player = new Player(null, null, null, null);
+		Player player = new Player(null, null, null, null, null);
 		
 		assertEquals(player.populationSpace(), 0);
 	}
 	
 	@Test
 	public void testPlayerStartsWithPopulationQuota0() {
-		Player player = new Player(null, null, null, null);
+		Player player = new Player(null, null, null, null, null);
 		
 		assertEquals(player.populationQuota(), 0);
 	}
 		
 	@Test
 	public void testPlayerGains200MAnd100MLeavesPlayerWithThoseResources() {
-		Player player = new Player(null, null, null, new Resources(0,0));
+		Player player = new Player(null, null, null, null, new Resources(0,0));
 		
 		player.gains(200, 100);
 		
@@ -47,9 +47,9 @@ public class PlayerTest {
 	
 	@Test
 	public void testTerranPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Deposito() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		Player player = new Player(null, null, TerranBuilder.getInstance(), new Resources(100,0));
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, new Resources(100,0));
 		
-		player.newStructureWithName("Deposito Suministro");
+		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++)  player.newTurn();
 		
 		assertEquals(player.populationQuota(), 5);
@@ -57,9 +57,9 @@ public class PlayerTest {
 	
 	@Test
 	public void testProtossPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Pilon() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), new Resources(100,0));
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, new Resources(100,0));
 		
-		player.newStructureWithName("Pilon");
+		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++)  player.newTurn();
 		
 		assertEquals(player.populationQuota(), 5);

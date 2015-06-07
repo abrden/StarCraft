@@ -12,8 +12,8 @@ public class DepotTest {
 
 	@Test
 	public void testUpdateIncreasesPlayersPopulationQuotaBy5() {
-		Depot depot = new Depot(null, null);
-		Player player = new Player(null, null, null, null);
+		Depot depot = new Depot(null, null, null);
+		Player player = new Player(null, null, null, null, null);
 		
 		depot.update(player);
 		
@@ -22,7 +22,7 @@ public class DepotTest {
 
 	@Test
 	public void testDepotIsDeadWithLife100AndHarm100() {
-		Depot depot = new Depot(null, new Life(100));
+		Depot depot = new Depot(null, new Life(100), null);
 		
 		depot.reduceLife(100);
 		
