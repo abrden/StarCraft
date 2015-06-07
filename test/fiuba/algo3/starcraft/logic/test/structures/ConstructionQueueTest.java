@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.logic.test.structures;
 
-//import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 

@@ -1,16 +1,20 @@
 package fiuba.algo3.starcraft.logic.test.units;
 
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ZealotTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
+
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class ZealotTest {
 
     @Test
     public void testCreateZealotAndReduce50HealthNowShieldIs50AndHealth60() {
-        Unit zealot = ZealotTemplate.getInstance().create(null);
+        Point position = new Point(1,1);
+    	Unit zealot = ZealotTemplate.getInstance().create(position);
 
         zealot.reduceLife(50);
 
