@@ -24,8 +24,8 @@ public class TransportUnit extends Unit {
 		else
 			throw new NoMoreSpaceInUnit();
 	}
-	//Falta ver si la unidad que pide sacar no esta embarcada
-	public void disembark(Transportable unit) throws NoUnitToRemove{
+
+	public void disembark(Transportable unit) throws NoUnitToRemove {
 		if (passengers.size() > 0)
 			passengers.remove(unit);
 		else
