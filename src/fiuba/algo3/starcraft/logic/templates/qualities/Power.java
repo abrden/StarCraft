@@ -24,7 +24,7 @@ public abstract class Power {
 	
 	public abstract boolean itsFinished();
 
-	public void update() {
+	public void execute() {
 		for (Unit unit : affectedUnits) {
 			this.execute(unit);
 		}

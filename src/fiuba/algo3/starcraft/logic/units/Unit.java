@@ -79,8 +79,7 @@ public abstract class Unit {
 	public abstract void executeEMP();
 
 	public void executeRadiacion() {
-		this.reduceLife(75);
-		
+		this.reduceLife(40);
 	}
 
 }

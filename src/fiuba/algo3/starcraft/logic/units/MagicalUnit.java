@@ -5,6 +5,7 @@ import java.util.Collection;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
+import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 
 public class MagicalUnit extends Unit implements Transportable {
 	
@@ -43,15 +44,22 @@ public class MagicalUnit extends Unit implements Transportable {
 		life.regenerateShield();
 	}
 
-	public Power getPowerWithName(String name) {
-		for (Power power : powers)
-			if(power.getName() == name)
-				return power;
-		return null;
-	}
-
 	public void executeEMP() {
 		energy = 0;
+	}
+
+	private void giveUpEnergyForPower(Power power) throws InsufficientEnergy {
+		if (energy < power.getCost()) throw new InsufficientEnergy();
+		energy =- power.getCost();
+	}
+	
+	public Power usePowerWithName(String name) throws InsufficientEnergy {
+		for (Power power : powers)
+			if(power.getName() == name) {
+				this.giveUpEnergyForPower(power);
+				return power;
+			}
+		return null;
 	}
 	
 }
