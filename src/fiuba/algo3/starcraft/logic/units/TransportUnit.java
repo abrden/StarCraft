@@ -10,7 +10,7 @@ import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 
 public class TransportUnit extends Unit {
 	
-	private Collection<Transportable> passengers;
+	private final Collection<Transportable> passengers;
 	private final int capacity;
 	
 	public TransportUnit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota, int capacity) {
@@ -46,5 +46,9 @@ public class TransportUnit extends Unit {
 	
 	public void update() {
 		life.regenerateShield();
+	}
+	
+	public void executeEMP() {
+		life.destroyShield();
 	}
 }

@@ -9,7 +9,7 @@ public abstract class Unit {
 	protected final String name;
 	protected final int vision;
 	protected final int populationQuota;
-	protected Life life;
+	protected final Life life;
 	protected Point position;
 	protected final int stepsPerTurn;
 	
@@ -35,19 +35,23 @@ public abstract class Unit {
 	}
 	
 	public int getPopulationQuota() {
-		return this.populationQuota;
+		return populationQuota;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public int getVision() {
-		return this.vision;
+		return vision;
 	}
 	
 	public int getShield() {
-		return this.life.getShield();
+		return life.getShield();
 	}
 
 	public int getHealth() {
-		return this.life.getHealth();
+		return life.getHealth();
 	}
 	
 	private boolean iCanGetThere(Point destination) throws StepsLimitExceeded {
@@ -62,5 +66,20 @@ public abstract class Unit {
 	}
 	
 	public abstract void update();
+
+	public Point getPosition() {
+		return position;
+	}
+
+	// TODO Emprolijar estos metodos de poderes, sacar hardcodeos etc
+	public void executeTormentaPsionica() {
+		this.reduceLife(50);
+	}
+
+	public abstract void executeEMP();
+
+	public void executeRadiacion() {
+		this.reduceLife(40);
+	}
 
 }

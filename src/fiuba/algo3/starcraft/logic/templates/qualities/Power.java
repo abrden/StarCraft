@@ -1,29 +1,33 @@
 package fiuba.algo3.starcraft.logic.templates.qualities;
 
-import java.util.Collection;
+import java.util.List;
 
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class Power {
+public abstract class Power {
 
-	private int cost;
-	private int range;
-	private Collection<Unit> affectedUnits;
+	protected List<Unit> affectedUnits;
 	
-	public Power(int cost, int range) {
-		this.cost = cost;
-		this.range = range;
-	}
-	
-	public int getCost() {
-		return cost;
-	}
-	
-	public int getRange() {
-		return range;
-	}
-	
-	public void lockAfectedUnits(Collection<Unit> affected) {
+	public void lockUnits(List<Unit> affected) {
 		this.affectedUnits = affected;
 	}
+	
+	public abstract String getName();
+	
+	public abstract int getCost();
+
+	public abstract int getRange();
+	
+	public abstract void activate();
+	
+	public abstract void execute(Unit unit);
+	
+	public abstract boolean itsFinished();
+
+	public void execute() {
+		for (Unit unit : affectedUnits) {
+			this.execute(unit);
+		}
+	}
+
 }

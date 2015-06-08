@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -19,6 +20,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
@@ -33,6 +35,7 @@ public class Player {
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
+	private Collection<Power> activePowers;
 	private int populationQuota;
 	
 	public Player(String name, Color color, Builder builder, Point base, Resources initialResources) {
@@ -44,6 +47,7 @@ public class Player {
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
 		this.constructionQueue = new ConstructionQueue();
+		this.activePowers = new LinkedList<Power>();
 	}
 	
 	public String getName() {
@@ -69,16 +73,6 @@ public class Player {
 	public void newTurn() {
 		this.update();
 		
-		//Visitar cola de construccion
-		//this.updateConstructionQueue();
-		
-		//Itera entre sus units y pierde la referencia de las muertas
-		//this.getRidOfDeadUnits();
-		//Itera entre sus estructuras y pierde la referencia de las muertas
-		//this.getRidOfDeadStructures();
-		
-		//Cada estructura de explotacion junta +10 de su recurso
-		//this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
 
 	private void update() {
@@ -97,6 +91,14 @@ public class Player {
 		// Regeneracion de escudos, ganancia de energia, ...
 		for (Unit unit : units)
 			unit.update();
+		
+		// Actualizacion de poderes
+		for (Power power : activePowers) {
+			if (!power.itsFinished()) {
+				power.execute();
+			} else activePowers.remove(power);
+		}
+		//TODO arreglar else, rompe iterador de la lista
 	}
 
 	private void getRidOfDeadUnits() {
@@ -163,20 +165,23 @@ public class Player {
 
 	/* Manipulacion de unidades */
 	
+	//TODO Implementar todos estos metodos
 	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+		// llama al mapa
 		unit.setPosition(destination);
 	}
 	
-	//TODO Implementar todos estos metodos
 	public void attack(MuggleUnit unit) {
 		//int range = unit.getAttackRange();
 		//Get enemies in the attack range, pick the closest and reduce life
 	}
 	
-	public void usePower(MagicalUnit unit, Power power) {
-		//int range = power.getRange();
-		//Collection <Unit> affectedUnits = unitsInRange(range);
-		//power.activate(affectedUnits);
+	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy {
+		Power power = unit.usePowerWithName(name);
+		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange()));
+		power.activate();
+		power.execute();
+		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit{

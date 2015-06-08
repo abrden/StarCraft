@@ -34,5 +34,9 @@ public class Life {
 			else health -= 1;
 		}
 	}
-	//TODO: Faltan excepciones por si no tiene escudo (Es Terran).
+	
+	public void destroyShield() {
+		if (shield != null) shield.destroy();
+	}
+	
 }
