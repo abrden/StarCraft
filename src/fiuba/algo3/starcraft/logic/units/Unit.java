@@ -12,6 +12,8 @@ public abstract class Unit {
 	protected final Life life;
 	protected Point position;
 	protected final int stepsPerTurn;
+	private static final int TORMENTA_PSIONICA_DAMAGE = 50;
+	private static final int RADIACION_DAMAGE = 50;
 	
 	Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		this.name = name;
@@ -73,13 +75,13 @@ public abstract class Unit {
 
 	// TODO Emprolijar estos metodos de poderes, sacar hardcodeos etc
 	public void executeTormentaPsionica() {
-		this.reduceLife(50);
+		this.reduceLife(TORMENTA_PSIONICA_DAMAGE);
 	}
 
 	public abstract void executeEMP();
 
 	public void executeRadiacion() {
-		this.reduceLife(40);
+		this.reduceLife(RADIACION_DAMAGE);
 	}
 
 }

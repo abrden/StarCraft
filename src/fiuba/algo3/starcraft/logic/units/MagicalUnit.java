@@ -44,8 +44,12 @@ public class MagicalUnit extends Unit implements Transportable {
 		life.regenerateShield();
 	}
 
-	public void executeEMP() {
+	private void drainEnergy() {
 		energy = 0;
+	}
+	
+	public void executeEMP() {
+		this.drainEnergy();
 	}
 
 	private void giveUpEnergyForPower(Power power) throws InsufficientEnergy {
