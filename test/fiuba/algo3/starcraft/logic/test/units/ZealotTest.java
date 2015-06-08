@@ -40,13 +40,16 @@ public class ZealotTest {
     }
 
     @Test
-    public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo100() {
+    public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo60() {
         Unit zealot = ZealotTemplate.getInstance().create(null);
-
+        assertEquals(60, zealot.getShield());
+        
         zealot.reduceLife(100);
+        assertEquals(60, zealot.getHealth());
+        assertEquals(0, zealot.getShield());
         for (int i = 0; i < 5; i++)
             zealot.update();
 
-        assertEquals(100, zealot.getShield());
+        assertEquals(60, zealot.getShield());
     }
 }
