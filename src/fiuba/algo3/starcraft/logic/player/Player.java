@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -33,6 +34,7 @@ public class Player {
 	private Collection<Structure> structures;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
+	private Collection<Power> activePowers;
 	private int populationQuota;
 	
 	public Player(String name, Color color, Builder builder, Point base, Resources initialResources) {
@@ -44,6 +46,7 @@ public class Player {
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
 		this.constructionQueue = new ConstructionQueue();
+		this.activePowers = new LinkedList<Power>();
 	}
 	
 	public String getName() {
@@ -69,16 +72,6 @@ public class Player {
 	public void newTurn() {
 		this.update();
 		
-		//Visitar cola de construccion
-		//this.updateConstructionQueue();
-		
-		//Itera entre sus units y pierde la referencia de las muertas
-		//this.getRidOfDeadUnits();
-		//Itera entre sus estructuras y pierde la referencia de las muertas
-		//this.getRidOfDeadStructures();
-		
-		//Cada estructura de explotacion junta +10 de su recurso
-		//this.gains(mineralExploitationStructuresQuantity() * resourcesProducedPerTurn, gasExploitationStructuresQuantity() * resourcesProducedPerTurn);
 	}
 
 	private void update() {
@@ -97,6 +90,14 @@ public class Player {
 		// Regeneracion de escudos, ganancia de energia, ...
 		for (Unit unit : units)
 			unit.update();
+		
+		// Actualizacion de poderes
+		for (Power power : activePowers) {
+			if (!power.itsFinished()) {
+				power.update();
+			} else activePowers.remove(power);
+		}
+		//TODO arreglar else, rompe iterador de la lista
 	}
 
 	private void getRidOfDeadUnits() {
@@ -164,6 +165,8 @@ public class Player {
 	/* Manipulacion de unidades */
 	
 	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+		// llama al mapa
+		
 		unit.setPosition(destination);
 	}
 	
@@ -173,10 +176,12 @@ public class Player {
 		//Get enemies in the attack range, pick the closest and reduce life
 	}
 	
-	public void usePower(MagicalUnit unit, Power power) {
-		//int range = power.getRange();
-		//Collection <Unit> affectedUnits = unitsInRange(range);
-		//power.activate(affectedUnits);
+	public void usePower(MagicalUnit unit, String name, Point position) {
+		Power power = unit.getPowerWithName(name);
+		int range = power.getRange();
+		Collection <Unit> affectedUnits = StarCraft.getInstance().unitsInCircumference(position, range);
+		power.lockUnits(affectedUnits);
+		activePowers.add(power);
 	}
 	
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit{
