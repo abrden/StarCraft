@@ -1,6 +1,5 @@
 package fiuba.algo3.starcraft.logic.structures;
 
-import java.util.Collection;
 
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
@@ -14,10 +13,10 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ConstructionStructure extends Structure {
 	
-	private final Collection<UnitTemplate> templates;
+	private final Iterable<UnitTemplate> templates;
 	private static final int POPULATION_MAXIMUM = 200;
 	
-	public ConstructionStructure(String name, Life life, Point position, Collection<UnitTemplate> templates) {
+	public ConstructionStructure(String name, Life life, Point position, Iterable<UnitTemplate> templates) {
 		super(name, life, position);
 		this.templates = templates;
 	}
