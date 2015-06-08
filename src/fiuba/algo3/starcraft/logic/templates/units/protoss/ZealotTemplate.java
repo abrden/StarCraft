@@ -18,8 +18,8 @@ public class ZealotTemplate extends MuggleTemplate {
 		constructionTime = 4;
 		vision = 7;
 		populationQuota = 2;
-		health = 60;
-		shield = 100;
+		health = 100;
+		shield = 60;
 		transportationQuota = 2;
 		damage = new Damage(8,0);
 		damageRange = 1;
