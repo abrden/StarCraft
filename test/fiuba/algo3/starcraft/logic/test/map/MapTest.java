@@ -12,7 +12,7 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 
 public class MapTest {
-	Map map = new Map(1000);
+	Map map = new Map(10000);
 	@Test
 	public void testMapInitialicesWithParcels() {
 		Point point = new Point(25,25);
@@ -33,7 +33,7 @@ public class MapTest {
 	}
 	@Test
 	public void testMapIsResetedAndHasNoMinerals() {
-		map.resetMap();
+		map = new Map(10000);
 		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000)) {
 			try {
 				parcel.getLandForExplotation().extractResource();

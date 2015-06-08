@@ -10,7 +10,6 @@ import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 
-
 public class StarCraft {
 	public static StarCraft instance = new StarCraft();
 	
@@ -46,8 +45,12 @@ public class StarCraft {
 			if (map.isPointInsideRadiousOfPivotePoint(position, range, opponentUnit.getPosition())) {
 				unitsInCircumference.add(opponentUnit);
 			}
-		
 		}
 		return unitsInCircumference;
-	}	
+	}
+	
+	public void moveUnitToDestination(Unit unit, Point position) {
+			
+	}
+
 }

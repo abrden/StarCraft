@@ -10,6 +10,7 @@ import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 
 public class PlayerTest {
@@ -63,6 +64,13 @@ public class PlayerTest {
 		for(int i = 0; i < 6; i++)  player.newTurn();
 		
 		assertEquals(player.populationQuota(), 5);
+	}
+	
+	@Test 
+	public void testGetUnitsFromPlayer() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, new Resources(100,0));
+		
+		player.newUnitWithName("Marine", null);
 	}
 	
 }
