@@ -39,4 +39,8 @@ public class MuggleUnit extends Unit implements Transportable {
 	public void update() {
 		life.regenerateShield();
 	}
+
+	public void executeEMP() {
+		life.destroyShield();
+	}
 }

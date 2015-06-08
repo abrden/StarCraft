@@ -178,10 +178,10 @@ public class Player {
 	
 	public void usePower(MagicalUnit unit, String name, Point position) {
 		Power power = unit.getPowerWithName(name);
-		int range = power.getRange();
-		Collection <Unit> affectedUnits = StarCraft.getInstance().unitsInCircumference(position, range);
-		power.lockUnits(affectedUnits);
-		activePowers.add(power);
+		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange()));
+		power.activate();
+		power.update();
+		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit{

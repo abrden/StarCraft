@@ -1,16 +1,14 @@
 package fiuba.algo3.starcraft.logic.units;
 
-import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class Clon extends Unit {
 
-	private Unit clonado;
-	private Life life;
+	//private Unit clonado;
 	
-	Clon(Unit clonado, String name, Point position) {
-		super(name, new Life(0, clonado.getShield()), position, clonado.getVision(), clonado.getStepsPerTurn(), 0);
-		this.clonado = clonado;
+	public Clon(Unit unit) {
+		super(unit.getName(), new Life(0, unit.getShield()), unit.getPosition(), unit.getVision(), unit.getStepsPerTurn(), 0);
+		//this.clonado = unit;
 	}
 
 	public boolean itsAlive() {
@@ -21,4 +19,7 @@ public class Clon extends Unit {
 		life.regenerateShield();
 	}
 
+	public void executeEMP() {
+		life.destroyShield();
+	}
 }

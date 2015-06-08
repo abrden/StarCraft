@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.game;
 
-import java.util.Collection;
+import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -27,7 +27,7 @@ public class StarCraft {
 		return instance;
 	}
 
-	public Collection<Unit> unitsInCircumference(Point position, int range) {
+	public List<Unit> unitsInCircumference(Point position, int range) {
 		// TODO a implementar
 		return null;
 	}

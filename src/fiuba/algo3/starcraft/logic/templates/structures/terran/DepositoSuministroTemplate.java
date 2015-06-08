@@ -20,6 +20,7 @@ public class DepositoSuministroTemplate extends StructureTemplate {
 	public Depot create(Point position) {
 		return new Depot(name, new Life(health), position);
 	}
+	
 	public static DepositoSuministroTemplate getInstance() {
 		return instance;
 	}

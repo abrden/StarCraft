@@ -37,10 +37,21 @@ public class MagicalUnit extends Unit implements Transportable {
 	public void update() {
 		// Gana energia del turno
 		energy += energyGainPerTurn;
+		if (energy > maximumEnergy) energy = maximumEnergy;
 		
 		// Regenera escudo
 		life.regenerateShield();
-		
-		// Actualiza poderes en curso??
 	}
+
+	public Power getPowerWithName(String name) {
+		for (Power power : powers)
+			if(power.getName() == name)
+				return power;
+		return null;
+	}
+
+	public void executeEMP() {
+		energy = 0;
+	}
+	
 }

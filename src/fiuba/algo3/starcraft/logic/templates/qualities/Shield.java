@@ -19,8 +19,6 @@ public class Shield {
 		shield += shieldRegen;
 		if (shield > maximumShield)
 			shield = maximumShield;
-
-
 	}
 
 	public void reduce(int damage) {
@@ -29,6 +27,10 @@ public class Shield {
 	
 	public boolean isGone() {
 		return (shield <= 0);
+	}
+	
+	public void destroy() {
+		shield = 0;
 	}
 	
 }
