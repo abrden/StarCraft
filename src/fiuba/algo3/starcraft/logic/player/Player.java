@@ -71,10 +71,13 @@ public class Player {
 	}
 	
 	public void newTurn() {
-		this.update();
-		
+		this.update();	
 	}
-
+	
+	public Collection<Unit> getUnits() {
+		return units;
+	}
+	
 	private void update() {
 		// Pierde referencia a Units y Structures muertas
 		this.getRidOfDeadUnits();
@@ -172,13 +175,12 @@ public class Player {
 	}
 	
 	public void attack(MuggleUnit unit) {
-		//int range = unit.getAttackRange();
-		//Get enemies in the attack range, pick the closest and reduce life
+		
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy {
 		Power power = unit.usePowerWithName(name);
-		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange()));
+		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange(), this));
 		power.activate();
 		power.execute();
 		if (!power.itsFinished()) activePowers.add(power);
