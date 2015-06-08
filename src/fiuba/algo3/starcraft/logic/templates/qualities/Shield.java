@@ -3,8 +3,8 @@ package fiuba.algo3.starcraft.logic.templates.qualities;
 public class Shield {
 	
 	private int shield;
-	private int maximumShield;
-	private final int shieldRegen = 20;
+	private final int maximumShield;
+	private final static int REGENERATION_RATIO = 20;
 	
 	Shield(int shield) {
 		this.maximumShield = shield;
@@ -16,7 +16,7 @@ public class Shield {
 	}
 	
 	public void regenerate() {
-		shield += shieldRegen;
+		shield += REGENERATION_RATIO;
 		if (shield > maximumShield)
 			shield = maximumShield;
 	}
