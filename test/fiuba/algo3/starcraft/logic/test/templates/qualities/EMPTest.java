@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
+
 import fiuba.algo3.starcraft.logic.templates.qualities.EMP;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ScoutTemplate;
@@ -14,6 +15,7 @@ import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
+import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 
 public class EMPTest {
 
@@ -55,7 +57,7 @@ public class EMPTest {
 		}
 	
 	@Test(expected = InsufficientEnergy.class)
-	public void testEMPDrainsEnergyOfProtossMagicalUnits() throws InsufficientEnergy {
+	public void testEMPDrainsEnergyOfProtossMagicalUnits() throws InsufficientEnergy, NonexistentPower {
 		MagicalUnit templario1 = AltoTemplarioTemplate.getInstance().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		
@@ -69,6 +71,6 @@ public class EMPTest {
 		emp.execute();
 		
 		assertTrue(emp.itsFinished());
-		templario1.usePowerWithName("Alucinacion");
+		templario1.usePower("Alucinacion");
 	}
 }

@@ -23,6 +23,8 @@ public abstract class Builder {
 		
 		this.structureRequiredExists(name, built);
 		
+		// TODO verificacion de si el punto que me llega tiene un mineral o volcan (Si se quiere construir una estructura explotadora)
+		
 		StructureTemplate template = this.getTemplateWithName(name);
 		
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());

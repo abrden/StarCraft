@@ -23,6 +23,7 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
+import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Player {
@@ -178,8 +179,8 @@ public class Player {
 		
 	}
 	
-	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy {
-		Power power = unit.usePowerWithName(name);
+	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
+		Power power = unit.usePower(name);
 		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange(), this));
 		power.activate();
 		power.execute();

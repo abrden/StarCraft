@@ -73,7 +73,6 @@ public abstract class Unit {
 		return position;
 	}
 
-	// TODO Emprolijar estos metodos de poderes, sacar hardcodeos etc
 	public void executeTormentaPsionica() {
 		this.reduceLife(TORMENTA_PSIONICA_DAMAGE);
 	}
