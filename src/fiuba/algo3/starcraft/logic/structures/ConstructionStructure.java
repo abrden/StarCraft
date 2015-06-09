@@ -14,7 +14,6 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 public class ConstructionStructure extends Structure {
 	
 	private final Iterable<UnitTemplate> templates;
-	private static final int POPULATION_MAXIMUM = 200;
 	
 	public ConstructionStructure(String name, Life life, Point position, Iterable<UnitTemplate> templates) {
 		super(name, life, position);
@@ -32,7 +31,8 @@ public class ConstructionStructure extends Structure {
 	private void populationSpaceCheck(UnitTemplate template, int currentPopulation, int populationQuota) throws QuotaExceeded {
 		int populationSpace = populationQuota - currentPopulation;
 		int unitSpace = template.getPopulationQuota();
-		if ((populationSpace == 0) || (populationSpace < unitSpace) || ((populationSpace + unitSpace) > POPULATION_MAXIMUM))
+		
+		if ((populationSpace == 0) || (populationSpace < unitSpace))
 			throw new QuotaExceeded();
 	}
 	
