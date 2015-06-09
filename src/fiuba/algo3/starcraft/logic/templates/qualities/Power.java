@@ -12,8 +12,6 @@ public abstract class Power {
 		this.affectedUnits = affected;
 	}
 	
-	public abstract String getName();
-	
 	public abstract int getCost();
 
 	public abstract int getRange();

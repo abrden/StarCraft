@@ -5,14 +5,9 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Alucinacion extends Power {
 
-	private static final String NAME = "Alucinacion";
 	private static final int COST = 100;
 	private static final int RANGE = 0;
 	private Clon clon;
-	
-	public String getName() {
-		return NAME;
-	}
 	
 	public int getCost() {
 		return COST;

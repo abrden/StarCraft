@@ -13,7 +13,6 @@ public class MagicalUnit extends Unit implements Transportable {
 	private final int  maximumEnergy;
 	private final int energyGainPerTurn;
 	private final int transportationQuota;
-	//private final Collection<Power> powers;
 	private final PowerGenerator generator;
 	
 	public MagicalUnit(String name, Life life, Point position, int vision, int stepsPerTurn,
@@ -26,7 +25,6 @@ public class MagicalUnit extends Unit implements Transportable {
 		this.maximumEnergy = maximumEnergy;
 		this.energyGainPerTurn = energyGainPerTurn;
 		this.generator = generator;
-		//this.powers = powers;
 	}
 
 	public int getTransportQuota() {
@@ -54,25 +52,10 @@ public class MagicalUnit extends Unit implements Transportable {
 		this.drainEnergy();
 	}
 
-	/*
-	private void giveUpEnergyForPower(Power power) throws InsufficientEnergy {
-		if (energy < power.getCost()) throw new InsufficientEnergy();
-		energy =- power.getCost();
-	}
-	*/
-	
 	public Power usePower(String name) throws InsufficientEnergy, NonexistentPower {
 		Power power = generator.generatePower(name, energy);
 		energy -= power.getCost();
 		return power;
-		/*
-		for (Power power : powers)
-			if(power.getName() == name) {
-				this.giveUpEnergyForPower(power);
-				return power;
-			}
-		return null;
-		*/
 	}
 	
 }

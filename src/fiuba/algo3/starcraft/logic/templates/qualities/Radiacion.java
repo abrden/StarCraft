@@ -4,14 +4,9 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Radiacion extends Power {
 
-	private static final String NAME = "Radiacion";
 	private static final int COST = 75;
 	private static final int RANGE = 1;
 	private Unit target;
-	
-	public String getName() {
-		return NAME;
-	}
 	
 	public int getCost() {
 		return COST;
