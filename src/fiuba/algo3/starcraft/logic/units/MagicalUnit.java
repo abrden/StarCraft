@@ -62,7 +62,9 @@ public class MagicalUnit extends Unit implements Transportable {
 	*/
 	
 	public Power usePower(String name) throws InsufficientEnergy, NonexistentPower {
-		return generator.generatePower(name, energy);
+		Power power = generator.generatePower(name, energy);
+		energy -= power.getCost();
+		return power;
 		/*
 		for (Power power : powers)
 			if(power.getName() == name) {
