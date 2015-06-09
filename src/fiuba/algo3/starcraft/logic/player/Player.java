@@ -72,7 +72,7 @@ public class Player {
 	}
 	
 	public void newTurn() {
-		this.update();	
+		this.update();
 	}
 	
 	public Collection<Unit> getUnits() {
@@ -87,22 +87,24 @@ public class Player {
 		// Recolecta las nuevas Units y Structures y disminuye la release de las que siguen en construccion
 		constructionQueue.update(this);
 		
-		// Sus estructuras le dan los recursos recolectados y redefinen su cupa poblacional
+		// Sus estructuras le dan los recursos recolectados y redefinen su cupo poblacional
 		populationQuota = 0;
 		for (Structure structure : structures)
 			structure.update(this);
 		
-		// Regeneracion de escudos, ganancia de energia, ...
+		// Regeneracion de escudos y ganancia de energia en MagicalUnits
 		for (Unit unit : units)
 			unit.update();
 		
 		// Actualizacion de poderes
+		Collection<Power> finishedPowers = new LinkedList<Power>();
 		for (Power power : activePowers) {
 			if (!power.itsFinished()) {
 				power.execute();
-			} else activePowers.remove(power);
+			} else finishedPowers.add(power);
 		}
-		//TODO arreglar else, rompe iterador de la lista
+		for (Power power : finishedPowers)	
+			activePowers.remove(power);
 	}
 
 	private void getRidOfDeadUnits() {
