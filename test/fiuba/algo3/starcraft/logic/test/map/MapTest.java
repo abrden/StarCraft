@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 
@@ -38,7 +38,7 @@ public class MapTest {
 			try {
 				parcel.getLandForExplotation().extractResource();
 				assertTrue(false);
-			} catch (NoResourcesToExtractException e){
+			} catch (NoResourcesToExtract e){
 			}
 		}
 		assertTrue(true);
