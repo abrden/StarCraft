@@ -31,6 +31,10 @@ public class StarCraft {
 	public void setPlayer2(Player player) {
 		player2 = player;
 	}
+	
+	public void setMap(Map map) {
+		this.map = map;
+	}
 
 	public static void main(String[] args) {
 		start();
@@ -53,19 +57,24 @@ public class StarCraft {
 	}
 	
 	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
-		ArrayList<Parcel> parcelsInSegment = map.getOrderedParcelsContainInASegment(transportable.getPosition(), position);
-		int currentParcelIndex = 0;
+		Point initialPoint = transportable.getPosition();
+		Point finalPoint = position;
 		
-		while(currentParcelIndex <  parcelsInSegment.size() && parcelsInSegment.get(currentParcelIndex).letPass(transportable)) {
-			currentParcelIndex ++;
+		Point direction = finalPoint.substract(initialPoint);
+		Point diferentialDirection = direction.divide(1000);
+		
+		Point pathPoint = initialPoint;
+		
+		for (int i = 0; i < 1000 ; i ++) {
+			Parcel parcelOfPath = map.getParcelContainingPoint(pathPoint);
+			
+			if (parcelOfPath.letPass(transportable)) {
+				transportable.setPosition(pathPoint);
+				pathPoint = pathPoint.add(diferentialDirection);
+			} else {
+				break;
+			}	
 		}
-		
-		Parcel transportableLndingParcel = parcelsInSegment.get(currentParcelIndex - 1);
-		
-		Point parcelOriginPoint = transportableLndingParcel.getOrigin();
-		
-		transportable.setPosition(new Point(parcelOriginPoint.getX() + map.PARCEL_SIDE / 2.0, parcelOriginPoint.getY() + map.PARCEL_SIDE / 2.0));
-		
 		
 	}
 
