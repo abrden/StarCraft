@@ -1,8 +1,12 @@
 package fiuba.algo3.starcraft.game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
@@ -44,16 +48,26 @@ public class StarCraft {
 		return instance;
 	}
 
-	//FIXME: range = 0 then just one item in return list, and in decrecent order
-	public List<Unit> unitsInCircumference(Point position, int range, Player player) {
+	//FIXME: range = 0 then just one item in return list, and in decendent order
+	public List<Unit> unitsInCircumference(final Point position, int range, Player player) {
 		ArrayList<Unit> unitsInCircumference = new ArrayList<Unit>();
 		Collection<Unit> opponentUnits = player == player1? player2.getUnits() : player2.getUnits();
 		for (Unit opponentUnit : opponentUnits) {
-			if (map.isPointInsideRadiousOfPivotePoint(position, range, opponentUnit.getPosition())) {
+			if (map.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, opponentUnit.getPosition())) {
 				unitsInCircumference.add(opponentUnit);
 			}
-		}
-		return unitsInCircumference;
+		}   
+		//Sorting
+		Collections.<Unit>sort(unitsInCircumference, new Comparator<Unit>() {
+				@Override
+				public int compare(Unit unit1, Unit unit2) {
+					return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
+				}
+		    });
+		
+		
+		
+		return (range == 0) ? unitsInCircumference : unitsInCircumference.subList(0, 1);
 	}
 	
 	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
@@ -65,6 +79,7 @@ public class StarCraft {
 		
 		Point pathPoint = initialPoint;
 		
+		//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
 		for (int i = 0; i < 1000 ; i ++) {
 			Parcel parcelOfPath = map.getParcelContainingPoint(pathPoint);
 			
@@ -75,7 +90,5 @@ public class StarCraft {
 				break;
 			}	
 		}
-		
 	}
-
 }
