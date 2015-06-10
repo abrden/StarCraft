@@ -5,9 +5,12 @@ import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
+import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 
 public class StarCraft {
@@ -49,7 +52,20 @@ public class StarCraft {
 		return unitsInCircumference;
 	}
 	
-	public void moveUnitToDestination(Unit unit, Point position) {
+	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
+		ArrayList<Parcel> parcelsInSegment = map.getOrderedParcelsContainInASegment(transportable.getPosition(), position);
+		int currentParcelIndex = 0;
+		
+		while(currentParcelIndex <  parcelsInSegment.size() && parcelsInSegment.get(currentParcelIndex).letPass(transportable)) {
+			currentParcelIndex ++;
+		}
+		
+		Parcel transportableLndingParcel = parcelsInSegment.get(currentParcelIndex - 1);
+		
+		Point parcelOriginPoint = transportableLndingParcel.getOrigin();
+		
+		transportable.setPosition(new Point(parcelOriginPoint.getX() + map.PARCEL_SIDE / 2.0, parcelOriginPoint.getY() + map.PARCEL_SIDE / 2.0));
+		
 		
 	}
 
