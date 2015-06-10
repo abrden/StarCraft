@@ -30,4 +30,16 @@ public class Point {
 		
 		return Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
 	}
+	
+	public Point add(Point otherPoint) {
+		return new Point(this.x + otherPoint.getX(), this.y + otherPoint.getY());
+	}
+	
+	public Point substract(Point otherPoint) {
+		return new Point(this.x - otherPoint.getX(), this.y - otherPoint.getY());
+	}
+	
+	public Point divide(int scalar) {
+		return new Point(this.x / scalar, this.y / scalar);
+	}
 }
