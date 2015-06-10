@@ -181,8 +181,10 @@ public class Player {
 	public void attack(MuggleUnit unit) {
 		List<Unit> opponentUnits = StarCraft.getInstance().unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this);
 		
-		Unit closestUnit = opponentUnits.get(0);
-		closestUnit.reduceLife(unit.getAttackLandDamage());
+		if (opponentUnits.size() > 0) {
+			Unit closestUnit = opponentUnits.get(0);
+			closestUnit.reduceLife(unit.getAttackLandDamage());
+		}
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
