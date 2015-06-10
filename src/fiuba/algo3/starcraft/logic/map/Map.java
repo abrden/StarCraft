@@ -58,25 +58,4 @@ public class Map {
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
-	
-	public ArrayList<Parcel> getOrderedParcelsContainInASegment(Point origin, Point destination) {
-		double xi = origin.getX();
-		double yi = origin.getY();
-		
-		double xf = destination.getX();
-		double yf = destination.getY();
-		
-		double slope = (yf - yi) / (xf - xi);
-		double constantTerm = yi - xi * slope; 
-		
-		if (slope > 0) {
-			
-		}
-		
-		return null;
-	}
-	
-	
-	
-	
 }

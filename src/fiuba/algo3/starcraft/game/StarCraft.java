@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -48,7 +47,6 @@ public class StarCraft {
 		return instance;
 	}
 
-	//FIXME: range = 0 then just one item in return list, and in decendent order
 	public List<Unit> unitsInCircumference(final Point position, int range, Player player) {
 		ArrayList<Unit> unitsInCircumference = new ArrayList<Unit>();
 		Collection<Unit> opponentUnits = player == player1? player2.getUnits() : player2.getUnits();
@@ -64,9 +62,6 @@ public class StarCraft {
 					return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
 				}
 		    });
-		
-		
-		
 		return (range == 0) ? unitsInCircumference : unitsInCircumference.subList(0, 1);
 	}
 	

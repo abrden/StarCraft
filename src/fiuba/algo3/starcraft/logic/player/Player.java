@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
