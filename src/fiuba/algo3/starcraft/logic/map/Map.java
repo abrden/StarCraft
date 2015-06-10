@@ -2,6 +2,8 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.starcraft.logic.units.Transportable;
+
 public class Map {
 	final double PARCEL_SIDE = 10;
 
@@ -53,8 +55,9 @@ public class Map {
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
-
-	public void resetMap() {
-		// TODO Auto-generated method stub
+	
+	public Point maximumTransportableDestination(Transportable transportable,Point destination) {
+		Point transportableOrigin = transportable.getPosition();
+		return destination;
 	}
 }
