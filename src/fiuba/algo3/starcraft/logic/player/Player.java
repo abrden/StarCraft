@@ -1,8 +1,10 @@
 package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -177,7 +179,10 @@ public class Player {
 	}
 	
 	public void attack(MuggleUnit unit) {
+		List<Unit> opponentUnits = StarCraft.getInstance().unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this);
 		
+		Unit closestUnit = opponentUnits.get(0);
+		closestUnit.reduceLife(unit.getAttackLandDamage());
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
