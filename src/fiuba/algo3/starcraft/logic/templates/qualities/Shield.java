@@ -6,7 +6,7 @@ public class Shield {
 	private final int maximumShield;
 	private final static int REGENERATION_RATIO = 20;
 	
-	Shield(int shield) {
+	public Shield(int shield) {
 		this.maximumShield = shield;
 		this.shield = shield;
 	}

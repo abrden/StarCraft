@@ -9,7 +9,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.ExtractableType;
 import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtractException;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
@@ -30,7 +30,7 @@ public class ScenarioGeneratorTest {
 			try {
 				parcel.getLandForExplotation().extractResource();
 				ammountOfVolcanoInMap ++;
-			} catch (NoResourcesToExtractException e) {
+			} catch (NoResourcesToExtract e) {
 				
 			}
 		}		

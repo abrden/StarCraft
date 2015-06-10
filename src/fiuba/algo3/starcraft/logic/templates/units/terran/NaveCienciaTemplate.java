@@ -1,9 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates.units.terran;
 
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.templates.qualities.EMP;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
-import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
+import fiuba.algo3.starcraft.logic.templates.qualities.NaveCienciaPowerGenerator;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.units.MagicalTemplate;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
@@ -24,13 +23,13 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 		transportationQuota = 0;
 		populationQuota = 2;
 		stepsPerTurn = 10;
-		powers.add(new EMP());
-		powers.add(new Radiacion());
+		//powers.add(new EMP());
+		//powers.add(new Radiacion());
 	}
 
 	public MagicalUnit create(Point position) {
 		return new MagicalUnit(name, new Life(health), position,
-				vision, stepsPerTurn, powers, 
+				vision, stepsPerTurn, new NaveCienciaPowerGenerator(), 
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, populationQuota);
 	}

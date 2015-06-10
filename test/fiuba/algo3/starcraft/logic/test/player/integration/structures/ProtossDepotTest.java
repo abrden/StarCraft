@@ -75,4 +75,17 @@ public class ProtossDepotTest {
 		assertEquals(player.populationQuota(), 5);		
 	}
 	
+	@Test
+	public void testPopulationQuotais200With300Pilons() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
+		Resources initialResources = new Resources(30000,0);
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		
+		for(int j = 0; j < 300; j++) {
+			player.newStructureWithName("Pilon", null);
+			for(int i = 0; i < 6; i++) player.newTurn();	
+		}
+		
+		player.newTurn();
+		assertEquals(player.populationQuota(), 200);		
+	}	
 }
