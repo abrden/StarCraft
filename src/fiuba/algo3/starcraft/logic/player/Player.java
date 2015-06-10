@@ -184,6 +184,7 @@ public class Player {
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
 		Power power = unit.usePower(name);
 		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange(), this));
+		
 		power.activate();
 		power.execute();
 		if (!power.itsFinished()) activePowers.add(power);
