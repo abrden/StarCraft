@@ -172,9 +172,8 @@ public class Player {
 	/* Manipulacion de unidades */
 	
 	//TODO Implementar todos estos metodos
-	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
-		// llama al mapa
-		unit.setPosition(destination);
+	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
+		StarCraft.getInstance().moveUnitToDestination(transportable, destination);
 	}
 	
 	public void attack(MuggleUnit unit) {

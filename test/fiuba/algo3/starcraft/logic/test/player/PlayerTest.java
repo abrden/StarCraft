@@ -66,11 +66,4 @@ public class PlayerTest {
 		assertEquals(player.populationQuota(), 5);
 	}
 	
-	@Test 
-	public void testGetUnitsFromPlayer() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, new Resources(100,0));
-		
-		player.newUnitWithName("Marine", null);
-	}
-	
 }

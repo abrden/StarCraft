@@ -5,37 +5,29 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.game.StarCraft;
-import fiuba.algo3.starcraft.logic.player.Player;
-import fiuba.algo3.starcraft.logic.player.Resources;
-import fiuba.algo3.starcraft.logic.structures.Construction;
-import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
-import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
-import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class StarcraftTest {
-	Player player1 = new Player(null, null, null, null, null);
-	Player player2 = new Player(null, null, null, null, null);
 		
+	StarCraft game = StarCraft.getInstance();
+	
 	@Test
-	public void test() {
-/*		Resources initialResources = new Resources(300,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
-		player.newStructureWithName("Deposito Suministro", null);
-		for(int i = 0; i < 7; i++) player.newTurn();
-		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
-		player.receiveNewStructure(barraca);
+	public void testStarCraftMovesAMarineInAMapFullOfLand() throws StepsLimitExceeded {
+		Map currentMap = new Map(1000);
+		game.setMap(currentMap);
 		
-		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
-		while(!construction.itsFinished()) {
-			construction.lowerRelease();
-		}
-		Unit marine = construction.gather();
-		player.receiveNewUnit(marine);
+		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(20,20));
 		
-		*/
-		//StarCraft.getInstance().unitsInCircumference(position, 0, player)
+		game.moveUnitToDestination(marine, new Point(500,32));
+		
+		System.out.println("x : " + marine.getPosition().getX() + " y :" + marine.getPosition().getY());
+		
+		assertTrue(marine.getPosition().getX() > 499 && marine.getPosition().getY() > 31);
+		
 	}
 
 }

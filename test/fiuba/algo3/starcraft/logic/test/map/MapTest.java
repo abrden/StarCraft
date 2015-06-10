@@ -10,8 +10,6 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
-import fiuba.algo3.starcraft.logic.units.Transportable;
 
 public class MapTest {
 	Map map = new Map(10000);
@@ -44,19 +42,6 @@ public class MapTest {
 			}
 		}
 		assertTrue(true);
-	}
-	
-	@Test
-	public void testMapMoveATransportableInAnEmptyMap() {
-		map = new Map(1000);
-		
-		Transportable marine = MarineTemplate.getInstance().create(new Point(10,10));
-		
-		Point destinationPoint = map.maximumTransportableDestination(marine, new Point(100,100));
-		
-		
-		assertTrue(destinationPoint.getX() == 100 && destinationPoint.getY() == 100);
-		
 	}
 	
 }

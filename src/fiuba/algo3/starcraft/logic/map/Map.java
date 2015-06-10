@@ -2,14 +2,15 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.starcraft.logic.units.Transportable;
-
 public class Map {
-	final double PARCEL_SIDE = 10;
+	public final double PARCEL_SIDE = 10;
 
+	@SuppressWarnings("unused")
 	private double side;
-	private ArrayList<ArrayList> column = new ArrayList<ArrayList>();
-	private ArrayList<Parcel> row = new ArrayList<Parcel>();
+	@SuppressWarnings({ "rawtypes"})
+	private ArrayList<ArrayList> row = new ArrayList<ArrayList>();
+	@SuppressWarnings("unused")
+	private ArrayList<Parcel> columns = new ArrayList<Parcel>();
 	
 	public Map(double side) {
 		this.side = side;
@@ -19,7 +20,7 @@ public class Map {
 	
 	private void createMatrix (double numberOfParcels){
 		for (int x = 0 ; x < numberOfParcels ; x++) {
-			column.add(new ArrayList<Parcel>());
+			row.add(new ArrayList<Parcel>());
 		}
 	}
 	
@@ -29,14 +30,15 @@ public class Map {
 				Parcel parcel = new Parcel(new Point(x * PARCEL_SIDE,y * PARCEL_SIDE),PARCEL_SIDE);
 				parcel.setSurface(LandType.land);
 				
-				ArrayList<Parcel> row = column.get(x);
-				row.add(parcel);
+				@SuppressWarnings("unchecked")
+				ArrayList<Parcel> column = row.get(x);
+				column.add(parcel);
 			}
 		}
 	}
 	
 	public Parcel getParcelContainingPoint(Point point) throws IndexOutOfBoundsException{
-		return (Parcel) column.get((int)(point.getX() / PARCEL_SIDE)).get((int)(point.getY() / PARCEL_SIDE));
+		return (Parcel) row.get((int)(point.getX() / PARCEL_SIDE)).get((int)(point.getY() / PARCEL_SIDE));
 	}
 	
 	public ArrayList<Parcel> getParcelsContainedInARect(Point point, int side) {
@@ -52,12 +54,29 @@ public class Map {
 		return parcels;
 	}
 	
+	
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 	
-	public Point maximumTransportableDestination(Transportable transportable,Point destination) {
-		Point transportableOrigin = transportable.getPosition();
-		return destination;
+	public ArrayList<Parcel> getOrderedParcelsContainInASegment(Point origin, Point destination) {
+		double xi = origin.getX();
+		double yi = origin.getY();
+		
+		double xf = destination.getX();
+		double yf = destination.getY();
+		
+		double slope = (yf - yi) / (xf - xi);
+		double constantTerm = yi - xi * slope; 
+		
+		if (slope > 0) {
+			
+		}
+		
+		return null;
 	}
+	
+	
+	
+	
 }
