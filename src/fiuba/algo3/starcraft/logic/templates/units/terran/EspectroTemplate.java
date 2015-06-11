@@ -11,9 +11,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class EspectroTemplate extends MuggleTemplate {
 
-	private static EspectroTemplate instance = new EspectroTemplate();
-
-	private EspectroTemplate() {
+	public EspectroTemplate() {
 		name = "Espectro";
 		value = new Value(150,100);
 		constructionTime = 8;
@@ -25,10 +23,6 @@ public class EspectroTemplate extends MuggleTemplate {
 		damageRange = 5;
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 8;
-	}
-
-	public static EspectroTemplate getInstance(){
-		return instance;
 	}
 
 	public MuggleUnit create(Point position) {

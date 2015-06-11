@@ -10,9 +10,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class ZealotTemplate extends MuggleTemplate {
 
-	private static ZealotTemplate instance = new ZealotTemplate();
-
-	private ZealotTemplate() {
+	public ZealotTemplate() {
 		name = "Zealot";
 		value = new Value(100,0);
 		constructionTime = 4;
@@ -25,10 +23,6 @@ public class ZealotTemplate extends MuggleTemplate {
 		damageRange = 1;
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 4;
-	}
-
-	public static ZealotTemplate getInstance(){
-		return instance;
 	}
 
 	public MuggleUnit create(Point position) {

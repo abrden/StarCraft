@@ -9,18 +9,13 @@ import fiuba.algo3.starcraft.logic.templates.structures.StructureTemplate;
 
 public class NexoMineralTemplate extends StructureTemplate {
 
-	private static NexoMineralTemplate instance = new NexoMineralTemplate();
 
-	private NexoMineralTemplate() {
+	public NexoMineralTemplate() {
 		name = "Nexo Mineral";
 		value = new Value(50,0);
 		constructionTime = 4;
 		health = 250;
 		shield = 250;
-	}
-	
-	public static NexoMineralTemplate getInstance() {
-		return instance;
 	}
 
 	public MineralExploiter create(Point position) {

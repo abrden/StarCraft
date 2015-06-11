@@ -13,21 +13,15 @@ import fiuba.algo3.starcraft.logic.templates.units.protoss.ScoutTemplate;
 
 public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
 
-    private static PuertoEstelarProtossTemplate instance = new PuertoEstelarProtossTemplate();
-
-    private PuertoEstelarProtossTemplate() {
+    public PuertoEstelarProtossTemplate() {
         name = "Puerto Estelar";
         value = new Value(150,150);
         constructionTime = 10;
         health = 600;
         shield = 600;
         enabledTemplates = new LinkedList<UnitTemplate>();
-        enabledTemplates.add(ScoutTemplate.getInstance());
-        enabledTemplates.add(NaveTransporteProtossTemplate.getInstance());
-    }
-
-    public static PuertoEstelarProtossTemplate getInstance() {
-        return instance;
+        enabledTemplates.add(new ScoutTemplate());
+        enabledTemplates.add(new NaveTransporteProtossTemplate());
     }
 
 	public ConstructionStructure create(Point position) {

@@ -11,9 +11,8 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class ScoutTemplate extends MuggleTemplate {
 
-	private static ScoutTemplate instance = new ScoutTemplate();
 
-	private ScoutTemplate() {
+	public ScoutTemplate() {
 		name = "Scout";
 		value = new Value(300,150);
 		constructionTime = 9;
@@ -28,10 +27,6 @@ public class ScoutTemplate extends MuggleTemplate {
 		stepsPerTurn = 9;
 	}
 
-	public static ScoutTemplate getInstance(){
-		return instance;
-	}
-	
 	public MuggleUnit create(Point position) {
 		return new MuggleUnit(name, new Life(health, shield), position, vision,
 				stepsPerTurn, attack, transportationQuota, true, populationQuota);

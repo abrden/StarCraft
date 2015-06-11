@@ -9,9 +9,8 @@ import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 
 public class NaveCienciaTemplate extends MagicalTemplate {
 	
-	private static NaveCienciaTemplate instance = new NaveCienciaTemplate();
-	
-	private NaveCienciaTemplate() {
+
+	public NaveCienciaTemplate() {
 		name = "Nave Ciencia";
 		value = new Value(100, 225);
 		constructionTime = 10;
@@ -32,10 +31,6 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 				vision, stepsPerTurn, new NaveCienciaPowerGenerator(), 
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, true, populationQuota);
-	}
-	
-	public static NaveCienciaTemplate getInstance() {
-		return instance;
 	}
 
 }

@@ -12,21 +12,16 @@ import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate
 
 public class ArchivosTemplariosTemplate extends ConstructionTemplate {
 
-    private static ArchivosTemplariosTemplate instance = new ArchivosTemplariosTemplate();
-
-    private ArchivosTemplariosTemplate() {
+    public ArchivosTemplariosTemplate() {
         name = "Archivos Templarios";
         value = new Value(150,200);
         constructionTime = 9;
         health = 500;
         shield = 500;
         enabledTemplates = new LinkedList<UnitTemplate>();
-		enabledTemplates.add(AltoTemplarioTemplate.getInstance());
+		enabledTemplates.add(new AltoTemplarioTemplate());
     }
 
-    public static ArchivosTemplariosTemplate getInstance() {
-        return instance;
-    }
     public ConstructionStructure create(Point position) {
         return new ConstructionStructure(name, new Life(health, shield), position, enabledTemplates);
     }

@@ -8,9 +8,8 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
 public class NaveTransporteTerranTemplate extends TransportTemplate {
 
-    private static NaveTransporteTerranTemplate instance = new NaveTransporteTerranTemplate();
 
-    private NaveTransporteTerranTemplate() {
+    public NaveTransporteTerranTemplate() {
         name = "Nave Transporte";
         value = new Value(100,100);
         constructionTime = 7;
@@ -21,10 +20,6 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
         stepsPerTurn = 7;
     }
 
-    public static NaveTransporteTerranTemplate getInstance() {
-        return instance;
-    }
-    
     public TransportUnit create(Point position) {
     	return new TransportUnit(name, new Life(health, shield), position, vision, stepsPerTurn, populationQuota, capacity);
     }
