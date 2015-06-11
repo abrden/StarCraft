@@ -8,11 +8,13 @@ import java.util.List;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.templates.qualities.Cloner;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.DragonTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.GolliatTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
+import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.Unit;
@@ -132,7 +134,7 @@ public class AltoTemplarioTest {
 		clonacion.lockUnits(affected);
 		clonacion.activate();
 		
-		clonacion.execute();
+		assertEquals(((Cloner) clonacion).getClone().getClass(), Clone.class);
 		
 	}
 }

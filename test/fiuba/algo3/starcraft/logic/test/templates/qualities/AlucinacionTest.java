@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.templates.qualities.Alucinacion;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ZealotTemplate;
+import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class AlucinacionTest {
@@ -23,7 +24,34 @@ public class AlucinacionTest {
 		power.lockUnits(affected);
 		power.activate();
 		
-		assertEquals(power.itsFinished(), false);
+		assertTrue(!power.itsFinished());
 	}
 
+	@Test
+	public void testAlucinacionIsOverIfClonIsDead() {
+		Alucinacion power = new Alucinacion();
+		List<Unit> affected = new LinkedList<Unit>();
+		Unit zealot = ZealotTemplate.getInstance().create(null);
+		affected.add(zealot);
+		power.lockUnits(affected);
+		power.activate();
+		Unit clone = power.getClone();
+		
+		clone.reduceLife(10000000);
+		
+		assertTrue(power.itsFinished());
+	}
+	
+	@Test
+	public void testAlucinacionGeneratesAClone() {
+		Alucinacion power = new Alucinacion();
+		List<Unit> affected = new LinkedList<Unit>();
+		Unit zealot = ZealotTemplate.getInstance().create(null);
+		affected.add(zealot);
+		power.lockUnits(affected);
+		power.activate();
+		
+		assertEquals(power.getClone().getClass(), Clone.class);
+	}
+	
 }

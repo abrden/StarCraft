@@ -29,7 +29,7 @@ public class ConstructionStructureTest {
 
 		constructor.reduceLife(55);
 		assertEquals(life.getShield(), 85);		
-		constructor.update(null);
+		constructor.update();
 		
 		assertEquals(life.getShield(), 105);
 	}

@@ -7,15 +7,16 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
 import static org.junit.Assert.assertEquals;
-
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+
 import org.junit.Test;
 
 public class NaveTransporteTerranTest {
 
     @Test
-    public void testNaveTransporteTerranEmbarksMarineFreeSpaceDownTo7() throws NoMoreSpaceInUnit{
+    public void testNaveTransporteTerranEmbarksMarineFreeSpaceDownTo7() throws NoMoreSpaceInUnit, StepsLimitExceeded{
         TransportUnit navetrans = NaveTransporteTerranTemplate.getInstance().create(null);
         Unit marine = MarineTemplate.getInstance().create(null);
 
@@ -25,7 +26,7 @@ public class NaveTransporteTerranTest {
     }
 
     @Test
-    public void testNaveTransporteTerranDisembarksMarineFreeSpaceBackTo8() throws NoMoreSpaceInUnit, NoUnitToRemove {
+    public void testNaveTransporteTerranDisembarksMarineFreeSpaceBackTo8() throws NoMoreSpaceInUnit, NoUnitToRemove, StepsLimitExceeded {
         TransportUnit navetrans = NaveTransporteTerranTemplate.getInstance().create(null);
         Unit marine = MarineTemplate.getInstance().create(null);
 
@@ -35,7 +36,7 @@ public class NaveTransporteTerranTest {
         assertEquals(8, navetrans.freeSpace());
     }
     @Test
-    public void testNaveTransporteTerranEmbarks8MarinesNoFreeSpaceLeft() throws NoMoreSpaceInUnit {
+    public void testNaveTransporteTerranEmbarks8MarinesNoFreeSpaceLeft() throws NoMoreSpaceInUnit, StepsLimitExceeded {
         TransportUnit navetrans = NaveTransporteTerranTemplate.getInstance().create(null);
         Unit marine = MarineTemplate.getInstance().create(null);
 
@@ -45,7 +46,7 @@ public class NaveTransporteTerranTest {
         assertEquals(0, navetrans.freeSpace());
     }
     @Test(expected = NoMoreSpaceInUnit.class)
-    public void testNaveTransporteTerranThrowsExceptionWhenTryingToEmbark9Marines() throws NoMoreSpaceInUnit {
+    public void testNaveTransporteTerranThrowsExceptionWhenTryingToEmbark9Marines() throws NoMoreSpaceInUnit, StepsLimitExceeded {
         TransportUnit navetrans = NaveTransporteTerranTemplate.getInstance().create(null);
         Unit marine = MarineTemplate.getInstance().create(null);
 
@@ -53,7 +54,7 @@ public class NaveTransporteTerranTest {
             navetrans.embark((Transportable) marine);
     }
     @Test(expected = NoUnitToRemove.class)
-    public void testNaveTransporteTerranThrowsExceptionWhenTryingToDisembarkWithoutUnitsIn() throws NoUnitToRemove{
+    public void testNaveTransporteTerranThrowsExceptionWhenTryingToDisembarkWithoutUnitsIn() throws NoUnitToRemove, StepsLimitExceeded{
         TransportUnit navetrans = NaveTransporteTerranTemplate.getInstance().create(null);
         Unit marine = MarineTemplate.getInstance().create(null);
 

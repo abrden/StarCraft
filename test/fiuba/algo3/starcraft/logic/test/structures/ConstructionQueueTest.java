@@ -17,7 +17,7 @@ public class ConstructionQueueTest {
 	public void testConstructionQueueUpdateLowersTheReleaseOfConstructionsUntilFinished() {
 		ConstructionQueue queue = new ConstructionQueue();
 		queue.addStructure(new Construction<Structure>(new Depot(null, null, null), 5));
-		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, 1), 5));
+		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, false, 1), 5));
 		//TODO: Completar
 	}
 
@@ -31,7 +31,7 @@ public class ConstructionQueueTest {
 	@Test
 	public void testConstructionQueueUpdateGivesUnitWhenFinished() {
 		ConstructionQueue queue = new ConstructionQueue();
-		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, 1), 5));
+		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, false, 1), 5));
 		//TODO: Completar
 	}
 }
