@@ -22,7 +22,7 @@ public class NaveCienciaTest {
 	@Test
 	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(700,425);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);
@@ -31,7 +31,7 @@ public class NaveCienciaTest {
 		for(int i = 0; i < 13; i++) player.newTurn();
 		
 		player.pays(150, 100);
-		ConstructionStructure puerto = PuertoEstelarTerranTemplate.getInstance().create(null);
+		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(null);
 		player.receiveNewStructure(puerto);
 		
 		Construction<Unit> construction = puerto.create("Nave Ciencia", null, player.getResources(), player.currentPopulation(), player.populationQuota());

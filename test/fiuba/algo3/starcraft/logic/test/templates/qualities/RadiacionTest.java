@@ -19,9 +19,9 @@ public class RadiacionTest {
 
 	@Test
 	public void testRadiacionisntFinishedUntilTargetIsDead() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
+		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -40,9 +40,9 @@ public class RadiacionTest {
 
 	@Test
 	public void testRadiacionReducesLifeOfAffectedUnitsBy40PerTurn() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
+		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);

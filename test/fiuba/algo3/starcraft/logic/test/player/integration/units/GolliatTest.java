@@ -22,14 +22,14 @@ public class GolliatTest {
 	@Test
 	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(550,150);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
 		
 		player.pays(200, 100);
-		ConstructionStructure fabrica = FabricaTemplate.getInstance().create(null);
+		ConstructionStructure fabrica = new FabricaTemplate().create(null);
 		player.receiveNewStructure(fabrica);
 		
 		Construction<Unit> construction = fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
@@ -45,13 +45,13 @@ public class GolliatTest {
 	@Test(expected = QuotaExceeded.class)
 	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(750,250);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
 		player.pays(200, 100);
-		ConstructionStructure fabrica = FabricaTemplate.getInstance().create(null);
+		ConstructionStructure fabrica = new FabricaTemplate().create(null);
 		player.receiveNewStructure(fabrica);
 
 		for (int i = 0; i < 2; i++) {
@@ -74,13 +74,13 @@ public class GolliatTest {
 	@Test
 	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(650,200);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
 		player.pays(200, 100);
-		ConstructionStructure fabrica = FabricaTemplate.getInstance().create(null);
+		ConstructionStructure fabrica = new FabricaTemplate().create(null);
 		player.receiveNewStructure(fabrica);
 		Construction<Unit> construction = fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {

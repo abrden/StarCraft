@@ -12,7 +12,7 @@ public class ClonTest {
 
 	@Test
 	public void testCloneBornsAlive() {
-		Unit zealot = ZealotTemplate.getInstance().create(null);
+		Unit zealot = new ZealotTemplate().create(null);
 		Clone clon = new Clone(zealot);
 		
 		assertTrue(clon.itsAlive());

@@ -18,7 +18,7 @@ public class AlucinacionTest {
 	public void testAlucinacionIsntOverUntilClonIsDead() {
 		Alucinacion power = new Alucinacion();
 		List<Unit> affected = new LinkedList<Unit>();
-		Unit zealot = ZealotTemplate.getInstance().create(null);
+		Unit zealot = new ZealotTemplate().create(null);
 		affected.add(zealot);
 		
 		power.lockUnits(affected);
@@ -31,7 +31,7 @@ public class AlucinacionTest {
 	public void testAlucinacionIsOverIfClonIsDead() {
 		Alucinacion power = new Alucinacion();
 		List<Unit> affected = new LinkedList<Unit>();
-		Unit zealot = ZealotTemplate.getInstance().create(null);
+		Unit zealot = new ZealotTemplate().create(null);
 		affected.add(zealot);
 		power.lockUnits(affected);
 		power.activate();
@@ -46,7 +46,7 @@ public class AlucinacionTest {
 	public void testAlucinacionGeneratesAClone() {
 		Alucinacion power = new Alucinacion();
 		List<Unit> affected = new LinkedList<Unit>();
-		Unit zealot = ZealotTemplate.getInstance().create(null);
+		Unit zealot = new ZealotTemplate().create(null);
 		affected.add(zealot);
 		power.lockUnits(affected);
 		power.activate();
