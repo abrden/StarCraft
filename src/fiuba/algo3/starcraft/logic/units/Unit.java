@@ -1,10 +1,13 @@
 package fiuba.algo3.starcraft.logic.units;
 
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
+import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
-public abstract class Unit {
+public abstract class Unit implements Updatable {
 	
 	protected final String name;
 	protected final int vision;
@@ -12,8 +15,6 @@ public abstract class Unit {
 	protected final Life life;
 	protected Point position;
 	protected final int stepsPerTurn;
-	private static final int TORMENTA_PSIONICA_DAMAGE = 50;
-	private static final int RADIACION_DAMAGE = 40;
 	
 	Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		this.name = name;
@@ -72,15 +73,15 @@ public abstract class Unit {
 	public Point getPosition() {
 		return position;
 	}
-
+	
 	public void executeTormentaPsionica() {
-		this.reduceLife(TORMENTA_PSIONICA_DAMAGE);
+		this.reduceLife(TormentaPsionica.DAMAGE);
 	}
 
 	public abstract void executeEMP();
 
 	public void executeRadiacion() {
-		this.reduceLife(RADIACION_DAMAGE);
+		this.reduceLife(Radiacion.DAMAGE);
 	}
 
 }

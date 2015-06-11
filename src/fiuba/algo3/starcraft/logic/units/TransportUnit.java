@@ -3,10 +3,12 @@ package fiuba.algo3.starcraft.logic.units;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class TransportUnit extends Unit {
 	
@@ -19,17 +21,19 @@ public class TransportUnit extends Unit {
 		this.capacity = capacity;
 	}
 		
-	public void embark(Transportable unit) throws NoMoreSpaceInUnit {
-		if (this.theresSpaceForPassenger(unit))
+	public void embark(Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded {
+		if (this.theresSpaceForPassenger(unit)) {
 			passengers.add(unit);
-		else
+			StarCraft.getInstance().moveUnitToDestination(unit, null); // Los escondo del mapa
+		} else
 			throw new NoMoreSpaceInUnit();
 	}
 
-	public void disembark(Transportable unit) throws NoUnitToRemove {
-		if (passengers.size() > 0)
+	public void disembark(Transportable unit) throws NoUnitToRemove, StepsLimitExceeded {
+		if (passengers.size() > 0) {
+			StarCraft.getInstance().moveUnitToDestination(unit, position);
 			passengers.remove(unit);
-		else
+		} else
 			throw new NoUnitToRemove();
 	}
 

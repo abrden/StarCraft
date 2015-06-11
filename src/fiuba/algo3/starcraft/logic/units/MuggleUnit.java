@@ -8,20 +8,22 @@ public class MuggleUnit extends Unit implements Transportable {
 	
 	private final Attack attack;
 	private final int transportationQuota;
+	private final boolean canFly;
 	
 	public MuggleUnit(String name, Life life, Point position, int vision, int stepsPerTurn,Attack attack, 
-			int transportationQuota, int populationQuota) {
+			int transportationQuota, boolean canFly, int populationQuota) {
 		super(name, life, position, vision, stepsPerTurn, populationQuota);
 			this.attack = attack;
 			this.transportationQuota = transportationQuota; 
+			this.canFly = canFly;
 	}
-		
+	
 	public int getTransportQuota() {
 		return transportationQuota;
 	}
 	
 	public boolean canFly() {
-		return (transportationQuota == 0);
+		return canFly;
 	}
 	
 	public int getAttackRange() {
