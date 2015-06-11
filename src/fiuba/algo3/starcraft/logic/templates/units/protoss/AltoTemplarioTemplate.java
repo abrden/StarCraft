@@ -24,15 +24,13 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 		transportationQuota = 2;
 		populationQuota = 2;
 		stepsPerTurn = 7;
-		//powers.add(new TormentaPsionica());
-		//powers.add(new Alucinacion());
 	}
 
 	public MagicalUnit create(Point position) {
 		return new MagicalUnit(name, new Life(health, shield), position,
 				vision, stepsPerTurn, new AltoTemplarioPowerGenerator(),
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
-				transportationQuota, populationQuota);
+				transportationQuota, false, populationQuota);
 	}
 
 	public static AltoTemplarioTemplate getInstance() {

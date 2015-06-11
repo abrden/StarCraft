@@ -1,13 +1,13 @@
 package fiuba.algo3.starcraft.logic.templates.qualities;
 
-import fiuba.algo3.starcraft.logic.units.Clon;
+import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class Alucinacion extends Power {
+public class Alucinacion extends Power implements Cloner {
 
 	private static final int COST = 100;
 	private static final int RANGE = 0;
-	private Clon clon;
+	private Clone clone;
 	
 	public int getCost() {
 		return COST;
@@ -18,14 +18,18 @@ public class Alucinacion extends Power {
 	}
 	
 	public void activate() {
-		clon = new Clon(affectedUnits.get(0)); //La unidad a clonar deberia del la unica en los afectados
+		clone = new Clone(affectedUnits.get(0)); //La unidad a clonar deberia del la unica en los afectados
 	}
 	
 	public void execute(Unit unit) {
-		clon.update();
+		return; //clone.update();
 	}
 	
 	public boolean itsFinished() {
-		return (!clon.itsAlive());
+		return (!clone.itsAlive());
+	}
+	
+	public Unit getClone() {
+		return clone;
 	}
 }

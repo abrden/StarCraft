@@ -31,7 +31,7 @@ public class NaveCienciaTemplate extends MagicalTemplate {
 		return new MagicalUnit(name, new Life(health), position,
 				vision, stepsPerTurn, new NaveCienciaPowerGenerator(), 
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
-				transportationQuota, populationQuota);
+				transportationQuota, true, populationQuota);
 	}
 	
 	public static NaveCienciaTemplate getInstance() {

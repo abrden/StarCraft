@@ -33,6 +33,7 @@ public class ScoutTemplate extends MuggleTemplate {
 	}
 	
 	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health, shield), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health, shield), position, vision,
+				stepsPerTurn, attack, transportationQuota, true, populationQuota);
 	}
 }

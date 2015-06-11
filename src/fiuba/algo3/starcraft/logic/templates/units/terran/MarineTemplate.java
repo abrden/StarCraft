@@ -31,7 +31,8 @@ public class MarineTemplate extends MuggleTemplate {
 	}
 
 	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health), position, vision, stepsPerTurn, attack, transportationQuota, populationQuota);
+		return new MuggleUnit(name, new Life(health), position, vision, 
+				stepsPerTurn, attack, transportationQuota, false, populationQuota);
 	}
 
 }
