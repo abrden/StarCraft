@@ -1,8 +1,6 @@
 package fiuba.algo3.starcraft.logic.structures;
 
-
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
@@ -44,7 +42,7 @@ public class ConstructionStructure extends Structure {
 		return new Construction<Unit>(template.create(position), template.getConstructionTime());
 	}
 
-	public void update(Player player) {
+	public void update() {
 		life.regenerateShield();
 	}
 

@@ -1,6 +1,8 @@
 package fiuba.algo3.starcraft.logic.structures;
 
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.player.Player;
+import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public abstract class Structure implements Updatable {
@@ -27,4 +29,11 @@ public abstract class Structure implements Updatable {
 		return this.name;
 	}
 
+	public int getPopulationQuotaIncrement() {
+		return 0;
+	}
+	
+	public void getResources(Player player) {
+		return;
+	}
 }
