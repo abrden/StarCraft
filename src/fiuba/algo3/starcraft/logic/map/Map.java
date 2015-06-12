@@ -2,7 +2,7 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Map {
 	public final double PARCEL_SIDE = 10;
@@ -61,7 +61,7 @@ public class Map {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 
-	public void setUnit(MuggleUnit dragon, Point position) {
+	public void setUnit(Unit unit, Point position) {
 		// TODO Implementar
 		
 	}

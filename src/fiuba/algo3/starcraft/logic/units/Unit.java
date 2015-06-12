@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import java.security.InvalidParameterException;
+
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
@@ -17,6 +19,7 @@ public abstract class Unit implements Updatable {
 	protected final int stepsPerTurn;
 	
 	Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
+		if (position == null) throw new InvalidParameterException();
 		this.name = name;
 		this.life = life;
 		this.position = position;

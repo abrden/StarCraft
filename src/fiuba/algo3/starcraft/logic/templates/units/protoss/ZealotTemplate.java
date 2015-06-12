@@ -26,7 +26,7 @@ public class ZealotTemplate extends MuggleTemplate {
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 4;
 	}
-
+	
 	public static ZealotTemplate getInstance(){
 		return instance;
 	}
