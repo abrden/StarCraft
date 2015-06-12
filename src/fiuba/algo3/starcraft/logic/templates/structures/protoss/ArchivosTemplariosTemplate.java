@@ -1,13 +1,10 @@
 package fiuba.algo3.starcraft.logic.templates.structures.protoss;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.structures.ConstructionTemplate;
-import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 
 public class ArchivosTemplariosTemplate extends ConstructionTemplate {
@@ -20,7 +17,6 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
         constructionTime = 9;
         health = 500;
         shield = 500;
-        enabledTemplates = new LinkedList<UnitTemplate>();
 		enabledTemplates.add(AltoTemplarioTemplate.getInstance());
     }
 
