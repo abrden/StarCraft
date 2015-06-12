@@ -14,7 +14,7 @@ public abstract class Structure implements Updatable {
 	protected String name;
 	
 	Structure(String name, Life life, Point position) {
-		if (position == null) throw new InvalidParameterException();
+		//if (position == null) throw new InvalidParameterException();
 		this.name = name;
 		this.life = life;
 		this.position = position;
