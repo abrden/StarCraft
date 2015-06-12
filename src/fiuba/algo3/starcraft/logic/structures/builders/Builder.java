@@ -29,7 +29,11 @@ public abstract class Builder {
 		
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 			
-		return new Construction<Structure>(template.create(position), template.getConstructionTime());
+		Construction<Structure> construction = new Construction<Structure>(template.create(position), template.getConstructionTime());
+		
+		
+		
+		return construction;
 	}
 	
 	private StructureTemplate getTemplateWithName(String name) throws TemplateNotFound {

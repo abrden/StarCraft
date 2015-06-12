@@ -15,7 +15,7 @@ public class PowerUsageTest {
 
 	@Test
 	public void test() throws InsufficientEnergy, NonexistentPower {
-		Player player = new Player(null, null, null, null, null);
+		Player player = new Player(null, null, null, null, null, null);
 		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(null);
 		player.receiveNewUnit(nave);
 		

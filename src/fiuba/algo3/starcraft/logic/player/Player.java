@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -39,8 +40,9 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private int populationQuota;
+	private Map map;
 	
-	public Player(String name, Color color, Builder builder, Point base, Resources initialResources) {
+	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
 		this.name = name;
 		this.color = color;
 		this.builder = builder;
@@ -50,6 +52,7 @@ public class Player {
 		this.units = new LinkedList<Unit>();
 		this.constructionQueue = new ConstructionQueue();
 		this.activePowers = new LinkedList<Power>();
+		this.map = map;
 	}
 	
 	public String getName() {

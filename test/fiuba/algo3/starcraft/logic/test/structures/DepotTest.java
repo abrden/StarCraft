@@ -13,7 +13,7 @@ public class DepotTest {
 	@Test
 	public void testUpdateIncreasesPlayersPopulationQuotaBy5() {
 		Depot depot = new Depot(null, new Life(100), null);
-		Player player = new Player(null, null, null, null, null);
+		Player player = new Player(null, null, null, null, null, null);
 		
 		depot.update(player);
 		

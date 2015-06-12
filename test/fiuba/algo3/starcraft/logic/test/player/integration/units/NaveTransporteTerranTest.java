@@ -22,7 +22,7 @@ public class NaveTransporteTerranTest {
 	@Test
 	public void testNaveCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(700,300);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);

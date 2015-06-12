@@ -22,7 +22,7 @@ public class NaveTransporteProtossTest {
 	@Test
 	public void testNaveCreationWith1Pilon1Acceso1PuertoAnd200M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(600,150);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		player.newStructureWithName("Acceso", null);

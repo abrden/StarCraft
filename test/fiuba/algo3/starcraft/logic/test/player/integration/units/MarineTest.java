@@ -22,7 +22,7 @@ public class MarineTest {
 	@Test
 	public void testMarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -42,7 +42,7 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -68,7 +68,7 @@ public class MarineTest {
 	@Test(expected = InsufficientResources.class)
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -92,7 +92,7 @@ public class MarineTest {
 	@Test(expected = QuotaExceeded.class)
 	public void testMarineCreationWith1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, ConstructionNotFinished {
 		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, null, null, initialResources);
+		Player player = new Player(null, null, null, null, initialResources, null);
 		player.pays(150, 0);
 		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
 		player.receiveNewStructure(barraca);
@@ -110,7 +110,7 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationAnd1MarineDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -139,7 +139,7 @@ public class MarineTest {
 	@Test
 	public void test4MarineCreationAnd4MarineDeadLeavesPopulationAt0() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -165,7 +165,7 @@ public class MarineTest {
 	@Test
 	public void test7MarineCreationAnd49TurnsLeavesPopulationAt7() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Deposito Suministro", null);

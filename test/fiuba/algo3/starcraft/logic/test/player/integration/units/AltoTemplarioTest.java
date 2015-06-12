@@ -22,7 +22,7 @@ public class AltoTemplarioTest {
 	@Test
 	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(600,500);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		player.newStructureWithName("Acceso", null);
