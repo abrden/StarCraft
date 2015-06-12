@@ -15,14 +15,14 @@ import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class StarcraftTest {
 		
-	StarCraft game = StarCraft.getInstance();
+	StarCraft game = new StarCraft();
 	
 	@Test
 	public void testStarCraftMovesAMarineInAMapFullOfLand() throws StepsLimitExceeded {
 		Map currentMap = new Map(1000);
 		game.setMap(currentMap);
 		
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(20,20));
+		MuggleUnit marine = new MarineTemplate().create(new Point(20, 20));
 		
 		game.moveUnitToDestination(marine, new Point(500,32));
 				
@@ -37,7 +37,7 @@ public class StarcraftTest {
 		scenario.assignSurfaceDistributionInRect(LandType.air,new Point(50, 50),100, 1);
 		game.setMap(currentMap);
 
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(75,0));
+		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
 		
 		game.moveUnitToDestination(marine, new Point(75,500));
 				

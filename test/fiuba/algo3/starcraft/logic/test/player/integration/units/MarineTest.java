@@ -22,11 +22,11 @@ public class MarineTest {
 	@Test
 	public void testMarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		
 		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
@@ -42,11 +42,11 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		
 		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
@@ -68,11 +68,11 @@ public class MarineTest {
 	@Test(expected = InsufficientResources.class)
 	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(300,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
@@ -94,7 +94,7 @@ public class MarineTest {
 		Resources initialResources = new Resources(200,0);
 		Player player = new Player(null, null, null, null, initialResources);
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new  BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		
 		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
@@ -110,11 +110,11 @@ public class MarineTest {
 	@Test
 	public void test2MarineCreationAnd1MarineDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(400,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new  TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
@@ -139,11 +139,11 @@ public class MarineTest {
 	@Test
 	public void test4MarineCreationAnd4MarineDeadLeavesPopulationAt0() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 
 		for (int i = 0; i < 4; i++) {
@@ -165,13 +165,13 @@ public class MarineTest {
 	@Test
 	public void test7MarineCreationAnd49TurnsLeavesPopulationAt7() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(100000,0);
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
-		ConstructionStructure barraca = BarracaTemplate.getInstance().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(null);
 		player.receiveNewStructure(barraca);
 		for (int i = 0; i < 7; i++) {
 			Construction<Unit> construction = barraca.create("Marine", null, player.getResources(), player.currentPopulation(), player.populationQuota());

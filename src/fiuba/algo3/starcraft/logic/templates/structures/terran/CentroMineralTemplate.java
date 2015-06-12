@@ -8,17 +8,11 @@ import fiuba.algo3.starcraft.logic.templates.structures.StructureTemplate;
 
 public class CentroMineralTemplate extends StructureTemplate {
 
-	private static CentroMineralTemplate instance = new CentroMineralTemplate();
-
-	private CentroMineralTemplate() {
+	public CentroMineralTemplate() {
 		name = "Centro Mineral";
 		value = new Value(50,0);
 		constructionTime = 4;
 		health = 500;
-	}
-	
-	public static CentroMineralTemplate getInstance() {
-		return instance;
 	}
 	
 	public MineralExploiter create(Point position) {

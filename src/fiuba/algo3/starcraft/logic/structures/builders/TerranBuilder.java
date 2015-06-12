@@ -9,22 +9,15 @@ import fiuba.algo3.starcraft.logic.templates.structures.terran.RefineriaTemplate
 
 public class TerranBuilder extends Builder {
 	
-	private static TerranBuilder instance = new TerranBuilder();
-	
-	TerranBuilder() {
-		templates.add(CentroMineralTemplate.getInstance());
-		templates.add(FabricaTemplate.getInstance());
-		templates.add(BarracaTemplate.getInstance());
-		templates.add(DepositoSuministroTemplate.getInstance());
-		templates.add(RefineriaTemplate.getInstance());
-		templates.add(PuertoEstelarTerranTemplate.getInstance());
+	public TerranBuilder() {
+		templates.add(new CentroMineralTemplate());
+		templates.add(new FabricaTemplate());
+		templates.add(new BarracaTemplate());
+		templates.add(new DepositoSuministroTemplate());
+		templates.add(new RefineriaTemplate());
+		templates.add(new PuertoEstelarTerranTemplate());
 		
 		dependsOn.put("Fabrica", "Barraca");
 		dependsOn.put("Puerto Estelar", "Fabrica");
 	}
-	
-	public static TerranBuilder getInstance() {
-		return instance;
-	}
-
 }

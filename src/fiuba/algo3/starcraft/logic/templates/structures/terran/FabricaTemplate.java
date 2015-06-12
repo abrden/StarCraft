@@ -9,19 +9,14 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.GolliatTemplate;
 
 public class FabricaTemplate extends ConstructionTemplate {
 
-    private static FabricaTemplate instance = new FabricaTemplate();
-
-    private FabricaTemplate() {
+    public FabricaTemplate() {
         name = "Fabrica";
         value = new Value(200,100);
         constructionTime = 12;
         health = 1250;
-		enabledTemplates.add(GolliatTemplate.getInstance());
+		enabledTemplates.add(new GolliatTemplate());
     }
 
-    public static FabricaTemplate getInstance() {
-        return instance;
-    }
     public ConstructionStructure create(Point position) {
         return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
     }

@@ -11,9 +11,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class DragonTemplate extends MuggleTemplate {
 
-	private static DragonTemplate instance = new DragonTemplate();
-
-	private DragonTemplate() {
+	public DragonTemplate() {
 		name = "Dragon";
 		value = new Value(125,50);
 		constructionTime = 6;
@@ -26,10 +24,6 @@ public class DragonTemplate extends MuggleTemplate {
 		damageRange = 4;
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 6;
-	}
-
-	public static DragonTemplate getInstance(){
-		return instance;
 	}
 
 	public MuggleUnit create(Point position) {

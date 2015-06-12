@@ -7,10 +7,8 @@ import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.structures.StructureTemplate;
 
 public class DepositoSuministroTemplate extends StructureTemplate {
-	
-	private static DepositoSuministroTemplate instance = new DepositoSuministroTemplate();
 
-	private DepositoSuministroTemplate() {
+	public DepositoSuministroTemplate() {
 		name = "Deposito Suministro";
 		value = new Value(100,0);
 		constructionTime = 6;
@@ -19,10 +17,6 @@ public class DepositoSuministroTemplate extends StructureTemplate {
 
 	public Depot create(Point position) {
 		return new Depot(name, new Life(health), position);
-	}
-	
-	public static DepositoSuministroTemplate getInstance() {
-		return instance;
 	}
 
 }

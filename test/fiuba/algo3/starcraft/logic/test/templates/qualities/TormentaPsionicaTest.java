@@ -22,9 +22,9 @@ public class TormentaPsionicaTest {
 
 	@Test
 	public void testTormentaIsntFinishedUntilItExecutes2Times() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
+		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -40,9 +40,9 @@ public class TormentaPsionicaTest {
 
 	@Test
 	public void testTormentaIsFinishedIfItExecutes2Times() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
+		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -59,9 +59,9 @@ public class TormentaPsionicaTest {
 	
 	@Test
 	public void testTormentaReducesLifeOfAffectedUnitsBy50Execution() {
-		MuggleUnit marine = MarineTemplate.getInstance().create(null);
-		MuggleUnit golliat = GolliatTemplate.getInstance().create(null);
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(null);
+		MuggleUnit marine = new MarineTemplate().create(null);
+		MuggleUnit golliat = new GolliatTemplate().create(null);
+		MagicalUnit nave = new NaveCienciaTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(marine);
 		affected.add(nave);

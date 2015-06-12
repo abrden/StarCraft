@@ -11,9 +11,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class GolliatTemplate extends MuggleTemplate {
 
-	private static GolliatTemplate instance = new GolliatTemplate();
-
-	private GolliatTemplate() {
+	public GolliatTemplate() {
 		name = "Golliat";
 		value = new Value(100,50);
 		constructionTime = 6;
@@ -25,10 +23,6 @@ public class GolliatTemplate extends MuggleTemplate {
 		damageRange = 6;
 		attack = new Attack(damage, damageRange);
 		stepsPerTurn = 6;
-	}
-
-	public static GolliatTemplate getInstance(){
-		return instance;
 	}
 
 	public MuggleUnit create(Point position) {

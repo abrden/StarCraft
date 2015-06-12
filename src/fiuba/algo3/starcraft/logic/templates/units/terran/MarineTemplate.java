@@ -10,9 +10,8 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 public class MarineTemplate extends MuggleTemplate {
 
-	private static MarineTemplate instance = new MarineTemplate();
-	
-	private MarineTemplate() {
+
+	public MarineTemplate() {
 		name = "Marine";
 		value = new Value(50,0);
 		constructionTime = 3;
@@ -26,9 +25,6 @@ public class MarineTemplate extends MuggleTemplate {
 		stepsPerTurn = 3;
 	}
 
-	public static MarineTemplate getInstance(){
-		return instance;
-	}
 
 	public MuggleUnit create(Point position) {
 		return new MuggleUnit(name, new Life(health), position, vision, 

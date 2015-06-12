@@ -22,12 +22,12 @@ public class ZealotTest {
 	@Test
 	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(350,0);
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources);
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		
 		player.pays(150, 0);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create(null);
+		ConstructionStructure acceso = new AccesoTemplate().create(null);
 		player.receiveNewStructure(acceso);
 		
 		Construction<Unit> construction = acceso.create("Zealot", null, player.getResources(), player.currentPopulation(), player.populationQuota());
@@ -45,7 +45,7 @@ public class ZealotTest {
 		Resources initialResources = new Resources(150,0);
 		Player player = new Player(null, null, null, null, initialResources);
 		player.pays(150, 0);
-		ConstructionStructure acceso = AccesoTemplate.getInstance().create(null);
+		ConstructionStructure acceso = new AccesoTemplate().create(null);
 		player.receiveNewStructure(acceso);
 		
 		acceso.create("Zealot", null, player.getResources(), player.currentPopulation(), player.populationQuota());

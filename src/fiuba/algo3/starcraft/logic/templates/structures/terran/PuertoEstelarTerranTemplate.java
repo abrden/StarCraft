@@ -11,22 +11,17 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTe
 
 public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
 
-        private static PuertoEstelarTerranTemplate instance = new PuertoEstelarTerranTemplate();
-
-        private PuertoEstelarTerranTemplate() {
-            name = "Puerto Estelar";
-            value = new Value(150,100);
-            constructionTime = 10;
-            health = 1300;
-            enabledTemplates.add(EspectroTemplate.getInstance());
-            enabledTemplates.add(NaveTransporteTerranTemplate.getInstance());
-            enabledTemplates.add(NaveCienciaTemplate.getInstance());
+    public PuertoEstelarTerranTemplate() {
+        name = "Puerto Estelar";
+        value = new Value(150,100);
+        constructionTime = 10;
+        health = 1300;
+        enabledTemplates.add(new EspectroTemplate());
+        enabledTemplates.add(new NaveTransporteTerranTemplate());
+        enabledTemplates.add(new NaveCienciaTemplate());
         }
 
-        public static PuertoEstelarTerranTemplate getInstance() {
-            return instance;
-        }
-        public ConstructionStructure create(Point position) {
-            return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
+    public ConstructionStructure create(Point position) {
+        return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
         }
 }

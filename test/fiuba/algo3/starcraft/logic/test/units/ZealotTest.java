@@ -14,7 +14,7 @@ public class ZealotTest {
     @Test
     public void testCreateZealotAndReduce50HealthNowShieldIs50AndHealth60() {
         Point position = new Point(1,1);
-    	Unit zealot = ZealotTemplate.getInstance().create(position);
+    	Unit zealot = new ZealotTemplate().create(position);
 
         zealot.reduceLife(50);
 
@@ -23,7 +23,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal110DamageToZealotNowShieldIs0AndHealth50() {
-        Unit zealot = ZealotTemplate.getInstance().create(null);
+        Unit zealot = new ZealotTemplate().create(null);
 
         zealot.reduceLife(110);
 
@@ -32,7 +32,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal160DamageZealotIsNowDead() {
-        Unit zealot = ZealotTemplate.getInstance().create(null);
+        Unit zealot = new ZealotTemplate().create(null);
 
         zealot.reduceLife(160);
 
@@ -41,7 +41,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo60() {
-        Unit zealot = ZealotTemplate.getInstance().create(null);
+        Unit zealot = new ZealotTemplate().create(null);
         assertEquals(60, zealot.getShield());
         
         zealot.reduceLife(100);

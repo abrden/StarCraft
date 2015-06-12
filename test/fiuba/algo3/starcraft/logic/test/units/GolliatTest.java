@@ -10,7 +10,7 @@ public class GolliatTest {
 
     @Test
     public void testCreateGolliatAndReduce50HealthNowHealthEquals75(){
-        Unit golliat = GolliatTemplate.getInstance().create(null);
+        Unit golliat = new GolliatTemplate().create(null);
         golliat.reduceLife(50);
 
         assertEquals(75, golliat.getHealth());
@@ -18,7 +18,7 @@ public class GolliatTest {
 
     @Test
     public void testCreateGolliatAndReduce125HealthItIsDead(){
-        Unit golliat = GolliatTemplate.getInstance().create(null);
+        Unit golliat = new GolliatTemplate().create(null);
         golliat.reduceLife(50);
 
         assertEquals(true, golliat.itsAlive());

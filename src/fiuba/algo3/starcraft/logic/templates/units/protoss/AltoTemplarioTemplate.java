@@ -8,10 +8,8 @@ import fiuba.algo3.starcraft.logic.templates.units.MagicalTemplate;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 
 public class AltoTemplarioTemplate extends MagicalTemplate {
-
-	private static AltoTemplarioTemplate instance = new AltoTemplarioTemplate();
 	
-	private AltoTemplarioTemplate() {
+	public AltoTemplarioTemplate() {
 		name = "Alto Templario";
 		value = new Value(50, 150);
 		constructionTime = 7;
@@ -31,10 +29,6 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 				vision, stepsPerTurn, new AltoTemplarioPowerGenerator(),
 				initialEnergy, maximumEnergy, energyGainPerTurn, 
 				transportationQuota, false, populationQuota);
-	}
-
-	public static AltoTemplarioTemplate getInstance() {
-		return instance;
 	}
 
 }

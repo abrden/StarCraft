@@ -44,7 +44,7 @@ public class ConstructionStructureTest {
 	@Test(expected = InsufficientResources.class)
 	public void testCreateUnitWithNoResourcesThrowsInsufficientResources() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
-		templates.add(MarineTemplate.getInstance());
+		templates.add(new MarineTemplate());
 		ConstructionStructure constructor = new ConstructionStructure(null, null, null, (Iterable<UnitTemplate>) templates);
 
 		constructor.create("Marine", null, new Resources(0,0), 0, 5);
@@ -53,7 +53,7 @@ public class ConstructionStructureTest {
 	@Test(expected = QuotaExceeded.class)
 	public void testCreateUnitWithNoPopulationSpaceThrowsQuotaExceeded() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
-		templates.add(MarineTemplate.getInstance());
+		templates.add(new MarineTemplate());
 		ConstructionStructure constructor = new ConstructionStructure(null, null, null, (Iterable<UnitTemplate>) templates);
 
 		constructor.create("Marine", null, new Resources(0,0), 0, 0);
@@ -62,7 +62,7 @@ public class ConstructionStructureTest {
 	@Test
 	public void testCreateUnitReturnsConstructionWithUnitInside() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
-		templates.add(MarineTemplate.getInstance());
+		templates.add(new MarineTemplate());
 		ConstructionStructure constructor = new ConstructionStructure(null, null, null, (Iterable<UnitTemplate>) templates);
 
 		Construction<Unit> marineConstruction = constructor.create("Marine", null, new Resources(100, 100), 0, 5);
