@@ -1,7 +1,5 @@
 package fiuba.algo3.starcraft.logic.test.units;
 
-
-import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
@@ -15,7 +13,7 @@ import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 import org.junit.Test;
 
 public class NaveTransporteTerranTest {
-    /*
+    
     @Test
     public void testNaveTransporteTerranEmbarksMarineFreeSpaceDownTo7() throws NoMoreSpaceInUnit, StepsLimitExceeded{
         TransportUnit navetrans = new NaveTransporteTerranTemplate().create(null);
@@ -62,5 +60,5 @@ public class NaveTransporteTerranTest {
         navetrans.disembark((Transportable) marine);
 
     }
-    */
+
 }

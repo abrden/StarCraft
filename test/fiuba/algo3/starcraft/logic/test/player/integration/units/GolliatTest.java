@@ -50,25 +50,31 @@ public class GolliatTest {
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", null);
 		for(int i = 0; i < 13; i++) player.newTurn();
+		
 		player.pays(200, 100);
 		ConstructionStructure fabrica = new FabricaTemplate().create(null);
 		player.receiveNewStructure(fabrica);
 
-		for (int i = 0; i < 2; i++) {
+		 for (int i = 0; i < 2; i++) {
 			Construction<Unit> construction = fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 			while(!construction.itsFinished()) {
 				construction.lowerRelease();
 			}
-			Unit golliat = (Unit) construction.gather();
+			Unit golliat = construction.gather();
 			player.receiveNewUnit(golliat);
 		}
 
-		Construction<Unit> construction = fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
-		while(!construction.itsFinished()) {
+		//Construction<Unit> construction = 
+		System.out.println(player.currentPopulation());
+		System.out.println(player.populationQuota());
+		fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
+		
+		/*while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
-		Unit golliat = (Unit) construction.gather();
+		Unit golliat = construction.gather();
 		player.receiveNewUnit(golliat);
+		*/
 	}
 
 	@Test
