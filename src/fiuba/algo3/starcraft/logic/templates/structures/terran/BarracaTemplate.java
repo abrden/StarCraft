@@ -9,15 +9,29 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 
 public class BarracaTemplate extends ConstructionTemplate {
 
+	private static final String NAME = "Barraca";
+	private static final Value VALUE = new Value(150,0);
+	private static final int CONSTRUCTION_TIME = 12;
+	private static final int HEALTH = 1000;
+	
 	public BarracaTemplate() {
-		name = "Barraca";
-		value = new Value(150,0);
-		constructionTime = 12;
-		health = 1000;
 		enabledTemplates.add(new MarineTemplate());
 	}
-
+	
 	public ConstructionStructure create(Point position) {
-		return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
+		return new ConstructionStructure(NAME, new Life(HEALTH), position, enabledTemplates);
 	}
+	
+	public String getName() {
+		return NAME;
+	}
+
+	public Value getValue() {
+		return VALUE;
+	}
+
+	public int getConstructionTime() {
+		return CONSTRUCTION_TIME;
+	}
+	
 }

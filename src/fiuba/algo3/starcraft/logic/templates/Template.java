@@ -10,6 +10,13 @@ public abstract class Template {
 	protected int health;
 	protected int shield;
 	
+	public abstract String getName();
+	
+	public abstract Value getValue();
+	
+	public abstract int getConstructionTime();
+	
+	/*
 	public String getName() {
 		return name;
 	}
@@ -21,4 +28,5 @@ public abstract class Template {
 	public int getConstructionTime() {
 		return constructionTime;
 	}
+	*/
 }

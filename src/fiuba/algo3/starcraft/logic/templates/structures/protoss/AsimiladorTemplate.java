@@ -8,16 +8,26 @@ import fiuba.algo3.starcraft.logic.templates.structures.StructureTemplate;
 
 public class AsimiladorTemplate extends StructureTemplate {
 
-	public AsimiladorTemplate() {
-		name = "Asimilador";
-		value = new Value(100,0);
-		constructionTime = 6;
-		health = 450;
-		shield = 450;
+	private static final String NAME = "Asimilador";
+	private static final Value VALUE = new Value(100,0);
+	private static final int CONSTRUCTION_TIME = 6;
+	private static final int HEALTH = 450;
+	private static final int SHIELD = 450;
+	
+	public GasExploiter create(Point position) {
+		return new GasExploiter(NAME, new Life(HEALTH, SHIELD), position);
+	}
+	
+	public String getName() {
+		return NAME;
 	}
 
-	public GasExploiter create(Point position) {
-		return new GasExploiter(name, new Life(health, shield), position);
+	public Value getValue() {
+		return VALUE;
+	}
+
+	public int getConstructionTime() {
+		return CONSTRUCTION_TIME;
 	}
 
 }

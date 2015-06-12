@@ -9,16 +9,30 @@ import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate
 
 public class ArchivosTemplariosTemplate extends ConstructionTemplate {
 
+	private static final String NAME = "Archivos Templarios";
+	private static final Value VALUE = new Value(150,200);
+	private static final int CONSTRUCTION_TIME = 9;
+	private static final int HEALTH = 500;
+	private static final int SHIELD = 500;
+	
     public ArchivosTemplariosTemplate() {
-        name = "Archivos Templarios";
-        value = new Value(150,200);
-        constructionTime = 9;
-        health = 500;
-        shield = 500;
 		enabledTemplates.add(new AltoTemplarioTemplate());
     }
+	
+	public ConstructionStructure create(Point position) {
+		return new ConstructionStructure(NAME, new Life(HEALTH, SHIELD), position, enabledTemplates);
+	}
+	
+	public String getName() {
+		return NAME;
+	}
 
-    public ConstructionStructure create(Point position) {
-        return new ConstructionStructure(name, new Life(health, shield), position, enabledTemplates);
-    }
+	public Value getValue() {
+		return VALUE;
+	}
+
+	public int getConstructionTime() {
+		return CONSTRUCTION_TIME;
+	}
+
 }

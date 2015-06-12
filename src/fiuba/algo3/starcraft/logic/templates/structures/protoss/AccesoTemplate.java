@@ -10,17 +10,31 @@ import fiuba.algo3.starcraft.logic.templates.units.protoss.ZealotTemplate;
 
 public class AccesoTemplate extends ConstructionTemplate {
 
+	private static final String NAME = "Acceso";
+	private static final Value VALUE = new Value(150,0);
+	private static final int CONSTRUCTION_TIME = 8;
+	private static final int HEALTH = 500;
+	private static final int SHIELD = 500;
+	
     public AccesoTemplate() {
-        name = "Acceso";
-        value = new Value(150,0);
-        constructionTime = 8;
-        health = 500;
-        shield = 500;
         enabledTemplates.add(new ZealotTemplate());
         enabledTemplates.add(new DragonTemplate());
     }
+	
+	public ConstructionStructure create(Point position) {
+		return new ConstructionStructure(NAME, new Life(HEALTH, SHIELD), position, enabledTemplates);
+	}
+	
+	public String getName() {
+		return NAME;
+	}
 
-    public ConstructionStructure create(Point position) {
-        return new ConstructionStructure(name, new Life(health, shield), position, enabledTemplates);
-    }
+	public Value getValue() {
+		return VALUE;
+	}
+
+	public int getConstructionTime() {
+		return CONSTRUCTION_TIME;
+	}
+
 }
