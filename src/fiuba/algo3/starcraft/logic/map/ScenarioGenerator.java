@@ -37,6 +37,11 @@ public class ScenarioGenerator {
 		}
 	}
 	
+	public void assignStartPointForPlayers() {
+		//TODO Implementar metodo para asignar un punto donde debe empezar el jugador
+	}
+	
+	//TODO Quien usa esto? 
 	public void buildStructureInPoint(Structure structure, Point point) {
 		Parcel parcel = map.getParcelContainingPoint(point);
 		parcel.setStructure(structure);
