@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.structures;
 
 import java.security.InvalidParameterException;
 
+import fiuba.algo3.starcraft.logic.map.ExtractableType;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Updatable;
@@ -38,5 +39,13 @@ public abstract class Structure implements Updatable {
 	
 	public void getResources(Player player) {
 		return;
+	}
+	
+	public boolean iCanExtractThis(ExtractableType resouce) {
+		return true;
+	}
+	
+	public Point getPosition() {
+		return position;
 	}
 }

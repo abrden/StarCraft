@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -39,10 +41,11 @@ public class Player {
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
-	//private int populationQuota;
+	private Map map;
+	
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
-	public Player(String name, Color color, Builder builder, Point base, Resources initialResources) {
+	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
 		this.name = name;
 		this.color = color;
 		this.builder = builder;
@@ -52,6 +55,7 @@ public class Player {
 		this.units = new LinkedList<Unit>();
 		this.constructionQueue = new ConstructionQueue();
 		this.activePowers = new LinkedList<Power>();
+		this.map = map;
 	}
 	
 	public String getName() {
@@ -161,8 +165,8 @@ public class Player {
 		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
-	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		constructionQueue.addStructure(builder.create(name, position, resources, structures));
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	
 	public void receiveNewUnit(Unit unit) {
@@ -170,7 +174,11 @@ public class Player {
 	}
 
 	public void receiveNewStructure(Structure structure) {
+		map.setStructure(structure, structure.getPosition());
+		
+		
 		structures.add(structure);
+		
 	}
 	
 	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
@@ -199,9 +207,11 @@ public class Player {
 	// TODO Cambiar posiciones de unidades
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded{
 		transport.embark(unit);
+		map.moveToLimbo(unit);
 	}
 	
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded{
 		transport.disembark(unit);
+		unit.setPosition(transport.getPosition());
 	}
 }

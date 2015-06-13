@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -19,17 +20,18 @@ public abstract class Builder {
 	protected Collection<StructureTemplate> templates = new LinkedList<StructureTemplate>();
 	protected Map<String,String> dependsOn = new HashMap<String,String>();
 	
-	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		
+	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built, fiuba.algo3.starcraft.logic.map.Map map) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		this.structureRequiredExists(name, built);
-		
-		// TODO verificacion de si el punto que me llega tiene un mineral o volcan (Si se quiere construir una estructura explotadora)
 		
 		StructureTemplate template = this.getTemplateWithName(name);
 		
-		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
+		Structure structure = template.create(position);
 			
-		return new Construction<Structure>(template.create(position), template.getConstructionTime());
+		map.resourceRequiredIsThere(structure, position);
+		
+		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
+		
+		return new Construction<Structure>(structure, template.getConstructionTime());
 	}
 	
 	private StructureTemplate getTemplateWithName(String name) throws TemplateNotFound {

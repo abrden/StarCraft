@@ -10,7 +10,7 @@ public class Air extends Surface {
 	}
 
 	@Override
-	public Resource extractResource() throws NoResourcesToExtract {
+	public ExtractableType extractResource() throws NoResourcesToExtract {
 		throw new NoResourcesToExtract();
 	}
 	

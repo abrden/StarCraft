@@ -27,7 +27,7 @@ public class Land extends Surface {
 		return true;
 	}
 	
-	public Resource extractResource() throws NoResourcesToExtract {
+	public ExtractableType extractResource() throws NoResourcesToExtract {
 		if (extractableSurface != null) {
 			return extractableSurface.extractResource();
 		} else {
