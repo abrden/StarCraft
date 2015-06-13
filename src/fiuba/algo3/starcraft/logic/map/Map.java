@@ -2,6 +2,11 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
+import fiuba.algo3.starcraft.logic.structures.Structure;
+import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Map {
@@ -63,6 +68,22 @@ public class Map {
 
 	public void setUnit(Unit unit, Point position) {
 		// TODO Implementar
+		
+	}
+	
+	public void setStructure(Structure structure, Point point) {
+		Parcel parcel = getParcelContainingPoint(point);
+		parcel.setStructure(structure);
+	}
+
+	public void resourceRequiredIsThere(Structure structure, Point position) throws NoResourcesToExtract {
+		Parcel parcel = this.getParcelContainingPoint(position);
+		ExtractableType resource = parcel.getLandForExplotation().extractResource();
+		if (!structure.iCanExtractThis(resource)) throw new NoResourcesToExtract();
+	}
+
+	public void moveToLimbo(Transportable unit) {
+		// TODO implementar
 		
 	}
 }

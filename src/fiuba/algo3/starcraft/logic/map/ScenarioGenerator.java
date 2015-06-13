@@ -3,6 +3,8 @@ package fiuba.algo3.starcraft.logic.map;
 import java.util.ArrayList;
 import java.util.Random;
 
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
+import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 
 public class ScenarioGenerator {
@@ -35,6 +37,11 @@ public class ScenarioGenerator {
 		}
 	}
 	
+	public void assignStartPointForPlayers() {
+		//TODO Implementar metodo para asignar un punto donde debe empezar el jugador
+	}
+	
+	//TODO Quien usa esto? 
 	public void buildStructureInPoint(Structure structure, Point point) {
 		Parcel parcel = map.getParcelContainingPoint(point);
 		parcel.setStructure(structure);

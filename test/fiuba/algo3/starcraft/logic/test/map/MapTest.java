@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 
 public class MapTest {
 	Map map = new Map(10000);
@@ -32,15 +32,10 @@ public class MapTest {
 		assertTrue(parcels.contains(interiorParcel) && (parcels.size() == 100));
 	}
 	@Test
-	public void testMapIsResetedAndHasNoMinerals() {
+	public void testMapIsResetedAndHasNoMinerals() throws NoResourcesToExtract {
 		map = new Map(10000);
-		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000)) {
-			try {
-				parcel.getLandForExplotation().extractResource();
-				assertTrue(false);
-			} catch (NoResourcesToExtract e){
-			}
-		}
+		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000))
+			assertEquals(parcel.getLandForExplotation().extractResource(), null);
 		assertTrue(true);
 	}
 	

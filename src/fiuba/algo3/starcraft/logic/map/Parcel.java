@@ -1,5 +1,10 @@
 package fiuba.algo3.starcraft.logic.map;
 
+import fiuba.algo3.starcraft.logic.map.areas.Air;
+import fiuba.algo3.starcraft.logic.map.areas.Land;
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
+import fiuba.algo3.starcraft.logic.map.areas.Surface;
+import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 
@@ -35,8 +40,6 @@ public class Parcel {
 		break;
 		}
 	}
-	
-	
 	
 	public void setSurface(ExtractableType extractableType) {
 		surface = new Land(extractableType);

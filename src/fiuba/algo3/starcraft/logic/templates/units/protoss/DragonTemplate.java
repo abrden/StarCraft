@@ -16,8 +16,8 @@ public class DragonTemplate extends MuggleTemplate {
 	private static final int CONSTRUCTION_TIME = 6;
 	private static final int VISION = 8;
 	private static final int POPULATION_QUOTA = 2;
-	private static final int HEALTH = 80;
-	private static final int SHIELD = 100;
+	private static final int HEALTH = 100;
+	private static final int SHIELD = 80;
 	private static final int TRANSPORTATION_QUOTA = 4;
 	private static final Damage DAMAGE = new Damage(20,20);
 	private static final int DAMAGE_RANGE = 4;

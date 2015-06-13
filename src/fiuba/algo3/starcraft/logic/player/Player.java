@@ -8,6 +8,7 @@ import java.util.List;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -41,7 +42,7 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
-	//private int populationQuota;
+
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
 	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
@@ -164,7 +165,7 @@ public class Player {
 		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
-	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	
@@ -173,6 +174,7 @@ public class Player {
 	}
 
 	public void receiveNewStructure(Structure structure) {
+		map.setStructure(structure, structure.getPosition());
 		structures.add(structure);
 	}
 	
@@ -202,9 +204,11 @@ public class Player {
 	// TODO Cambiar posiciones de unidades
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded{
 		transport.embark(unit);
+		map.moveToLimbo(unit);
 	}
 	
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded{
 		transport.disembark(unit);
+		unit.setPosition(transport.getPosition());
 	}
 }
