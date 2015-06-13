@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -76,9 +76,6 @@ public class GolliatTest {
 			Unit golliat = construction.gather();
 			player.receiveNewUnit(golliat);
 		}
-
-		System.out.println(player.currentPopulation());
-		System.out.println(player.populationQuota());
 		fabrica.create("Golliat", null, player.getResources(), player.currentPopulation(), player.populationQuota());
 	}
 

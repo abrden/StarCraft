@@ -2,6 +2,9 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;

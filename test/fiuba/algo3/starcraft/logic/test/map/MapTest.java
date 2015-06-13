@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 
 public class MapTest {
 	Map map = new Map(10000);

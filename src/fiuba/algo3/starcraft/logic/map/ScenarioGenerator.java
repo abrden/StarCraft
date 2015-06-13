@@ -3,6 +3,8 @@ package fiuba.algo3.starcraft.logic.map;
 import java.util.ArrayList;
 import java.util.Random;
 
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
+import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 
 public class ScenarioGenerator {

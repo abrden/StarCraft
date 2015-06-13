@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.game.StarCraft;
-import fiuba.algo3.starcraft.logic.map.LandType;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
+import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;

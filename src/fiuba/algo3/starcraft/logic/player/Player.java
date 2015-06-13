@@ -7,8 +7,8 @@ import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
