@@ -8,11 +8,13 @@ import java.util.List;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.templates.qualities.Cloner;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.DragonTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.GolliatTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
+import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.Unit;
@@ -23,15 +25,15 @@ public class AltoTemplarioTest {
 
 	@Test
 	public void testExecutingTormentaOneTimeLowersHealthBy50() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
 		templario.update();
 		templario.update();
 		templario.update();
 		Power tormenta = templario.usePower("Tormenta Psionica");
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(1,2));
-		MuggleUnit golliat = GolliatTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit marine = new MarineTemplate().create(new Point(1, 2));
+		MuggleUnit golliat = new GolliatTemplate().create(new Point(1, 2));
 		int marinesInitialHealth = marine.getHealth();
 		int golliatsInitialHealth = golliat.getHealth();
 		List<Unit> affected = new LinkedList<Unit>();
@@ -48,15 +50,15 @@ public class AltoTemplarioTest {
 
 	@Test
 	public void testExecutingTormentaTwoTimesLowersHealthBy100() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
 		templario.update();
 		templario.update();
 		templario.update();
 		Power tormenta = templario.usePower("Tormenta Psionica");
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(1,2));
-		MuggleUnit golliat = GolliatTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit marine = new MarineTemplate().create(new Point(1, 2));
+		MuggleUnit golliat = new GolliatTemplate().create(new Point(1, 2));
 		int marinesInitialHealth = marine.getHealth();
 		int golliatsInitialHealth = golliat.getHealth();
 		List<Unit> affected = new LinkedList<Unit>();
@@ -74,15 +76,15 @@ public class AltoTemplarioTest {
 
 	@Test
 	public void testTormentaItsFinishedAfterTwoExecutions() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
 		templario.update();
 		templario.update();
 		templario.update();
 		Power tormenta = templario.usePower("Tormenta Psionica");
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(1,2));
-		MuggleUnit golliat = GolliatTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit marine = new MarineTemplate().create(new Point(1, 2));
+		MuggleUnit golliat = new GolliatTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(marine);
 		affected.add(golliat);
@@ -97,15 +99,15 @@ public class AltoTemplarioTest {
 	
 	@Test
 	public void testTormentaNOTFinishedAfterOneExecution() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
 		templario.update();
 		templario.update();
 		templario.update();
 		Power tormenta = templario.usePower("Tormenta Psionica");
-		MuggleUnit marine = MarineTemplate.getInstance().create(new Point(1,2));
-		MuggleUnit golliat = GolliatTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit marine = new MarineTemplate().create(new Point(1, 2));
+		MuggleUnit golliat = new GolliatTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(marine);
 		affected.add(golliat);
@@ -119,20 +121,20 @@ public class AltoTemplarioTest {
 	
 	@Test
 	public void testAlucinacion() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
 		templario.update();
 		templario.update();
 		templario.update();
 		Power clonacion = templario.usePower("Alucinacion");
-		MuggleUnit dragon = DragonTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit dragon = new DragonTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(dragon);
 		clonacion.lockUnits(affected);
 		clonacion.activate();
 		
-		clonacion.execute();
+		assertEquals(((Cloner) clonacion).getClone().getClass(), Clone.class);
 		
 	}
 }

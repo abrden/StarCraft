@@ -19,11 +19,11 @@ public abstract class Builder {
 	protected Collection<StructureTemplate> templates = new LinkedList<StructureTemplate>();
 	protected Map<String,String> dependsOn = new HashMap<String,String>();
 	
-	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built, Map map) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
 		
 		this.structureRequiredExists(name, built);
 		
-		// TODO verificacion de si el punto que me llega tiene un mineral o volcan (Si se quiere construir una estructura explotadora)
+		
 		
 		StructureTemplate template = this.getTemplateWithName(name);
 		

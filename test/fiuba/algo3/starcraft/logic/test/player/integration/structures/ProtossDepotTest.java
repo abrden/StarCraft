@@ -18,7 +18,11 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais5With1Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		player.newStructureWithName("Pilon", null);
 		/* Pilon tarda 5 turnos en hacerse, al sexto estara listo para utilizar */
@@ -30,7 +34,11 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		player.newStructureWithName("Pilon", null);
 		player.newStructureWithName("Pilon", null);
@@ -42,7 +50,11 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		player.newStructureWithName("Pilon", null);
 		player.newStructureWithName("Pilon", null);
@@ -56,14 +68,18 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais10With2PilonsAnd5IfOneIsDestroyed() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(200,0);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		assertEquals(player.populationQuota(), 5);	
 		
 		/* Creo un pilon afuera para mantener su referencia */
-		PilonTemplate templatePilon = PilonTemplate.getInstance();
+		PilonTemplate templatePilon = new PilonTemplate();
 		Depot pilon = templatePilon.create(null);
 		player.pays(100,0);
 		player.receiveNewStructure(pilon);
@@ -78,7 +94,11 @@ public class ProtossDepotTest {
 	@Test
 	public void testPopulationQuotais200With300Pilons() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
 		Resources initialResources = new Resources(30000,0);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		for(int j = 0; j < 300; j++) {
 			player.newStructureWithName("Pilon", null);

@@ -21,9 +21,9 @@ public class EMPTest {
 
 	@Test
 	public void testEMPisntFinishedUntilActivatingAndExecuting() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
+		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -37,8 +37,8 @@ public class EMPTest {
 
 	@Test
 	public void testEMPDestroysShieldOfProtossMuggleUnits() {
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(null);
-		MuggleUnit scout = ScoutTemplate.getInstance().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(null);
+		MuggleUnit scout = new ScoutTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		assertEquals(scout.getShield(), 100);
 		assertEquals(zealot.getShield(), 60);
@@ -58,7 +58,7 @@ public class EMPTest {
 	
 	@Test(expected = InsufficientEnergy.class)
 	public void testEMPDrainsEnergyOfProtossMagicalUnits() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit templario1 = AltoTemplarioTemplate.getInstance().create(null);
+		MagicalUnit templario1 = new AltoTemplarioTemplate().create(null);
 		List<Unit> affected = new LinkedList<Unit>();
 		
 		for(int i = 0; i < 4; i++) templario1.update();

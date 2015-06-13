@@ -17,16 +17,16 @@ public class BuilderTest {
 
 	@Test(expected = InsufficientResources.class)
 	public void createStructureWithNoResourcesThrowsInsufficientResources() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		TerranBuilder.getInstance().create("Deposito Suministro", null, new Resources(0,0), null);
+		new TerranBuilder().create("Deposito Suministro", null, new Resources(0,0), null);
 	}
 	
 	@Test(expected = TemplateNotFound.class)
 	public void createStructureWithMistakenNameTemplateNotFound() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		TerranBuilder.getInstance().create("sdfihsofirwhoiw", null, new Resources(100,0), null);
+		new TerranBuilder().create("sdfihsofirwhoiw", null, new Resources(100,0), null);
 	}
 
 	public void createStructureReturnsConstruction() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		Construction<Structure> construction = ProtossBuilder.getInstance().create("Pilon", null, new Resources(100,0), null);
+		Construction<Structure> construction = new ProtossBuilder().create("Pilon", null, new Resources(100,0), null);
 	
 		assertEquals(construction.getClass(), Construction.class);
 	}

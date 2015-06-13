@@ -16,6 +16,7 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.templates.qualities.Cloner;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
@@ -39,8 +40,9 @@ public class Player {
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
-	private int populationQuota;
 	private Map map;
+	//private int populationQuota;
+	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
 	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
 		this.name = name;
@@ -91,12 +93,13 @@ public class Player {
 		// Recolecta las nuevas Units y Structures y disminuye la release de las que siguen en construccion
 		constructionQueue.update(this);
 		
-		// Sus estructuras le dan los recursos recolectados y redefinen su cupo poblacional
-		populationQuota = 0;
+		// Sus estructuras le dan los recursos recolectados
 		for (Structure structure : structures)
-			structure.update(this);
+			structure.getResources(this);
 		
 		// Regeneracion de escudos y ganancia de energia en MagicalUnits
+		for (Structure structure : structures)
+			structure.update();
 		for (Unit unit : units)
 			unit.update();
 		
@@ -130,7 +133,7 @@ public class Player {
 	}
 	
 	public int populationSpace() {
-		return (populationQuota - this.currentPopulation());
+		return (this.populationQuota() - this.currentPopulation());
 	}
 	
 	public int currentPopulation() {
@@ -141,11 +144,11 @@ public class Player {
 	}
 	
 	public int populationQuota() {
-		return populationQuota;
-	}
-
-	public void increasePopulationQuota(int populationQuotaIncrement) {
-		populationQuota += 5;
+		int populationQuota = 0;
+		for (Structure structure : structures)
+			populationQuota += structure.getPopulationQuotaIncrement();
+		if (populationQuota > POPULATION_QUOTA_MAXIMUM) return POPULATION_QUOTA_MAXIMUM;
+		else return populationQuota;
 	}
 	
 	public void gains(int mineral, int gas) {
@@ -158,11 +161,11 @@ public class Player {
 	}
 
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), populationQuota));
+		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
 	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		constructionQueue.addStructure(builder.create(name, position, resources, structures));
+		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	
 	public void receiveNewUnit(Unit unit) {
@@ -172,10 +175,7 @@ public class Player {
 	public void receiveNewStructure(Structure structure) {
 		structures.add(structure);
 	}
-
-	/* Manipulacion de unidades */
 	
-	//TODO Implementar todos estos metodos
 	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
 		StarCraft.getInstance().moveUnitToDestination(transportable, destination);
 	}
@@ -195,14 +195,16 @@ public class Player {
 		
 		power.activate();
 		power.execute();
+		if (power instanceof Cloner) this.receiveNewUnit(((Cloner) power).getClone());
 		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
-	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit{
+	// TODO Cambiar posiciones de unidades
+	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded{
 		transport.embark(unit);
 	}
 	
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove{
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded{
 		transport.disembark(unit);
 	}
 }

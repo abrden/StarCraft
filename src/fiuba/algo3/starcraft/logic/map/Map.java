@@ -2,6 +2,8 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.starcraft.logic.units.Unit;
+
 public class Map {
 	public final double PARCEL_SIDE = 10;
 
@@ -57,5 +59,10 @@ public class Map {
 	
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
+	}
+
+	public void setUnit(Unit unit, Point position) {
+		// TODO Implementar
+		
 	}
 }

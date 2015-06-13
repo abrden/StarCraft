@@ -8,6 +8,7 @@ public class TormentaPsionica extends Power {
 	private int executionsLeft;
 	private static final int COST = 75;
 	private static final int RANGE = 7;
+	public static final int DAMAGE = 50;
 	
 	public int getCost() {
 		return COST;

@@ -22,21 +22,21 @@ public class NaveCienciaTest {
 
 	@Test(expected = InsufficientEnergy.class)
 	public void testGenerateEMPWithouttEnergyThrowsInsufficientEnergy() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		
 		nave.usePower("EMP");
 	}
 	
 	@Test(expected = NonexistentPower.class)
 	public void testGenerateUnknownPowerThrowsInsufficientEnergy() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		
 		nave.usePower("Hola");
 	}	
 
 	@Test(expected = InsufficientEnergy.class)
 	public void testGeneratingEMPConsumesEnergy() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		// Sumo 50 energia
 		nave.update();
 		nave.update();
@@ -52,7 +52,7 @@ public class NaveCienciaTest {
 	
 	@Test
 	public void testGeneratingEMPDestroysProtossShield() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		// Sumo 50 energia
 		nave.update();
 		nave.update();
@@ -60,7 +60,7 @@ public class NaveCienciaTest {
 		nave.update();
 		nave.update();
 		Power emp = nave.usePower("EMP");
-		MuggleUnit zealot = ZealotTemplate.getInstance().create(new Point(1,2));
+		MuggleUnit zealot = new ZealotTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		emp.lockUnits(affected);
@@ -73,7 +73,7 @@ public class NaveCienciaTest {
 	
 	@Test(expected = InsufficientEnergy.class)
 	public void testGeneratingEMPDrainsAltoTemplariosEnergy() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		// Sumo 50 energia
 		nave.update();
 		nave.update();
@@ -82,8 +82,8 @@ public class NaveCienciaTest {
 		nave.update();
 		
 		Power emp = nave.usePower("EMP");
-		MagicalUnit naveAfectada = NaveCienciaTemplate.getInstance().create(new Point(1,2));
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit naveAfectada = new NaveCienciaTemplate().create(new Point(1, 2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(templario);
 		affected.add(naveAfectada);
@@ -97,7 +97,7 @@ public class NaveCienciaTest {
 
 	@Test(expected = InsufficientEnergy.class)
 	public void testGeneratingEMPDrainsOthersNaveCienciasEnergy() throws InsufficientEnergy, NonexistentPower {
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(1, 2));
 		// Sumo 50 energia
 		nave.update();
 		nave.update();
@@ -106,8 +106,8 @@ public class NaveCienciaTest {
 		nave.update();
 		
 		Power emp = nave.usePower("EMP");
-		MagicalUnit naveAfectada = NaveCienciaTemplate.getInstance().create(new Point(1,2));
-		MagicalUnit templario = AltoTemplarioTemplate.getInstance().create(new Point(1,2));
+		MagicalUnit naveAfectada = new NaveCienciaTemplate().create(new Point(1, 2));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(templario);
 		affected.add(naveAfectada);

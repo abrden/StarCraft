@@ -1,36 +1,41 @@
 package fiuba.algo3.starcraft.logic.templates.structures.terran;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Value;
 import fiuba.algo3.starcraft.logic.templates.structures.ConstructionTemplate;
-import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.EspectroTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.NaveCienciaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTemplate;
 
 public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
 
-        private static PuertoEstelarTerranTemplate instance = new PuertoEstelarTerranTemplate();
+	private static final String NAME = "Puerto Estelar";
+	private static final Value VALUE = new Value(150,100);
+	private static final int CONSTRUCTION_TIME = 10;
+	private static final int HEALTH = 1300;
+	
+    public PuertoEstelarTerranTemplate() {
+        enabledTemplates.add(new EspectroTemplate());
+        enabledTemplates.add(new NaveTransporteTerranTemplate());
+        enabledTemplates.add(new NaveCienciaTemplate());
+        }
+	
+	public ConstructionStructure create(Point position) {
+		return new ConstructionStructure(NAME, new Life(HEALTH), position, enabledTemplates);
+	}
+	
+	public String getName() {
+		return NAME;
+	}
 
-        private PuertoEstelarTerranTemplate() {
-            name = "Puerto Estelar";
-            value = new Value(150,100);
-            constructionTime = 10;
-            health = 1300;
-            enabledTemplates = new LinkedList<UnitTemplate>();
-            enabledTemplates.add(EspectroTemplate.getInstance());
-            enabledTemplates.add(NaveTransporteTerranTemplate.getInstance());
-            enabledTemplates.add(NaveCienciaTemplate.getInstance());
-        }
+	public Value getValue() {
+		return VALUE;
+	}
 
-        public static PuertoEstelarTerranTemplate getInstance() {
-            return instance;
-        }
-        public ConstructionStructure create(Point position) {
-            return new ConstructionStructure(name, new Life(health), position, enabledTemplates);
-        }
+	public int getConstructionTime() {
+		return CONSTRUCTION_TIME;
+	}
+	
 }

@@ -13,15 +13,17 @@ public class MagicalUnit extends Unit implements Transportable {
 	private final int  maximumEnergy;
 	private final int energyGainPerTurn;
 	private final int transportationQuota;
+	private final boolean canFly;
 	private final PowerGenerator generator;
 	
 	public MagicalUnit(String name, Life life, Point position, int vision, int stepsPerTurn,
 			PowerGenerator generator,
 			int initialEnergy, int maximumEnergy, int energyGainPerTurn, 
-			int transportationQuota, int populationQuota) {
+			int transportationQuota, boolean canFly, int populationQuota) {
 		super(name, life, position, vision, stepsPerTurn, populationQuota);
 		this.energy = initialEnergy;
 		this.transportationQuota = transportationQuota;
+		this.canFly = canFly;
 		this.maximumEnergy = maximumEnergy;
 		this.energyGainPerTurn = energyGainPerTurn;
 		this.generator = generator;
@@ -32,7 +34,7 @@ public class MagicalUnit extends Unit implements Transportable {
 	}
 	
 	public boolean canFly() {
-		return (transportationQuota == 0);
+		return canFly;
 	}
 	
 	public void update() {
@@ -43,13 +45,9 @@ public class MagicalUnit extends Unit implements Transportable {
 		// Regenera escudo
 		life.regenerateShield();
 	}
-
-	private void drainEnergy() {
-		energy = 0;
-	}
 	
 	public void executeEMP() {
-		this.drainEnergy();
+		energy = 0;
 	}
 
 	public Power usePower(String name) throws InsufficientEnergy, NonexistentPower {

@@ -22,7 +22,11 @@ public class AltoTemplarioTest {
 	@Test
 	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
 		Resources initialResources = new Resources(600,500);
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		player.newStructureWithName("Acceso", null);
@@ -30,7 +34,7 @@ public class AltoTemplarioTest {
 		player.newStructureWithName("Puerto Estelar", null);
 		for(int i = 0; i < 11; i++) player.newTurn();
 		
-		ConstructionStructure archivos = ArchivosTemplariosTemplate.getInstance().create(null);
+		ConstructionStructure archivos = new ArchivosTemplariosTemplate().create(null);
 		player.pays(150, 200);
 		player.receiveNewStructure(archivos);
 		

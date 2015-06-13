@@ -47,8 +47,8 @@ public class PlayerTest {
 	
 	@Test
 	public void testTerranPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Deposito() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, new Resources(100,0), null);
-		
+		Player player = new Player(null, null, new TerranBuilder(), null, new Resources(100,0), null);
+
 		player.newStructureWithName("Deposito Suministro", null);
 		for(int i = 0; i < 7; i++)  player.newTurn();
 		
@@ -57,7 +57,11 @@ public class PlayerTest {
 	
 	@Test
 	public void testProtossPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Pilon() throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
+<<<<<<< HEAD
 		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, new Resources(100,0), null);
+=======
+		Player player = new Player(null, null, new ProtossBuilder(), null, new Resources(100,0));
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		player.newStructureWithName("Pilon", null);
 		for(int i = 0; i < 6; i++)  player.newTurn();

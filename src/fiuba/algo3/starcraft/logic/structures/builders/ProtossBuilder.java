@@ -8,22 +8,16 @@ import fiuba.algo3.starcraft.logic.templates.structures.protoss.PilonTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
 
 public class ProtossBuilder extends Builder {
-	
-	private static ProtossBuilder instance = new ProtossBuilder();
 
-	ProtossBuilder() {
-		templates.add(NexoMineralTemplate.getInstance());
-		templates.add(PilonTemplate.getInstance());
-		templates.add(AsimiladorTemplate.getInstance());
-		templates.add(AccesoTemplate.getInstance());
-		templates.add(PuertoEstelarProtossTemplate.getInstance());
-		templates.add(ArchivosTemplariosTemplate.getInstance());
+	public ProtossBuilder() {
+		templates.add(new NexoMineralTemplate());
+		templates.add(new PilonTemplate());
+		templates.add(new AsimiladorTemplate());
+		templates.add(new AccesoTemplate());
+		templates.add(new PuertoEstelarProtossTemplate());
+		templates.add(new ArchivosTemplariosTemplate());
 		
 		dependsOn.put("Puerto Estelar", "Acceso");
 		dependsOn.put("Archivos Templarios", "Puerto Estelar");
-	}
-	
-	public static ProtossBuilder getInstance() {
-		return instance;
 	}
 }

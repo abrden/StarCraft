@@ -7,7 +7,7 @@ import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class ConstructionQueue implements Updatable {
+public class ConstructionQueue {
 
 	private Collection<Construction<Structure>> structures;
 	private Collection<Construction<Unit>> units;

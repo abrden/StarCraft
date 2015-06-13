@@ -4,20 +4,20 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class DepotTest {
 
 	@Test
-	public void testUpdateIncreasesPlayersPopulationQuotaBy5() {
+	public void testHavingADepotIncreasesPlayersPopulationQuotaBy5() {
 		Depot depot = new Depot(null, new Life(100), null);
+<<<<<<< HEAD
 		Player player = new Player(null, null, null, null, null, null);
+=======
+>>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
-		depot.update(player);
-		
-		assertEquals(player.populationQuota(), 5);
+		assertEquals(depot.getPopulationQuotaIncrement(), 5);
 	}
 
 	@Test
