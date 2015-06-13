@@ -175,10 +175,7 @@ public class Player {
 
 	public void receiveNewStructure(Structure structure) {
 		map.setStructure(structure, structure.getPosition());
-		
-		
 		structures.add(structure);
-		
 	}
 	
 	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {

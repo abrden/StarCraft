@@ -2,8 +2,12 @@ package fiuba.algo3.starcraft.logic.test.player.integration.structures;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Depot;
@@ -14,13 +18,23 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.DepositoSuministroTemplate;
 
 public class TerranDepotTest {
-
+	Map map;
+	Point position;
+	Point position2;
+	Resources initialResources;
+	Player player;
+	@Before
+	public void before() {
+		initialResources = new Resources(200,0);
+		map = new Map(1000);
+		position = new Point(54,70);
+		position2 = new Point(10,70);
+		player = new Player(null, null, new TerranBuilder(), position, initialResources, map);
+	}
+	
 	@Test
-	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
-		
-		player.newStructureWithName("Deposito Suministro", null);
+	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+		player.newStructureWithName("Deposito Suministro", position);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 
@@ -28,12 +42,9 @@ public class TerranDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
-		
-		player.newStructureWithName("Deposito Suministro", null);
-		player.newStructureWithName("Deposito Suministro", null);
+	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+		player.newStructureWithName("Deposito Suministro", position);
+		player.newStructureWithName("Deposito Suministro", position2);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -41,11 +52,9 @@ public class TerranDepotTest {
 	}
 	
 	@Test
-	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
-		player.newStructureWithName("Deposito Suministro", null);
-		player.newStructureWithName("Deposito Suministro", null);
+	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+		player.newStructureWithName("Deposito Suministro", position);
+		player.newStructureWithName("Deposito Suministro", position2);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -56,17 +65,15 @@ public class TerranDepotTest {
 
 	@Test
 	public void testPopulationQuotais0With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
-		Resources initialResources = new Resources(200,0);
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
 		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
 		
-		Depot depot1 = templateDepositoSuministro.create(null);
+		Depot depot1 = templateDepositoSuministro.create(position);
 		player.pays(100,0);
 		player.receiveNewStructure(depot1);
 		player.newTurn();
 		assertEquals(player.populationQuota(), 5);		
 		
-		Depot depot2 = templateDepositoSuministro.create(null);
+		Depot depot2 = templateDepositoSuministro.create(position2);
 		player.pays(100,0);
 		player.receiveNewStructure(depot2);
 		player.newTurn();

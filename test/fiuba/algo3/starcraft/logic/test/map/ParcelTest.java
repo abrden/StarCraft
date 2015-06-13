@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.test.map;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -47,7 +48,7 @@ public class ParcelTest {
 		
 		Surface landWithVolcano = parcel.getLandForExplotation();
 		try {
-			assertTrue(landWithVolcano.extractResource().getValue() == 10);
+			assertEquals(landWithVolcano.extractResource(), ExtractableType.gas);
 		} catch (NoResourcesToExtract e) {
 			e.printStackTrace();
 		}

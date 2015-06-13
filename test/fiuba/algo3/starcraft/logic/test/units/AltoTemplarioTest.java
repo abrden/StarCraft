@@ -120,7 +120,7 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-	public void testAlucinacion() throws InsufficientEnergy, NonexistentPower {
+	public void testAlucinacionCreatesClone() throws InsufficientEnergy, NonexistentPower {
 		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
 		// Sumo energia
 		templario.update();
@@ -136,5 +136,45 @@ public class AltoTemplarioTest {
 		
 		assertEquals(((Cloner) clonacion).getClone().getClass(), Clone.class);
 		
+	}
+	
+	@Test
+	public void testAlucinacionCreatesCloneWith0Health() throws InsufficientEnergy, NonexistentPower {
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
+		// Sumo energia
+		templario.update();
+		templario.update();
+		templario.update();
+		templario.update();
+		Power clonacion = templario.usePower("Alucinacion");
+		MuggleUnit dragon = new DragonTemplate().create(new Point(1, 2));
+		List<Unit> affected = new LinkedList<Unit>();
+		affected.add(dragon);
+		clonacion.lockUnits(affected);
+		clonacion.activate();
+		
+		Unit clone = ((Cloner) clonacion).getClone();
+		
+		assertEquals(clone.getHealth(), 0);
+	}
+
+	@Test
+	public void testAlucinacionCreatesCloneWithSameShieldAsUnitCloned() throws InsufficientEnergy, NonexistentPower {
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(1, 2));
+		// Sumo energia
+		templario.update();
+		templario.update();
+		templario.update();
+		templario.update();
+		Power clonacion = templario.usePower("Alucinacion");
+		MuggleUnit dragon = new DragonTemplate().create(new Point(1, 2));
+		List<Unit> affected = new LinkedList<Unit>();
+		affected.add(dragon);
+		clonacion.lockUnits(affected);
+		clonacion.activate();
+		
+		Unit clone = ((Cloner) clonacion).getClone();
+		
+		assertEquals(clone.getShield(), 80);
 	}
 }

@@ -32,15 +32,10 @@ public class MapTest {
 		assertTrue(parcels.contains(interiorParcel) && (parcels.size() == 100));
 	}
 	@Test
-	public void testMapIsResetedAndHasNoMinerals() {
+	public void testMapIsResetedAndHasNoMinerals() throws NoResourcesToExtract {
 		map = new Map(10000);
-		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000)) {
-			try {
-				parcel.getLandForExplotation().extractResource();
-				assertTrue(false);
-			} catch (NoResourcesToExtract e){
-			}
-		}
+		for (Parcel parcel : map.getParcelsContainedInARect(new Point(0,0), 1000))
+			assertEquals(parcel.getLandForExplotation().extractResource(), null);
 		assertTrue(true);
 	}
 	

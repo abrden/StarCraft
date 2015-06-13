@@ -2,8 +2,12 @@ package fiuba.algo3.starcraft.logic.test.player.integration.units;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -18,19 +22,30 @@ import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ZealotTest {
-
+	Map map;
+	Point position;
+	Point position2;
+	Resources initialResources;
+	Player player;
+	@Before
+	public void before() {
+		initialResources = new Resources(350,0);
+		map = new Map(1000);
+		position = new Point(54,70);
+		position2 = new Point(10,70);
+		player = new Player(null, null, new ProtossBuilder(), position, initialResources, map);
+	}
+	
 	@Test
-	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(350,0);
-		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
-		player.newStructureWithName("Pilon", null);
+	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+		player.newStructureWithName("Pilon", position);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		
 		player.pays(150, 0);
-		ConstructionStructure acceso = new AccesoTemplate().create(null);
+		ConstructionStructure acceso = new AccesoTemplate().create(position);
 		player.receiveNewStructure(acceso);
 		
-		Construction<Unit> construction = acceso.create("Zealot", null, player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = acceso.create("Zealot", position2, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
@@ -42,13 +57,11 @@ public class ZealotTest {
 	
 	@Test(expected = QuotaExceeded.class)
 	public void testZealotCreationIsImpossibleWithoutPilon() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		Resources initialResources = new Resources(150,0);
-		Player player = new Player(null, null, null, null, initialResources);
 		player.pays(150, 0);
-		ConstructionStructure acceso = new AccesoTemplate().create(null);
+		ConstructionStructure acceso = new AccesoTemplate().create(position);
 		player.receiveNewStructure(acceso);
 		
-		acceso.create("Zealot", null, player.getResources(), player.currentPopulation(), player.populationQuota());
+		acceso.create("Zealot", position2, player.getResources(), player.currentPopulation(), player.populationQuota());
 	}
 
 }
