@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
@@ -184,7 +183,8 @@ public class Player {
 	
 	// FIXME solo saca dano de tierra!
 	public void attack(MuggleUnit unit) {
-		List<Unit> opponentUnits = StarCraft.getInstance().unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this);
+		List<Unit> opponentUnits = map.unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this.getUnits());
+		//List<Unit> opponentUnits = StarCraft.getInstance().unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this);
 		
 		if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
@@ -202,7 +202,8 @@ public class Player {
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
 		Power power = unit.usePower(name);
-		power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange(), this));
+		power.lockUnits(map.unitsInCircumference(position, power.getRange(), this.getUnits()));
+		//power.lockUnits(StarCraft.getInstance().unitsInCircumference(position, power.getRange(), this));
 		
 		power.activate();
 		power.execute();
@@ -210,12 +211,12 @@ public class Player {
 		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
-	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded{
+	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded {
 		transport.embark(unit);
 		map.moveToLimbo(unit);
 	}
 	
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded{
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded {
 		transport.disembark(unit);
 		unit.setPosition(transport.getPosition());
 	}

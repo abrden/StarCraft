@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
@@ -14,19 +15,22 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Map {
-	public final double PARCEL_SIDE = 10;
 
+	public final double PARCEL_SIDE = 10;
+	private StarCraft game;
+	
 	@SuppressWarnings("unused")
 	private double side;
-	@SuppressWarnings({ "rawtypes"})
+	@SuppressWarnings({"rawtypes"})
 	private ArrayList<ArrayList> row = new ArrayList<ArrayList>();
 	@SuppressWarnings("unused")
 	private ArrayList<Parcel> columns = new ArrayList<Parcel>();
 	
-	public Map(double side) {
+	public Map(double side, StarCraft game) {
 		this.side = side;
 		createMatrix(side/PARCEL_SIDE);
 		createParcels(side/PARCEL_SIDE);
+		this.game = game;
 	}
 	
 	private void createMatrix (double numberOfParcels){
@@ -109,7 +113,9 @@ public class Map {
 		}	
 	}
 	
-	public List<Unit> unitsInCircumference(final Point position, int range, Iterable<Unit> playerUnits, Iterable<Unit> opponentUnits) {
+	public List<Unit> unitsInCircumference(final Point position, int range, Iterable<Unit> playerUnits) {
+		Iterable<Unit> opponentUnits = game.getOpponentUnits(playerUnits);
+		
 		ArrayList<Unit> unitsInCircumference = new ArrayList<Unit>();
 		for (Unit opponentUnit : opponentUnits) {
 			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, opponentUnit.getPosition())) {
