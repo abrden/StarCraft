@@ -24,7 +24,7 @@ public class BuilderTest {
 	@Before
 	public void before() {
 		initialResources = new Resources(200,0);
-		map = new Map(1000);
+		map = new Map(1000, null);
 		position = new Point(54,70);
 	}
 	

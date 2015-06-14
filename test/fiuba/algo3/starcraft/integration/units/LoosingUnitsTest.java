@@ -27,7 +27,7 @@ public class LoosingUnitsTest {
 	@Before
 	public void before() {
 		position = new Point(23,54);
-		map = new Map(1000);
+		map = new Map(1000, null);
 		dragon = (new DragonTemplate()).create(position);
 		zealot = (new DragonTemplate()).create(position);
 		player = new Player(null, null, new ProtossBuilder(), null, new Resources(200,0), map);

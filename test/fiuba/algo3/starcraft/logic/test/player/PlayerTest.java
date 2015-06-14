@@ -21,7 +21,7 @@ public class PlayerTest {
 	Point position;
 	@Before
 	public void before() {
-		map = new Map(1000);
+		map = new Map(1000, null);
 		position = new Point(54,70);
 	}
 	

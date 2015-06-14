@@ -30,7 +30,7 @@ public class AltoTemplarioTest {
 	@Before
 	public void before() {
 		initialResources = new Resources(600,500);
-		map = new Map(1000);
+		map = new Map(1000, null);
 		position = new Point(54,70);
 		position2 = new Point(10,70);
 		player = new Player(null, null, new ProtossBuilder(), position, initialResources, map);

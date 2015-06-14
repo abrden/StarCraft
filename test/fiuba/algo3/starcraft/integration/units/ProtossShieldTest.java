@@ -29,7 +29,7 @@ public class ProtossShieldTest {
 	@Before
 	public void before() {
 		position = new Point(23,54);
-		map = new Map(1000);
+		map = new Map(1000, null);
 		dragon = (new DragonTemplate()).create(position);
 		templario = (new AltoTemplarioTemplate()).create(position);
 		nave = (new NaveTransporteProtossTemplate()).create(position);

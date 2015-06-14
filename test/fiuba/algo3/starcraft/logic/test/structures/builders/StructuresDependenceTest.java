@@ -33,7 +33,7 @@ public class StructuresDependenceTest {
 	Point position2;
 	@Before
 	public void before() {
-		map = new Map(1000);
+		map = new Map(1000, null);
 		position = new Point(54,70);
 		position2 = new Point(10,70);
 	}

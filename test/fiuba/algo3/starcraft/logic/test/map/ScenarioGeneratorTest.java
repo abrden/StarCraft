@@ -17,7 +17,7 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 
 public class ScenarioGeneratorTest {
-	Map map = new Map(1000);
+	Map map = new Map(1000, null);
 	ScenarioGenerator scenario = new ScenarioGenerator(map);
 	@Test	//ammountOfVolcanoInMap no tendria que ser un valor random cuando se usa una densidad != a 1.
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
@@ -39,7 +39,7 @@ public class ScenarioGeneratorTest {
 	
 	@Test
 	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
-		map = new Map(1000);
+		map = new Map(1000, null);
 		
 		scenario = new ScenarioGenerator(map);
 		

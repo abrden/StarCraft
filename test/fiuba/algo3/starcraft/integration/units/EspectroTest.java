@@ -30,7 +30,7 @@ public class EspectroTest {
 	@Before
 	public void before() {
 		initialResources = new Resources(750,300);
-		map = new Map(1000);
+		map = new Map(1000, null);
 		position = new Point(54,70);
 		position2 = new Point(10,70);
 		player = new Player(null, null, new TerranBuilder(), position, initialResources, map);
