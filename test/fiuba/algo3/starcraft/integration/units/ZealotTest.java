@@ -37,19 +37,8 @@ public class ZealotTest {
 	}
 	
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/ZealotTest.java
-	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(350,0);
-<<<<<<< HEAD
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Pilon", null);
-=======
 	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Pilon", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/ZealotTest.java
 		for(int i = 0; i < 6; i++) player.newTurn();
 		
 		player.pays(150, 0);
@@ -68,11 +57,6 @@ public class ZealotTest {
 	
 	@Test(expected = QuotaExceeded.class)
 	public void testZealotCreationIsImpossibleWithoutPilon() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/ZealotTest.java
-		Resources initialResources = new Resources(150,0);
-		Player player = new Player(null, null, null, null, initialResources, null);
-=======
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/ZealotTest.java
 		player.pays(150, 0);
 		ConstructionStructure acceso = new AccesoTemplate().create(position);
 		player.receiveNewStructure(acceso);

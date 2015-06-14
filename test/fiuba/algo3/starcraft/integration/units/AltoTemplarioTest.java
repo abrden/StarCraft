@@ -37,19 +37,8 @@ public class AltoTemplarioTest {
 	}
 	
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/AltoTemplarioTest.java
-	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(600,500);
-<<<<<<< HEAD
-		Player player = new Player(null, null, ProtossBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new ProtossBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Pilon", null);
-=======
 	public void testAltoTemplarioCreationWith1ArchivosTemplariosAnd50M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Pilon", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/AltoTemplarioTest.java
 		for(int i = 0; i < 6; i++) player.newTurn();
 		player.newStructureWithName("Acceso", position);
 		for(int i = 0; i < 9; i++) player.newTurn();

@@ -20,16 +20,18 @@ public abstract class Builder {
 	protected Collection<StructureTemplate> templates = new LinkedList<StructureTemplate>();
 	protected Map<String,String> dependsOn = new HashMap<String,String>();
 	
-	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built, Map map) throws MissingStructureRequired, InsufficientResources, TemplateNotFound {
-		
+	public Construction<Structure> create(String name, Point position, Resources resources, Iterable<Structure> built, fiuba.algo3.starcraft.logic.map.Map map) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		this.structureRequiredExists(name, built);
+		
 		StructureTemplate template = this.getTemplateWithName(name);
-				
-		Construction<Structure> construction = new Construction<Structure>(template.create(position), template.getConstructionTime());
 		
+		Structure structure = template.create(position);
+			
+		map.resourceRequiredIsThere(structure, position);
 		
+		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 		
-		return construction;
+		return new Construction<Structure>(structure, template.getConstructionTime());
 	}
 	
 	private StructureTemplate getTemplateWithName(String name) throws TemplateNotFound {

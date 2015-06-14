@@ -42,7 +42,7 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
-
+	
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
 	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {

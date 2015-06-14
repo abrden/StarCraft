@@ -33,20 +33,8 @@ public class TerranDepotTest {
 	}
 	
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/structures/TerranDepotTest.java
-	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/structures/TerranDepotTest.java
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 
@@ -54,22 +42,9 @@ public class TerranDepotTest {
 	}
 
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/structures/TerranDepotTest.java
-	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		
-		player.newStructureWithName("Deposito Suministro", null);
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
 		player.newStructureWithName("Deposito Suministro", position2);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/structures/TerranDepotTest.java
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -77,21 +52,9 @@ public class TerranDepotTest {
 	}
 	
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/structures/TerranDepotTest.java
-	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound {
-		Resources initialResources = new Resources(200,0);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);	
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Deposito Suministro", null);
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
 		player.newStructureWithName("Deposito Suministro", position2);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/structures/TerranDepotTest.java
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
 		
@@ -102,17 +65,7 @@ public class TerranDepotTest {
 
 	@Test
 	public void testPopulationQuotais0With2PilonsAnd0IfBothAreDestroyed() throws InsufficientResources {
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/structures/TerranDepotTest.java
-		Resources initialResources = new Resources(200,0);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-		DepositoSuministroTemplate templateDepositoSuministro =  DepositoSuministroTemplate.getInstance();
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
-=======
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/structures/TerranDepotTest.java
 		DepositoSuministroTemplate templateDepositoSuministro = new DepositoSuministroTemplate();
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
 		
 		Depot depot1 = templateDepositoSuministro.create(position);
 		player.pays(100,0);

@@ -37,19 +37,8 @@ public class EspectroTest {
 	}
 	
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/EspectroTest.java
-	public void testEspectroCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(750,300);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testEspectroCreationWith1PuertoEstelarAnd150M100G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/EspectroTest.java
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position);
 		for(int i = 0; i < 13; i++) player.newTurn();

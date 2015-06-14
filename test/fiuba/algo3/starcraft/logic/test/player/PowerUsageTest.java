@@ -34,28 +34,12 @@ public class PowerUsageTest {
 	
 	@Test
 	public void test() throws InsufficientEnergy, NonexistentPower {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		Player player = new Player(null, null, null, null, null, null);
-		MagicalUnit nave = NaveCienciaTemplate.getInstance().create(null);
-=======
-		Map map = new Map(1000);
-		Point position = new Point(1,1);
-		MuggleUnit dragon = new DragonTemplate().create(position);
-		map.setUnit(dragon, dragon.getPosition());
-		
-		Player player = new Player(null, null, null, null, null);
-		MagicalUnit nave = new NaveCienciaTemplate().create(null);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.receiveNewUnit(nave);
-=======
 		System.out.println(game);
 		Point position = new Point(1,1);
 		MuggleUnit dragon = new DragonTemplate().create(position);
 		player2.receiveNewUnit(dragon);
 		MagicalUnit nave = new NaveCienciaTemplate().create(new Point (1000,1000));
 		player1.receiveNewUnit(nave);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8
 		nave.update();
 		nave.update();
 		nave.update();

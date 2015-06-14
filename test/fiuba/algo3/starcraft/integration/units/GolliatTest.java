@@ -37,19 +37,8 @@ public class GolliatTest {
 	}
 
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/GolliatTest.java
-	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(550,150);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/GolliatTest.java
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position);
 		for(int i = 0; i < 13; i++) player.newTurn();
@@ -69,19 +58,8 @@ public class GolliatTest {
 	}
 
 	@Test(expected = QuotaExceeded.class)
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/GolliatTest.java
-	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(750,250);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/GolliatTest.java
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position);
 		for(int i = 0; i < 13; i++) player.newTurn();
@@ -102,19 +80,8 @@ public class GolliatTest {
 	}
 
 	@Test
-<<<<<<< HEAD:test/fiuba/algo3/starcraft/logic/test/player/integration/units/GolliatTest.java
-	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished {
-		Resources initialResources = new Resources(650,200);
-<<<<<<< HEAD
-		Player player = new Player(null, null, TerranBuilder.getInstance(), null, initialResources, null);
-=======
-		Player player = new Player(null, null, new TerranBuilder(), null, initialResources);
->>>>>>> 60e498f1e7e1aa5a87dcdeb177fa693c0e02424f
-		player.newStructureWithName("Deposito Suministro", null);
-=======
 	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
 		player.newStructureWithName("Deposito Suministro", position);
->>>>>>> 824aaf7355d45cd0f5838133b0fed5b3b78765f8:test/fiuba/algo3/starcraft/integration/units/GolliatTest.java
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position);
 		for(int i = 0; i < 13; i++) player.newTurn();
