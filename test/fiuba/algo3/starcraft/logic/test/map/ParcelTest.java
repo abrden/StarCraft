@@ -12,6 +12,7 @@ import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
+import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
@@ -44,7 +45,7 @@ public class ParcelTest {
 	
 	@Test
 	public void testParcelHasMinerals() {
-		parcel.setSurface(ExtractableType.volcano);
+		parcel.setSurface(ReservoirType.volcano);
 		
 		Surface landWithVolcano = parcel.getLandForExplotation();
 		try {

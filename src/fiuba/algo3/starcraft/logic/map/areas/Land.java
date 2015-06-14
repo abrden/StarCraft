@@ -3,7 +3,8 @@ package fiuba.algo3.starcraft.logic.map.areas;
 import fiuba.algo3.starcraft.logic.map.Extractable;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
-import fiuba.algo3.starcraft.logic.map.resources.Reservoir;
+import fiuba.algo3.starcraft.logic.map.resources.Mine;
+import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.map.resources.Volcano;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 
@@ -11,18 +12,18 @@ public class Land extends Surface {
 	
 	private Extractable extractableSurface;
 	
-	public Land(ExtractableType extractableType) {
-		setExtractableSurface(extractableType);
+	public Land(ReservoirType reservoir) {
+		this.setExtractableSurface(reservoir);
 	}
 	
 	public Land() {
 	}
 
-	private void setExtractableSurface(ExtractableType extractableType) {
-		switch (extractableType) {	
+	private void setExtractableSurface(ReservoirType reservoir) {
+		switch (reservoir) {	
 		case volcano : extractableSurface = new Volcano();		
 		break;
-		case reservoir : extractableSurface = new Reservoir();
+		case mine : extractableSurface = new Mine();
 		break;
 		}
 	}

@@ -41,7 +41,7 @@ public abstract class Structure implements Updatable {
 		return;
 	}
 	
-	public boolean iCanExtractThis(ExtractableType resouce) {
+	public boolean iCanExtract(ExtractableType resouce) {
 		return true;
 	}
 	

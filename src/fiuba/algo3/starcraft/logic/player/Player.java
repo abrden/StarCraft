@@ -179,9 +179,10 @@ public class Player {
 	}
 	
 	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
-		StarCraft.getInstance().moveUnitToDestination(transportable, destination);
+		map.moveUnitToDestination(transportable, destination);
 	}
 	
+	// FIXME solo saca dano de tierra!
 	public void attack(MuggleUnit unit) {
 		List<Unit> opponentUnits = StarCraft.getInstance().unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this);
 		
@@ -189,6 +190,14 @@ public class Player {
 			Unit closestUnit = opponentUnits.get(0);
 			closestUnit.reduceLife(unit.getAttackLandDamage());
 		}
+		/*
+		Hacer algo asi pero no tan villero
+		
+		if (map.getParcelContainingPoint(closestUnit.getPosition()).getSurface() == land) 
+			closestUnit.reduceLife(unit.getAttackLandDamage());
+		else
+			closestUnit.reduceLife(unit.getAttackSpaceDamage());
+		*/
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
@@ -201,7 +210,6 @@ public class Player {
 		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
-	// TODO Cambiar posiciones de unidades
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded{
 		transport.embark(unit);
 		map.moveToLimbo(unit);

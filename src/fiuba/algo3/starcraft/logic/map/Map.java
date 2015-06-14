@@ -1,6 +1,9 @@
 package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
@@ -8,6 +11,7 @@ import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Map {
 	public final double PARCEL_SIDE = 10;
@@ -68,22 +72,60 @@ public class Map {
 
 	public void setUnit(Unit unit, Point position) {
 		// TODO Implementar
-		
 	}
 	
 	public void setStructure(Structure structure, Point point) {
-		Parcel parcel = getParcelContainingPoint(point);
+		Parcel parcel = this.getParcelContainingPoint(point);
 		parcel.setStructure(structure);
 	}
 
 	public void resourceRequiredIsThere(Structure structure, Point position) throws NoResourcesToExtract {
 		Parcel parcel = this.getParcelContainingPoint(position);
 		ExtractableType resource = parcel.getLandForExplotation().extractResource();
-		if (!structure.iCanExtractThis(resource)) throw new NoResourcesToExtract();
+		if (!structure.iCanExtract(resource)) throw new NoResourcesToExtract();
 	}
 
 	public void moveToLimbo(Transportable unit) {
 		// TODO implementar
 		
 	}
+	
+	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
+		Point initialPoint = transportable.getPosition();
+		Point finalPoint = position;
+			
+		Point direction = finalPoint.substract(initialPoint);
+		Point diferentialDirection = direction.divide(1000);
+		
+		Point pathPoint = initialPoint;
+				//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
+		for (int i = 0; i < 1000 ; i ++) {
+			Parcel parcelOfPath = this.getParcelContainingPoint(pathPoint);
+				
+			if (parcelOfPath.letPass(transportable)) {
+				transportable.setPosition(pathPoint);
+				pathPoint = pathPoint.add(diferentialDirection);
+			} else break;
+		}	
+	}
+	
+	public List<Unit> unitsInCircumference(final Point position, int range, Iterable<Unit> playerUnits, Iterable<Unit> opponentUnits) {
+		ArrayList<Unit> unitsInCircumference = new ArrayList<Unit>();
+		for (Unit opponentUnit : opponentUnits) {
+			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, opponentUnit.getPosition())) {
+				unitsInCircumference.add(opponentUnit);
+			}
+		}  
+		
+		// Sorting
+		Collections.<Unit>sort(unitsInCircumference, new Comparator<Unit>() {
+				@Override
+				public int compare(Unit unit1, Unit unit2) {
+					return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
+				}
+		    });
+		
+		return (range == 0) ? unitsInCircumference : unitsInCircumference.subList(0, 1);
+	}
+
 }

@@ -24,7 +24,7 @@ public class StarcraftTest {
 		
 		MuggleUnit marine = new MarineTemplate().create(new Point(20, 20));
 		
-		game.moveUnitToDestination(marine, new Point(500,32));
+		currentMap.moveUnitToDestination(marine, new Point(500,32));
 				
 		assertTrue(marine.getPosition().getX() > 499 && marine.getPosition().getY() > 31);
 	}
@@ -39,7 +39,7 @@ public class StarcraftTest {
 
 		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
 		
-		game.moveUnitToDestination(marine, new Point(75,500));
+		currentMap.moveUnitToDestination(marine, new Point(75,500));
 				
 		assertTrue(marine.getPosition().getY() < 50);
 	}
