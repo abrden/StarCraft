@@ -72,7 +72,6 @@ public class PowerUsageTest {
 		assertEquals(dragon.getShield(), 0);
 	}
 	
-	//FIXME POR QUE TIRA OUT OF BOUNDS????????
 	@Test(expected = InsufficientEnergy.class)
 	public void testEMPWastedNaveCienciasEnergy() throws InsufficientEnergy, NonexistentPower {
 		player2.receiveNewUnit(templario);
@@ -111,7 +110,6 @@ public class PowerUsageTest {
 		assertTrue(false);
 	}
 	
-	//FIXME POR QUE TIRA OUT OF BOUNDS????????
 	@Test
 	public void testEMPDOutOfRangeDoesntHurtOpponentUnits() throws InsufficientEnergy, NonexistentPower {
 		player2.receiveNewUnit(dragon);
@@ -127,7 +125,6 @@ public class PowerUsageTest {
 		player2.usePower(templario, "Alucinacion", position);
 	}
 	
-	//FIXME POR QUE NO AFECTA AL GOLLIAT????????
 	@Test
 	public void testTormentaPsionicaLowersHealthOfOpponentUnits() throws InsufficientEnergy, NonexistentPower {
 		player2.receiveNewUnit(templario);

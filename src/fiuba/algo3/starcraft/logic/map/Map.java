@@ -113,25 +113,37 @@ public class Map {
 		}	
 	}
 	
-	public List<Unit> unitsInCircumference(final Point position, int range, Iterable<Unit> playerUnits) {
-		Iterable<Unit> opponentUnits = game.getOpponentUnits(playerUnits);
+	public List<Unit> unitsUnderInfluenceOfPower(final Point position, int range, Iterable<Unit> playerUnits) {
+		if (range == 0) return this.searchUnitToClone(position, range, playerUnits);
+		else return this.enemyUnitsInCircle(position, range, playerUnits);
+	}
+	
+	private List<Unit> searchUnitToClone(final Point position, int range, Iterable<Unit> playerUnits) {
+		return this.unitsInCircle(position, range, playerUnits).subList(0, 1);
+	}
+	
+	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
+		return this.unitsInCircle(position, range, game.getOpponentUnits(playerUnits));
+	}
+	
+	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
 		
-		ArrayList<Unit> unitsInCircumference = new ArrayList<Unit>();
-		for (Unit opponentUnit : opponentUnits) {
-			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, opponentUnit.getPosition())) {
-				unitsInCircumference.add(opponentUnit);
+		ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
+		for (Unit unit : units) {
+			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, unit.getPosition())) {
+				unitsInCircle.add(unit);
 			}
 		}  
 		
 		// Sorting
-		Collections.<Unit>sort(unitsInCircumference, new Comparator<Unit>() {
+		Collections.<Unit>sort(unitsInCircle, new Comparator<Unit>() {
 				@Override
 				public int compare(Unit unit1, Unit unit2) {
 					return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
 				}
 		    });
 		
-		return (range == 0) ? unitsInCircumference : unitsInCircumference.subList(0, 1);
+		return unitsInCircle;
 	}
 
 }
