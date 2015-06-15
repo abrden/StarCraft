@@ -23,7 +23,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal110DamageToZealotNowShieldIs0AndHealth50() {
-        Unit zealot = new ZealotTemplate().create(null);
+        Unit zealot = new ZealotTemplate().create(new Point(500,500));
 
         zealot.reduceLife(110);
 
@@ -32,7 +32,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal160DamageZealotIsNowDead() {
-        Unit zealot = new ZealotTemplate().create(null);
+        Unit zealot = new ZealotTemplate().create(new Point(500,500));
 
         zealot.reduceLife(160);
 
@@ -41,7 +41,7 @@ public class ZealotTest {
 
     @Test
     public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo60() {
-        Unit zealot = new ZealotTemplate().create(null);
+        Unit zealot = new ZealotTemplate().create(new Point(500,500));
         assertEquals(60, zealot.getShield());
         
         zealot.reduceLife(100);

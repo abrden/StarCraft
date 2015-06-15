@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
@@ -12,7 +13,7 @@ public class ConstructionTest {
 
 	@Test
 	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5TurnLeavesItFinished() {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -21,7 +22,7 @@ public class ConstructionTest {
 
 	@Test
 	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5EnablesGathering() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -30,7 +31,7 @@ public class ConstructionTest {
 	
 	@Test(expected = ConstructionNotFinished.class)
 	public void testGatheringConstructionBeforeReleaseThrowsConstructionNotFinishedException() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, null), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
 		
 		construction.gather();
 	}

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -22,9 +23,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(50,0); // Valor = 50M
-		ConstructionStructure barraca = new BarracaTemplate().create(null);
+		ConstructionStructure barraca = new BarracaTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = barraca.create("Marine", null, resources, 0, 1); // Suministro = 1
+		Construction<Unit> construction = barraca.create("Marine", new Point(500,500), resources, 0, 1); // Suministro = 1
 		for(int i = 0; i < 3; i++) { // Tiempo de construccion = 3
 			construction.lowerRelease();
 		}
@@ -37,9 +38,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithGolliatTemplateReturnsGolliat() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,50);
-		ConstructionStructure fabrica = new FabricaTemplate().create(null);
+		ConstructionStructure fabrica = new FabricaTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = fabrica.create("Golliat", null, resources, 0, 2);
+		Construction<Unit> construction = fabrica.create("Golliat", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 6; i++) {
 			construction.lowerRelease();
 		}
@@ -52,9 +53,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithEspectroTemplateReturnsEspectro() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(150,100);
-		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(null);
+		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = puerto.create("Espectro", null, resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Espectro", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}
@@ -67,9 +68,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,225);
-		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(null);
+		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = puerto.create("Nave Ciencia", null, resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Ciencia", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 10; i++) {
 			construction.lowerRelease();
 		}
@@ -82,9 +83,9 @@ public class TerranConstructionStructureTest {
 	@Test
 	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
 		Resources resources = new Resources(100,100);
-		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(null);
+		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", null, resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}
