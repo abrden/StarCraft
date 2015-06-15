@@ -184,7 +184,6 @@ public class Player {
 	// FIXME solo saca dano de tierra!
 	public void attack(MuggleUnit unit) {
 		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
-		//List<Unit> opponentUnits = map.unitsInCircumference(unit.getPosition(), unit.getAttackRange(), this.getUnits());
 		
 		if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
@@ -203,8 +202,7 @@ public class Player {
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
 		Power power = unit.usePower(name);
 		power.lockUnits(map.unitsUnderInfluenceOfPower(position, power.getRange(), this.getUnits()));
-		//.unitsInCircumference(position, power.getRange(), this.getUnits()));
-		
+	
 		power.activate();
 		power.execute();
 		if (power instanceof Cloner) this.receiveNewUnit(((Cloner) power).getClone());

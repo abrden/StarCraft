@@ -123,7 +123,7 @@ public class Map {
 	}
 	
 	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
-		return this.unitsInCircle(position, range, game.getOpponentUnits(playerUnits));
+		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
 	
 	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
