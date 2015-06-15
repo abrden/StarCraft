@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.structures.Depot;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,10 +24,14 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 public class ParcelTest {
 
 	Parcel parcel;
+	Map map;
+	Depot depot;
 
 	@Before
 	public void before() {
 		parcel = new Parcel(new Point(0,0), 10);
+		map = new Map(1000,null);
+		depot = new Depot("Deposito Suministro", new Life(500), new Point(2,5));
 	}
 
 	@Test
@@ -42,8 +49,11 @@ public class ParcelTest {
 	}
 	
 	@Test
-	// TODO Implementar
 	public void testParcelCanBuildABuildingInsideAParcel() {
+		map.setStructure(depot, new Point(2,5));
+		parcel = map.getParcelContainingPoint(new Point(5,5));
+
+		assertEquals(parcel.getStructure(), depot);
 
 	}
 	
