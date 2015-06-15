@@ -133,8 +133,9 @@ public class AltoTemplarioTest {
 		affected.add(dragon);
 		clonacion.lockUnits(affected);
 		clonacion.activate();
+		clonacion.execute();
 		
-		assertEquals(((Cloner) clonacion).getClone().getClass(), Clone.class);
+		assertEquals(((Cloner) clonacion).getClones().get(0).getClass(), Clone.class);
 		
 	}
 	
@@ -152,8 +153,9 @@ public class AltoTemplarioTest {
 		affected.add(dragon);
 		clonacion.lockUnits(affected);
 		clonacion.activate();
+		clonacion.execute();
 		
-		Unit clone = ((Cloner) clonacion).getClone();
+		Unit clone = ((Cloner) clonacion).getClones().get(0);
 		
 		assertEquals(clone.getHealth(), 0);
 	}
@@ -172,8 +174,9 @@ public class AltoTemplarioTest {
 		affected.add(dragon);
 		clonacion.lockUnits(affected);
 		clonacion.activate();
+		clonacion.execute();
 		
-		Unit clone = ((Cloner) clonacion).getClone();
+		Unit clone = ((Cloner) clonacion).getClones().get(0);
 		
 		assertEquals(clone.getShield(), 80);
 	}

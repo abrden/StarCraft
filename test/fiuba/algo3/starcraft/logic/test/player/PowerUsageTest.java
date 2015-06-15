@@ -15,12 +15,14 @@ import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.DragonTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ZealotTemplate;
+import fiuba.algo3.starcraft.logic.templates.units.terran.EspectroTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.GolliatTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.NaveCienciaTemplate;
 import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 
@@ -41,6 +43,7 @@ public class PowerUsageTest {
 	MagicalUnit nave;
 	MuggleUnit marine;
 	MuggleUnit golliat;
+	MuggleUnit espectro;
 	@Before
 	public void before() {
 		game = new StarCraft();
@@ -59,6 +62,7 @@ public class PowerUsageTest {
 		nave = new NaveCienciaTemplate().create(position2);
 		marine = new MarineTemplate().create(position2);
 		golliat = new GolliatTemplate().create(position2);
+		espectro = new EspectroTemplate().create(position3);
 	}
 	
 	@Test
@@ -164,5 +168,36 @@ public class PowerUsageTest {
 		
 		assertTrue(!clone.itsAlive());
 	}
+	
+	@Test
+	public void testAlucinacionClonesPlayersUnit() throws InsufficientEnergy, NonexistentPower {
+		player2.receiveNewUnit(templario);
+		player2.receiveNewUnit(zealot);
+		for (int i = 0; i < 5; i++) templario.update();
+		player1.receiveNewUnit(espectro);
 
+		player2.usePower(templario, "Alucinacion", position3);
+		Unit clone = null;
+		for (Unit unit : player2.getUnits())
+			if (unit.getClass() == Clone.class)
+				clone = unit;
+		
+		assertEquals(clone.getName(), "Zealot");
+		assertEquals(clone.getShield(), 60);
+		assertEquals(clone.getStepsPerTurn(), 4);
+		assertEquals(clone.getVision(), 7);
+	}
+
+	@Test
+	public void testAlucinacionGeneratesTwoClones() throws InsufficientEnergy, NonexistentPower {
+		player2.receiveNewUnit(templario);
+		player2.receiveNewUnit(zealot);
+		for (int i = 0; i < 5; i++) templario.update();
+		assertEquals(player2.getUnits().size(), 2);
+		player1.receiveNewUnit(espectro);
+
+		player2.usePower(templario, "Alucinacion", position3);
+		
+		assertEquals(player2.getUnits().size(), 4);
+	}
 }

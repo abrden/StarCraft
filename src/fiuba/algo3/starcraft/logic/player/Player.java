@@ -205,7 +205,9 @@ public class Player {
 	
 		power.activate();
 		power.execute();
-		if (power instanceof Cloner) this.receiveNewUnit(((Cloner) power).getClone());
+		if (power instanceof Cloner) 
+			for (Unit clone : ((Cloner) power).getClones())
+				this.receiveNewUnit(clone);
 		if (!power.itsFinished()) activePowers.add(power);
 	}
 	

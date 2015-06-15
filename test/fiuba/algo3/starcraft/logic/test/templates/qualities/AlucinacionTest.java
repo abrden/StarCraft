@@ -28,6 +28,7 @@ public class AlucinacionTest {
 		
 		power.lockUnits(affected);
 		power.activate();
+		power.execute();
 		
 		assertTrue(!power.itsFinished());
 	}
@@ -40,9 +41,12 @@ public class AlucinacionTest {
 		affected.add(zealot);
 		power.lockUnits(affected);
 		power.activate();
-		Unit clone = power.getClone();
+		power.execute();
+		Unit clone = power.getClones().get(0);
+		Unit clone2 = power.getClones().get(1);
 		
 		clone.reduceLife(10000000);
+		clone2.reduceLife(10000000);
 		
 		assertTrue(power.itsFinished());
 	}
@@ -55,8 +59,9 @@ public class AlucinacionTest {
 		affected.add(zealot);
 		power.lockUnits(affected);
 		power.activate();
+		power.execute();
 		
-		assertEquals(power.getClone().getClass(), Clone.class);
+		assertEquals(power.getClones().get(0).getClass(), Clone.class);
 	}
 	
 	@Test
@@ -67,8 +72,9 @@ public class AlucinacionTest {
 		affected.add(dragon);
 		power.lockUnits(affected);
 		power.activate();
+		power.execute();
 		
-		Unit clone = power.getClone();
+		Unit clone = power.getClones().get(0);
 		
 		assertEquals(clone.getName(), "Dragon");
 		assertEquals(clone.getShield(), 80);
@@ -84,8 +90,9 @@ public class AlucinacionTest {
 		affected.add(dragon);
 		power.lockUnits(affected);
 		power.activate();
+		power.execute();
 		
-		Unit clone = power.getClone();
+		Unit clone = power.getClones().get(0);
 		
 		assertEquals(clone.getHealth(), 0);
 		}
@@ -98,8 +105,9 @@ public class AlucinacionTest {
 		affected.add(dragon);
 		power.lockUnits(affected);
 		power.activate();
+		power.execute();
 		
-		Clone clone = (Clone) power.getClone();
+		Clone clone = (Clone) power.getClones().get(0);
 		
 		assertEquals(clone.getAttackLandDamage(), 0);
 		assertEquals(clone.getAttackSpaceDamage(), 0);
