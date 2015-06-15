@@ -18,18 +18,6 @@ public class StarcraftTest {
 	StarCraft game = new StarCraft();
 	
 	@Test
-	public void testStarCraftMovesAMarineInAMapFullOfLand() throws StepsLimitExceeded {
-		Map currentMap = new Map(1000, game);
-		game.setGame(null, null, currentMap);
-		
-		MuggleUnit marine = new MarineTemplate().create(new Point(20, 20));
-		
-		currentMap.moveUnitToDestination(marine, new Point(500,32));
-				
-		assertTrue(marine.getPosition().getX() > 499 && marine.getPosition().getY() > 31);
-	}
-	
-	@Test
 	public void testStarcraftMovesAMarineInAMapWithGapsAndStopsMovingAfterGap() throws StepsLimitExceeded {
 		Map currentMap = new Map(1000, game);
 		ScenarioGenerator scenario = new ScenarioGenerator(currentMap);

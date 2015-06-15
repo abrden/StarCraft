@@ -13,4 +13,5 @@ public interface Transportable {
 	
 	public void setPosition(Point destination) throws StepsLimitExceeded;
 	
+	public int getStepsPerTurn();
 }

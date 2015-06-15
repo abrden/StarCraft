@@ -39,7 +39,11 @@ public class Point {
 		return new Point(this.x - otherPoint.getX(), this.y - otherPoint.getY());
 	}
 	
-	public Point divide(int scalar) {
+	public Point multiply(int scalar) {
+		return new Point(this.x * scalar, this.y * scalar);
+	}
+	
+	public Point divide(double scalar) {
 		return new Point(this.x / scalar, this.y / scalar);
 	}
-}
+} 

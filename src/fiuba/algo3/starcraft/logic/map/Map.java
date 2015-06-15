@@ -99,7 +99,21 @@ public class Map {
 		Point finalPoint = position;
 			
 		Point direction = finalPoint.substract(initialPoint);
-		Point diferentialDirection = direction.divide(1000);
+		Point diferentialDirection;
+		
+		if (finalPoint.distance(initialPoint) >= transportable.getStepsPerTurn()) {
+			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));
+			
+			System.out.println("" + normalPoint.getX());
+			
+			Point correctSizePoint = normalPoint.multiply(transportable.getStepsPerTurn());
+			
+			System.out.println("" + correctSizePoint.getX());
+			
+			diferentialDirection = correctSizePoint.divide(1000);
+		} else {
+			diferentialDirection = direction.divide(1000);
+		}
 		
 		Point pathPoint = initialPoint;
 				//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
