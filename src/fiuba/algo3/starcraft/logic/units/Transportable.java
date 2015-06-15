@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public interface Transportable {
 
@@ -11,7 +10,7 @@ public interface Transportable {
 	
 	public Point getPosition();
 	
-	public void setPosition(Point destination) throws StepsLimitExceeded;
+	public void setPosition(Point destination);
 	
 	public int getStepsPerTurn();
 }

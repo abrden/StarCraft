@@ -55,5 +55,16 @@ public class MapTest {
 		assertTrue(marine.getPosition().getX() <= finalX);
 	}
 	
+	@Test
+	public void testMapMovesAMarineToTheLimbo() {
+		map = new Map(1000, null);
+		
+		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
+		
+		map.moveToLimbo(marine);
+		
+		assertTrue(marine.getPosition().getX() == 10000 && marine.getPosition().getY() == 10000);
+	}
+	
 	
 }

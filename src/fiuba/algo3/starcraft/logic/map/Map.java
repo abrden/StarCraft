@@ -90,8 +90,7 @@ public class Map {
 	}
 
 	public void moveToLimbo(Transportable unit) {
-		// TODO implementar
-		
+		unit.setPosition(new Point(side * 10, side * 10));
 	}
 	
 	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
@@ -102,14 +101,9 @@ public class Map {
 		Point diferentialDirection;
 		
 		if (finalPoint.distance(initialPoint) >= transportable.getStepsPerTurn()) {
-			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));
-			
-			System.out.println("" + normalPoint.getX());
-			
+			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));		
 			Point correctSizePoint = normalPoint.multiply(transportable.getStepsPerTurn());
-			
-			System.out.println("" + correctSizePoint.getX());
-			
+						
 			diferentialDirection = correctSizePoint.divide(1000);
 		} else {
 			diferentialDirection = direction.divide(1000);
