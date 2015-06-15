@@ -110,7 +110,7 @@ public class Map {
 		}
 		
 		Point pathPoint = initialPoint;
-				//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
+		//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
 		for (int i = 0; i < 1000 ; i ++) {
 			Parcel parcelOfPath = this.getParcelContainingPoint(pathPoint);
 				

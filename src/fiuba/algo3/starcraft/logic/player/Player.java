@@ -41,6 +41,7 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
+	private Point postion;
 	
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
@@ -77,12 +78,20 @@ public class Player {
 		return resources;
 	}
 	
+	public Point getPosition() {
+		return postion;
+	}
+	
 	public void newTurn() {
 		this.update();
 	}
 	
 	public Collection<Unit> getUnits() {
 		return units;
+	}
+	
+	public void setPosition(Point position) {
+		this.postion = position;
 	}
 	
 	private void update() {
@@ -181,22 +190,14 @@ public class Player {
 		map.moveUnitToDestination(transportable, destination);
 	}
 	
-	// FIXME solo saca dano de tierra!
 	public void attack(MuggleUnit unit) {
+		// CODE REVIEW
 		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
 		
 		if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
 			closestUnit.reduceLife(unit.getAttackLandDamage());
 		}
-		/*
-		Hacer algo asi pero no tan villero
-		
-		if (map.getParcelContainingPoint(closestUnit.getPosition()).getSurface() == land) 
-			closestUnit.reduceLife(unit.getAttackLandDamage());
-		else
-			closestUnit.reduceLife(unit.getAttackSpaceDamage());
-		*/
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
