@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Map;
@@ -18,8 +19,16 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 
 public class ScenarioGeneratorTest {
-	Map map = new Map(1000, null);
-	ScenarioGenerator scenario = new ScenarioGenerator(map);
+
+	Map map;
+	ScenarioGenerator scenario;
+
+	@Before
+	public void before() {
+		map = new Map(1000, null);
+		scenario = new ScenarioGenerator(map);
+	}
+
 	@Test	//FIXME :ammountOfVolcanoInMap no tendria que ser un valor random cuando se usa una densidad != a 1.
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
 		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(0,0), 100, 1);
@@ -34,16 +43,13 @@ public class ScenarioGeneratorTest {
 			} catch (NoResourcesToExtract e) {
 				
 			}
-		}		
+		}
 		assertTrue(ammountOfVolcanoInMap == 100);
 	}
 	
 	@Test
 	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
-		map = new Map(1000, null);
-		
-		scenario = new ScenarioGenerator(map);
-		
+
 		Player player1 = new Player(null, null, null, null, null, map);
 		Player player2 = new Player(null, null, null, null, null, map);
 		
