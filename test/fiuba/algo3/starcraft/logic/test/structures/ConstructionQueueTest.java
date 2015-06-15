@@ -1,37 +1,117 @@
 package fiuba.algo3.starcraft.logic.test.structures;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
+import fiuba.algo3.starcraft.logic.map.Map;
+import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.player.Player;
+import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.Depot;
 import fiuba.algo3.starcraft.logic.structures.Structure;
+import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
+import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class ConstructionQueueTest {
 
-	@Test
-	public void testConstructionQueueUpdateLowersTheReleaseOfConstructionsUntilFinished() {
-		ConstructionQueue queue = new ConstructionQueue();
-		queue.addStructure(new Construction<Structure>(new Depot(null, null, null), 5));
-		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, false, 1), 5));
-		//TODO: Completar
+	ConstructionQueue queue;
+	Depot depot;
+	MuggleUnit marine, golliat;
+
+	Player player;
+
+	//Todos los test son muy turbios, pero es la unica forma de "probar" que funciona
+
+	@Before
+	public void before() {
+		queue = new ConstructionQueue();
+		depot  = new Depot("Deposito Suministro",new Life(500),new Point(1,0));
+		marine = new MuggleUnit("Marine", null, null, 0, 0, null, 0, false, 1);
+		golliat = new MuggleUnit("Golliat", null, null, 0, 0, null, 0, false, 2);
+		player = new Player("Pepe", null, new TerranBuilder(), new Point(0,0), new Resources(500,500),new Map(1000,null));
 	}
 
 	@Test
 	public void testConstructionQueueUpdateGivesStructureWhenFinished() {
-		ConstructionQueue queue = new ConstructionQueue();
-		queue.addStructure(new Construction<Structure>(new Depot(null, null, null), 5));
-		//TODO: Completar
+		queue.addStructure(new Construction<Structure>(depot, 6));
+
+		for (int i = 0; i < 7; i++) {
+			queue.update(player);
+		}
+
+		assertEquals(player.populationQuota(), 5);
 	}
-	
+
 	@Test
 	public void testConstructionQueueUpdateGivesUnitWhenFinished() {
-		ConstructionQueue queue = new ConstructionQueue();
-		queue.addUnit(new Construction<Unit>(new MuggleUnit(null, null, null, 0, 0, null, 0, false, 1), 5));
-		//TODO: Completar
+		queue.addUnit(new Construction<Unit>(marine, 3));
+
+		for (int i = 0; i < 4; i++) {
+			queue.update(player);
+		}
+
+		assertEquals(player.currentPopulation(),1);
+	}
+
+	@Test
+	public void testConstructionQueueWontGiveUnitUntilFinished() {
+		queue.addUnit(new Construction<Unit>(marine, 3));
+
+		queue.update(player);
+
+		assertEquals(player.currentPopulation(),0);
+	}
+
+	@Test
+	public void testConstructionQueueWontGiveStructureUntilFinished() {
+		queue.addStructure(new Construction<Structure>(depot, 6));
+
+		queue.update(player);
+
+		assertEquals(player.populationQuota(),0);
+	}
+
+	@Test
+	public void testConstructionQueueCanGiveMultipleStructuresInOneTurn() {
+		for (int i = 0; i < 10; i++) {
+			queue.addStructure(new Construction<Structure>(depot, 6));
+		}
+
+		for (int i = 0; i < 7; i++) {
+			queue.update(player);
+		}
+
+		assertEquals(player.populationQuota(),50);
+	}
+
+	@Test
+	public void testConstructionQueueCanGiveMultipleUnitsInOneTurn() {
+		for (int i = 0; i < 10; i++) {
+			queue.addUnit(new Construction<Unit>(marine, 3));
+		}
+
+		for (int i = 0; i < 4; i++) {
+			queue.update(player);
+		}
+
+		assertEquals(player.currentPopulation(),10);
+	}
+
+	@Test
+	public void testConstructionQueueCanGiveUnitsAndStructuresOnTheSameTurn() {
+		queue.addUnit(new Construction<Unit>(golliat, 6));
+		queue.addStructure(new Construction<Structure>(depot, 6));
+
+		for (int i = 0; i < 7; i++) {
+			queue.update(player);
+		}
+
+		assertEquals(player.populationQuota(),5);
+		assertEquals(player.currentPopulation(),2);
 	}
 }
