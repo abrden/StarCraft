@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Parcel;
@@ -18,7 +19,14 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 
 public class ParcelTest {
-	Parcel parcel = new Parcel(new Point(0,0), 10);
+
+	Parcel parcel;
+
+	@Before
+	public void before() {
+		parcel = new Parcel(new Point(0,0), 10);
+	}
+
 	@Test
 	public void testParcelRecognizesIfContainsAPointFromMap() {
 		assertTrue(parcel.containsPoint(new Point(5,5)));
@@ -36,11 +44,13 @@ public class ParcelTest {
 	@Test
 	// TODO Implementar
 	public void testParcelCanBuildABuildingInsideAParcel() {
+
 	}
 	
 	@Test
 	// TODO Implementar
 	public void testParcelHasToDisablePassingThroughALandWithABuilding() {
+
 	}
 	
 	@Test
