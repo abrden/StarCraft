@@ -25,7 +25,6 @@ public class Life {
 	
 	public void regenerateShield() {
 		if (shield != null) shield.regenerate();
-		else return;
 	}
 
 	public void reduce(int damage) {
