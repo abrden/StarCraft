@@ -16,35 +16,35 @@ public class LifeTest {
 	}
 
 	@Test
-	public void askingForShieldReturns0WhenNoShieldIsActive() {
+	public void testAskingForShieldReturns0WhenNoShieldIsActive() {
 		Life life = new Life(100);
 
 		assertEquals(life.getShield(), 0);
 	}
 
 	@Test
-	public void reducingLifeWhenShieldIsActiveWillReduceShieldFirst() {
+	public void testReducingLifeWhenShieldIsActiveWillReduceShieldFirst() {
 		life.reduce(50);
 
 		assertEquals(life.getHealth(),100);
 	}
 
 	@Test
-	public void destroyingShieldLeavesItAt0() {
+	public void testDestroyingShieldLeavesItAt0() {
 		life.destroyShield();
 
 		assertEquals(life.getShield(), 0);
 	}
 
 	@Test
-	public void reducingLifeWillFirstDestroyTheShieldThenReduceHealth(){
+	public void testReducingLifeWillFirstDestroyTheShieldThenReduceHealth(){
 		life.reduce(120);
 
 		assertEquals(life.getHealth(),80);
 	}
 
 	@Test
-	public void shieldRegeneratesAfterBeingDestroyed() {
+	public void testShieldRegeneratesAfterBeingDestroyed() {
 		life.reduce(150);
 		life.regenerateShield();
 
