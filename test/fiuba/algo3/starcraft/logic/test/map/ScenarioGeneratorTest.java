@@ -49,7 +49,7 @@ public class ScenarioGeneratorTest {
 		}
 		Parcel parcel = map.getParcelContainingPoint(new Point(500,500));
 
-		Transportable marine = new MarineTemplate().create(null);
+		Transportable marine = new MarineTemplate().create(new Point(1,1));
 		
 		assertTrue(!parcel.letPass(marine));
 	}

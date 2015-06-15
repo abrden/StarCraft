@@ -31,13 +31,14 @@ public class ConstructionQueueTest {
 	public void before() {
 		queue = new ConstructionQueue();
 		depot  = new Depot("Deposito Suministro",new Life(500),new Point(1,0));
-		marine = new MuggleUnit("Marine", null, null, 0, 0, null, 0, false, 1);
-		golliat = new MuggleUnit("Golliat", null, null, 0, 0, null, 0, false, 2);
+		marine = new MuggleUnit("Marine", null, new Point(5,0), 0, 0, null, 0, false, 1);
+		golliat = new MuggleUnit("Golliat", null, new Point(4,0), 0, 0, null, 0, false, 2);
 		player = new Player("Pepe", null, new TerranBuilder(), new Point(0,0), new Resources(500,500),new Map(1000,null));
 	}
 
 	@Test
 	public void testConstructionQueueUpdateGivesStructureWhenFinished() {
+
 		queue.addStructure(new Construction<Structure>(depot, 6));
 
 		for (int i = 0; i < 7; i++) {

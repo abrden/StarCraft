@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ScoutTemplate;
@@ -19,9 +20,9 @@ public class RadiacionTest {
 
 	@Test
 	public void testRadiacionisntFinishedUntilTargetIsDead() {
-		MuggleUnit zealot = new ZealotTemplate().create(null);
-		MuggleUnit scout = new ScoutTemplate().create(null);
-		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(new Point(500,500));
+		MuggleUnit scout = new ScoutTemplate().create(new Point(500,500));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(500,500));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -40,9 +41,9 @@ public class RadiacionTest {
 
 	@Test
 	public void testRadiacionReducesLifeOfAffectedUnitsBy40PerTurn() {
-		MuggleUnit zealot = new ZealotTemplate().create(null);
-		MuggleUnit scout = new ScoutTemplate().create(null);
-		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(new Point(500,500));
+		MuggleUnit scout = new ScoutTemplate().create(new Point(500,500));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(500,500));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);

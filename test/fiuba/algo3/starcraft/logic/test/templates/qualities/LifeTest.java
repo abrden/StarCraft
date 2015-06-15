@@ -16,10 +16,12 @@ public class LifeTest {
 	}
 
 	@Test
+
 	public void testAskingForShieldReturns0WhenNoShieldIsActive() {
 		Life life = new Life(100);
 
 		assertEquals(life.getShield(), 0);
+
 	}
 
 	@Test

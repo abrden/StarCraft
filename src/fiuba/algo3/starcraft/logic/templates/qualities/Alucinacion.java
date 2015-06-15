@@ -1,5 +1,8 @@
 package fiuba.algo3.starcraft.logic.templates.qualities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fiuba.algo3.starcraft.logic.units.Clone;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -7,7 +10,10 @@ public class Alucinacion extends Power implements Cloner {
 
 	private static final int COST = 100;
 	private static final int RANGE = 0;
-	private Clone clone;
+	
+	private Clone clone1;
+	private Clone clone2;
+	private List<Unit> clones = new ArrayList<Unit>();
 	
 	public int getCost() {
 		return COST;
@@ -18,18 +24,20 @@ public class Alucinacion extends Power implements Cloner {
 	}
 	
 	public void activate() {
-		clone = new Clone(affectedUnits.get(0)); //La unidad a clonar deberia del la unica en los afectados
+		clone1 = new Clone(affectedUnits.get(0));
+		clone2 = new Clone(affectedUnits.get(0));
 	}
 	
 	public void execute(Unit unit) {
-		return; //clone.update();
+		clones.add(clone1);
+		clones.add(clone2);
 	}
 	
 	public boolean itsFinished() {
-		return (!clone.itsAlive());
+		return (!clone1.itsAlive() && !clone2.itsAlive());
 	}
 	
-	public Unit getClone() {
-		return clone;
+	public List<Unit> getClones() {
+		return clones;
 	}
 }

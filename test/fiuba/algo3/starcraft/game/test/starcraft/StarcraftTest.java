@@ -20,7 +20,7 @@ public class StarcraftTest {
 	@Test
 	public void testStarCraftMovesAMarineInAMapFullOfLand() throws StepsLimitExceeded {
 		Map currentMap = new Map(1000, game);
-		game.setMap(currentMap);
+		game.setGame(null, null, currentMap);
 		
 		MuggleUnit marine = new MarineTemplate().create(new Point(20, 20));
 		
@@ -35,7 +35,7 @@ public class StarcraftTest {
 		ScenarioGenerator scenario = new ScenarioGenerator(currentMap);
 		
 		scenario.assignSurfaceDistributionInRect(LandType.air,new Point(50, 50),100, 1);
-		game.setMap(currentMap);
+		game.setGame(null, null, currentMap);
 
 		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
 		

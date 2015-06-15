@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.AltoTemplarioTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ScoutTemplate;
@@ -22,9 +23,9 @@ public class TormentaPsionicaTest {
 
 	@Test
 	public void testTormentaIsntFinishedUntilItExecutes2Times() {
-		MuggleUnit zealot = new ZealotTemplate().create(null);
-		MuggleUnit scout = new ScoutTemplate().create(null);
-		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(new Point(500,500));
+		MuggleUnit scout = new ScoutTemplate().create(new Point(500,500));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(500,500));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -40,9 +41,9 @@ public class TormentaPsionicaTest {
 
 	@Test
 	public void testTormentaIsFinishedIfItExecutes2Times() {
-		MuggleUnit zealot = new ZealotTemplate().create(null);
-		MuggleUnit scout = new ScoutTemplate().create(null);
-		MagicalUnit templario = new AltoTemplarioTemplate().create(null);
+		MuggleUnit zealot = new ZealotTemplate().create(new Point(500,500));
+		MuggleUnit scout = new ScoutTemplate().create(new Point(500,500));
+		MagicalUnit templario = new AltoTemplarioTemplate().create(new Point(500,500));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(zealot);
 		affected.add(scout);
@@ -59,9 +60,9 @@ public class TormentaPsionicaTest {
 	
 	@Test
 	public void testTormentaReducesLifeOfAffectedUnitsBy50Execution() {
-		MuggleUnit marine = new MarineTemplate().create(null);
-		MuggleUnit golliat = new GolliatTemplate().create(null);
-		MagicalUnit nave = new NaveCienciaTemplate().create(null);
+		MuggleUnit marine = new MarineTemplate().create(new Point(500,500));
+		MuggleUnit golliat = new GolliatTemplate().create(new Point(500,500));
+		MagicalUnit nave = new NaveCienciaTemplate().create(new Point(500,500));
 		List<Unit> affected = new LinkedList<Unit>();
 		affected.add(marine);
 		affected.add(nave);
