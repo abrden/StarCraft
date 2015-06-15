@@ -130,15 +130,17 @@ public class Map {
 		return this.unitsInCircle(position, range, playerUnits).subList(0, 1);
 	}
 	
-	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
+	//FIXME: lets try to implement canFly in unit, transportUnit can fly, thats a fact
+	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits /*, canFly*/) {
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
 	
-	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
+	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units/*, canFly*/) {
 		
 		ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
 		for (Unit unit : units) {
 			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, unit.getPosition())) {
+				//if (unit.canFly == canFly) unitsInCircle.add(unit)
 				unitsInCircle.add(unit);
 			}
 		}  
