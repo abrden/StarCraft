@@ -43,25 +43,5 @@ public class MarineTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public MarineTemplate() {
-		name = "Marine";
-		value = new Value(50,0);
-		constructionTime = 3;
-		vision = 7;
-		populationQuota = 1;
-		health = 40;
-		transportationQuota = 1;
-		damage = new Damage(6,6);
-		damageRange = 4;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 3;
-	}
 
-
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health), position, vision, 
-				stepsPerTurn, attack, transportationQuota, false, populationQuota);
-	}
-	*/
 }

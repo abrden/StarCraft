@@ -46,13 +46,25 @@ public abstract class Builder {
 		if (!dependsOn.containsKey(name)) return true;
 		
 		else {
-			String structureRequired = dependsOn.get(name);
+			String structureRequired = this.dependensOn(name);
 			for (Structure structure : built) {
 				if (structure.getName().equals(structureRequired))
 					return this.structureRequiredExists(structureRequired, built);
 			}
 			throw new MissingStructureRequired();
 		}
+	}
+	
+	protected void addTemplate(StructureTemplate template) {
+		templates.add(template);
+	}
+	
+	protected void addDependency(String key, String value) {
+		dependsOn.put(key, value);
+	}
+	
+	protected String dependensOn(String key) {
+		return dependsOn.get(key);
 	}
 
 }

@@ -17,8 +17,8 @@ public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
 	private static final int SHIELD = 600;
 	
     public PuertoEstelarProtossTemplate() {
-        enabledTemplates.add(new ScoutTemplate());
-        enabledTemplates.add(new NaveTransporteProtossTemplate());
+    	addEnabledTemplate(new ScoutTemplate());
+    	addEnabledTemplate(new NaveTransporteProtossTemplate());
     }
 	
 	public ConstructionStructure create(Point position) {

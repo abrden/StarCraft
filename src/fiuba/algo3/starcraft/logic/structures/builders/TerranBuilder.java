@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.structures.builders;
 
+
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.CentroMineralTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.DepositoSuministroTemplate;
@@ -10,14 +11,14 @@ import fiuba.algo3.starcraft.logic.templates.structures.terran.RefineriaTemplate
 public class TerranBuilder extends Builder {
 	
 	public TerranBuilder() {
-		templates.add(new CentroMineralTemplate());
-		templates.add(new FabricaTemplate());
-		templates.add(new BarracaTemplate());
-		templates.add(new DepositoSuministroTemplate());
-		templates.add(new RefineriaTemplate());
-		templates.add(new PuertoEstelarTerranTemplate());
+		addTemplate(new CentroMineralTemplate());
+		addTemplate(new FabricaTemplate());
+		addTemplate(new BarracaTemplate());
+		addTemplate(new DepositoSuministroTemplate());
+		addTemplate(new RefineriaTemplate());
+		addTemplate(new PuertoEstelarTerranTemplate());
 		
-		dependsOn.put("Fabrica", "Barraca");
-		dependsOn.put("Puerto Estelar", "Fabrica");
+		addDependency("Fabrica", "Barraca");
+		addDependency("Puerto Estelar", "Fabrica");
 	}
 }

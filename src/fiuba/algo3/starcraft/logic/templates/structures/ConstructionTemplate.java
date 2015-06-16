@@ -8,4 +8,8 @@ import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 public abstract class ConstructionTemplate extends StructureTemplate {
 	
 	protected Collection<UnitTemplate> enabledTemplates = new LinkedList<UnitTemplate>();
+
+	protected void addEnabledTemplate(UnitTemplate template) {
+		enabledTemplates.add(template);
+	}
 }

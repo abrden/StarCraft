@@ -17,8 +17,8 @@ public class AccesoTemplate extends ConstructionTemplate {
 	private static final int SHIELD = 500;
 	
     public AccesoTemplate() {
-        enabledTemplates.add(new ZealotTemplate());
-        enabledTemplates.add(new DragonTemplate());
+    	addEnabledTemplate(new ZealotTemplate());
+    	addEnabledTemplate(new DragonTemplate());
     }
 	
 	public ConstructionStructure create(Point position) {

@@ -17,9 +17,9 @@ public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
 	private static final int HEALTH = 1300;
 	
     public PuertoEstelarTerranTemplate() {
-        enabledTemplates.add(new EspectroTemplate());
-        enabledTemplates.add(new NaveTransporteTerranTemplate());
-        enabledTemplates.add(new NaveCienciaTemplate());
+    	addEnabledTemplate(new EspectroTemplate());
+    	addEnabledTemplate(new NaveTransporteTerranTemplate());
+    	addEnabledTemplate(new NaveCienciaTemplate());
         }
 	
 	public ConstructionStructure create(Point position) {
