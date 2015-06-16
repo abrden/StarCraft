@@ -38,7 +38,7 @@ public class ConstructionStructure extends Structure {
 		UnitTemplate template = this.getTemplateWithName(name);
 		populationSpaceCheck(template, currentPopulation, populationQuota);
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
-		
+	
 		return new Construction<Unit>(template.create(position), template.getConstructionTime());
 	}
 
