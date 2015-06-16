@@ -71,7 +71,6 @@ public class Map {
 		return parcels;
 	}
 	
-	
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
