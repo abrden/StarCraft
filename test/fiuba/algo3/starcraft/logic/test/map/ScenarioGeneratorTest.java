@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,7 +66,7 @@ public class ScenarioGeneratorTest {
 		}
 		Parcel parcel = map.getParcelContainingPoint(new Point(500,500));
 
-		Transportable marine = new MarineTemplate().create(new Point(1,1));
+		MuggleUnit marine = new MarineTemplate().create(new Point(1, 1));
 		
 		assertTrue(!parcel.letPass(marine));
 	}

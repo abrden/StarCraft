@@ -8,6 +8,7 @@ import java.util.List;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -188,8 +189,8 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
-		map.moveUnitToDestination(transportable, destination);
+	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+		map.moveUnitToDestination(unit, destination);
 	}
 	
 	public void attack(MuggleUnit unit) {
@@ -219,8 +220,8 @@ public class Player {
 		map.moveToLimbo(unit);
 	}
 	
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded {
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+        map.setUnit((Unit) unit, transport.getPosition());
 		transport.disembark(unit);
-		unit.setPosition(transport.getPosition());
 	}
 }

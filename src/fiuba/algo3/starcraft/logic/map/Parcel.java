@@ -7,6 +7,7 @@ import fiuba.algo3.starcraft.logic.map.areas.Surface;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Parcel {
 	
@@ -51,7 +52,7 @@ public class Parcel {
 		return isInXRange && isInYRange;
 	}
 	
-	public boolean letPass(Transportable unit) {
+	public boolean letPass(Unit unit) {
 		//FIXME: Try to avoid if {} else {} blocks
 		if (unit.canFly()) {
 			return true;
