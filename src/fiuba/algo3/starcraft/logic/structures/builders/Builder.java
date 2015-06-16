@@ -28,7 +28,7 @@ public abstract class Builder {
 		Structure structure = template.create(position);
 			
 		map.resourceRequiredIsThere(structure, position);
-		
+
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 		
 		return new Construction<Structure>(structure, template.getConstructionTime());
