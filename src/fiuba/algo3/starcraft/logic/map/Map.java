@@ -156,4 +156,8 @@ public class Map {
 		return unitsInCircle;
 	}
 
+	public void removeStructureFrom(Point position) {
+		this.getParcelContainingPoint(position).setStructure(null);
+	}
+
 }

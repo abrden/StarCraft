@@ -137,8 +137,10 @@ public class Player {
 		for (Structure structure : structures)
 			if (!structure.itsAlive())
 				dead.add(structure);
-		for (Structure structure : dead) 
+		for (Structure structure : dead) {
+			map.removeStructureFrom(structure.getPosition());
 			structures.remove(structure);
+		}
 	}
 	
 	public int populationSpace() {
