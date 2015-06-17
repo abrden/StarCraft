@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.logic.units;
+	package fiuba.algo3.starcraft.logic.units;
 
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;

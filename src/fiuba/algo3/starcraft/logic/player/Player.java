@@ -195,7 +195,6 @@ public class Player {
 			} else {
 				closestUnit.reduceLife(unit.getAttackSpaceDamage());
 			}
-			closestUnit.reduceLife(unit.getAttackLandDamage());
 		}
 	}
 	
