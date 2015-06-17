@@ -21,7 +21,7 @@ public class ZealotTemplate extends MuggleTemplate {
 	private static final Damage DAMAGE = new Damage(8,0);
 	private static final int DAMAGE_RANGE = 1;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 4;
+	private static final int STEPS_PER_TURN = 19;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {
@@ -44,24 +44,5 @@ public class ZealotTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public ZealotTemplate() {
-		name = "Zealot";
-		value = new Value(100,0);
-		constructionTime = 4;
-		vision = 7;
-		populationQuota = 2;
-		health = 100;
-		shield = 60;
-		transportationQuota = 2;
-		damage = new Damage(8,0);
-		damageRange = 1;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 4;
-	}
 
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health, shield), position, vision,
-				stepsPerTurn, attack, transportationQuota, false, populationQuota);
-	}*/
 }

@@ -15,7 +15,7 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 150;
 	private static final int CAPACITY = 8;
-	private static final int STEPS_PER_TURN = 7;
+	private static final int STEPS_PER_TURN = 40;
 
 	public TransportUnit create(Point position) {
 		return new TransportUnit(NAME, new Life(HEALTH), position, VISION,

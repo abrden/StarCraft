@@ -20,7 +20,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static final int MAXIMUM_ENERGY = 200;
 	private static final int ENERGY_GAIN_PER_TURN = 15;
 	private static final int TRANSPORTATION_QUOTA = 4;
-	private static final int STEPS_PER_TURN = 7;
+	private static final int STEPS_PER_TURN = 15;
 	private static final boolean CAN_FLY = false;
 	
 	public MagicalUnit create(Point position) {
@@ -45,27 +45,5 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public AltoTemplarioTemplate() {
-		name = "Alto Templario";
-		value = new Value(50, 150);
-		constructionTime = 7;
-		health = 40;
-		shield = 40;
-		vision = 7;
-		initialEnergy = 50;
-		maximumEnergy = 200;
-		energyGainPerTurn = 15;
-		transportationQuota = 2;
-		populationQuota = 2;
-		stepsPerTurn = 7;
-	}
 
-	public MagicalUnit create(Point position) {
-		return new MagicalUnit(name, new Life(health, shield), position,
-				vision, stepsPerTurn, new AltoTemplarioPowerGenerator(),
-				initialEnergy, maximumEnergy, energyGainPerTurn, 
-				transportationQuota, false, populationQuota);
-	}
-	*/
 }

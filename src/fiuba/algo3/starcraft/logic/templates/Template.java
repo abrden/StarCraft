@@ -15,18 +15,5 @@ public abstract class Template {
 	public abstract Value getValue();
 	
 	public abstract int getConstructionTime();
-	
-	/*
-	public String getName() {
-		return name;
-	}
-	
-	public Value getValue() {
-		return value;
-	}
-	
-	public int getConstructionTime() {
-		return constructionTime;
-	}
-	*/
+
 }

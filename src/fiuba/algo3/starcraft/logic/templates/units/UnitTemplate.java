@@ -16,10 +16,6 @@ public abstract class UnitTemplate extends Template {
 	protected int stepsPerTurn;
 	
 	public abstract int getPopulationQuota();
-	
-	/*public int getPopulationQuota() {
-		return populationQuota;
-	}*/
 
 	public abstract Unit create(Point position);
 	
