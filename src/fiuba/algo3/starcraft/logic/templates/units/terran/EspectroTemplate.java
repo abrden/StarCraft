@@ -16,8 +16,8 @@ public class EspectroTemplate extends MuggleTemplate {
 	private static final int CONSTRUCTION_TIME = 8;
 	private static final int VISION = 7;
 	private static final int POPULATION_QUOTA = 2;
+    private static final int TRANSPORTATION_QUOTA = 3;
 	private static final int HEALTH = 120;
-	private static final int TRANSPORTATION_QUOTA = 0;
 	private static final Damage DAMAGE = new Damage(8,20);
 	private static final int DAMAGE_RANGE = 5;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);

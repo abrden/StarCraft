@@ -16,9 +16,9 @@ public class ScoutTemplate extends MuggleTemplate {
 	private static final int CONSTRUCTION_TIME = 9;
 	private static final int VISION = 7;
 	private static final int POPULATION_QUOTA = 3;
+    private static final int TRANSPORTATION_QUOTA = 4;
 	private static final int HEALTH = 150;
 	private static final int SHIELD = 100;
-	private static final int TRANSPORTATION_QUOTA = 0;
 	private static final Damage DAMAGE = new Damage(8,14);
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);

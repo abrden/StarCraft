@@ -23,7 +23,7 @@ public class DragonTemplate extends MuggleTemplate {
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
 	private static final int STEPS_PER_TURN = 13;
-	private static final boolean CAN_FLY = true;
+	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {
 		return new MuggleUnit(NAME, new Life(HEALTH, SHIELD), position, VISION,
