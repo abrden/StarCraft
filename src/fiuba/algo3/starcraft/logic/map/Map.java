@@ -20,7 +20,6 @@ public class Map {
 	public final double PARCEL_SIDE = 10;
 	private StarCraft game;
 	
-	@SuppressWarnings("unused")
 	private double side;
 	@SuppressWarnings({"rawtypes"})
 	private ArrayList<ArrayList> row = new ArrayList<ArrayList>();
@@ -52,12 +51,16 @@ public class Map {
 			}
 		}
 	}
+
+	public double getSide() {
+		return side;
+	}
 	
 	public Parcel getParcelContainingPoint(Point point) throws IndexOutOfBoundsException{
 		return (Parcel) row.get((int)(point.getX() / PARCEL_SIDE)).get((int)(point.getY() / PARCEL_SIDE));
 	}
 	
-	public ArrayList<Parcel> getParcelsContainedInARect(Point point, int side) {
+	public ArrayList<Parcel> getParcelsContainedInARect(Point point, double side) {
 		ArrayList<Parcel> parcels = new ArrayList<Parcel>();
 		
 		for (int x = (int)point.getX() ; x < (int)point.getX() + side ; x += PARCEL_SIDE) {
