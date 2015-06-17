@@ -9,5 +9,5 @@ public abstract class Template {
 	public abstract Value getValue();
 	
 	public abstract int getConstructionTime();
-	
+
 }

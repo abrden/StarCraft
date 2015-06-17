@@ -78,7 +78,7 @@ public class AlucinacionTest {
 		
 		assertEquals(clone.getName(), "Dragon");
 		assertEquals(clone.getShield(), 80);
-		assertEquals(clone.getStepsPerTurn(), 6);
+		assertEquals(clone.getStepsPerTurn(), 13);
 		assertEquals(clone.getVision(), 8);
 	}
 	

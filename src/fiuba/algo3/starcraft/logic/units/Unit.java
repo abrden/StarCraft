@@ -65,6 +65,8 @@ public abstract class Unit implements Updatable {
 	
 	public abstract void update();
 
+    public abstract boolean canFly();
+
 	public Point getPosition() {
 		return position;
 	}

@@ -22,7 +22,7 @@ public class ScoutTemplate extends MuggleTemplate {
 	private static final Damage DAMAGE = new Damage(8,14);
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 9;
+	private static final int STEPS_PER_TURN = 25;
 	private static final boolean CAN_FLY = true;
 	
 	public MuggleUnit create(Point position) {
@@ -45,25 +45,5 @@ public class ScoutTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public ScoutTemplate() {
-		name = "Scout";
-		value = new Value(300,150);
-		constructionTime = 9;
-		vision = 7;
-		populationQuota = 3;
-		health = 150;
-		shield = 100;
-		transportationQuota = 0;
-		damage = new Damage(8,14);
-		damageRange = 4;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 9;
-	}
 
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health, shield), position, vision,
-				stepsPerTurn, attack, transportationQuota, true, populationQuota);
-	}
-	*/
 }

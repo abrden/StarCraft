@@ -20,7 +20,7 @@ public class MarineTemplate extends MuggleTemplate {
 	private static final Damage DAMAGE = new Damage(6,6);
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 3;
+	private static final int STEPS_PER_TURN = 15;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {

@@ -16,7 +16,7 @@ public class NaveTransporteProtossTemplate extends TransportTemplate {
 	private static final int HEALTH = 80;
 	private static final int SHIELD = 60;
 	private static final int CAPACITY = 8;
-	private static final int STEPS_PER_TURN = 8;
+	private static final int STEPS_PER_TURN = 40;
 	
 	public TransportUnit create(Point position) {
 		return new TransportUnit(NAME, new Life(HEALTH, SHIELD), position, VISION,
@@ -38,21 +38,5 @@ public class NaveTransporteProtossTemplate extends TransportTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-    public NaveTransporteProtossTemplate() {
-        name = "Nave Transporte";
-        value = new Value(200,0);
-        constructionTime = 8;
-        vision = 8;
-        populationQuota = 2;
-        health = 80;
-        shield = 60;
-        capacity = 8;
-        stepsPerTurn = 8;
-    }
 
-    public TransportUnit create(Point position) {
-        return new TransportUnit(name, new Life(health, shield), position, vision, stepsPerTurn, populationQuota, capacity);
-    }
-    */
 }
