@@ -42,7 +42,6 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
-	private Point postion;
 	
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
@@ -78,21 +77,13 @@ public class Player {
 	public Resources getResources() {
 		return resources;
 	}
-	
-	public Point getPosition() {
-		return postion;
-	}
-	
+
 	public void newTurn() {
 		this.update();
 	}
 	
 	public Collection<Unit> getUnits() {
 		return units;
-	}
-	
-	public void setPosition(Point position) {
-		this.postion = position;
 	}
 	
 	private void update() {
