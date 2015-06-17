@@ -54,6 +54,7 @@ public class ScenarioGeneratorTest {
 		
 		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(970,970), 30, 0.8);
 		player1.setPosition(new Point(990,990));
+		
 		for (int i = 0 ; i < 1000/30 ; i++) {
 			scenario.assignSurfaceDistributionInRect(LandType.air,new Point(485, 30 * i), 30, 1);
 		}

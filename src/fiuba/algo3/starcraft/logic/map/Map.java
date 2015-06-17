@@ -74,10 +74,6 @@ public class Map {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 
-	public void setUnit(Unit unit, Point position) {
-		// TODO Implementar
-	}
-	
 	public void setStructure(Structure structure, Point point) {
 		Parcel parcel = this.getParcelContainingPoint(point);
 		parcel.setStructure(structure);
