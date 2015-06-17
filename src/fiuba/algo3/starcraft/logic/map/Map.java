@@ -135,7 +135,7 @@ public class Map {
 	}
 	
 	//FIXME: lets try to implement canFly in unit, transportUnit can fly, thats a fact
-	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits /*, canFly*/) {
+	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
 	

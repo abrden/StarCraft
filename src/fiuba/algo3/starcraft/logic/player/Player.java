@@ -185,11 +185,16 @@ public class Player {
 	}
 	
 	public void attack(MuggleUnit unit) {
-		// CODE REVIEW
+		
 		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
 		
 		if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
+			if (closestUnit.canFly()) {
+				closestUnit.reduceLife(unit.getAttackLandDamage());
+			} else {
+				closestUnit.reduceLife(unit.getAttackSpaceDamage());
+			}
 			closestUnit.reduceLife(unit.getAttackLandDamage());
 		}
 	}
