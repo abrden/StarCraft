@@ -15,10 +15,7 @@ import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
-import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
-import fiuba.algo3.starcraft.logic.units.Transportable;
-
 public class ScenarioGeneratorTest {
 
 	Map map;
@@ -50,17 +47,14 @@ public class ScenarioGeneratorTest {
 	
 	@Test
 	public void testScenarioIsBuiltWithTwoBuildingsMineralsAndAnIsland() {
-
-		Player player1 = new Player(null, null, null, null, null, map);
-		Player player2 = new Player(null, null, null, null, null, map);
 		
 		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(0,0), 1000, 0.2);
 		
 		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(0,0), 30, 0.8);
-		player1.setPosition(new Point(10,10));
+		//Player player1 = new Player(null, null, null, new Point(10,10), null, map);
 		
 		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(970,970), 30, 0.8);
-		player1.setPosition(new Point(990,990));
+		//Player player2 = new Player(null, null, null, new Point(990,990), null, map);
 		for (int i = 0 ; i < 1000/30 ; i++) {
 			scenario.assignSurfaceDistributionInRect(LandType.air,new Point(485, 30 * i), 30, 1);
 		}

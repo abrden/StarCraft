@@ -6,7 +6,6 @@ import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
-import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Parcel {
