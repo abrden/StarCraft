@@ -15,7 +15,7 @@ public class FabricaTemplate extends ConstructionTemplate {
 	private static final int HEALTH = 1250;
 	
     public FabricaTemplate() {
-		enabledTemplates.add(new GolliatTemplate());
+    	addEnabledTemplate(new GolliatTemplate());
     }
 	
 	public ConstructionStructure create(Point position) {

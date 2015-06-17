@@ -16,7 +16,7 @@ public class ArchivosTemplariosTemplate extends ConstructionTemplate {
 	private static final int SHIELD = 500;
 	
     public ArchivosTemplariosTemplate() {
-		enabledTemplates.add(new AltoTemplarioTemplate());
+    	addEnabledTemplate(new AltoTemplarioTemplate());
     }
 	
 	public ConstructionStructure create(Point position) {

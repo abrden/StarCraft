@@ -6,7 +6,7 @@ import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.map.resources.Mine;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.map.resources.Volcano;
-import fiuba.algo3.starcraft.logic.units.Transportable;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class Land extends Surface {
 	
@@ -29,7 +29,7 @@ public class Land extends Surface {
 	}
 	
 	@Override
-	public boolean letPass(Transportable unit) {
+	public boolean letPass(Unit unit) {
 		return true;
 	}
 	

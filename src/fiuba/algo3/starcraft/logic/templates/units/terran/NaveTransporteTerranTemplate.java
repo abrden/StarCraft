@@ -15,8 +15,8 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 150;
 	private static final int CAPACITY = 8;
-	private static final int STEPS_PER_TURN = 7;
-	
+	private static final int STEPS_PER_TURN = 40;
+
 	public TransportUnit create(Point position) {
 		return new TransportUnit(NAME, new Life(HEALTH), position, VISION,
 				STEPS_PER_TURN, POPULATION_QUOTA, CAPACITY);
@@ -37,20 +37,5 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-    public NaveTransporteTerranTemplate() {
-        name = "Nave Transporte";
-        value = new Value(100,100);
-        constructionTime = 7;
-        vision = 8;
-        populationQuota = 2;
-        health = 150;
-        capacity = 8;
-        stepsPerTurn = 7;
-    }
 
-    public TransportUnit create(Point position) {
-    	return new TransportUnit(name, new Life(health, shield), position, vision, stepsPerTurn, populationQuota, capacity);
-    }
-    */ 
 }

@@ -16,12 +16,12 @@ public class EspectroTemplate extends MuggleTemplate {
 	private static final int CONSTRUCTION_TIME = 8;
 	private static final int VISION = 7;
 	private static final int POPULATION_QUOTA = 2;
+    private static final int TRANSPORTATION_QUOTA = 3;
 	private static final int HEALTH = 120;
-	private static final int TRANSPORTATION_QUOTA = 0;
 	private static final Damage DAMAGE = new Damage(8,20);
 	private static final int DAMAGE_RANGE = 5;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 8;
+	private static final int STEPS_PER_TURN = 25;
 	private static final boolean CAN_FLY = true;
 	
 	public MuggleUnit create(Point position) {
@@ -44,24 +44,5 @@ public class EspectroTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public EspectroTemplate() {
-		name = "Espectro";
-		value = new Value(150,100);
-		constructionTime = 8;
-		vision = 7;
-		populationQuota = 2;
-		health = 120;
-		transportationQuota = 0;
-		damage = new Damage(8,20);
-		damageRange = 5;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 8;
-	}
 
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health), position, vision, 
-				stepsPerTurn, attack, transportationQuota, true, populationQuota);
-	}
-	*/
 }

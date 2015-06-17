@@ -8,6 +8,7 @@ import java.util.List;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
@@ -69,11 +70,18 @@ public class Map {
 		return parcels;
 	}
 	
-	
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 
+	public void setUnit(Unit unit, Point position) throws UnitCanotBeSetHere {
+        if (unit.canFly()) return;
+		if (this.getParcelContainingPoint(position).letPass(unit))
+            unit.setPosition(position);
+        else
+            throw new UnitCanotBeSetHere();
+	}
+	
 	public void setStructure(Structure structure, Point point) {
 		Parcel parcel = this.getParcelContainingPoint(point);
 		parcel.setStructure(structure);
@@ -89,7 +97,7 @@ public class Map {
 		unit.setPosition(new Point(side * 10, side * 10));
 	}
 	
-	public void moveUnitToDestination(Transportable transportable, Point position) throws StepsLimitExceeded {
+	public void moveUnitToDestination(Unit transportable, Point position) throws StepsLimitExceeded {
 		Point initialPoint = transportable.getPosition();
 		Point finalPoint = position;
 			
@@ -143,13 +151,16 @@ public class Map {
 		
 		// Sorting
 		Collections.<Unit>sort(unitsInCircle, new Comparator<Unit>() {
-				@Override
-				public int compare(Unit unit1, Unit unit2) {
-					return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
-				}
-		    });
+            @Override
+            public int compare(Unit unit1, Unit unit2) {
+                return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
+            }
+        });
 		
 		return unitsInCircle;
 	}
 
+	public void removeStructureFrom(Point position) {
+		this.getParcelContainingPoint(position).setStructure(null);
+	}
 }

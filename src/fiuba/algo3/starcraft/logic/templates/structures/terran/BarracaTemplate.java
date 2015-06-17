@@ -15,7 +15,7 @@ public class BarracaTemplate extends ConstructionTemplate {
 	private static final int HEALTH = 1000;
 	
 	public BarracaTemplate() {
-		enabledTemplates.add(new MarineTemplate());
+		addEnabledTemplate(new MarineTemplate());
 	}
 	
 	public ConstructionStructure create(Point position) {

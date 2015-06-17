@@ -13,7 +13,7 @@ public class TransportUnit extends Unit {
 	
 	private final Collection<Transportable> passengers;
 	private final int capacity;
-	
+
 	public TransportUnit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota, int capacity) {
 		super(name, life, position, vision, stepsPerTurn, populationQuota);
 		passengers = new LinkedList<Transportable>();
@@ -44,12 +44,17 @@ public class TransportUnit extends Unit {
 			spaceTaken = spaceTaken + unit.getTransportQuota();
 		return (capacity - spaceTaken);
 	}
-	
+
 	public void update() {
 		life.regenerateShield();
 	}
-	
-	public void executeEMP() {
+
+    @Override
+    public boolean canFly() {
+        return true;
+    }
+
+    public void executeEMP() {
 		life.destroyShield();
 	}
 }

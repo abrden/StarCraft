@@ -22,8 +22,8 @@ public class DragonTemplate extends MuggleTemplate {
 	private static final Damage DAMAGE = new Damage(20,20);
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 6;
-	private static final boolean CAN_FLY = true;
+	private static final int STEPS_PER_TURN = 13;
+	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {
 		return new MuggleUnit(NAME, new Life(HEALTH, SHIELD), position, VISION,
@@ -45,25 +45,4 @@ public class DragonTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public DragonTemplate() {
-		name = "Dragon";
-		value = new Value(125,50);
-		constructionTime = 6;
-		vision = 8;
-		populationQuota = 2;
-		health = 80;
-		shield = 100;
-		transportationQuota = 4;
-		damage = new Damage(20,20);
-		damageRange = 4;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 6;
-	}
-
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health, shield), position, vision,
-				stepsPerTurn, attack, transportationQuota, false, populationQuota);
-	}
-	*/
 }

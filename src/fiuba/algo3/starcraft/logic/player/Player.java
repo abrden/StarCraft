@@ -8,6 +8,7 @@ import java.util.List;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -41,7 +42,6 @@ public class Player {
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
-	private Point postion;
 	
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
 	
@@ -77,21 +77,13 @@ public class Player {
 	public Resources getResources() {
 		return resources;
 	}
-	
-	public Point getPosition() {
-		return postion;
-	}
-	
+
 	public void newTurn() {
 		this.update();
 	}
 	
 	public Collection<Unit> getUnits() {
 		return units;
-	}
-	
-	public void setPosition(Point position) {
-		this.postion = position;
 	}
 	
 	private void update() {
@@ -137,8 +129,10 @@ public class Player {
 		for (Structure structure : structures)
 			if (!structure.itsAlive())
 				dead.add(structure);
-		for (Structure structure : dead) 
+		for (Structure structure : dead) {
+			map.removeStructureFrom(structure.getPosition());
 			structures.remove(structure);
+		}
 	}
 	
 	public int populationSpace() {
@@ -186,8 +180,8 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Transportable transportable, Point destination) throws StepsLimitExceeded {
-		map.moveUnitToDestination(transportable, destination);
+	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+		map.moveUnitToDestination(unit, destination);
 	}
 	
 	public void attack(MuggleUnit unit) {
@@ -217,8 +211,8 @@ public class Player {
 		map.moveToLimbo(unit);
 	}
 	
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded {
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+        map.setUnit((Unit) unit, transport.getPosition());
 		transport.disembark(unit);
-		unit.setPosition(transport.getPosition());
 	}
 }

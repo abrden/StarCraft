@@ -20,7 +20,7 @@ public class MarineTemplate extends MuggleTemplate {
 	private static final Damage DAMAGE = new Damage(6,6);
 	private static final int DAMAGE_RANGE = 4;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 3;
+	private static final int STEPS_PER_TURN = 15;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {
@@ -43,25 +43,5 @@ public class MarineTemplate extends MuggleTemplate {
 	public int getPopulationQuota() {
 		return POPULATION_QUOTA;
 	}
-	/*
-	public MarineTemplate() {
-		name = "Marine";
-		value = new Value(50,0);
-		constructionTime = 3;
-		vision = 7;
-		populationQuota = 1;
-		health = 40;
-		transportationQuota = 1;
-		damage = new Damage(6,6);
-		damageRange = 4;
-		attack = new Attack(damage, damageRange);
-		stepsPerTurn = 3;
-	}
 
-
-	public MuggleUnit create(Point position) {
-		return new MuggleUnit(name, new Life(health), position, vision, 
-				stepsPerTurn, attack, transportationQuota, false, populationQuota);
-	}
-	*/
 }
