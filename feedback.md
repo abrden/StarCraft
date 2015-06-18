@@ -1,3 +1,20 @@
+## 17/6
+
+* Para evitar romper el encapsulamiento, getters de colecciones deberían devolver `Iterable` en vez del tipo concreto de la colección (ej: `Cloner.getClones()`), de esta forma se aseguran que nadie pueda modificar el atributo sin usar el comportamiento definido por el objeto al que pertenece.
+* Comportamiento default para estructuras dice que todas pueden extraer recursos (`Structure.iCanExtract()`), entonces por ejemplo el `Depot` dice que puede extraer recursos (solo se sobrecarga el método en subclases `GasExploiter` y `MineralExploiter`)
+* Arreglar _FIXME_
+* No es necesario definir explicitamente constructores default (ej: `Land`)
+* Usar constantes en vez de números mágicos en `Map.moveUnitToDestination()` y todos los otros lugares donde se haga conversión de puntos a parcelas
+* `Parcel.letPass()` chequea directamente si la unidad puede volar en vez de usar `Air.letPass()` para parcelas en el espacio
+* Si todos los objetos `Parcel` necesitan tener un `Surface` este debería pasarse como parámetro al constructor para evitar tener un objeto inicializado en estado inválido
+* Pruebas de integración faltantes:
+  * Comienzo de juego completo (generación del mapa, asignación de lugares de los jugadores, etc.)
+  * Unidades se siguen moviendo cuando vuelve a tocarle el turno al jugador si la cantidad de movimientos no alcanzaba para un turno
+  * Comunicar al usuario cuando una unidad que se estaba moviendo encuentra un obstaculo
+  * Destruir una nave transportadora debería destruir todas las unidades que este transportando en el momento
+  * Al destruir un edificio constructor de unidades, todas las unidades encoladas para contruirse se deberían destruir
+
+
 ## 10/6
 
 * Qué decidieron finalmente sobre los puntos dentro de las parcelas?
