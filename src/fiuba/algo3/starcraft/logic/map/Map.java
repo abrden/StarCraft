@@ -93,7 +93,7 @@ public class Map {
 	public void resourceRequiredIsThere(Structure structure, Point position) throws NoResourcesToExtract {
 		Parcel parcel = this.getParcelContainingPoint(position);
 		ExtractableType resource = parcel.getLandForExplotation().extractResource();
-		if (!structure.iCanExtract(resource)) throw new NoResourcesToExtract();
+		if (!structure.iCanBeBuiltOnTopOf(resource)) throw new NoResourcesToExtract();
 	}
 
 	public void moveToLimbo(Transportable unit) {
