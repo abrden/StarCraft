@@ -37,7 +37,7 @@ public class Alucinacion extends Power implements Cloner {
 		return (!clone1.itsAlive() && !clone2.itsAlive());
 	}
 	
-	public List<Unit> getClones() {
+	public Iterable<Unit> getClones() {
 		return clones;
 	}
 }

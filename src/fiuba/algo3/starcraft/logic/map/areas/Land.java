@@ -18,7 +18,7 @@ public class Land extends Surface {
 	
 	public Land() {
 	}
-
+	
 	private void setExtractableSurface(ReservoirType reservoir) {
 		switch (reservoir) {	
 		case volcano : extractableSurface = new Volcano();		
@@ -32,10 +32,9 @@ public class Land extends Surface {
 	public boolean letPass(Unit unit) {
 		return true;
 	}
-	
-	//TODO Arreglar return null, hecho para que pasen las pruebas
+
 	public ExtractableType extractResource() throws NoResourcesToExtract {
 		if (extractableSurface != null) return extractableSurface.extractResource();
-		else return null; //throw new NoResourcesToExtract();
+		else return null;
 	}
 }

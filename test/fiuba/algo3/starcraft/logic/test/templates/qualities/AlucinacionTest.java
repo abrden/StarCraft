@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.test.templates.qualities;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,8 +43,11 @@ public class AlucinacionTest {
 		power.lockUnits(affected);
 		power.activate();
 		power.execute();
-		Unit clone = power.getClones().get(0);
-		Unit clone2 = power.getClones().get(1);
+		
+		Iterator<Unit> clones = power.getClones().iterator();
+		Unit clone = clones.next();
+		Unit clone2 = clones.next();
+		assertTrue(clone != clone2);
 		
 		clone.reduceLife(10000000);
 		clone2.reduceLife(10000000);
@@ -61,7 +65,7 @@ public class AlucinacionTest {
 		power.activate();
 		power.execute();
 		
-		assertEquals(power.getClones().get(0).getClass(), Clone.class);
+		assertEquals(power.getClones().iterator().next().getClass(), Clone.class);
 	}
 	
 	@Test
@@ -74,7 +78,7 @@ public class AlucinacionTest {
 		power.activate();
 		power.execute();
 		
-		Unit clone = power.getClones().get(0);
+		Unit clone = power.getClones().iterator().next();
 		
 		assertEquals(clone.getName(), "Dragon");
 		assertEquals(clone.getShield(), 80);
@@ -92,7 +96,7 @@ public class AlucinacionTest {
 		power.activate();
 		power.execute();
 		
-		Unit clone = power.getClones().get(0);
+		Unit clone = power.getClones().iterator().next();
 		
 		assertEquals(clone.getHealth(), 0);
 		}
@@ -107,7 +111,7 @@ public class AlucinacionTest {
 		power.activate();
 		power.execute();
 		
-		Clone clone = (Clone) power.getClones().get(0);
+		Clone clone = (Clone) power.getClones().iterator().next();
 		
 		assertEquals(clone.getAttackLandDamage(), 0);
 		assertEquals(clone.getAttackSpaceDamage(), 0);
