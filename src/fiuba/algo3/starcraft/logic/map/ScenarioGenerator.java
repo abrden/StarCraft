@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.map;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
@@ -37,12 +38,13 @@ public class ScenarioGenerator {
 		}
 	}
 	
-	public void assignStartPointForPlayers() {
-		//TODO Implementar metodo para asignar un punto donde debe empezar el jugador
-	}
-	
 	//TODO Quien usa esto? 
 	public void buildStructureInPoint(Structure structure, Point point) {
 		map.setStructure(structure, point);
+	}
+
+	public List<Point> generateBases(int quantity) {
+		// TODO Genera quantity puntos espejados que seran las bases de los jugadores
+		return null;
 	}
 }
