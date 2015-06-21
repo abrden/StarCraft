@@ -41,6 +41,22 @@ public class Land extends Surface {
 
 	@Override
 	public void setDrawableView(DrawableView drawableView) {
-		drawableView.setImageName("land.jpg");
+		String imageToPresent = "land2.jpg";
+		if (extractableSurface != null) {
+			try {
+				switch (extractableSurface.extractResource()) {
+				case gas:
+					imageToPresent = "volcano.jpg";
+					break;
+				case mineral:
+					imageToPresent = "mine.jpg";
+					break;
+				default:
+					break;
+					
+				}
+			} catch (NoResourcesToExtract e) {}
+		}
+		drawableView.setImageName(imageToPresent);
 	}
 }

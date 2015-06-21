@@ -17,16 +17,14 @@ public class MapView extends JComponent{
 		this.map = map;
 		setBounds(0, 0, (int)map.getSide(), (int)map.getSide());
 		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()));
-		setBackground(new Color(0,255,0));
+		setBackground(new Color(0,0,0));
 	}
 	
-	//TODO implement method
 	private void generatParcelViews(ArrayList<Parcel> parcels) {
 		for (Parcel parcel : parcels) {
 			ParcelView parcelView = new ParcelView(parcel);
 			addMouseListener(parcelView);
 			add(parcelView);
 		}
-		
 	}
 }

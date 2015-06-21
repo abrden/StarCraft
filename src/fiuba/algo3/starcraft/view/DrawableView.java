@@ -20,13 +20,10 @@ public abstract class DrawableView extends Canvas {
 	
 	public void paint (Graphics g) {
 		try {
-		Image image = Toolkit.getDefaultToolkit().getImage("accets/".concat(imageName));
-		g.drawImage(image, 0, 0, null);
-		System.out.println("no tire una excepcion");
-		} catch (Exception e) {
-			
-		}
-		System.out.println("" + imageName);
+			Image image = Toolkit.getDefaultToolkit().getImage("accets/".concat(imageName));
+			g.drawImage(image, 0, 0, null);
+			System.out.println("no tire una excepcion");
+		} catch (Exception e) {}
 	}
 	
 }
