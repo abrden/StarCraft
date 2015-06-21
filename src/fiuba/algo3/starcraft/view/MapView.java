@@ -6,6 +6,7 @@ import javax.swing.JComponent;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class MapView extends JComponent{
 	
@@ -26,5 +27,10 @@ public class MapView extends JComponent{
 			addMouseListener(parcelView);
 			add(parcelView);
 		}
+	}
+	
+	public void addUnitToMap(Unit unit) {
+		UnitView unitView = new UnitView(unit);
+		add(unitView);
 	}
 }
