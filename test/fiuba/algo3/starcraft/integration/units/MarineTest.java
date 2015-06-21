@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.integration.units;
 
 import static org.junit.Assert.assertEquals;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,11 +14,6 @@ import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
-import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
-import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
-import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -39,7 +35,7 @@ public class MarineTest {
 	}
 
 	@Test
-	public void testMarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void testMarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -57,7 +53,7 @@ public class MarineTest {
 	}
 
 	@Test
-	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -81,7 +77,7 @@ public class MarineTest {
 	}
 	
 	@Test(expected = InsufficientResources.class)
-	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void test2MarineCreationWith1DepositoSuministro1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player = new Player(null, null, new TerranBuilder(), position, insufficientResources, map);
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
@@ -104,7 +100,7 @@ public class MarineTest {
 	}
 	
 	@Test(expected = QuotaExceeded.class)
-	public void testMarineCreationWith1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, ConstructionNotFinished {
+	public void testMarineCreationWith1BarracaAnd50M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		player.pays(150, 0);
 		ConstructionStructure barraca = new  BarracaTemplate().create(position);
 		player.receiveNewStructure(barraca);
@@ -120,7 +116,7 @@ public class MarineTest {
 	}
 	
 	@Test
-	public void test2MarineCreationAnd1MarineDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void test2MarineCreationAnd1MarineDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -147,7 +143,7 @@ public class MarineTest {
 	}
 	
 	@Test
-	public void test4MarineCreationAnd4MarineDeadLeavesPopulationAt0() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void test4MarineCreationAnd4MarineDeadLeavesPopulationAt0() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.pays(150, 0);
@@ -171,7 +167,7 @@ public class MarineTest {
 	}
 	
 	@Test
-	public void test7MarineCreationAnd49TurnsLeavesPopulationAt7() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void test7MarineCreationAnd49TurnsLeavesPopulationAt7() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Deposito Suministro", position);

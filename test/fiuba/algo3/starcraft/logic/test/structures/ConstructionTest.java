@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.test.structures;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructorIsDead;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -13,7 +14,7 @@ public class ConstructionTest {
 
 	@Test
 	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5TurnLeavesItFinished() {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5, null);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -21,8 +22,8 @@ public class ConstructionTest {
 	}
 
 	@Test
-	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5EnablesGathering() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
+	public void testLoweringRelease5TimesOnConstructionWithReleaseIn5EnablesGathering() throws ConstructionNotFinished, ConstructorIsDead {
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5, null);
 		
 		for(int i = 0; i < 5; i++) construction.lowerRelease();
 		
@@ -30,8 +31,8 @@ public class ConstructionTest {
 	}
 	
 	@Test(expected = ConstructionNotFinished.class)
-	public void testGatheringConstructionBeforeReleaseThrowsConstructionNotFinishedException() throws ConstructionNotFinished {
-		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5);
+	public void testGatheringConstructionBeforeReleaseThrowsConstructionNotFinishedException() throws ConstructionNotFinished, ConstructorIsDead {
+		Construction<Depot> construction = new Construction<Depot>(new Depot(null, null, new Point(500,500)), 5, null);
 		
 		construction.gather();
 	}

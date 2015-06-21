@@ -39,7 +39,7 @@ public class ConstructionQueueTest {
 	@Test
 	public void testConstructionQueueUpdateGivesStructureWhenFinished() {
 
-		queue.addStructure(new Construction<Structure>(depot, 6));
+		queue.addStructure(new Construction<Structure>(depot, 6, null));
 
 		for (int i = 0; i < 7; i++) {
 			queue.update(player);
@@ -50,7 +50,7 @@ public class ConstructionQueueTest {
 
 	@Test
 	public void testConstructionQueueUpdateGivesUnitWhenFinished() {
-		queue.addUnit(new Construction<Unit>(marine, 3));
+		queue.addUnit(new Construction<Unit>(marine, 3, null));
 
 		for (int i = 0; i < 4; i++) {
 			queue.update(player);
@@ -61,7 +61,7 @@ public class ConstructionQueueTest {
 
 	@Test
 	public void testConstructionQueueWontGiveUnitUntilFinished() {
-		queue.addUnit(new Construction<Unit>(marine, 3));
+		queue.addUnit(new Construction<Unit>(marine, 3, null));
 
 		queue.update(player);
 
@@ -70,7 +70,7 @@ public class ConstructionQueueTest {
 
 	@Test
 	public void testConstructionQueueWontGiveStructureUntilFinished() {
-		queue.addStructure(new Construction<Structure>(depot, 6));
+		queue.addStructure(new Construction<Structure>(depot, 6, null));
 
 		queue.update(player);
 
@@ -80,7 +80,7 @@ public class ConstructionQueueTest {
 	@Test
 	public void testConstructionQueueCanGiveMultipleStructuresInOneTurn() {
 		for (int i = 0; i < 10; i++) {
-			queue.addStructure(new Construction<Structure>(depot, 6));
+			queue.addStructure(new Construction<Structure>(depot, 6, null));
 		}
 
 		for (int i = 0; i < 7; i++) {
@@ -93,7 +93,7 @@ public class ConstructionQueueTest {
 	@Test
 	public void testConstructionQueueCanGiveMultipleUnitsInOneTurn() {
 		for (int i = 0; i < 10; i++) {
-			queue.addUnit(new Construction<Unit>(marine, 3));
+			queue.addUnit(new Construction<Unit>(marine, 3, null));
 		}
 
 		for (int i = 0; i < 4; i++) {
@@ -105,8 +105,8 @@ public class ConstructionQueueTest {
 
 	@Test
 	public void testConstructionQueueCanGiveUnitsAndStructuresOnTheSameTurn() {
-		queue.addUnit(new Construction<Unit>(golliat, 6));
-		queue.addStructure(new Construction<Structure>(depot, 6));
+		queue.addUnit(new Construction<Unit>(golliat, 6, null));
+		queue.addStructure(new Construction<Structure>(depot, 6, null));
 
 		for (int i = 0; i < 7; i++) {
 			queue.update(player);
