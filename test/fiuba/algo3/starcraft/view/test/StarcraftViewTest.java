@@ -8,9 +8,12 @@ public class StarcraftViewTest {
 
 	public static void main(String[] args) {
 		StarcraftView starcraftView = new StarcraftView();
-		Map map = new Map(1000, null);
+		Map map = new Map(1500, null);
+		starcraftView.setVisible(true);
+
 		MapView mapView = new MapView(map);
 		starcraftView.setMapView(mapView);
+		
+		starcraftView.setVisible(true);
 	}
-
 }

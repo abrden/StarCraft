@@ -5,4 +5,5 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public abstract class Surface implements Extractable{
 	public abstract boolean letPass(Unit unit);
+	
 }
