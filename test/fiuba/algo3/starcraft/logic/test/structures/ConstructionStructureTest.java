@@ -5,16 +5,13 @@ import static org.junit.Assert.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.*;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
-import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
@@ -61,10 +58,10 @@ public class ConstructionStructureTest {
 	}	
 	
 	@Test
-	public void testCreateUnitReturnsConstructionWithUnitInside() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateUnitReturnsConstructionWithUnitInside() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
 		templates.add(new MarineTemplate());
-		ConstructionStructure constructor = new ConstructionStructure(null, null, new Point(500,500), (Iterable<UnitTemplate>) templates);
+		ConstructionStructure constructor = new ConstructionStructure(null, new Life(100,0), new Point(500,500), (Iterable<UnitTemplate>) templates);
 
 		Construction<Unit> marineConstruction = constructor.create("Marine", new Point(500,500), new Resources(100, 100), 0, 5);
 		while(!marineConstruction.itsFinished())

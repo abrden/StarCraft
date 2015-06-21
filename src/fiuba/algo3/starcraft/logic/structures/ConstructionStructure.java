@@ -39,7 +39,7 @@ public class ConstructionStructure extends Structure {
 		populationSpaceCheck(template, currentPopulation, populationQuota);
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 	
-		return new Construction<Unit>(template.create(position), template.getConstructionTime());
+		return new Construction<Unit>(template.create(position), template.getConstructionTime(), this);
 	}
 
 	public void update() {

@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.integration.structures;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +17,6 @@ import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
-import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
-import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
-import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.ArchivosTemplariosTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.PuertoEstelarProtossTemplate;
@@ -78,7 +74,7 @@ public class ProtossConstructionStructureTest {
 	
 	//Pruebo que la unidad creada es la deseada segun su valor, vida, suministro y tiempo de construccion.
 	@Test
-	public void testCreateWithZealotTemplateReturnsZealot() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithZealotTemplateReturnsZealot() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(100,0);
 		ConstructionStructure acceso = new AccesoTemplate().create(new Point(500,500));
 		
@@ -93,7 +89,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithDragonTemplateReturnsDragon() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithDragonTemplateReturnsDragon() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(125,50);
 		ConstructionStructure acceso = new AccesoTemplate().create(new Point(500,500));
 		
@@ -108,7 +104,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithScoutTemplateReturnsScout() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithScoutTemplateReturnsScout() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(300,150);
 		ConstructionStructure puerto = new PuertoEstelarProtossTemplate().create(new Point(500,500));
 		
@@ -123,7 +119,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithNaveProtossTemplateReturnsNaveProtoss() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithNaveProtossTemplateReturnsNaveProtoss() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(200,0);
 		ConstructionStructure puerto = new PuertoEstelarProtossTemplate().create(new Point(500,500));
 		
@@ -138,7 +134,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithAltoTemplarioTemplateReturnsAltoTemplario() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithAltoTemplarioTemplateReturnsAltoTemplario() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(50,150);
 		ConstructionStructure archivos = new ArchivosTemplariosTemplate().create(new Point(500,500));
 		

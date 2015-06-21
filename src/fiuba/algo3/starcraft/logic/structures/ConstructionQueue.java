@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
+import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructorIsDead;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ConstructionQueue {
@@ -31,16 +32,24 @@ public class ConstructionQueue {
 		for (Construction<Unit> construction : units)
 			construction.lowerRelease();
 	}
-	
+
+    private void getRidOfDeadConstructions(Collection<Construction> deadStructures) {
+        for (Construction construction : deadStructures)
+            units.remove(construction);
+    }
 	private Collection<Unit> finishedUnits() {
 		Collection<Unit> releases = new LinkedList<Unit>();
+        Collection<Construction> deadStructure = new LinkedList<Construction>();
 		for (Construction<Unit> construction : units)
-			//if (construction.itsFinished())
 			try {
 				releases.add(construction.gather());
 			} catch (ConstructionNotFinished e) {
 				continue;
-			}
+			} catch (ConstructorIsDead e) {
+                deadStructure.add(construction);
+            }
+
+        this.getRidOfDeadConstructions(deadStructure);
 		return releases;
 	}
 	
@@ -52,7 +61,9 @@ public class ConstructionQueue {
 				releases.add(construction.gather());
 			} catch (ConstructionNotFinished e) {
 				continue;
-			}
+			} catch (ConstructorIsDead e) {
+                continue;
+            }
 		return releases;
 	}
 

@@ -31,7 +31,7 @@ public abstract class Builder {
 
 		resources.remove(template.getValue().getMineralValue(), template.getValue().getGasValue());
 		
-		return new Construction<Structure>(structure, template.getConstructionTime());
+		return new Construction<Structure>(structure, template.getConstructionTime(),null);
 	}
 	
 	private StructureTemplate getTemplateWithName(String name) throws TemplateNotFound {

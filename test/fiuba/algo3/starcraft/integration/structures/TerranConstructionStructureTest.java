@@ -2,16 +2,13 @@ package fiuba.algo3.starcraft.integration.structures;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.*;
 import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
-import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.FabricaTemplate;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.PuertoEstelarTerranTemplate;
@@ -21,7 +18,7 @@ public class TerranConstructionStructureTest {
 
 	//Pruebo que la unidad creada es la deseada segun su valor, vida, suministro y tiempo de construccion.
 	@Test
-	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithMarineTemplateReturnsMarine() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(50,0); // Valor = 50M
 		ConstructionStructure barraca = new BarracaTemplate().create(new Point(500,500));
 		
@@ -36,7 +33,7 @@ public class TerranConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithGolliatTemplateReturnsGolliat() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithGolliatTemplateReturnsGolliat() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(100,50);
 		ConstructionStructure fabrica = new FabricaTemplate().create(new Point(500,500));
 		
@@ -51,7 +48,7 @@ public class TerranConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithEspectroTemplateReturnsEspectro() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithEspectroTemplateReturnsEspectro() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(150,100);
 		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
@@ -66,7 +63,7 @@ public class TerranConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithNaveCienciaTemplateReturnsNaveCiencia() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(100,225);
 		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
@@ -81,7 +78,7 @@ public class TerranConstructionStructureTest {
 	}
 	
 	@Test
-	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished {
+	public void testCreateWithNaveTerranTemplateReturnsNaveTerran() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Resources resources = new Resources(100,100);
 		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		

@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.integration.units;
 
 import static org.junit.Assert.assertEquals;
 
+import fiuba.algo3.starcraft.logic.structures.exceptions.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,11 +14,6 @@ import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
-import fiuba.algo3.starcraft.logic.structures.exceptions.ConstructionNotFinished;
-import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
-import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
-import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
-import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.structures.protoss.AccesoTemplate;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -37,7 +33,7 @@ public class ZealotTest {
 	}
 	
 	@Test
-	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract {
+	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead {
 		player.newStructureWithName("Pilon", position);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		
