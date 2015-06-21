@@ -1,20 +1,20 @@
 package fiuba.algo3.starcraft.view;
 
-import java.awt.Canvas;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 
-public class ParcelView extends Canvas implements MouseListener{
+public class ParcelView extends DrawableView implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
 	Parcel parcel;
 	
 	public ParcelView(Parcel parcel) {
 		this.parcel = parcel;
-		setBounds((int)parcel.getOrigin().getX(), (int)parcel.getOrigin().getY(), (int)Map.PARCEL_SIDE, (int)Map.PARCEL_SIDE);
+		parcel.getLandForExplotation().setDrawableView(this);
+		this.setBounds((int)parcel.getOrigin().getX(), (int)parcel.getOrigin().getY(), (int)Map.PARCEL_SIDE, (int)Map.PARCEL_SIDE);
 		addMouseListener(this);
 	}
 

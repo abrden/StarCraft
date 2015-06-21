@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.view;
 
 import java.awt.Color;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import fiuba.algo3.starcraft.logic.map.Map;

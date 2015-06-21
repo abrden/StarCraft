@@ -7,6 +7,7 @@ import fiuba.algo3.starcraft.logic.map.resources.Mine;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.map.resources.Volcano;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.view.DrawableView;
 
 public class Land extends Surface {
 	
@@ -36,5 +37,10 @@ public class Land extends Surface {
 	public ExtractableType extractResource() throws NoResourcesToExtract {
 		if (extractableSurface != null) return extractableSurface.extractResource();
 		else return null;
+	}
+
+	@Override
+	public void setDrawableView(DrawableView drawableView) {
+		drawableView.setImageName("land.jpg");
 	}
 }
