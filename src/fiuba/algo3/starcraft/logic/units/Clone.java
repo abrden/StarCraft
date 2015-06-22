@@ -2,6 +2,7 @@
 
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.view.DrawableView;
 
 public class Clone extends Unit {
 	
@@ -49,6 +50,12 @@ public class Clone extends Unit {
 	
 	public int getAttackSpaceDamage() {
 		return DAMAGE.getSpaceDamage();
+	}
+
+	@Override
+	public void setDrawableView(DrawableView drawableView) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

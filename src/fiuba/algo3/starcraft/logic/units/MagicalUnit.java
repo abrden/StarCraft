@@ -6,6 +6,7 @@ import fiuba.algo3.starcraft.logic.templates.qualities.Power;
 import fiuba.algo3.starcraft.logic.templates.qualities.PowerGenerator;
 import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
+import fiuba.algo3.starcraft.view.DrawableView;
 
 public class MagicalUnit extends Unit implements Transportable {
 	
@@ -54,6 +55,12 @@ public class MagicalUnit extends Unit implements Transportable {
 		Power power = generator.generatePower(name, energy);
 		energy -= power.getCost();
 		return power;
+	}
+
+	@Override
+	public void setDrawableView(DrawableView drawableView) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

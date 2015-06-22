@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.logic.units;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
+import fiuba.algo3.starcraft.view.DrawableView;
 
 public class MuggleUnit extends Unit implements Transportable {
 	
@@ -44,5 +45,10 @@ public class MuggleUnit extends Unit implements Transportable {
 
 	public void executeEMP() {
 		life.destroyShield();
+	}
+
+	@Override
+	public void setDrawableView(DrawableView drawableView) {
+		drawableView.setImageName("volcano.jpg");
 	}
 }
