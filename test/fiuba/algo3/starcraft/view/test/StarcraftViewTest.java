@@ -22,10 +22,11 @@ public class StarcraftViewTest {
 		scenario.assignSurfaceDistributionInRect(LandType.air, new Point(0,0), 1500, 0.2);
 
 		MapView mapView = new MapView(map);
-		starcraftView.setMapView(mapView);
-		starcraftView.setVisible(true);
 		
 		MuggleUnit unit = new MuggleUnit(null, null, new Point(30, 30), 0, 0, null, 0, false, 0);
 		mapView.addUnitToMap(unit);
+		
+		starcraftView.setMapView(mapView);
+		starcraftView.setVisible(true);
 	}
 }

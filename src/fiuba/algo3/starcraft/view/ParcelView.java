@@ -21,6 +21,7 @@ public class ParcelView extends DrawableView implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
+		
 	}
 
 	@Override

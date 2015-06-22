@@ -7,8 +7,9 @@ import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
 import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
+import fiuba.algo3.starcraft.game.Drawable;
 
-public abstract class Unit implements Updatable {
+public abstract class Unit implements Updatable, Drawable {
 	
 	protected final String name;
 	protected final int vision;
