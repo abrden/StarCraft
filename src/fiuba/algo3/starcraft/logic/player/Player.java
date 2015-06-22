@@ -80,10 +80,21 @@ public class Player {
 
 	public void newTurn() {
 		this.update();
+		
+		// Funciones para esperar acciones de la persona
+		
+	}
+
+	public Iterable<Unit> getUnits() {
+		return units;
 	}
 	
-	public Collection<Unit> getUnits() {
-		return units;
+	public int numberOfUnits() {
+		return units.size();
+	}
+	
+	public int numberOfStructures() {
+		return structures.size();
 	}
 	
 	private void update() {

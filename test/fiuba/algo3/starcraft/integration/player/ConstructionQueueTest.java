@@ -44,6 +44,6 @@ public class ConstructionQueueTest {
         for (int i = 0; i < 20; i++) {
             player.newTurn();
         }
-        assertEquals(player.getUnits().size(), 0);
+        assertEquals(player.numberOfUnits(), 0);
     }
 }

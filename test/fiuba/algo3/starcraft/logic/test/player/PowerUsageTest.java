@@ -193,11 +193,11 @@ public class PowerUsageTest {
 		player2.receiveNewUnit(templario);
 		player2.receiveNewUnit(zealot);
 		for (int i = 0; i < 5; i++) templario.update();
-		assertEquals(player2.getUnits().size(), 2);
+		assertEquals(player2.numberOfUnits(), 2);
 		player1.receiveNewUnit(espectro);
 
 		player2.usePower(templario, "Alucinacion", position3);
 		
-		assertEquals(player2.getUnits().size(), 4);
+		assertEquals(player2.numberOfUnits(), 4);
 	}
 }
