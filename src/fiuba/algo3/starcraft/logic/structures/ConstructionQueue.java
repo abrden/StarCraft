@@ -34,7 +34,7 @@ public class ConstructionQueue {
 	}
 
     private void getRidOfDeadConstructions(Collection<Construction> deadStructures) {
-        for (Construction construction : deadStructures)
+        for (Construction<Unit> construction : deadStructures)
             units.remove(construction);
     }
 	private Collection<Unit> finishedUnits() {

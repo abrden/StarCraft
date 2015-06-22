@@ -25,7 +25,6 @@ public class Construction<T> {
 
 	public T gather() throws ConstructionNotFinished, ConstructorIsDead {
         if (motherStructure == null) {
-            motherStructure = null;
         }
         else {
             if (!motherStructure.itsAlive())
