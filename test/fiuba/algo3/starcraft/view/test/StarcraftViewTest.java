@@ -6,7 +6,6 @@ import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
 import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
-import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.view.MapView;
 import fiuba.algo3.starcraft.view.StarcraftView;
 
@@ -23,10 +22,11 @@ public class StarcraftViewTest {
 
 		MapView mapView = new MapView(map);
 		
-		MuggleUnit unit = new MuggleUnit(null, null, new Point(30, 30), 0, 0, null, 0, false, 0);
+		MuggleUnit unit = new MuggleUnit("Marine", null, new Point(30, 30), 0, 0, null, 0, false, 0);
 		mapView.addUnitToMap(unit);
 		
 		starcraftView.setMapView(mapView);
+	
 		starcraftView.setVisible(true);
 	}
 }

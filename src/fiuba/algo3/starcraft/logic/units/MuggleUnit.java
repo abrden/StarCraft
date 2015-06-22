@@ -49,6 +49,7 @@ public class MuggleUnit extends Unit implements Transportable {
 
 	@Override
 	public void setDrawableView(DrawableView drawableView) {
-		drawableView.setImageName("volcano.jpg");
+		System.out.println("mi name es " + name);
+		drawableView.setImageName(name.concat(".png"));
 	}
 }

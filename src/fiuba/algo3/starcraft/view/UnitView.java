@@ -12,6 +12,6 @@ public class UnitView extends DrawableView {
 	public UnitView(Unit unit) {
 		this.unit = unit;
 		unit.setDrawableView(this);
-		setBounds((int)unit.getPosition().getX(), (int)unit.getPosition().getY(), 100, 100);
+		setBounds((int)unit.getPosition().getX(), (int)unit.getPosition().getY(), 60, 60);
 	}	
 }

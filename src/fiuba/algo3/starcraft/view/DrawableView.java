@@ -1,11 +1,12 @@
 package fiuba.algo3.starcraft.view;
 
 import java.awt.Canvas;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public abstract class DrawableView extends Canvas {
+public abstract class DrawableView extends Container {
 	
 	private static final long serialVersionUID = 1L;
 	private String imageName;
