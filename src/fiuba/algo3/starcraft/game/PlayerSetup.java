@@ -2,18 +2,47 @@ package fiuba.algo3.starcraft.game;
 
 import java.awt.Color;
 
-import fiuba.algo3.starcraft.logic.structures.builders.Builder;
-import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
-import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
-
 public class PlayerSetup {
 
 	private String name;
 	private Color color;
-	private Builder builder;
+	private RaceType race;
 
-	public Builder getBuilder() {
-		return builder;
+	public PlayerSetup(String name, String color, String race) throws NameIsTooShort {
+		if (name.length() < 4) throw new NameIsTooShort();
+		this.name = name;
+		this.parseColor(color);
+		this.parseRace(race);
+	}
+
+	private void parseColor(String color) {
+		switch (color) {
+        case "Blue":
+        	this.color = Color.BLUE;
+            break;
+        case "Red":
+        	this.color = Color.RED;
+            break;
+        case "Yellow": 
+        	this.color = Color.YELLOW;
+        	break;
+        case "Green": 
+        	this.color = Color.GREEN;
+        	break;
+        }
+	}
+	
+	private void parseRace(String race) {
+		switch (race) {
+        case "Terran": this.race = RaceType.terran;
+                 break;
+        case "Protoss": this.race = RaceType.terran;
+                 break;
+        }
+	}
+	
+	public RaceType getRace() {
+		return race;
 	}
 
 	public Color getColor() {
@@ -24,17 +53,4 @@ public class PlayerSetup {
 		return name;
 	}
 
-	public void setName(String name) throws NameIsTooShort {
-		if (name.length() < 4) throw new NameIsTooShort();
-		else this.name = name;
-	}
-	
-	public void setColor(Color color) {
-		this.color = color;
-	}
-	
-	public void setBuilder(RaceType race) {
-		if (race == RaceType.protoss) this.builder = new ProtossBuilder();
-		if (race == RaceType.terran) this.builder = new TerranBuilder();
-	}
 }
