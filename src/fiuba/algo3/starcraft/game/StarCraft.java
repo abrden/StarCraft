@@ -76,11 +76,29 @@ public class StarCraft {
 		return playerUnits == player1.getUnits() ? player2.getUnits() : player1.getUnits();
 	}
 	
-	public static void start() {
-		
+	private void getRidOfLoosers() {
+		List<Player> loosers = new ArrayList<Player>();
+		for (Player player : players) {
+			if ((player.getMineral() == 0) && (player.getGas() == 0) && (player.numberOfUnits() == 0) && (player.numberOfStructures() == 0)) {
+				loosers.add(player);
+			}
+		}
+		players.removeAll(loosers);
 	}
 	
-	public static void main(String[] args) {
-		start();
+	public void start() {
+		while (true) {
+			for (Player player : players) {
+				player.newTurn();
+			}
+			this.getRidOfLoosers();
+			if (players.size() == 1) {
+				//we have a winner
+				break;
+			} else if (players.size() == 0) {
+				//no winners
+				break;
+			}
+		}
 	}
 }

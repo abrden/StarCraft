@@ -157,7 +157,7 @@ public class StartupView extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presets/StarCraft.png")));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("presets/StarCraft.png")));
 
         startButton.setText("Start");
         startButton.addActionListener(new java.awt.event.ActionListener() {
