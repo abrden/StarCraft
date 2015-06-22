@@ -17,8 +17,8 @@ public class StarcraftViewTest {
 		Map map = new Map(1500, null);
 		
 		ScenarioGenerator scenario = new ScenarioGenerator(map);
-		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano,new Point(0,0) , 1500, 0.3);
-		scenario.assignSurfaceDistributionInRect(LandType.air, new Point(0,0), 1500, 0.2);
+		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano,new Point(0,0) , 1500, 0.1);
+		scenario.assignSurfaceDistributionInRect(LandType.air, new Point(0,0), 1500, 0.25);
 
 		MapView mapView = new MapView(map);
 		

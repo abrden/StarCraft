@@ -33,9 +33,10 @@ public class MapView extends JComponent{
 	}
 
 	public void addUnitToMap(Unit unit) {
-		//this.removeAll();
+		this.removeAll();
 		UnitView unitView = new UnitView(unit);
+		//addMouseListener(unitView);
 		add(unitView);
-		//generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()));
+		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()));
 	}
 }

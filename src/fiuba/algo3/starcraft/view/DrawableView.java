@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.view;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -20,11 +21,11 @@ public abstract class DrawableView extends Container {
 	}
 	
 	public void paint (Graphics g) {
-		super.paint(g);
 		try {
 			Image image = Toolkit.getDefaultToolkit().getImage("presets/".concat(imageName));
 			g.drawImage(image, 0, 0, null);
 		} catch (Exception e) {}
 	}
+	
 	
 }
