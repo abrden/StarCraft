@@ -17,7 +17,7 @@ import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Map {
 
-	public final double PARCEL_SIDE = 10;
+	public static final double PARCEL_SIDE = 100;
 	private StarCraft game;
 	
 	private double side;
