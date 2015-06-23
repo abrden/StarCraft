@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.integration.player;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -54,7 +53,7 @@ public class MovementOfFlyingUnitsTest {Player player;
 
     @Test
     public void testEspectroCanMoveThroughSpace() throws StepsLimitExceeded {
-        map.getParcelContainingPoint(new Point(12,12)).setSurface(LandType.air);
+        map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(espectro);
 
         player.move(espectro, new Point(12, 12));

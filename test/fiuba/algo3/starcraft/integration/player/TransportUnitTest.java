@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.integration.player;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -44,7 +43,7 @@ public class TransportUnitTest {
 
     @Test
     public void testNaveTransporteMovesToSpaceThenToLandAndDisembarksBothNonFlyingUnits() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove {
-        map.getParcelContainingPoint(spacePoint).setSurface(LandType.air);
+        map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(dragon);
         player.receiveNewUnit(naveTransporte);
@@ -64,7 +63,7 @@ public class TransportUnitTest {
 
     @Test
     public void testNaveTransporteMovesToSpaceDropsUnitThenMovesToLandAndDropsANonFlyingUnit() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove {
-        map.getParcelContainingPoint(spacePoint).setSurface(LandType.air);
+        map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(scout);
         player.receiveNewUnit(naveTransporte);
@@ -86,7 +85,7 @@ public class TransportUnitTest {
 
     @Test(expected = UnitCanotBeSetHere.class)
     public void testNaveTransporteMovesToSpaceDropsUnitAndThrowsException() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove {
-        map.getParcelContainingPoint(spacePoint).setSurface(LandType.air);
+        map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(naveTransporte);
 
@@ -95,5 +94,21 @@ public class TransportUnitTest {
         player.move(naveTransporte, move1Point);
 
         player.disembark(naveTransporte, zealot);
+    }
+    
+    @Test
+    public void testIfNaveTransporteDiesAllOfTheirPassengersDie() throws StepsLimitExceeded, NoMoreSpaceInUnit, NoUnitToRemove, UnitCanotBeSetHere {
+        player.receiveNewUnit(zealot);
+        player.receiveNewUnit(scout);
+        player.receiveNewUnit(naveTransporte);
+
+        player.embark(naveTransporte, zealot);
+        player.embark(naveTransporte, scout);
+        
+        naveTransporte.reduceLife(1000000);
+        assertTrue(!naveTransporte.itsAlive());
+        
+        assertTrue(!zealot.itsAlive());
+        assertTrue(!scout.itsAlive());
     }
 }

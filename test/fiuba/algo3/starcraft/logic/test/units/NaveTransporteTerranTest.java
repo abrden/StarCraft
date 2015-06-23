@@ -3,7 +3,6 @@ package fiuba.algo3.starcraft.logic.test.units;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
@@ -86,7 +85,7 @@ public class NaveTransporteTerranTest {
     public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCanotBeSetHere {
         Map map = new Map(1000,null);
         Parcel parcel = map.getParcelContainingPoint(new Point(495,495));
-        parcel.setSurface(LandType.air);
+        parcel.setAirSurface();
         Player player = new Player("pepe", null, new TerranBuilder(), new Point(300,300), null, map);
 
         player.embark(navetrans, (Transportable) marine);

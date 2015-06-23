@@ -8,7 +8,6 @@ import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
@@ -22,7 +21,7 @@ public class StarcraftTest {
 		Map currentMap = new Map(1000, game);
 		ScenarioGenerator scenario = new ScenarioGenerator(currentMap);
 		
-		scenario.assignSurfaceDistributionInRect(LandType.air,new Point(50, 50),100, 1);
+		scenario.assignAirDistributionInRect(new Point(50, 50),100,1);
 		game.setGame(null, null, currentMap);
 
 		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));

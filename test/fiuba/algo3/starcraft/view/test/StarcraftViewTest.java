@@ -3,7 +3,6 @@ package fiuba.algo3.starcraft.view.test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.view.MapView;
@@ -17,8 +16,8 @@ public class StarcraftViewTest {
 		Map map = new Map(1500, null);
 		
 		ScenarioGenerator scenario = new ScenarioGenerator(map);
-		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano,new Point(0,0) , 1500, 0.1);
-		scenario.assignSurfaceDistributionInRect(LandType.air, new Point(0,0), 1500, 0.25);
+		scenario.assignReservoirDistributionInRect(ReservoirType.volcano,new Point(0,0) , 1500, 0.1);
+		scenario.assignAirDistributionInRect(new Point(0,0), 1500, 0.25);
 
 		MapView mapView = new MapView(map);
 		

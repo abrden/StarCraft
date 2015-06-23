@@ -124,6 +124,13 @@ public class Player {
 		}
 		for (Power power : finishedPowers)	
 			activePowers.remove(power);
+
+        //Unidades caminan hasta el punto indicado en turnos anteriores
+        for (Unit unit : units) {
+            if (!unit.getPosition().isSamePoint(unit.getDestination())) {
+                this.move(unit, unit.getDestination());
+            }
+        }
 	}
 
 	private void getRidOfDeadUnits() {
@@ -191,7 +198,8 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Unit unit, Point destination) throws StepsLimitExceeded {
+	public void move(Unit unit, Point destination) {
+        unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
 	}
 	

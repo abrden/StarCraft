@@ -46,4 +46,8 @@ public class Point {
 	public Point divide(double scalar) {
 		return new Point(this.x / scalar, this.y / scalar);
 	}
+
+    public boolean isSamePoint(Point otherPoint) {
+        return (Math.round(this.getX()) == Math.round(otherPoint.getX()) && Math.round(this.getY()) == Math.round(otherPoint.getY()));
+    }
 } 

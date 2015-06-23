@@ -6,6 +6,7 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.view.DrawableView;
 
 public class Air extends Surface {
+	
 	@Override
 	public boolean letPass(Unit unit) {
 		return unit.canFly();

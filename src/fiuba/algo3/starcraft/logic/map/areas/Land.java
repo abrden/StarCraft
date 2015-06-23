@@ -12,7 +12,7 @@ import fiuba.algo3.starcraft.view.DrawableView;
 public class Land extends Surface {
 	
 	private Extractable extractableSurface;
-	
+
 	public Land(ReservoirType reservoir) {
 		this.setExtractableSurface(reservoir);
 	}
@@ -22,14 +22,15 @@ public class Land extends Surface {
 	
 	private void setExtractableSurface(ReservoirType reservoir) {
 		switch (reservoir) {	
-		case volcano : extractableSurface = new Volcano();		
-		break;
-		case mine : extractableSurface = new Mine();
-		break;
+		case volcano : 
+			extractableSurface = new Volcano();		
+			break;
+		case mine :
+			extractableSurface = new Mine();
+			break;
 		}
 	}
 	
-	@Override
 	public boolean letPass(Unit unit) {
 		return true;
 	}
