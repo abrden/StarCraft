@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
-import fiuba.algo3.starcraft.logic.structures.Structure;
 
 public class ScenarioGenerator {
 	private Map map;
@@ -15,14 +13,45 @@ public class ScenarioGenerator {
 		this.map = map;
 	}
 	
+	private List<Parcel> chosenParcelsToDecorateIn(Point origin ,int side, double density) {
+		ArrayList<Parcel> chosenParcels = new ArrayList<Parcel>();
+		
+		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(origin, side);
+		Random random = new Random();
+		for (int i = 0 ; i < (side * side)*density/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++) {
+			
+			int randomIndex = random.nextInt(parcelsInRect.size());
+			Parcel chosenParcel = parcelsInRect.get(randomIndex);
+			
+			chosenParcels.add(chosenParcel);
+			
+			parcelsInRect.remove(randomIndex);
+		}
+		
+		return chosenParcels;
+	}
+	
+	public void assignAirDistributionInRect(Point origin ,int side, double density) {
+		for (Parcel parcel : this.chosenParcelsToDecorateIn(origin, side, density))
+			parcel.setAirSurface();
+	}
+	
+	public void assignReservoirDistributionInRect(ReservoirType reservoir, Point origin, int side, double density) {
+		for (Parcel parcel : this.chosenParcelsToDecorateIn(origin, side, density))
+			parcel.setReservoir(reservoir);
+	}
+	
+	/*
 	//FIXME: repetition of code due to separation of landType and extractableType
-	public void assignSurfaceDistributionInRect(LandType landType ,Point origin, int side, double density) {
+	public void assignAirDistributionInRect(Point origin ,int side, double density) {
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(origin, side);
 		Random random = new Random();
 		for (int i = 0 ; i < (side * side)*density/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
 			int randomIndex = random.nextInt(parcelsInRect.size());
 			Parcel chosenParcel = parcelsInRect.get(randomIndex);
-			chosenParcel.setSurface(landType);
+			
+			chosenParcel.setAirSurface();
+			
 			parcelsInRect.remove(randomIndex);
 		}
 	}
@@ -33,16 +62,12 @@ public class ScenarioGenerator {
 		for (int i = 0 ; i < (side * side )*density/(map.PARCEL_SIDE * map.PARCEL_SIDE); i++){
 			int randomIndex = random.nextInt(parcelsInRect.size());
 			Parcel chosenParcel = parcelsInRect.get(randomIndex);
-			chosenParcel.setSurface(reservoir);
+			chosenParcel.setReservoir(reservoir);
 			parcelsInRect.remove(randomIndex);
 		}
 	}
+	*/
 	
-	//TODO Quien usa esto? 
-	public void buildStructureInPoint(Structure structure, Point point) {
-		map.setStructure(structure, point);
-	}
-
 	public List<Point> generateBases(int quantity) {
 		// TODO Genera quantity puntos espejados que seran las bases de los jugadores
 		return null;

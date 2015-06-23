@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
@@ -42,7 +41,7 @@ public class ParcelTest {
 
 	@Test 
 	public void testParcelHasToDisablePassingThroughALandUnitWhenIsOfAirType() {
-		parcel.setSurface(LandType.air);
+		parcel.setAirSurface();
 		MuggleUnit marine = (new MarineTemplate()).create(new Point(500,500));
 
 		assertFalse(parcel.letPass(marine));
@@ -65,7 +64,7 @@ public class ParcelTest {
 	
 	@Test
 	public void testParcelHasMinerals() {
-		parcel.setSurface(ReservoirType.volcano);
+		parcel.setReservoir(ReservoirType.volcano);
 		
 		Surface landWithVolcano = parcel.getLandForExplotation();
 		try {

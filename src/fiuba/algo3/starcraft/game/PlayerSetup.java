@@ -2,6 +2,8 @@ package fiuba.algo3.starcraft.game;
 
 import java.awt.Color;
 
+import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+
 public class PlayerSetup {
 
 	private String name;

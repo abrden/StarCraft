@@ -6,14 +6,12 @@ import java.util.Comparator;
 import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
-import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class Map {
 
@@ -42,8 +40,8 @@ public class Map {
 	private void createParcels(double numberOfParcels) {
 		for (int x = 0 ; x < numberOfParcels ; x ++) {
 			for (int y = 0 ; y < numberOfParcels ; y ++) {
-				Parcel parcel = new Parcel(new Point(x * PARCEL_SIDE,y * PARCEL_SIDE),PARCEL_SIDE);
-				parcel.setSurface(LandType.land);
+				Parcel parcel = new Parcel(new Point(x * PARCEL_SIDE,y * PARCEL_SIDE), PARCEL_SIDE);
+				//parcel.setSurface(LandType.land);
 				
 				@SuppressWarnings("unchecked")
 				ArrayList<Parcel> column = row.get(x);

@@ -9,7 +9,6 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
@@ -40,8 +39,7 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testAccesoCanBeConstructedInParcelWithVolcano() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		Parcel parcel = map.getParcelContainingPoint(position);
-		parcel.setSurface(LandType.land);
-		parcel.setSurface(ReservoirType.volcano);
+		parcel.setReservoir(ReservoirType.volcano);
 		
 		player.newStructureWithName("Acceso", position);
 		for(int i = 0; i < 9; i++) player.newTurn();
@@ -52,8 +50,7 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testAccesoCanBeConstructedInParcelWithMine() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		Parcel parcel = map.getParcelContainingPoint(position);
-		parcel.setSurface(LandType.land);
-		parcel.setSurface(ReservoirType.mine);
+		parcel.setReservoir(ReservoirType.mine);
 		
 		player.newStructureWithName("Acceso", position);
 		for(int i = 0; i < 9; i++) player.newTurn();
@@ -64,7 +61,6 @@ public class ProtossConstructionStructureTest {
 	@Test
 	public void testAccesoCanBeConstructedInParcelWithNoExtractableSurface() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
 		Parcel parcel = map.getParcelContainingPoint(position);
-		parcel.setSurface(LandType.land);
 		
 		player.newStructureWithName("Acceso", position);
 		for(int i = 0; i < 9; i++) player.newTurn();

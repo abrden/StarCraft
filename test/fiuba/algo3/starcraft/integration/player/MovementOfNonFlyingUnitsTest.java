@@ -3,16 +3,13 @@ package fiuba.algo3.starcraft.integration.player;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
-import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
-import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +58,7 @@ public class MovementOfNonFlyingUnitsTest {
 
     @Test
     public void testMarineCantMoveThroughSpace() throws StepsLimitExceeded {
-        map.getParcelContainingPoint(new Point(12,12)).setSurface(LandType.air);
+        map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(marine);
 
         player.move(marine, new Point(12, 12));
@@ -116,7 +113,7 @@ public class MovementOfNonFlyingUnitsTest {
     @Test
     public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() {
         Point destinationPoint = new Point(433,533);
-        map.getParcelContainingPoint(destinationPoint).setSurface(LandType.air);
+        map.getParcelContainingPoint(destinationPoint).setAirSurface();
         player.receiveNewUnit(marine);
 
         player.move(marine, destinationPoint);

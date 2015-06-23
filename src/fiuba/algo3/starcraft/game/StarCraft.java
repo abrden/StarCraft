@@ -6,7 +6,6 @@ import java.util.List;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -52,15 +51,15 @@ public class StarCraft {
 	}
 	
 	private void generateMap() {
-		scenarioGenerator.assignSurfaceDistributionInRect(LandType.air, new Point(MAP_SIDE/2, MAP_SIDE/2), MAP_SIDE, AIR_DENSITY);
+		scenarioGenerator.assignAirDistributionInRect(new Point(MAP_SIDE/2, MAP_SIDE/2), MAP_SIDE, AIR_DENSITY);
 	}
 	
 	private List<Point> generateBases(int quantity) {
 		List<Point> bases = scenarioGenerator.generateBases(quantity);
 		
 		for (Point base : bases) {
-			scenarioGenerator.assignSurfaceDistributionInRect(ReservoirType.mine, base, BASE_SIDE, RESERVOIR_DENSITY);
-			scenarioGenerator.assignSurfaceDistributionInRect(ReservoirType.volcano, base, BASE_SIDE, RESERVOIR_DENSITY);
+			scenarioGenerator.assignReservoirDistributionInRect(ReservoirType.mine, base, BASE_SIDE, RESERVOIR_DENSITY);
+			scenarioGenerator.assignReservoirDistributionInRect(ReservoirType.volcano, base, BASE_SIDE, RESERVOIR_DENSITY);
 		}
 		
 		return bases;

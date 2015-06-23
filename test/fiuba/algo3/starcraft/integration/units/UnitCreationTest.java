@@ -170,8 +170,8 @@ public class UnitCreationTest {
 	
 	@Test
 	public void testAltoTemplarioCreationWithCollectedResources() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract {
-		map.getParcelContainingPoint(position).setSurface(ReservoirType.mine);
-		map.getParcelContainingPoint(position2).setSurface(ReservoirType.volcano);
+		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
+		map.getParcelContainingPoint(position2).setReservoir(ReservoirType.volcano);
 		player2.newStructureWithName("Asimilador", position2);
 		player2.newStructureWithName("Nexo Mineral", position);
 		for(int i = 0; i < 7; i++) {

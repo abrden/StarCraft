@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.game;
+package fiuba.algo3.starcraft.view.exceptions;
 
 public class ColorIsTaken extends Exception {
 

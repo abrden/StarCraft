@@ -68,7 +68,7 @@ public class StructureCreationTest {
 
 	@Test
 	public void testCreatingGasExploiterInLandWithVolcano() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
-		map.getParcelContainingPoint(position).setSurface(ReservoirType.volcano);
+		map.getParcelContainingPoint(position).setReservoir(ReservoirType.volcano);
 		player1.newStructureWithName("Refineria", position);
 		for(int i = 0; i < 7; i++) {
 			player2.newTurn();
@@ -80,7 +80,7 @@ public class StructureCreationTest {
 	
 	@Test
 	public void testCreatingMineralExploiterInLandWithMine() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
-		map.getParcelContainingPoint(position).setSurface(ReservoirType.mine);
+		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Nexo Mineral", position);
 		for(int i = 0; i < 5; i++) {
 			player1.newTurn();
@@ -92,7 +92,7 @@ public class StructureCreationTest {
 	
 	@Test
 	public void testItsPossibleToCreateNonExploiterStructureInLandWithReservoir() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
-		map.getParcelContainingPoint(position).setSurface(ReservoirType.mine);
+		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Pilon", position);
 		for(int i = 0; i < 7; i++) {
 			player1.newTurn();
@@ -157,7 +157,7 @@ public class StructureCreationTest {
 
 	@Test
 	public void testMineralExploiterAndGasExploiterProduceEnoughResourcesToBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
-		map.getParcelContainingPoint(position3).setSurface(ReservoirType.mine);
+		map.getParcelContainingPoint(position3).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Nexo Mineral", position3);
 		for(int i = 0; i < 5; i++) {
 			player1.newTurn();
@@ -181,7 +181,7 @@ public class StructureCreationTest {
 	
 	@Test(expected = InsufficientResources.class)
 	public void testCreatingStructureWithoutResourcesThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
-		map.getParcelContainingPoint(position3).setSurface(ReservoirType.volcano);
+		map.getParcelContainingPoint(position3).setReservoir(ReservoirType.volcano);
 		player2.newStructureWithName("Asimilador", position3);
 		
 		player2.newStructureWithName("Acceso", position);

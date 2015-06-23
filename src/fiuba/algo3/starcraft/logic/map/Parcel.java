@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.logic.map;
 
 import fiuba.algo3.starcraft.logic.map.areas.Air;
 import fiuba.algo3.starcraft.logic.map.areas.Land;
-import fiuba.algo3.starcraft.logic.map.areas.LandType;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -13,7 +12,7 @@ public class Parcel {
 	private Point origin;
 	private double side;
 	private Structure structure;
-	private Surface surface;
+	private Surface surface = new Land();
 	
 	public Parcel(Point origin, double side) {
 		this.origin = origin;
@@ -32,16 +31,11 @@ public class Parcel {
 		this.structure = structure;
 	}
 	
-	public void setSurface(LandType landType) {
-		switch (landType) {	
-		case air : surface = new Air();		
-		break;
-		case land : surface = new Land();
-		break;
-		}
+	public void setAirSurface() {
+		surface = new Air();
 	}
 	
-	public void setSurface(ReservoirType reservoir) {
+	public void setReservoir(ReservoirType reservoir) {
 		surface = new Land(reservoir);
 	}
 	
