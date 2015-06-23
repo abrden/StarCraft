@@ -47,9 +47,12 @@ public class MuggleUnit extends Unit implements Transportable {
 		life.destroyShield();
 	}
 
-	@Override
 	public void setDrawableView(DrawableView drawableView) {
 		System.out.println("mi name es " + name);
 		drawableView.setImageName(name.concat(".png"));
+	}
+
+	public void killInFlight() {
+		life.drain();
 	}
 }

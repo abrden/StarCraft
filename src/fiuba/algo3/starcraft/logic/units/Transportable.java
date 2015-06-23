@@ -13,4 +13,6 @@ public interface Transportable {
 	public void setPosition(Point destination);
 	
 	public int getStepsPerTurn();
+
+	public void killInFlight();
 }

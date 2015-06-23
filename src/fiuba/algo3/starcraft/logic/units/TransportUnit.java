@@ -59,7 +59,15 @@ public class TransportUnit extends Unit {
 		life.destroyShield();
 	}
 
-	@Override
+	public void reduceLife(int damage) {
+		life.reduce(damage);
+		
+		if (!this.itsAlive()) {
+			for (Transportable unit : passengers)
+				unit.killInFlight();
+		}
+	}
+
 	public void setDrawableView(DrawableView drawableView) {
 		// TODO Auto-generated method stub
 		

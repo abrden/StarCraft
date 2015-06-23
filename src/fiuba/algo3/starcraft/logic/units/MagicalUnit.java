@@ -57,10 +57,13 @@ public class MagicalUnit extends Unit implements Transportable {
 		return power;
 	}
 
-	@Override
 	public void setDrawableView(DrawableView drawableView) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void killInFlight() {
+		life.drain();
 	}
 	
 }

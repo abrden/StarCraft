@@ -37,5 +37,10 @@ public class Life {
 	public void destroyShield() {
 		if (shield != null) shield.destroy();
 	}
+
+	public void drain() {
+		this.destroyShield();
+		health = 0;
+	}
 	
 }

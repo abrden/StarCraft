@@ -96,4 +96,20 @@ public class TransportUnitTest {
 
         player.disembark(naveTransporte, zealot);
     }
+    
+    @Test
+    public void testIfNaveTransporteDiesAllOfTheirPassengersDie() throws StepsLimitExceeded, NoMoreSpaceInUnit, NoUnitToRemove, UnitCanotBeSetHere {
+        player.receiveNewUnit(zealot);
+        player.receiveNewUnit(scout);
+        player.receiveNewUnit(naveTransporte);
+
+        player.embark(naveTransporte, zealot);
+        player.embark(naveTransporte, scout);
+        
+        naveTransporte.reduceLife(1000000);
+        assertTrue(!naveTransporte.itsAlive());
+        
+        assertTrue(!zealot.itsAlive());
+        assertTrue(!scout.itsAlive());
+    }
 }
