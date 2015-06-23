@@ -14,6 +14,8 @@ public class MapView extends JComponent{
 	
 	Map map;
 	ArrayList<ParcelView> parcelViews = new ArrayList<ParcelView>();
+	ArrayList<UnitView> unitViews = new ArrayList<UnitView>();
+	
 	
 	public MapView(Map map) {
 		this.map = map;
@@ -24,6 +26,7 @@ public class MapView extends JComponent{
 	}
 	
 	private void generatParcelViews(ArrayList<Parcel> parcels) {
+		parcelViews.removeAll(parcelViews);
 		for (Parcel parcel : parcels) {
 			ParcelView parcelView = new ParcelView(parcel);
 			addMouseListener(parcelView);
@@ -31,12 +34,26 @@ public class MapView extends JComponent{
 			parcelViews.add(parcelView);
 		}
 	}
-
+	
+	private void updateParcelViews() {
+		for (ParcelView parcelView : parcelViews) {
+			//addMouseListener(parcelView);
+			add(parcelView);
+		}
+	}
+	
+	private void updateUnitViews() {
+		for (UnitView unitView : unitViews) {
+			add(unitView);
+		}
+	}
+	
 	public void addUnitToMap(Unit unit) {
 		this.removeAll();
 		UnitView unitView = new UnitView(unit);
+		unitViews.add(unitView);
 		//addMouseListener(unitView);
-		add(unitView);
-		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()));
+		updateUnitViews();
+		updateParcelViews();
 	}
 }

@@ -29,10 +29,10 @@ public class ScenarioGeneratorTest {
 
 	@Test	//FIXME :ammountOfVolcanoInMap no tendria que ser un valor random cuando se usa una densidad != a 1.
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
-		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(0,0), 100, 1);
+		scenario.assignSurfaceDistributionInRect(ReservoirType.volcano, new Point(0,0), 1000, 1);
 		
 		int ammountOfVolcanoInMap = 0;
-		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 100);
+		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 1000);
 		
 		for (Parcel parcel : parcelsInRect) {
 			try {

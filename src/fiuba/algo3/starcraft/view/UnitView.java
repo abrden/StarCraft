@@ -33,7 +33,6 @@ public class UnitView extends DrawableView implements MouseListener {
 	private void drawHealth(Graphics g) {
 		g.setColor(Color.green);
 		g.fillRect(0, 60, calculateHealthBar() , 4);
-		
 	}
 	
 	private void drawShield(Graphics g) {
@@ -42,7 +41,7 @@ public class UnitView extends DrawableView implements MouseListener {
 		
 	}
 	
-	//FIXME : need a property of max ammount of helth for calculation
+	//FIXME : need a property of max ammount of health for calculation
 	private int calculateHealthBar() {
 		return 60;
 	}

@@ -22,9 +22,10 @@ public class StarcraftViewTest {
 
 		MapView mapView = new MapView(map);
 		
-		MuggleUnit unit = new MuggleUnit("Marine", null, new Point(30, 30), 0, 0, null, 0, false, 0);
-		mapView.addUnitToMap(unit);
-		
+		for (int i = 0; i < 10; i++) {
+			MuggleUnit unit = new MuggleUnit("Marine", null, new Point(70 * i, 30), 0, 0, null, 0, false, 0);
+			mapView.addUnitToMap(unit);
+		}
 		starcraftView.setMapView(mapView);
 	
 		starcraftView.setVisible(true);

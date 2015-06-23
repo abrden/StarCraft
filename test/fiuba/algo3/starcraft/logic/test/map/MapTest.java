@@ -42,7 +42,7 @@ public class MapTest {
 	public void testMapReturnsParcelsInsideARect() {
 		ArrayList<Parcel> parcels = map.getParcelsContainedInARect(new Point(25, 25), 100);
 		Parcel interiorParcel = map.getParcelContainingPoint(new Point(50,50));
-		assertTrue(parcels.contains(interiorParcel) && (parcels.size() == 100));
+		assertTrue(parcels.contains(interiorParcel));
 	}
 	@Test
 	public void testMapIsResetedAndHasNoMinerals() throws NoResourcesToExtract {
