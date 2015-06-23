@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class MovementOfNonFlyingUnitsTest {
@@ -95,5 +96,34 @@ public class MovementOfNonFlyingUnitsTest {
         yComp = marine.getPosition().getY() == 5 && marineAux.getPosition().getY() == 5;
 
         assertEquals(xComp, yComp);
+    }
+
+    @Test
+    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() {
+        Point destinationPoint = new Point(500,500);
+        player.receiveNewUnit(marine);
+
+        player.move(marine, destinationPoint);
+
+        for (int i = 0; i < 49; i++) {
+            player.newTurn();
+        }
+
+        assertTrue(marine.getPosition().isSamePoint(destinationPoint));
+    }
+
+    @Test
+    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() {
+        Point destinationPoint = new Point(500,500);
+        map.getParcelContainingPoint(destinationPoint).setSurface(LandType.air);
+        player.receiveNewUnit(marine);
+
+        player.move(marine, destinationPoint);
+
+        for (int i = 0; i < 500; i++) {
+            player.newTurn();
+        }
+
+        assertTrue(!marine.getPosition().isSamePoint(destinationPoint));
     }
 }

@@ -100,7 +100,7 @@ public class Map {
 		unit.setPosition(new Point(side * 10, side * 10));
 	}
 	
-	public void moveUnitToDestination(Unit transportable, Point position) throws StepsLimitExceeded {
+	public void moveUnitToDestination(Unit transportable, Point position) {
 		Point initialPoint = transportable.getPosition();
 		Point finalPoint = position;
 			

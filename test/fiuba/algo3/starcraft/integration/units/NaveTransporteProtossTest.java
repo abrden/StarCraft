@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.integration.units;
 import static org.junit.Assert.*;
 
 import fiuba.algo3.starcraft.logic.structures.exceptions.*;
+import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 import org.junit.Before;
 import org.junit.Test;
 
