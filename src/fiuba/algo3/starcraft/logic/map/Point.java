@@ -48,6 +48,6 @@ public class Point {
 	}
 
     public boolean isSamePoint(Point otherPoint) {
-        return ((int) this.getX() == (int) otherPoint.getX() && (int) this.getY() == (int) otherPoint.getY());
+        return (Math.round(this.getX()) == Math.round(otherPoint.getX()) && Math.round(this.getY()) == Math.round(otherPoint.getY()));
     }
 } 

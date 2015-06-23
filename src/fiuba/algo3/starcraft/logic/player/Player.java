@@ -128,9 +128,7 @@ public class Player {
         //Unidades caminan hasta el punto indicado en turnos anteriores
         for (Unit unit : units) {
             if (!unit.getPosition().isSamePoint(unit.getDestination())) {
-                if(map.getParcelContainingPoint(unit.getPosition()).letPass(unit)) {
-                    this.move(unit, unit.getDestination());
-                }
+                this.move(unit, unit.getDestination());
             }
         }
 	}
