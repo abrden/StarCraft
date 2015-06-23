@@ -46,18 +46,13 @@ public class Parcel {
 	}
 	
 	public boolean letPass(Unit unit) {
-		//FIXME: Try to avoid if {} else {} blocks
-		if (unit.canFly()) {
-			return true;
-		} else {
-			return surface.letPass(unit) && (structure == null);
-		}
+		return (surface.letPass(unit) && (structure == null));
 	}
+	
 	public Surface getLandForExplotation() {
 		return surface;
 	}
 
-	//Solo sirve para pruebas?
 	public Structure getStructure() {
 		return structure;
 	}

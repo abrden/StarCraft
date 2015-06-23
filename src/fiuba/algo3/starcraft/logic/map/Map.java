@@ -41,7 +41,6 @@ public class Map {
 		for (int x = 0 ; x < numberOfParcels ; x ++) {
 			for (int y = 0 ; y < numberOfParcels ; y ++) {
 				Parcel parcel = new Parcel(new Point(x * PARCEL_SIDE,y * PARCEL_SIDE), PARCEL_SIDE);
-				//parcel.setSurface(LandType.land);
 				
 				@SuppressWarnings("unchecked")
 				ArrayList<Parcel> column = row.get(x);

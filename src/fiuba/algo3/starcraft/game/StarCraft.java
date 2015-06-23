@@ -16,7 +16,7 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class StarCraft {
 	
-	//Eliminar luego de implementar mejora
+	//TODO Eliminar luego de implementar mejora
 	private Player player1;
 	private Player player2; 
 	public StarCraft() {}
