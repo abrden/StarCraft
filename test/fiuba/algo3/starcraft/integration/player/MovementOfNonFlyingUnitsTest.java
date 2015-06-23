@@ -10,12 +10,15 @@ import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
+import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
+import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class MovementOfNonFlyingUnitsTest {
@@ -95,5 +98,33 @@ public class MovementOfNonFlyingUnitsTest {
         yComp = marine.getPosition().getY() == 5 && marineAux.getPosition().getY() == 5;
 
         assertEquals(xComp, yComp);
+    }
+
+    @Test
+    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() {
+        Point destinationPoint = new Point(499,499);
+        player.receiveNewUnit(marine);
+
+        player.move(marine, destinationPoint);
+        for (int i = 0; i < 49; i++) {
+            player.newTurn();
+        }
+
+        assertTrue(marine.getPosition().isSamePoint(destinationPoint));
+    }
+
+    @Test
+    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() {
+        Point destinationPoint = new Point(433,533);
+        map.getParcelContainingPoint(destinationPoint).setSurface(LandType.air);
+        player.receiveNewUnit(marine);
+
+        player.move(marine, destinationPoint);
+
+        for (int i = 0; i < 100; i++) {
+            player.newTurn();
+        }
+
+        assertTrue(!marine.getPosition().isSamePoint(destinationPoint));
     }
 }
