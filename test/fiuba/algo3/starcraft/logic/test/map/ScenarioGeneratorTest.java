@@ -60,7 +60,7 @@ public class ScenarioGeneratorTest {
 		for (int i = 0 ; i < 1000/30 ; i++) {
 			scenario.assignSurfaceDistributionInRect(LandType.air,new Point(485, 30 * i), 30, 1);
 		}
-		Parcel parcel = map.getParcelContainingPoint(new Point(500,500));
+		Parcel parcel = map.getParcelContainingPoint(new Point(400,400));
 
 		MuggleUnit marine = new MarineTemplate().create(new Point(1, 1));
 		
