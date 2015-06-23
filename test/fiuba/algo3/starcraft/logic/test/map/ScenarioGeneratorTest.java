@@ -31,7 +31,7 @@ public class ScenarioGeneratorTest {
 	public void testScenarioGenerateRandomDistributionOfMineralsInARect() {
 
 		scenario.assignReservoirDistributionInRect(ReservoirType.volcano, new Point(0,0), 100, 1);
-11		
+		
 		int ammountOfVolcanoInMap = 0;
 		ArrayList<Parcel> parcelsInRect = map.getParcelsContainedInARect(new Point(0,0), 1000);
 		
