@@ -74,14 +74,14 @@ public class TransportUnitTest {
         player.receiveNewUnit(scout);
         player.receiveNewUnit(naveTransporte);
 
-        //player.embark(naveTransporte, zealot);
+        player.embark(naveTransporte, zealot);
         player.embark(naveTransporte, scout);
 
-        player.move(zealot, move1Point);
+        player.move(naveTransporte, move1Point);
         for (int i = 0; i < 50; i++) {
             player.newTurn();
         }
-        /*player.disembark(naveTransporte, scout);
+        player.disembark(naveTransporte, scout);
 
         player.move(naveTransporte, move2Point);
         for (int i = 0; i < 50; i++) {
@@ -91,7 +91,7 @@ public class TransportUnitTest {
         player.disembark(naveTransporte, zealot);
 
         assertTrue(scout.getPosition().getX() == scout.getPosition().getY());
-        assertTrue(zealot.getPosition().getX() == zealot.getPosition().getY());*/
+        assertTrue(zealot.getPosition().getX() == zealot.getPosition().getY());
     }
 
     @Test(expected = UnitCanotBeSetHere.class)
@@ -102,8 +102,8 @@ public class TransportUnitTest {
 
         player.embark(naveTransporte, zealot);
 
-        player.move(naveTransporte, spacePoint);
-        for (int i = 0; i < 10; i++) {
+        player.move(naveTransporte, move1Point);
+        for (int i = 0; i < 100; i++) {
             player.newTurn();
         }
 

@@ -127,7 +127,7 @@ public class Player {
 
         //Unidades caminan hasta el punto indicado en turnos anteriores
         for (Unit unit : units) {
-            if (!unit.getPosition().isSamePoint(unit.getDestination())) {
+            if (!unit.getPosition().isSamePoint(unit.getDestination()) && !unit.getPosition().isSamePoint(map.getLimbo())) {
                 this.move(unit, unit.getDestination());
             }
         }
@@ -236,6 +236,7 @@ public class Player {
 	
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());
+        ((Unit) unit).setDestination(unit.getPosition());
 		transport.disembark(unit);
 	}
 }
