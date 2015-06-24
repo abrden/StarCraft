@@ -9,12 +9,10 @@ import fiuba.algo3.starcraft.view.MapView;
 import fiuba.algo3.starcraft.view.StarcraftView;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
 public class StarcraftViewTest {
-/*
+
     @Test
-	public static void main(String[] args) {
+	public void createMapAndSetUnitsOnIt() {
 		StarcraftView starcraftView = new StarcraftView();
 		
 		Map map = new Map(1500, null);
@@ -32,7 +30,6 @@ public class StarcraftViewTest {
 		starcraftView.setMapView(mapView);
 	
 		starcraftView.setVisible(true);
-        assertTrue(true);
 	}
-	*/
+
 }
