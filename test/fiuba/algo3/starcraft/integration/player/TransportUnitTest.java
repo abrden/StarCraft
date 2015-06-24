@@ -36,8 +36,8 @@ public class TransportUnitTest {
         dragon = new DragonTemplate().create(new Point(5,5));
         scout = new ScoutTemplate().create(new Point(3,3));
         naveTransporte = new NaveTransporteProtossTemplate().create(new Point(3,3));
-        spacePoint = new Point(12,12);
-        move1Point = new Point(15,15);
+        spacePoint = new Point(100,100);
+        move1Point = new Point(150,150);
         move2Point = new Point(25,25);
     }
 
@@ -51,8 +51,14 @@ public class TransportUnitTest {
         player.embark(naveTransporte, zealot);
         player.embark(naveTransporte, dragon);
 
-        player.move(naveTransporte, move1Point);
+        player.move(naveTransporte,move1Point);
+        for (int i = 0; i < 50; i++) {
+            player.newTurn();
+        }
         player.move(naveTransporte, move2Point);
+        for (int i = 0; i < 50; i++) {
+            player.newTurn();
+        }
 
         player.disembark(naveTransporte, zealot);
         player.disembark(naveTransporte, dragon);
@@ -68,19 +74,24 @@ public class TransportUnitTest {
         player.receiveNewUnit(scout);
         player.receiveNewUnit(naveTransporte);
 
-        player.embark(naveTransporte, zealot);
+        //player.embark(naveTransporte, zealot);
         player.embark(naveTransporte, scout);
 
-        player.move(naveTransporte, move1Point);
-
-        player.disembark(naveTransporte, scout);
+        player.move(zealot, move1Point);
+        for (int i = 0; i < 50; i++) {
+            player.newTurn();
+        }
+        /*player.disembark(naveTransporte, scout);
 
         player.move(naveTransporte, move2Point);
+        for (int i = 0; i < 50; i++) {
+            player.newTurn();
+        }
 
         player.disembark(naveTransporte, zealot);
 
         assertTrue(scout.getPosition().getX() == scout.getPosition().getY());
-        assertTrue(zealot.getPosition().getX() == zealot.getPosition().getY());
+        assertTrue(zealot.getPosition().getX() == zealot.getPosition().getY());*/
     }
 
     @Test(expected = UnitCanotBeSetHere.class)
@@ -91,7 +102,10 @@ public class TransportUnitTest {
 
         player.embark(naveTransporte, zealot);
 
-        player.move(naveTransporte, move1Point);
+        player.move(naveTransporte, spacePoint);
+        for (int i = 0; i < 10; i++) {
+            player.newTurn();
+        }
 
         player.disembark(naveTransporte, zealot);
     }
