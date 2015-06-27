@@ -15,4 +15,6 @@ public interface Transportable {
 	public int getStepsPerTurn();
 
 	public void killInFlight();
+
+	public TransportUnit getNearestTransportUnitInVisionRange();
 }

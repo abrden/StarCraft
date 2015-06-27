@@ -68,8 +68,8 @@ public abstract class Builder {
 	}
 
 	public String[] getTemplateNames() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] templateNames = new String[templates.size()];
+		return templates.toArray(templateNames);
 	}
 
 }

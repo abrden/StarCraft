@@ -71,4 +71,9 @@ public class MuggleUnit extends Unit implements Transportable {
 		actions.add(ActionID.embark);
 		return actions;
 	}
+
+	public TransportUnit getNearestTransportUnitInVisionRange() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

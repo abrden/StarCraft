@@ -70,6 +70,8 @@ public class ActionsView extends JPanel implements ActionListener {
 		this.add(createUnit);
 		this.add(embark);
 		this.add(disembark);
+		
+		this.disableActionButtons();
 	}
 	
     public void actionPerformed(ActionEvent event) {
@@ -147,12 +149,6 @@ public class ActionsView extends JPanel implements ActionListener {
 		return name;
 	}
 	
-	private TransportUnit getSelectedTransport() {
-		//for (TransportUnit transport : ((Transportable) actionable).getTransportUnitsInVisionRange());
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	private Transportable getSelectedTransportable() {
 		// TODO Auto-generated method stub
 		return null;
@@ -165,7 +161,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 
 	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded {
-		TransportUnit transport = this.getSelectedTransport();
+		TransportUnit transport = ((Transportable) actionable).getNearestTransportUnitInVisionRange();
 		game.getActivePlayer().embark(transport, (Transportable) actionable);
 		this.disableActionButtons();
 	}
