@@ -77,4 +77,8 @@ public class MagicalUnit extends Unit implements Transportable {
 		actions.add(ActionID.power);
 		return actions;
 	}
+
+	public String[] getPowerNames() {
+		return generator.getPowerNames();
+	}
 }

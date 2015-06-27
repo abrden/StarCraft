@@ -67,4 +67,9 @@ public abstract class Builder {
 		return dependsOn.get(key);
 	}
 
+	public String[] getTemplateNames() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

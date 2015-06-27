@@ -11,5 +11,7 @@ public abstract class PowerGenerator {
 	}
 	
 	public abstract Power generatePower(String name, int energy) throws NonexistentPower, InsufficientEnergy;
+
+	public abstract String[] getPowerNames();
 	
 }

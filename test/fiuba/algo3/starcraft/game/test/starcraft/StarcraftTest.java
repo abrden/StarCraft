@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StarcraftTest {
-		
+
 	StarCraft game;
 	PlayerSetup player_1, player_2;
 	Player player1, player2;
@@ -46,11 +46,11 @@ public class StarcraftTest {
 	public void testStarcraftCreatesMinesAfterManyTurnsResourcesIncrease() throws StepsLimitExceeded, NameIsTooShort, NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired {
 		game.start();
 		player1 = game.getActivePlayer();
-		map.getParcelContainingPoint(new Point(150,0)).setReservoir(ReservoirType.mine);
-		player1.newStructureWithName("Centro Mineral",new Point(150,0));
+		map.getParcelContainingPoint(new Point(150, 0)).setReservoir(ReservoirType.mine);
+		player1.newStructureWithName("Centro Mineral", new Point(150, 0));
 		game.nextTurn();
 		player2 = game.getActivePlayer();
-		map.getParcelContainingPoint(new Point(850,950)).setReservoir(ReservoirType.mine);
+		map.getParcelContainingPoint(new Point(850, 950)).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Nexo Mineral", new Point(850, 950));
 		for (int i = 0; i < 10; i++) {
 			game.nextTurn();
@@ -59,7 +59,7 @@ public class StarcraftTest {
 		for (int i = 0; i < 100; i++) {
 			game.nextTurn();
 		}
-		assertEquals(player1.getMineral(),player2.getMineral());
+		assertEquals(player1.getMineral(), player2.getMineral());
 		/*player1 = game.getActivePlayer();
 		System.out.println(player1.getName());
 		System.out.println(map.getParcelContainingPoint(new Point(0,0)).getLandForExplotation());
@@ -74,4 +74,20 @@ public class StarcraftTest {
 		System.out.println(player1.numberOfStructures());
 		System.out.println(player2.numberOfStructures());*/
 	}
+	
+	@Test
+	public void testStarcraftMovesAMarineInAMapWithGapsAndStopsMovingAfterGap() throws StepsLimitExceeded {
+
+		ScenarioGenerator scenario = new ScenarioGenerator(map);
+		
+		scenario.assignAirDistributionInRect(new Point(50, 50),100,1);
+		game.setGame(null, null, map);
+
+		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
+		
+		map.moveUnitToDestination(marine, new Point(75,500));
+				
+		assertTrue(marine.getPosition().getY() < 50);
+	}
+
 }

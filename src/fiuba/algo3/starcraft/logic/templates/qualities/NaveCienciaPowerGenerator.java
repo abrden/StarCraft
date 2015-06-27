@@ -20,4 +20,9 @@ public class NaveCienciaPowerGenerator extends PowerGenerator {
 		enoughEnergyToGenerate(power, energy);
 		return power;
 	}
+	
+	public String[] getPowerNames() {
+		String[] powers = {"EMP", "Radiacion"};
+		return powers;
+	}
 }

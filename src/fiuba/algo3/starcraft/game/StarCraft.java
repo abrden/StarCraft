@@ -52,7 +52,7 @@ public class StarCraft {
 	}
 	
 	private void generateMap() {
-		scenarioGenerator.assignAirDistributionInRect(new Point(0,0), MAP_SIDE, AIR_DENSITY);
+		scenarioGenerator.assignAirDistributionInRect(new Point(0, 0), MAP_SIDE, AIR_DENSITY);
 	}
 	
 	private List<Point> generateBases(int quantity) {

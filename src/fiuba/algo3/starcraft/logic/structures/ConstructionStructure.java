@@ -55,4 +55,9 @@ public class ConstructionStructure extends Structure {
 		actions.add(ActionID.create);
 		return actions;
 	}
+
+	public String[] getTemplateNames() {
+		//TODO implementar
+		return null;
+	}
 }

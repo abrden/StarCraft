@@ -21,4 +21,9 @@ public class AltoTemplarioPowerGenerator extends PowerGenerator {
 		return power;
 	}
 
+	public String[] getPowerNames() {
+		String[] powers = {"Alucinacion", "Tormenta Psionica"};
+		return powers;
+	}
+
 }
