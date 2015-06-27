@@ -12,7 +12,7 @@ import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class Parcel implements Actionable {
+public class Parcel {
 	
 	private Point origin;
 	private double side;
@@ -60,11 +60,5 @@ public class Parcel implements Actionable {
 
 	public Structure getStructure() {
 		return structure;
-	}
-	
-	public Iterable<ActionID> getActions() {
-		List<ActionID> actions = new ArrayList<ActionID>();
-		actions.add(ActionID.build);
-		return actions;
 	}
 }

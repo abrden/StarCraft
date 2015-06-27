@@ -11,8 +11,11 @@ public class ParcelView extends DrawableView implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	Parcel parcel;
 	
-	public ParcelView(Parcel parcel) {
+	ActionsView actionsView;
+	
+	public ParcelView(Parcel parcel, ActionsView actionsView) {
 		this.parcel = parcel;
+		this.actionsView = actionsView;
 		parcel.getLandForExplotation().setDrawableView(this);
 		this.setBounds((int)parcel.getOrigin().getX(), (int)parcel.getOrigin().getY(), (int)Map.PARCEL_SIDE, (int)Map.PARCEL_SIDE);
 		addMouseListener(this);
@@ -24,6 +27,8 @@ public class ParcelView extends DrawableView implements MouseListener{
 	 	double mapClickX = (arg0.getPoint().getX() + parcel.getOrigin().getX());
 	 	double mapClickY = (arg0.getPoint().getY() + parcel.getOrigin().getY());
 		System.out.println("" + mapClickX + ", " + mapClickY);
+		
+		actionsView.showActions(this.parcel.getLandForExplotation());
 	}
 
 	@Override

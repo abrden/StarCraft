@@ -17,18 +17,18 @@ public class MapView extends JComponent{
 	ArrayList<UnitView> unitViews = new ArrayList<UnitView>();
 	
 	
-	public MapView(Map map) {
+	public MapView(Map map, ActionsView actionsView) {
 		this.map = map;
 		
 		setBounds(0, 0, (int)map.getSide(), (int)map.getSide());
-		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()));
+		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()), actionsView);
 		setBackground(new Color(0,0,0));
 	}
 	
-	private void generatParcelViews(ArrayList<Parcel> parcels) {
+	private void generatParcelViews(ArrayList<Parcel> parcels, ActionsView actionsView) {
 		parcelViews.removeAll(parcelViews);
 		for (Parcel parcel : parcels) {
-			ParcelView parcelView = new ParcelView(parcel);
+			ParcelView parcelView = new ParcelView(parcel, actionsView);
 			addMouseListener(parcelView);
 			add(parcelView);
 			parcelViews.add(parcelView);

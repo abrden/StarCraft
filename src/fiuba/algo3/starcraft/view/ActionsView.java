@@ -40,6 +40,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	private JButton embark = new JButton("embark"); //Lleva a otro panel con botones para cada unidad fuera pero dentro del radio de vision
 	private JButton disembark = new JButton("disembark"); //Lleva a otro panel con botones para cada unidad dentro
 	
+	private boolean performingAction = false;
 	/*
 	ImageIcon move = createImageIcon("");
     ImageIcon usePower = createImageIcon("");
@@ -76,7 +77,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
     public void actionPerformed(ActionEvent event) {
-    	System.out.println("dasdasdasdsasad");
+    	performingAction = true;
     	try {
 	        if (event.getSource() == move) {
 	        	System.out.println("entre a movew");
@@ -96,7 +97,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	        } else if (event.getSource() == disembark) {
 	        	System.out.println("entre a disembark");
 	        	this.executeDisembark();
-	        }
+	        } 
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
@@ -136,6 +137,8 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private String getSelectedStructureName() {
+		
+		System.out.println("hola wachin");
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
@@ -222,6 +225,11 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
+		if (performingAction) {
+			return;
+		}
+		disableActionButtons();
+		
 		this.actionable = actionable;
 		
 		for(ActionID action : actionable.getActions())
@@ -229,6 +237,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private void disableActionButtons() {
+		System.out.println("entre a desinablear");
 		move.setEnabled(false);
 		usePower.setEnabled(false);
 		buildStructure.setEnabled(false);
