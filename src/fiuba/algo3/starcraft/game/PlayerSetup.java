@@ -38,7 +38,7 @@ public class PlayerSetup {
 		switch (race) {
         case "Terran": this.race = RaceType.terran;
                  break;
-        case "Protoss": this.race = RaceType.terran;
+        case "Protoss": this.race = RaceType.protoss;
                  break;
         }
 	}
