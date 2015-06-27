@@ -32,13 +32,13 @@ public class StructureCreationTest {
 	Point position3;
 	@Before
 	public void before() {
-		game = new StarCraft();
+		//game = new StarCraft();
 		map = new Map(1000, game);
 		initialResources1 = new Resources(200, 0);
 		initialResources2 = new Resources(200, 0);
 		player1 = new Player(null, null, new TerranBuilder(), null, initialResources1, map);
 		player2 = new Player(null, null, new ProtossBuilder(), null, initialResources2, map);
-		game.setGame(player1, player2, map);
+		//game.setGame(player1, player2, map);
 		
 		position = new Point(1,1);
 		position2 = new Point (270,340);

@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.test.player;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.starcraft.game.PlayerSetup;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,12 +28,11 @@ import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 
 public class PowerUsageTest {
-	
+
 	StarCraft game;
 	Map map;
 	Player player1;
 	Player player2;
-	
 	Point position;
 	Point position2;
 	Point position3;
@@ -50,8 +50,8 @@ public class PowerUsageTest {
 		map = new Map(1000, game);
 		player1 = new Player(null, null, new TerranBuilder(), null, null, map);
 		player2 = new Player(null, null, new ProtossBuilder(), null, null, map);
-		game.setGame(player1, player2, map);
-		
+
+		game.setGame(player1,player2,map);
 		position = new Point(1,1);
 		position2 = new Point (270,340);
 		position3 = new Point (70,34);
