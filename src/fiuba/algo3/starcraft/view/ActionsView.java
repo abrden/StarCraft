@@ -32,12 +32,12 @@ public class ActionsView extends JPanel implements ActionListener {
 	private StarCraft game;
 	private Actionable actionable;
 	
-	private JButton move = new JButton(); //Pide un punto del mapa
-	private JButton usePower = new JButton(); //Lleva a otro panel con botones para cada poder
-	private JButton buildStructure = new JButton(); //Lleva a otro panel con botones para cada estructura
-	private JButton createUnit = new JButton(); //Lleva a otro panel con botones para cada unidad
-	private JButton embark = new JButton(); //Lleva a otro panel con botones para cada unidad fuera pero dentro del radio de vision
-	private JButton disembark = new JButton(); //Lleva a otro panel con botones para cada unidad dentro
+	private JButton move = new JButton("move"); //Pide un punto del mapa
+	private JButton usePower = new JButton("use power"); //Lleva a otro panel con botones para cada poder
+	private JButton buildStructure = new JButton("build structure"); //Lleva a otro panel con botones para cada estructura
+	private JButton createUnit = new JButton("create unit"); //Lleva a otro panel con botones para cada unidad
+	private JButton embark = new JButton("embark"); //Lleva a otro panel con botones para cada unidad fuera pero dentro del radio de vision
+	private JButton disembark = new JButton("disembark"); //Lleva a otro panel con botones para cada unidad dentro
 	
 	/*
 	ImageIcon move = createImageIcon("");
@@ -57,6 +57,13 @@ public class ActionsView extends JPanel implements ActionListener {
 	ActionsView(StarCraft game) {
 		this.game = game;
 		
+		move.addActionListener(this);
+		usePower.addActionListener(this);
+		buildStructure.addActionListener(this);
+		createUnit.addActionListener(this);
+		embark.addActionListener(this);
+		disembark.addActionListener(this);
+		
 		this.add(move);
 		this.add(usePower);
 		this.add(buildStructure);
@@ -66,18 +73,25 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
     public void actionPerformed(ActionEvent event) {
+    	System.out.println("dasdasdasdsasad");
     	try {
 	        if (event.getSource() == move) {
+	        	System.out.println("entre a movew");
 	        	this.executeMove();
 	        } else if (event.getSource() == usePower) {
+	        	System.out.println("entre a use power");
 	        	this.executeUsePower();
 	        } else if (event.getSource() == buildStructure) {
-				this.executeBuildStructure();
+	        	System.out.println("entre a build structure");
+	        	this.executeBuildStructure();
 	        } else if (event.getSource() == createUnit) {
+	        	System.out.println("entre a create unit");
 	        	this.executeCreateUnit();
 	        } else if (event.getSource() == embark) {
+	        	System.out.println("entre a embark");
 	        	this.executeEmbark();
 	        } else if (event.getSource() == disembark) {
+	        	System.out.println("entre a disembark");
 	        	this.executeDisembark();
 	        }
     	} catch (MissingStructureRequired | InsufficientResources

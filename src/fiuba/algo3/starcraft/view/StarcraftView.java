@@ -30,10 +30,18 @@ public class StarcraftView extends JFrame{
 		getContentPane().setBackground(new Color(0,0,255));
 		setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+     
+        MapView mapView = new MapView(game.map);
+        setMapView(mapView);
+        
+        ActionsView actionsView = new ActionsView(game);
+        setActionsView(actionsView);
+        
+        setVisible(true);
+        
 	}
 	
-	public void setMapView(MapView mapView) {
-		
+	private void setMapView(MapView mapView) {
 		this.mapView = mapView;
 		mapView.setPreferredSize(mapView.getSize());
 		
@@ -41,5 +49,11 @@ public class StarcraftView extends JFrame{
         scrollPane.setBounds(0, 0, screenSize.width, screenSize.height * 2 / 3);
         
         add(scrollPane);
+	}
+	
+	private void setActionsView(ActionsView actionsView) {
+		this.actionsView = actionsView;
+		actionsView.setBounds(0, screenSize.height * 2 / 3, screenSize.width, screenSize.height * 1 / 3);
+		add(actionsView);
 	}
 }

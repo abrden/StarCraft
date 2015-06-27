@@ -32,7 +32,7 @@ public class StarCraft {
 	private ScenarioGenerator scenarioGenerator = new ScenarioGenerator(map);
 	private static final int INITIAL_MINERAL = 200;
 	private static final int INITIAL_GAS = 0;
-	private static final int MAP_SIDE = 1000;
+	private static final int MAP_SIDE = 10000;
 	private static final int BASE_SIDE = 30;
 	private static final double RESERVOIR_DENSITY = 0.2;
 	private static final double AIR_DENSITY = 0.4;

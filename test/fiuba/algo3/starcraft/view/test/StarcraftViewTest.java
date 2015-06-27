@@ -1,38 +1,45 @@
 package fiuba.algo3.starcraft.view.test;
 
-import fiuba.algo3.starcraft.logic.map.Map;
-import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
-import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
-import fiuba.algo3.starcraft.logic.units.MuggleUnit;
-import fiuba.algo3.starcraft.view.MapView;
-import fiuba.algo3.starcraft.view.StarcraftView;
-import org.junit.Test;
+import java.util.ArrayList;
 
-import static org.junit.Assert.assertTrue;
+import fiuba.algo3.starcraft.game.PlayerSetup;
+import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.view.StarcraftView;
+import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+
 
 public class StarcraftViewTest {
-
-    
-	public void createMapAndSetUnitsOnIt() {
-		StarcraftView starcraftView = new StarcraftView(null);
+	static StarCraft game;
+	public static void initVariables() {
+		ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
+			
+		try {
+			playerSetups.add(new PlayerSetup("santi", "red", "Terran"));
+			playerSetups.add(new PlayerSetup("agus", "blue", "Terran"));
+		} catch (NameIsTooShort e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		game = new StarCraft(playerSetups);		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Hola");
+		initVariables();
 		
-		Map map = new Map(1500, null);
+		createMapAndSetUnitsOnIt();
+	}
+	
+	public static void createMapAndSetUnitsOnIt() {
 		
-		ScenarioGenerator scenario = new ScenarioGenerator(map);
-		scenario.assignReservoirDistributionInRect(ReservoirType.volcano,new Point(0,0) , 1500, 0.1);
-		scenario.assignAirDistributionInRect(new Point(0,0), 1500, 0.25);
-
-		MapView mapView = new MapView(map);
-		
+		StarcraftView starcraftView = new StarcraftView(game);
+/*
 		for (int i = 0; i < 10; i++) {
 			MuggleUnit unit = new MuggleUnit("Marine", null, new Point(70 * i, 30), 0, 0, null, 0, false, 0);
 			mapView.addUnitToMap(unit);
 		}
-		starcraftView.setMapView(mapView);
-	
-		starcraftView.setVisible(true);
-        assertTrue(true);
+		starcraftView.setVisible(true);*/
 	}
 
 }

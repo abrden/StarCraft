@@ -19,6 +19,6 @@ public class Air extends Surface {
 
 	@Override
 	public void setDrawableView(DrawableView drawableView) {
-		drawableView.setImageName("space3.jpg");
+		drawableView.setImageName("space.jpg");
 	}
 }
