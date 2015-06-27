@@ -75,4 +75,8 @@ public class ConstructionQueue {
 		
 		this.lowerReleases();
 	}
+
+	public boolean isEmpty() {
+		return structures.size() == 0 && units.size() == 0;
+	}
 }

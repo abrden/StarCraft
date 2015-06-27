@@ -152,7 +152,10 @@ public class Player {
 			structures.remove(structure);
 		}
 	}
-	
+
+	public boolean constructionQueueIsEmpty() {
+		return constructionQueue.isEmpty();
+	}
 	public int populationSpace() {
 		return (this.populationQuota() - this.currentPopulation());
 	}
