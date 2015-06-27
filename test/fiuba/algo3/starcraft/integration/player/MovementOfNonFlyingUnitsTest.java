@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.integration.player;
 
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
@@ -20,15 +21,19 @@ import static org.junit.Assert.assertTrue;
 
 public class MovementOfNonFlyingUnitsTest {
 
-    Player player;
+    StarCraft game;
+    Player player,player2;
     Map map;
     MuggleUnit marine, marineAux;
     boolean xComp, yComp;
 
     @Before
     public void before() {
-        map = new Map(1000,null);
+        game = new StarCraft();
+        map = new Map(1000,game);
         player = new Player("Pepe",null,new TerranBuilder(),new Point(1,1),new Resources(9999,9999),map);
+        player2 = new Player("Pep",null,new TerranBuilder(),new Point(50,50),new Resources(9999,9999),map);
+        game.setGame(player,player2,map);
         marine = new MarineTemplate().create(new Point(5, 5));
     }
 

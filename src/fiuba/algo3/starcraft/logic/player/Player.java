@@ -204,6 +204,8 @@ public class Player {
 	public void move(Unit unit, Point destination) {
         unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
+		if (unit.getAttack() != null)
+			this.attack((MuggleUnit) unit);
 	}
 	
 	public void attack(MuggleUnit unit) {
