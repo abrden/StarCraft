@@ -1,5 +1,9 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Power;
@@ -66,4 +70,11 @@ public class MagicalUnit extends Unit implements Transportable {
 		life.drain();
 	}
 	
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		actions.add(ActionID.move);
+		actions.add(ActionID.embark);
+		actions.add(ActionID.power);
+		return actions;
+	}
 }

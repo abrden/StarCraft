@@ -7,6 +7,7 @@ import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
 import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Drawable;
 
 public abstract class Unit implements Updatable, Drawable {
@@ -92,4 +93,5 @@ public abstract class Unit implements Updatable, Drawable {
 		this.reduceLife(Radiacion.DAMAGE);
 	}
 
+	public abstract Iterable<ActionID> getActions();
 }

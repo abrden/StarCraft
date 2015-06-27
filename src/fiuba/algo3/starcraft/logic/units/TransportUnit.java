@@ -1,8 +1,11 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
@@ -71,5 +74,12 @@ public class TransportUnit extends Unit {
 	public void setDrawableView(DrawableView drawableView) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		actions.add(ActionID.move);
+		actions.add(ActionID.disembark);
+		return actions;
 	}
 }

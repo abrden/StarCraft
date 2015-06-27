@@ -1,5 +1,8 @@
 package fiuba.algo3.starcraft.logic.structures;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
@@ -7,6 +10,7 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class ConstructionStructure extends Structure {
@@ -46,4 +50,9 @@ public class ConstructionStructure extends Structure {
 		life.regenerateShield();
 	}
 
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		actions.add(ActionID.create);
+		return actions;
+	}
 }

@@ -1,7 +1,10 @@
 package fiuba.algo3.starcraft.logic.structures;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.List;
 
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.player.Player;
@@ -47,5 +50,10 @@ public abstract class Structure implements Updatable {
 	
 	public Point getPosition() {
 		return position;
+	}
+	
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		return actions;
 	}
 }

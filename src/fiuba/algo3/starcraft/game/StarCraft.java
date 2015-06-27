@@ -85,6 +85,10 @@ public class StarCraft {
 		players.removeAll(loosers);
 	}
 	
+	public Player getActivePlayer() {
+		return null;
+	}
+	
 	public void start() {
 		while (true) {
 			for (Player player : players) {

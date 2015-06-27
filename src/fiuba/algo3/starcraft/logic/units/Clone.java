@@ -1,5 +1,9 @@
 	package fiuba.algo3.starcraft.logic.units;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.view.DrawableView;
@@ -56,6 +60,12 @@ public class Clone extends Unit {
 	public void setDrawableView(DrawableView drawableView) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		actions.add(ActionID.move);
+		return actions;
 	}
 
 }
