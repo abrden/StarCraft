@@ -43,7 +43,7 @@ public class ConstructionStructureTest {
 	public void testCreateUnitWithNoResourcesThrowsInsufficientResources() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
 		templates.add(new MarineTemplate());
-		ConstructionStructure constructor = new ConstructionStructure(null, null, new Point(500,500), (Iterable<UnitTemplate>) templates);
+		ConstructionStructure constructor = new ConstructionStructure(null, null, new Point(500,500), templates);
 
 		constructor.create("Marine", new Point(500,500), new Resources(0,0), 0, 5);
 	}
@@ -52,7 +52,7 @@ public class ConstructionStructureTest {
 	public void testCreateUnitWithNoPopulationSpaceThrowsQuotaExceeded() throws QuotaExceeded, InsufficientResources, TemplateNotFound {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
 		templates.add(new MarineTemplate());
-		ConstructionStructure constructor = new ConstructionStructure(null, null, new Point(500,500), (Iterable<UnitTemplate>) templates);
+		ConstructionStructure constructor = new ConstructionStructure(null, null, new Point(500,500), templates);
 
 		constructor.create("Marine", new Point(500,500), new Resources(0,0), 0, 0);
 	}	
@@ -61,7 +61,7 @@ public class ConstructionStructureTest {
 	public void testCreateUnitReturnsConstructionWithUnitInside() throws QuotaExceeded, InsufficientResources, TemplateNotFound, ConstructionNotFinished, ConstructorIsDead {
 		Collection<UnitTemplate> templates =  new LinkedList<UnitTemplate>();
 		templates.add(new MarineTemplate());
-		ConstructionStructure constructor = new ConstructionStructure(null, new Life(100,0), new Point(500,500), (Iterable<UnitTemplate>) templates);
+		ConstructionStructure constructor = new ConstructionStructure(null, new Life(100,0), new Point(500,500), templates);
 
 		Construction<Unit> marineConstruction = constructor.create("Marine", new Point(500,500), new Resources(100, 100), 0, 5);
 		while(!marineConstruction.itsFinished())

@@ -81,4 +81,9 @@ public class MagicalUnit extends Unit implements Transportable {
 	public String[] getPowerNames() {
 		return generator.getPowerNames();
 	}
+
+	public TransportUnit getNearestTransportUnitInVisionRange() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

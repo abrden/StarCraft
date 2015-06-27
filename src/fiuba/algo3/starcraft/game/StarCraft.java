@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.game;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.Map;
@@ -35,7 +34,7 @@ public class StarCraft {
 	private static final int MAP_SIDE = 1000;
 	private static final int BASE_SIDE = 30;
 	private static final double RESERVOIR_DENSITY = 0.2;
-	private static final double AIR_DENSITY = 0.4;
+	private static final double AIR_DENSITY = 0.1;
 	private Player activePlayer;
 	
 	public StarCraft(List<PlayerSetup> playerSetups) {
