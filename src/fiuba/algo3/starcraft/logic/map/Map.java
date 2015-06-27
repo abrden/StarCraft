@@ -94,9 +94,12 @@ public class Map {
 	}
 
 	public void moveToLimbo(Transportable unit) {
-		unit.setPosition(new Point(side * 10, side * 10));
+		unit.setPosition(this.getLimbo());
 	}
-	
+
+    public Point getLimbo() {
+        return new Point(side * 10, side * 10);
+    }
 	public void moveUnitToDestination(Unit transportable, Point position) {
 		Point initialPoint = transportable.getPosition();
 		Point finalPoint = position;

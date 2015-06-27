@@ -33,8 +33,6 @@ public class ConstructionQueueTest {
         deposito = new DepositoSuministroTemplate().create(new Point(20,20));
     }
 
-
-
     @Test
     public void testDestroyingAConstructionStructureDestroysAllQueuedUnits() throws NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired, QuotaExceeded {
         player.receiveNewStructure(deposito);
