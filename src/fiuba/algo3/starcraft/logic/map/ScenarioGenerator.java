@@ -72,7 +72,7 @@ public class ScenarioGenerator {
 		Point center = new Point(this.map.getSide() / 2, this.map.getSide() / 2);
 		double radious = (map.getSide() / 2) - 10;
 		double angle = quantity / 2 * Math.PI;
-		Point currentRotationPoint = new Point(0, radious);
+		Point currentRotationPoint = new Point(radious, 0);
 		
 		ArrayList<Point> bases = new ArrayList<Point>();
 		
