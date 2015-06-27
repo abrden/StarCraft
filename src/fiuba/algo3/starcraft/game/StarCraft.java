@@ -27,11 +27,10 @@ public class StarCraft {
 
 	public Map map = new Map(MAP_SIDE, this);
 	private List<Player> players = new ArrayList<Player>();
-	
 	private ScenarioGenerator scenarioGenerator = new ScenarioGenerator(map);
 	private static final int INITIAL_MINERAL = 200;
 	private static final int INITIAL_GAS = 0;
-	private static final int MAP_SIDE = 1000;
+	private static final int MAP_SIDE = 10000;
 	private static final int BASE_SIDE = 30;
 	private static final double RESERVOIR_DENSITY = 0.2;
 	private static final double AIR_DENSITY = 0.1;
@@ -93,11 +92,14 @@ public class StarCraft {
 		players.removeAll(loosers);
 	}
 
+	public Map getMap() {
+		return map;
+	}
 	public Player getActivePlayer() {
 		return activePlayer;
 	}
 
-	public void gameOver(Player winner) {
+	private void gameOver(Player winner) {
 		//DO STUFF
 	}
 
