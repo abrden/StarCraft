@@ -81,10 +81,16 @@ public class StarCraft {
 		return activePlayer;
 	}
 
+	public void gameOver(Player winner) {
+		//DO STUFF
+	}
+
 	public void nextTurn() {
 		this.getRidOfLoosers();
+		if (players.size() == 1)
+			this.gameOver(players.get(0));
 		int index = players.indexOf(activePlayer);
-		if (index == players.size())
+		if (index == players.size() - 1)
 			activePlayer = players.get(0);
 		else
 			activePlayer = players.get(index + 1);
