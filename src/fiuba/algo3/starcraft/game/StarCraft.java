@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.game;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.Map;
@@ -15,17 +16,16 @@ import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class StarCraft {
-	
+
+
 	//TODO Eliminar luego de implementar mejora
-	private Player player1;
-	private Player player2; 
 	public StarCraft() {}
 	public void setGame(Player player1, Player player2, Map map) {
-		this.player1 = player1;
-		this.player2 = player2;
+		players.add(player1);
+		players.add(player2);
 		this.map = map;
 	}
-	
+
 	public Map map = new Map(MAP_SIDE, this);
 	private List<Player> players = new ArrayList<Player>();
 	
@@ -36,13 +36,15 @@ public class StarCraft {
 	private static final int BASE_SIDE = 30;
 	private static final double RESERVOIR_DENSITY = 0.2;
 	private static final double AIR_DENSITY = 0.4;
+	private Player activePlayer;
 	
 	public StarCraft(List<PlayerSetup> playerSetups) {
+		//TODO A JSON FILE GENERATES THE MAP INSTEAD OF SCENARIOGENERATOR
 		this.generateMap();
 		
 		int quantity = playerSetups.size();
 		List<Point> bases = this.generateBases(quantity);
-		
+		//
 		int i = 0;
 		for(PlayerSetup setup : playerSetups) {
 			this.generatePlayer(setup, bases.get(i));
@@ -72,36 +74,49 @@ public class StarCraft {
 	}
 
 	public Iterable<Unit> getEnemyUnits(Iterable<Unit> playerUnits) {
-		return playerUnits == player1.getUnits() ? player2.getUnits() : player1.getUnits();
+		List<Unit> enemyUnits = new ArrayList<Unit>();
+		for (Player player : players) {
+			if (playerUnits == player.getUnits())
+				continue;
+			for (Unit unit : player.getUnits())
+				enemyUnits.add(unit);
+		}
+		return enemyUnits;
 	}
-	
+
 	private void getRidOfLoosers() {
 		List<Player> loosers = new ArrayList<Player>();
 		for (Player player : players) {
-			if ((player.getMineral() == 0) && (player.getGas() == 0) && (player.numberOfUnits() == 0) && (player.numberOfStructures() == 0)) {
+			if ((player.getMineral() < 100) && (player.getGas() < 100) && (player.numberOfUnits() == 0) && (player.numberOfStructures() == 0) && (player.constructionQueueIsEmpty())) {
 				loosers.add(player);
 			}
 		}
 		players.removeAll(loosers);
 	}
-	
+
 	public Player getActivePlayer() {
-		return null;
+		return activePlayer;
 	}
-	
+
+	public void gameOver(Player winner) {
+		//DO STUFF
+	}
+
+	public void nextTurn() {
+		this.getRidOfLoosers();
+		if (players.size() == 1)
+			this.gameOver(players.get(0));
+		int index = players.indexOf(activePlayer);
+		if (index == players.size() - 1)
+			activePlayer = players.get(0);
+		else
+			activePlayer = players.get(index + 1);
+
+		activePlayer.newTurn();
+	}
+
 	public void start() {
-		while (true) {
-			for (Player player : players) {
-				player.newTurn();
-			}
-			this.getRidOfLoosers();
-			if (players.size() == 1) {
-				//we have a winner
-				break;
-			} else if (players.size() == 0) {
-				//no winners
-				break;
-			}
-		}
+		activePlayer  = players.get(0);
 	}
+
 }

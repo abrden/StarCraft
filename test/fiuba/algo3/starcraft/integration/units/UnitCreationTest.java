@@ -25,7 +25,6 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class UnitCreationTest {
 
-	StarCraft game;
 	Map map;
 	Player player1;
 	Player player2;
@@ -42,15 +41,13 @@ public class UnitCreationTest {
 	Point position6;
 	@Before
 	public void before() {
-		game = new StarCraft();
-		map = new Map(1000, game);
+		map = new Map(1000, null);
 		initialResources1 = new Resources(200, 0);
 		initialResources2 = new Resources(200, 0);
 		base1 = new Point(200,200);
 		base2 = new Point(800,800);
 		player1 = new Player(null, null, new TerranBuilder(), base1, initialResources1, map);
 		player2 = new Player(null, null, new ProtossBuilder(), base2, initialResources2, map);
-		game.setGame(player1, player2, map);
 		
 		position = new Point(1,1);
 		position2 = new Point (270,340);
