@@ -4,9 +4,7 @@ import java.security.InvalidParameterException;
 
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Updatable;
-import fiuba.algo3.starcraft.logic.templates.qualities.Life;
-import fiuba.algo3.starcraft.logic.templates.qualities.Radiacion;
-import fiuba.algo3.starcraft.logic.templates.qualities.TormentaPsionica;
+import fiuba.algo3.starcraft.logic.templates.qualities.*;
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Drawable;
 
@@ -94,4 +92,8 @@ public abstract class Unit implements Updatable, Drawable {
 	}
 
 	public abstract Iterable<ActionID> getActions();
+
+	public Attack getAttack() {
+		return null;
+	}
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.logic.test.map;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
@@ -66,5 +67,12 @@ public class ScenarioGeneratorTest {
 		MuggleUnit marine = new MarineTemplate().create(new Point(1, 1));
 		
 		assertTrue(!parcel.letPass(marine));
+	}
+	
+	@Test
+	public void testScenarioGiveCorrectAmmountOfPointsForBases() {
+		List<Point> points = scenario.generateBases(2);
+		
+		assertTrue(points.get(0).distance(points.get(1)) >= map.getSide() - 20);		
 	}
 }

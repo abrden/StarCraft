@@ -69,7 +69,24 @@ public class ScenarioGenerator {
 	*/
 	
 	public List<Point> generateBases(int quantity) {
-		// TODO Genera quantity puntos espejados que seran las bases de los jugadores
-		return null;
+		Point center = new Point(this.map.getSide() / 2, this.map.getSide() / 2);
+		double radious = (map.getSide() / 2) - 10;
+		double angle = 2 * Math.PI / quantity;
+		Point currentRotationPoint = new Point(radious, 0);
+		
+		ArrayList<Point> bases = new ArrayList<Point>();
+		
+		bases.add(currentRotationPoint.add(center));
+		
+		for (int i = 0 ; i < quantity - 1; i++) {
+			double newX = (currentRotationPoint.getX() * Math.cos(angle)) - (currentRotationPoint.getY() * Math.sin(angle));
+			double newY = (currentRotationPoint.getX() * Math.sin(angle)) + (currentRotationPoint.getY() * Math.cos(angle));
+			currentRotationPoint = new Point(newX, newY);
+			
+			bases.add(currentRotationPoint.add(center));
+		}
+		
+		return bases;
 	}
 }
+ 
