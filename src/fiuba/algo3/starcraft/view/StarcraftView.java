@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
+import fiuba.algo3.starcraft.game.StarCraft;
+
 public class StarcraftView extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -14,9 +16,13 @@ public class StarcraftView extends JFrame{
 	private PlayerStatusView playerStatusView;
 	private ActionsView actionsView;
 	
+	private StarCraft game;
+	
 	private Dimension screenSize;
 	
-	public StarcraftView() {
+	public StarcraftView(StarCraft game) {
+		this.game = game;
+		actionsView = new ActionsView(game);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.screenSize = getToolkit().getScreenSize();
 		setSize(screenSize);
