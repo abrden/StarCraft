@@ -72,8 +72,4 @@ public class MuggleUnit extends Unit implements Transportable {
 		return actions;
 	}
 
-	public TransportUnit getNearestTransportUnitInVisionRange() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

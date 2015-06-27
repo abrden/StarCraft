@@ -13,6 +13,7 @@ import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
@@ -161,8 +162,12 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 
 	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded {
-		TransportUnit transport = ((Transportable) actionable).getNearestTransportUnitInVisionRange();
-		game.getActivePlayer().embark(transport, (Transportable) actionable);
+		Player activePlayer = game.getActivePlayer();
+		//Transport transport = activePlayer.
+		
+		//TransportUnit transport = ((Transportable) actionable).getNearestTransportUnitInVisionRange();
+		
+		//activePlayer.embark(transport, (Transportable) actionable);
 		this.disableActionButtons();
 	}
 
