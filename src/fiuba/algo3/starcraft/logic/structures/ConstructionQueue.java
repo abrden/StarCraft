@@ -33,30 +33,29 @@ public class ConstructionQueue {
 			construction.lowerRelease();
 	}
 
-    private void getRidOfDeadConstructions(Collection<Construction> deadStructures) {
-        for (Construction<Unit> construction : deadStructures)
+    private void getRidOfDeadUnits(Collection<Construction<Unit>> deadUnits) {
+        for (Construction<Unit> construction : deadUnits)
             units.remove(construction);
     }
 	private Collection<Unit> finishedUnits() {
 		Collection<Unit> releases = new LinkedList<Unit>();
-        Collection<Construction> deadStructure = new LinkedList<Construction>();
+        Collection<Construction<Unit>> deadUnits = new LinkedList<Construction<Unit>>();
 		for (Construction<Unit> construction : units)
 			try {
 				releases.add(construction.gather());
 			} catch (ConstructionNotFinished e) {
 				continue;
 			} catch (ConstructorIsDead e) {
-                deadStructure.add(construction);
+                deadUnits.add(construction);
             }
 
-        this.getRidOfDeadConstructions(deadStructure);
+        this.getRidOfDeadUnits(deadUnits);
 		return releases;
 	}
 	
 	private Collection<Structure> finishedStructures() {
 		Collection<Structure> releases = new LinkedList<Structure>();
 		for (Construction<Structure> construction : structures)
-			//if (construction.itsFinished())
 			try {
 				releases.add(construction.gather());
 			} catch (ConstructionNotFinished e) {
