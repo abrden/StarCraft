@@ -33,6 +33,7 @@ public class StarcraftTest {
 		game = new StarCraft(list);
 		game.start();
 		player1 = game.getActivePlayer();
+		game.nextTurn();
 		assertTrue(0 == player1.numberOfUnits());
 	}
 }
