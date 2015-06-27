@@ -1,5 +1,9 @@
 package fiuba.algo3.starcraft.logic.map.areas;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Extractable;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
@@ -9,7 +13,7 @@ import fiuba.algo3.starcraft.logic.map.resources.Volcano;
 import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.view.DrawableView;
 
-public class Land extends Surface {
+public class Land extends Surface{
 	
 	private Extractable extractableSurface;
 
@@ -59,5 +63,12 @@ public class Land extends Surface {
 			} catch (NoResourcesToExtract e) {}
 		}
 		drawableView.setImageName(imageToPresent);
+	}
+
+	@Override
+	public Iterable<ActionID> getActions() {
+		List<ActionID> actions = new ArrayList<ActionID>();
+		actions.add(ActionID.build);
+		return actions;
 	}
 }

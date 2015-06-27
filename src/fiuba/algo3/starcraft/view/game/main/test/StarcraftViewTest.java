@@ -25,13 +25,14 @@ public class StarcraftViewTest {
 		game = new StarCraft(playerSetups);		
 	}
 	
-	public static void main(String[] args) {
-		initVariables();
-		initGame();
-}
 	public static void initGame() {		
 		StarcraftView starcraftView = new StarcraftView(game);
 		starcraftView.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		initVariables();
+		initGame();
 	}
 
 }

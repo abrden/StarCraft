@@ -31,11 +31,11 @@ public class StarcraftView extends JFrame{
 		setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
      
-        MapView mapView = new MapView(game.map);
-        setMapView(mapView);
-        
         ActionsView actionsView = new ActionsView(game);
         setActionsView(actionsView);
+        
+        MapView mapView = new MapView(game.map, actionsView);
+        setMapView(mapView);
         
         setVisible(true);
         
