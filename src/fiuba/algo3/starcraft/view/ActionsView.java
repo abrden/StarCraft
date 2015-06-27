@@ -4,15 +4,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
+import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
+import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
+import fiuba.algo3.starcraft.logic.structures.exceptions.QuotaExceeded;
+import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
+import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
+import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
@@ -47,6 +56,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	ActionsView(StarCraft game) {
 		this.game = game;
+		
 		this.add(move);
 		this.add(usePower);
 		this.add(buildStructure);
@@ -56,64 +66,118 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == move) {
-        	this.executeMove();
-        } else if (event.getSource() == usePower) {
-        	this.showPowers();
-        } else if (event.getSource() == buildStructure) {
-        	this.executeBuildStructure();
-        } else if (event.getSource() == createUnit) {
-        	this.executeCreateUnit();
-        } else if (event.getSource() == embark) {
-        	this.executeEmbark();
-        } else if (event.getSource() == disembark) {
-        	//this.executeDisembark();
-        //} else if ((event.getSource())) {
-        	
-        //	this.executeDisembark(transportable);
-        }
+    	try {
+	        if (event.getSource() == move) {
+	        	this.executeMove();
+	        } else if (event.getSource() == usePower) {
+	        	this.executeUsePower();
+	        } else if (event.getSource() == buildStructure) {
+				this.executeBuildStructure();
+	        } else if (event.getSource() == createUnit) {
+	        	this.executeCreateUnit();
+	        } else if (event.getSource() == embark) {
+	        	this.executeEmbark();
+	        } else if (event.getSource() == disembark) {
+	        	this.executeDisembark();
+	        }
+    	} catch (MissingStructureRequired | InsufficientResources
+				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
+				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
+				| UnitCanotBeSetHere e) {
+    		
+			// TODO DECIDIR QUE HACER CON LAS EXCEPCIONES
+		
+    	}
     }
     
-	private void showPowers() {
-		//new PowersOptionView(this.getX(), this.getY(), actionable).setVisible(true);
-		
+	private String getSelectedPowerName() {
+		String[] powers = ((MagicalUnit) actionable).getPowerNames();
+		int n = JOptionPane.showOptionDialog(null,
+				"Which power would you like to activate?",
+				"Power selection",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,     //do not use a custom Icon
+				powers,  //the titles of buttons
+				powers[0]); //default button title
+		return powers[n];
 	}
+	
+	private String getSelectedUnitName() {
+		String[] unitsAvaiable = ((ConstructionStructure) actionable).getTemplateNames();
+		
+		String name = (String) JOptionPane.showInputDialog(
+		                    null,
+		                    "Which unit would you like to create?",
+		                    "Unit selection",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,     //do not use a custom Icon
+		                    unitsAvaiable,
+		                    "-");
 
-	private void executeDisembark(Transportable transportable) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+		return name;
+	}
+	
+	private String getSelectedStructureName() {
+		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
+		
+		String name = (String) JOptionPane.showInputDialog(
+		                    null,
+		                    "Which structure would you like to create?",
+		                    "Structure selection",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,     //do not use a custom Icon
+		                    structuresAvaiable,
+		                    "-");
+
+		return name;
+	}
+	
+	private TransportUnit getSelectedTransport() {
+		//for (TransportUnit transport : ((Transportable) actionable).getTransportUnitsInVisionRange());
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private Transportable getSelectedTransportable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+		Transportable transportable = this.getSelectedTransportable();
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
 		this.disableActionButtons();
 	}
 
-	private void executeEmbark() {
-		// TODO Auto-generated method stub
-		//game.getActivePlayer().embark(transport, actionable);
+	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded {
+		TransportUnit transport = this.getSelectedTransport();
+		game.getActivePlayer().embark(transport, (Transportable) actionable);
 		this.disableActionButtons();
 	}
 
-	private void executeCreateUnit() {
-		//TODO actualizar panel con opciones de units a construir
-		
-		//String name = ;
-		//game.getActivePlayer().newUnitWithName(name, actionable);
+	private void executeCreateUnit() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
+		String unitName = this.getSelectedUnitName();
+		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
 		this.disableActionButtons();
 	}
 
-	private void executeBuildStructure() {
-		//TODO actualizar panel con opciones de structuras a construir
-		
-		//String name = ;
-		//game.getActivePlayer().newStructureWithName(name, ((Parcel) actionable).getOrigin());
+	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+		String structureName = this.getSelectedStructureName();
+		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
 		this.disableActionButtons();
 	}
 
 	private void executeUsePower() {
-		// TODO Auto-generated method stub
+		// TODO Como espero a que el jugador clickee un punto de destino?
+		String powerName = this.getSelectedPowerName();
+		//Point position = ;
+		//game.getActivePlayer().usePower(actionable, powerName, position);
 		this.disableActionButtons();
 	}
 
 	private void executeMove() {
 		// TODO Como espero a que el jugador clickee un punto de destino?
-		
 		//Point destination = ;
 		//game.getActivePlayer().move((Unit) actionable, destination);
 		this.disableActionButtons();

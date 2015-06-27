@@ -78,6 +78,10 @@ public class Player {
 		return resources;
 	}
 
+	public Builder getBuilder() {
+		return builder;
+	}
+	
 	public void newTurn() {
 		this.update();
 		
