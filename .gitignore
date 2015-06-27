@@ -10,3 +10,4 @@ build.xml.old
 *.jar
 out/
 *.iml
+/starcraft/nbproject/private/
