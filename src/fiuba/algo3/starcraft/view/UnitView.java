@@ -11,16 +11,18 @@ public class UnitView extends DrawableView implements MouseListener {
 	
 	private final int kBoundHeight = 70;
 	private final int kBoundWight = 60;
-	
+	private ActionsView actionsView;
 	
 	private static final long serialVersionUID = 1L;
 	Unit unit;
 	
-	public UnitView(Unit unit) {
+	public UnitView(Unit unit, ActionsView actionsView) {
 		this.unit = unit;
 		unit.setDrawableView(this);
 		setBounds((int)unit.getPosition().getX(), (int)unit.getPosition().getY(), kBoundWight, kBoundHeight);
 		addMouseListener(this);
+		
+		this.actionsView = actionsView;
 	}
 	
 	public void paint (Graphics g) {
@@ -49,6 +51,7 @@ public class UnitView extends DrawableView implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		actionsView.
 		System.out.println("clicked in unit " + unit.getName());
 	}
 
@@ -73,6 +76,5 @@ public class UnitView extends DrawableView implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}	
 }

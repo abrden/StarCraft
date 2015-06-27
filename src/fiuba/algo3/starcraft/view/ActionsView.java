@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import fiuba.algo3.starcraft.logic.units.Unit;
+
 public class ActionsView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -15,7 +17,8 @@ public class ActionsView extends JPanel {
 	private JButton createUnit; //Lleva a otro panel con botones para cada unidad
 	private JButton embark; //Lleva a otro panel con botones para cada unidad fuera pero dentro del radio de vision
 	private JButton disembark; //Lleva a otro panel con botones para cada unidad dentro
-	
+
+	/*
 	private void moveButtonActionPerformed(ActionEvent evt) {
 		
 	}
@@ -39,6 +42,7 @@ public class ActionsView extends JPanel {
 	private void disembarkButtonActionPerformed(ActionEvent evt) {
 		
 	}
+	*/
 	
 	public void enableMuggleUnitOptions() {
 		move.setEnabled(true);
@@ -83,5 +87,9 @@ public class ActionsView extends JPanel {
 		createUnit.setEnabled(true);
 		embark.setEnabled(false);
 		disembark.setEnabled(false);
+	}
+	
+	public void setActionsOfUnit(Unit unit) {
+	//	this.showActions(unit.getActions());
 	}
 }
