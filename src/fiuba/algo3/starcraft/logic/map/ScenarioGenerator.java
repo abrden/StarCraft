@@ -70,6 +70,9 @@ public class ScenarioGenerator {
 	
 	public List<Point> generateBases(int quantity) {
 		// TODO Genera quantity puntos espejados que seran las bases de los jugadores
-		return null;
+		List<Point> list = new ArrayList<Point>();
+		list.add(new Point(0,0));
+		list.add(new Point(999,999));
+		return list;
 	}
 }
