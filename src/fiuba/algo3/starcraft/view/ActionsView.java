@@ -209,6 +209,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (transportable == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
@@ -225,6 +226,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (unitName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
@@ -236,6 +238,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (structureName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
@@ -248,6 +251,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (powerName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		//Point position = ;

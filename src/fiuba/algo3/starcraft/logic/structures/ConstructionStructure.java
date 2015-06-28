@@ -12,9 +12,11 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.templates.units.UnitTemplate;
 import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.view.DrawableView;
 
-public class ConstructionStructure extends Structure {
+public class ConstructionStructure extends Structure implements Actionable {
 	
 	private final Collection<UnitTemplate> templates;
 	
@@ -67,5 +69,11 @@ public class ConstructionStructure extends Structure {
 		}
 		
 		return templateNames;
+	}
+
+	@Override
+	public void setDrawableView(DrawableView drawableView) {
+		// TODO Auto-generated method stub
+		
 	}
 }

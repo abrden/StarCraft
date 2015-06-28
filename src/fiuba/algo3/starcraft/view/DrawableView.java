@@ -25,5 +25,4 @@ public abstract class DrawableView extends Container {
 		} catch (Exception e) {}
 	}
 	
-	
 }

@@ -9,9 +9,9 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 public class ParcelView extends DrawableView implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
-	Parcel parcel;
+	private Parcel parcel;
 	
-	ActionsView actionsView;
+	private ActionsView actionsView;
 	
 	public ParcelView(Parcel parcel, ActionsView actionsView) {
 		this.parcel = parcel;
@@ -32,26 +32,14 @@ public class ParcelView extends DrawableView implements MouseListener{
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		//System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		//System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		//System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
-		
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		//System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
-		
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 }
