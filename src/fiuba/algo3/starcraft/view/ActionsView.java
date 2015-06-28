@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -142,6 +143,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	private String getSelectedStructureName() {
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
+		System.out.println("getSelectedStructureName Start");
 		String name = (String) JOptionPane.showInputDialog(
 		                    null,
 		                    "Which structure would you like to create?",
@@ -150,7 +152,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		                    null,     //do not use a custom Icon
 		                    structuresAvaiable,
 		                    "-");
-		
+		System.out.println("getSelectedStructureName End");
 		return name;
 	}
 	
