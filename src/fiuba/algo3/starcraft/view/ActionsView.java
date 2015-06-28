@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -30,14 +32,16 @@ public class ActionsView extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	
 	private StarCraft game;
+	private MessageBox messageBox;
+	
 	private Actionable actionable;
 	
-	private JButton move = new JButton("move"); //Pide un punto del mapa
-	private JButton usePower = new JButton("use power"); //Lleva a otro panel con botones para cada poder
-	private JButton buildStructure = new JButton("build structure"); //Lleva a otro panel con botones para cada estructura
-	private JButton createUnit = new JButton("create unit"); //Lleva a otro panel con botones para cada unidad
-	private JButton embark = new JButton("embark"); //Lleva a otro panel con botones para cada unidad fuera pero dentro del radio de vision
-	private JButton disembark = new JButton("disembark"); //Lleva a otro panel con botones para cada unidad dentro
+	private JButton move = new JButton("Move");
+	private JButton usePower = new JButton("Use power");
+	private JButton buildStructure = new JButton("Build structure");
+	private JButton createUnit = new JButton("Create unit");
+	private JButton embark = new JButton("Embark");
+	private JButton disembark = new JButton("Disembark");
 	
 	private boolean performingAction = false;
 	/*
@@ -55,8 +59,9 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	*/
 	
-	ActionsView(StarCraft game) {
+	ActionsView(StarCraft game, MessageBox messageBox) {
 		this.game = game;
+		this.messageBox = messageBox;
 		
 		move.addActionListener(this);
 		usePower.addActionListener(this);
@@ -79,7 +84,7 @@ public class ActionsView extends JPanel implements ActionListener {
     	performingAction = true;
     	try {
 	        if (event.getSource() == move) {
-	        	System.out.println("entre a movew");
+	        	System.out.println("entre a move");
 	        	this.executeMove();
 	        } else if (event.getSource() == usePower) {
 	        	System.out.println("entre a use power");
@@ -100,10 +105,9 @@ public class ActionsView extends JPanel implements ActionListener {
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
-				| UnitCanotBeSetHere e) {
+				| UnitCanotBeSetHere | NoReachableTransport e) {
     		
-			// TODO DECIDIR QUE HACER CON LAS EXCEPCIONES
-		
+			messageBox.displayMessage(e.getMessage());
     	}
     }
     
@@ -136,7 +140,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private String getSelectedStructureName() {
-		
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
@@ -151,20 +154,45 @@ public class ActionsView extends JPanel implements ActionListener {
 		return name;
 	}
 	
-	private Transportable getSelectedTransportable() {
-		// TODO Auto-generated method stub
+	private Transportable getSelectedPassenger(TransportUnit transport) {
+		List<Transportable> passengers = transport.getPassengers();
+		
+		String[] passengerRepresentations = new String[passengers.size()];
+		int i = 0;
+		for (Transportable passenger : passengers) {
+			passengerRepresentations[i] = (passenger.getName() + " - " + Integer.toString(passenger.getHealth())  + " - " + Integer.toString(passenger.getShield()));
+			i++;
+		}
+		
+		String[] passengerRepresentation = ((String) JOptionPane.showInputDialog(
+		                    null,
+		                    "Which unit would you like to disembark?",
+		                    "Unit selection",
+		                    JOptionPane.PLAIN_MESSAGE,
+		                    null,     //do not use a custom Icon
+		                    passengerRepresentations,
+		                    "-")).split(" - ");
+
+		String name = passengerRepresentation[0];
+		int health = Integer.parseInt(passengerRepresentation[1]);
+		int shield = Integer.parseInt(passengerRepresentation[2]);
+		
+		for (Transportable passenger : passengers) {
+			if ((name == passenger.getName()) && (health == passenger.getHealth()) && (shield == passenger.getShield()))
+				return passenger;
+		}
+		
 		return null;
 	}
 	
 	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
-		Transportable transportable = this.getSelectedTransportable();
+		Transportable transportable = this.getSelectedPassenger((TransportUnit) actionable);
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
 		this.disableActionButtons();
 	}
 
-	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded {
-		TransportUnit transport = ((Transportable) actionable).getNearestTransportUnitInVisionRange();
-		game.getActivePlayer().embark(transport, (Transportable) actionable);
+	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded, NoReachableTransport {
+		game.getActivePlayer().embark((Transportable) actionable);
 		this.disableActionButtons();
 	}
 
@@ -219,10 +247,10 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
-		if (performingAction) {
-			return;
-		}
+		if (performingAction) return;
+		
 		disableActionButtons();
+		messageBox.clear();
 		
 		this.actionable = actionable;
 		
@@ -231,7 +259,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private void disableActionButtons() {
-		System.out.println("entre a desinablear");
 		move.setEnabled(false);
 		usePower.setEnabled(false);
 		buildStructure.setEnabled(false);

@@ -16,5 +16,9 @@ public interface Transportable {
 
 	public void killInFlight();
 
-	public TransportUnit getNearestTransportUnitInVisionRange();
+	public String getName();
+
+	public int getHealth();
+
+	public int getShield();
 }

@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.map.areas;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;

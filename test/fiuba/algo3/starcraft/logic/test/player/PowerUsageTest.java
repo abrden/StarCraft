@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.logic.test.player;
 
 import static org.junit.Assert.*;
 
-import fiuba.algo3.starcraft.game.PlayerSetup;
 import org.junit.Before;
 import org.junit.Test;
 

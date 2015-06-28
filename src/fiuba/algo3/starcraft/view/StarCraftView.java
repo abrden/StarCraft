@@ -8,21 +8,22 @@ import javax.swing.JScrollPane;
 
 import fiuba.algo3.starcraft.game.StarCraft;
 
-public class StarcraftView extends JFrame{
+public class StarCraftView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private MapView mapView;
 	private PlayerStatusView playerStatusView;
 	private ActionsView actionsView;
+	private MessageBox messageBox;
 	
 	private StarCraft game;
 	
 	private Dimension screenSize;
 	
-	public StarcraftView(StarCraft game) {
+	public StarCraftView(StarCraft game) {
 		this.game = game;
-		actionsView = new ActionsView(game);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.screenSize = getToolkit().getScreenSize();
 		setSize(screenSize);
@@ -30,15 +31,36 @@ public class StarcraftView extends JFrame{
 		getContentPane().setBackground(new Color(0,0,255));
 		setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-     
-        ActionsView actionsView = new ActionsView(game);
+        
+        MessageBox messageBox = new MessageBox();
+        setMessageBox(messageBox);
+        
+     	PlayerStatusView playerStatusView = new PlayerStatusView(game);
+     	setPlayerStatusView(playerStatusView);
+        
+        ActionsView actionsView = new ActionsView(game, messageBox);
         setActionsView(actionsView);
         
         MapView mapView = new MapView(game.map, actionsView);
         setMapView(mapView);
         
         setVisible(true);
-        
+	}
+	
+	private void setPlayerStatusView(PlayerStatusView playerStatusView) {
+		this.playerStatusView = playerStatusView;
+		
+		// Agregar opciones de formato
+		
+		add(playerStatusView);
+	}
+	
+	private void setMessageBox(MessageBox messageBox) {
+		this.messageBox = messageBox;
+		
+		// Agregar opciones de formato
+		
+		add(messageBox);
 	}
 	
 	private void setMapView(MapView mapView) {

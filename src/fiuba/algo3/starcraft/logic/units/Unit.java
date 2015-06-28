@@ -96,4 +96,8 @@ public abstract class Unit implements Updatable, Drawable {
 	public Attack getAttack() {
 		return null;
 	}
+
+	public boolean canCarryOtherUnits() {
+		return false;
+	}
 }

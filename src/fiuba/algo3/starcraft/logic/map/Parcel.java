@@ -1,10 +1,5 @@
 package fiuba.algo3.starcraft.logic.map;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import fiuba.algo3.starcraft.game.ActionID;
-import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.areas.Air;
 import fiuba.algo3.starcraft.logic.map.areas.Land;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;

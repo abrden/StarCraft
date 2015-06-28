@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
-import fiuba.algo3.starcraft.view.StarcraftView;
+import fiuba.algo3.starcraft.view.StarCraftView;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
 
 
@@ -26,7 +26,7 @@ public class StarcraftViewTest {
 	}
 	
 	public static void initGame() {		
-		StarcraftView starcraftView = new StarcraftView(game);
+		StarCraftView starcraftView = new StarCraftView(game);
 		starcraftView.setVisible(true);
 	}
 	
