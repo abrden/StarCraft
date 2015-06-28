@@ -34,9 +34,9 @@ public class StarCraftView extends JFrame {
         
         MessageBox messageBox = new MessageBox();
         setMessageBox(messageBox);
-        
+       /* 
      	PlayerStatusView playerStatusView = new PlayerStatusView(game);
-     	setPlayerStatusView(playerStatusView);
+     	setPlayerStatusView(playerStatusView);*/
         
         ActionsView actionsView = new ActionsView(game, messageBox);
         setActionsView(actionsView);
