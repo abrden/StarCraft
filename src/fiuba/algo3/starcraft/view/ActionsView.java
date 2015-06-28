@@ -150,7 +150,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		                    null,     //do not use a custom Icon
 		                    structuresAvaiable,
 		                    "-");
-
+		
 		return name;
 	}
 	
@@ -247,7 +247,8 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
-		if (performingAction) return;
+		if (performingAction) 
+			return;
 		
 		disableActionButtons();
 		messageBox.clear();
