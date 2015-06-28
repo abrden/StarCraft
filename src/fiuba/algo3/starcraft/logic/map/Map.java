@@ -3,13 +3,16 @@ package fiuba.algo3.starcraft.logic.map;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
+import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
@@ -140,6 +143,15 @@ public class Map {
 	//FIXME: lets try to implement canFly in unit, transportUnit can fly, thats a fact
 	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
+	}
+	
+	public List<TransportUnit> transportUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) throws NoReachableTransport {
+		LinkedList<TransportUnit> transports = new LinkedList<TransportUnit>();
+		for (Unit unit : this.unitsInCircle(position, range, playerUnits)) {
+			if (unit.canCarryOtherUnits()) transports.addLast((TransportUnit) unit);
+		}
+		if (transports.size() == 0) throw new NoReachableTransport();
+		return transports;
 	}
 	
 	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units/*, canFly*/) {

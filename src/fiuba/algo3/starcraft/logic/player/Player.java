@@ -7,6 +7,7 @@ import java.util.List;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
@@ -238,6 +239,16 @@ public class Player {
 		if (!power.itsFinished()) activePowers.add(power);
 	}
 	
+	private TransportUnit nearestTransportInUnitRange(Transportable unit) throws NoReachableTransport {
+		return map.transportUnitsInCircle(unit.getPosition(), unit.getStepsPerTurn(), units).get(0);
+	}
+	
+	public void embark(Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded, NoReachableTransport {
+		this.nearestTransportInUnitRange(unit).embark(unit);
+		map.moveToLimbo(unit);
+	}
+	
+	//TODO Eliminar restableciendo pruebas
 	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded {
 		transport.embark(unit);
 		map.moveToLimbo(unit);
