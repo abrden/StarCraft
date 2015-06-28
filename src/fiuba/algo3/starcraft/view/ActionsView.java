@@ -137,7 +137,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private String getSelectedStructureName() {
 		
-		System.out.println("hola wachin");
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
@@ -148,7 +147,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		                    null,     //do not use a custom Icon
 		                    structuresAvaiable,
 		                    "-");
-
+		
 		return name;
 	}
 	
