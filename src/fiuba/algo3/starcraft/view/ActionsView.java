@@ -32,14 +32,16 @@ public class ActionsView extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	
 	private StarCraft game;
+	private MessageBox messageBox;
+	
 	private Actionable actionable;
 	
-	private JButton move = new JButton("move");
-	private JButton usePower = new JButton("use power");
-	private JButton buildStructure = new JButton("build structure");
-	private JButton createUnit = new JButton("create unit");
-	private JButton embark = new JButton("embark");
-	private JButton disembark = new JButton("disembark");
+	private JButton move = new JButton("Move");
+	private JButton usePower = new JButton("Use power");
+	private JButton buildStructure = new JButton("Build structure");
+	private JButton createUnit = new JButton("Create unit");
+	private JButton embark = new JButton("Embark");
+	private JButton disembark = new JButton("Disembark");
 	
 	private boolean performingAction = false;
 	/*
@@ -57,8 +59,9 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	*/
 	
-	ActionsView(StarCraft game) {
+	ActionsView(StarCraft game, MessageBox messageBox) {
 		this.game = game;
+		this.messageBox = messageBox;
 		
 		move.addActionListener(this);
 		usePower.addActionListener(this);
@@ -104,9 +107,7 @@ public class ActionsView extends JPanel implements ActionListener {
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
 				| UnitCanotBeSetHere | NoReachableTransport e) {
     		
-			// TODO DECIDIR QUE HACER CON LAS EXCEPCIONES
-    		System.out.println("CAPTURA ESTA EXCEPCION Y PASA SU MENSAJE POR EL JPANEL DE COMUNICACION VIEJO");
-		
+			messageBox.displayMessage(e.getMessage());
     	}
     }
     
@@ -139,8 +140,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private String getSelectedStructureName() {
-		
-		System.out.println("hola wachin");
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
@@ -248,10 +247,10 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
-		if (performingAction) {
-			return;
-		}
+		if (performingAction) return;
+		
 		disableActionButtons();
+		messageBox.clear();
 		
 		this.actionable = actionable;
 		
@@ -260,7 +259,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private void disableActionButtons() {
-		System.out.println("entre a desenablear");
 		move.setEnabled(false);
 		usePower.setEnabled(false);
 		buildStructure.setEnabled(false);
