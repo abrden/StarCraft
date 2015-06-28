@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.logic.test.units;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
@@ -82,13 +83,15 @@ public class NaveTransporteTerranTest {
     }
 
     @Test(expected = UnitCanotBeSetHere.class)
-    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCanotBeSetHere {
+    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoReachableTransport {
         Map map = new Map(1000,null);
         Parcel parcel = map.getParcelContainingPoint(new Point(495,495));
         parcel.setAirSurface();
-        Player player = new Player("pepe", null, new TerranBuilder(), new Point(300,300), null, map);
+        Player player = new Player("pepe", null, new TerranBuilder(), new Point(500,500), null, map);
+        player.receiveNewUnit(marine);
+        player.receiveNewUnit(navetrans);
 
-        player.embark(navetrans, (Transportable) marine);
+        player.embark((Transportable) marine);
         player.move(navetrans, new Point(495, 495));
 
         player.disembark(navetrans, (Transportable) marine);
