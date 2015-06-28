@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
-import fiuba.algo3.starcraft.view.StarcraftView;
+import fiuba.algo3.starcraft.view.StarCraftView;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
 
 
@@ -15,8 +15,8 @@ public class StarcraftViewTest {
 		ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
 			
 		try {
-			playerSetups.add(new PlayerSetup("santi", "red", "Terran"));
-			playerSetups.add(new PlayerSetup("agus", "blue", "Terran"));
+			playerSetups.add(new PlayerSetup("Santi", "red", "Terran"));
+			playerSetups.add(new PlayerSetup("Agus", "blue", "Terran"));
 		} catch (NameIsTooShort e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,7 +26,7 @@ public class StarcraftViewTest {
 	}
 	
 	public static void initGame() {		
-		StarcraftView starcraftView = new StarcraftView(game);
+		StarCraftView starcraftView = new StarCraftView(game);
 		starcraftView.setVisible(true);
 	}
 	

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -157,7 +158,9 @@ public class StartupView extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("presets/StarCraft.png")));
+        String pathToImage = "fiuba/algo3/starcraft/presets/StarCraft.png";
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(pathToImage));
+        logo.setIcon(icon);
 
         startButton.setText("Start");
         startButton.addActionListener(new java.awt.event.ActionListener() {
