@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.logic.map;
 
+import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.areas.Air;
 import fiuba.algo3.starcraft.logic.map.areas.Land;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;
@@ -7,7 +9,7 @@ import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
-public class Parcel {
+public class Parcel implements Actionable {
 	
 	private Point origin;
 	private double side;
@@ -55,5 +57,9 @@ public class Parcel {
 
 	public Structure getStructure() {
 		return structure;
+	}
+
+	public Iterable<ActionID> getActions() {
+		return this.getLandForExplotation().getActions();
 	}
 }

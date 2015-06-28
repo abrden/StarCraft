@@ -28,7 +28,7 @@ public class ParcelView extends DrawableView implements MouseListener{
 	 	double mapClickY = (arg0.getPoint().getY() + parcel.getOrigin().getY());
 		System.out.println("" + mapClickX + ", " + mapClickY);
 		
-		actionsView.showActions(this.parcel.getLandForExplotation());
+		actionsView.showActions(this.parcel);
 	}
 
 	@Override

@@ -69,7 +69,14 @@ public abstract class Builder {
 
 	public String[] getTemplateNames() {
 		String[] templateNames = new String[templates.size()];
-		return templates.toArray(templateNames);
+		
+		int i = 0;
+		for (StructureTemplate template : templates) {
+			templateNames[i] = template.getName();
+			i++;
+		}
+		
+		return templateNames;
 	}
 
 }
