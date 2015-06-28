@@ -1,7 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import fiuba.algo3.starcraft.view.DrawableView;
 
 public class TransportUnit extends Unit {
 	
-	private final Collection<Transportable> passengers;
+	private final List<Transportable> passengers;
 	private final int capacity;
 
 	public TransportUnit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota, int capacity) {
@@ -81,5 +80,13 @@ public class TransportUnit extends Unit {
 		actions.add(ActionID.move);
 		actions.add(ActionID.disembark);
 		return actions;
+	}
+	
+	public boolean canCarryOtherUnits() {
+		return true;
+	}
+
+	public List<Transportable> getPassengers() {
+		return passengers;
 	}
 }

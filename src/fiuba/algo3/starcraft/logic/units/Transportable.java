@@ -15,4 +15,10 @@ public interface Transportable {
 	public int getStepsPerTurn();
 
 	public void killInFlight();
+
+	public String getName();
+
+	public int getHealth();
+
+	public int getShield();
 }
