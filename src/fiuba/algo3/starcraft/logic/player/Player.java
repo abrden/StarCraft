@@ -247,13 +247,8 @@ public class Player {
 		this.nearestTransportInUnitRange(unit).embark(unit);
 		map.moveToLimbo(unit);
 	}
-	
-	//TODO Eliminar restableciendo pruebas
-	public void embark(TransportUnit transport, Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded {
-		transport.embark(unit);
-		map.moveToLimbo(unit);
-	}
-	
+
+
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());
         ((Unit) unit).setDestination(unit.getPosition());
