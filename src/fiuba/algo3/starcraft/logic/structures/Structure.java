@@ -6,6 +6,7 @@ import java.util.List;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
+import fiuba.algo3.starcraft.game.Drawable;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.player.Player;
@@ -13,7 +14,7 @@ import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.view.DrawableView;
 
-public abstract class Structure implements Updatable, Actionable {
+public abstract class Structure implements Updatable, Actionable, Drawable {
 	
 	protected Point position;
 	protected Life life;
