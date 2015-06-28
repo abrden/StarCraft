@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -43,8 +42,10 @@ public class ActionsView extends JPanel implements ActionListener {
 	private JButton createUnit = new JButton("Create unit");
 	private JButton embark = new JButton("Embark");
 	private JButton disembark = new JButton("Disembark");
+	private JButton pass = new JButton("PASS TURN");
 	
 	private boolean performingAction = false;
+	
 	/*
 	ImageIcon move = createImageIcon("");
     ImageIcon usePower = createImageIcon("");
@@ -52,6 +53,7 @@ public class ActionsView extends JPanel implements ActionListener {
     ImageIcon createUnit = createImageIcon("");
    	ImageIcon embark = createImageIcon("");
     ImageIcon disembark = createImageIcon("");
+    ImageIcon pass = createImageIcon("");
     
     protected static ImageIcon createImageIcon(String path) {
     java.net.URL imgURL = ButtonDemo.class.getResource(path);
@@ -70,6 +72,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		createUnit.addActionListener(this);
 		embark.addActionListener(this);
 		disembark.addActionListener(this);
+		pass.addActionListener(this);
 		
 		this.add(move);
 		this.add(usePower);
@@ -77,7 +80,9 @@ public class ActionsView extends JPanel implements ActionListener {
 		this.add(createUnit);
 		this.add(embark);
 		this.add(disembark);
+		this.add(pass);
 		
+		pass.setEnabled(true);
 		this.disableActionButtons();
 	}
 	
@@ -102,12 +107,16 @@ public class ActionsView extends JPanel implements ActionListener {
 	        } else if (event.getSource() == disembark) {
 	        	System.out.println("entre a disembark");
 	        	this.executeDisembark();
+	        } else if (event.getSource() == pass) {
+	        	System.out.println("entre a pass turn");
+	        	this.executePass();
 	        } 
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
 				| UnitCanotBeSetHere | NoReachableTransport e) {
     		
+    		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
     	}
     	performingAction = false;
@@ -145,16 +154,15 @@ public class ActionsView extends JPanel implements ActionListener {
 	private String getSelectedStructureName() {
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
-		System.out.println("getSelectedStructureName Start");
 		String name = (String) JOptionPane.showInputDialog(
 		                    null,
-		                    "Which structure would you like to create?",
+		                    "Which structure would you like to build?",
 		                    "Structure selection",
 		                    JOptionPane.PLAIN_MESSAGE,
 		                    null,     //do not use a custom Icon
 		                    structuresAvaiable,
 		                    "-");
-		System.out.println("getSelectedStructureName End");
+		
 		return name;
 	}
 	
@@ -189,8 +197,19 @@ public class ActionsView extends JPanel implements ActionListener {
 		return null;
 	}
 	
+	private void executePass() {
+		this.disableActionButtons();
+		game.nextTurn();
+	}
+	
 	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
 		Transportable transportable = this.getSelectedPassenger((TransportUnit) actionable);
+		
+		if (transportable == null) {
+			this.disableActionButtons();
+			return;
+		}
+		
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
 	}
 
@@ -201,17 +220,35 @@ public class ActionsView extends JPanel implements ActionListener {
 
 	private void executeCreateUnit() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		String unitName = this.getSelectedUnitName();
+		
+		if (unitName == null) {
+			this.disableActionButtons();
+			return;
+		}
+		
 		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
 	}
 
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
+		
+		if (structureName == null) {
+			this.disableActionButtons();
+			return;
+		}
+		
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
 	}
 
 	private void executeUsePower() {
 		// TODO Como espero a que el jugador clickee un punto de destino?
 		String powerName = this.getSelectedPowerName();
+		
+		if (powerName == null) {
+			this.disableActionButtons();
+			return;
+		}
+		
 		//Point position = ;
 		//game.getActivePlayer().usePower(actionable, powerName, position);
 	}

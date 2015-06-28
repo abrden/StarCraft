@@ -2,25 +2,28 @@ package fiuba.algo3.starcraft.view;
 
 import java.awt.Color;
 import java.util.ArrayList;
+
 import javax.swing.JComponent;
+
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class MapView extends JComponent {
 	
 	private static final long serialVersionUID = 1L;
 	
-	Map map;
-	ArrayList<ParcelView> parcelViews = new ArrayList<ParcelView>();
-	ArrayList<UnitView> unitViews = new ArrayList<UnitView>();
-	
+	private Map map;
+	private ActionsView actionsView;
+	private ArrayList<ParcelView> parcelViews = new ArrayList<ParcelView>();
+	private ArrayList<UnitView> unitViews = new ArrayList<UnitView>();
 	
 	public MapView(Map map, ActionsView actionsView) {
 		this.map = map;
 		
-		setBounds(0, 0, (int)map.getSide(), (int)map.getSide());
+		setBounds(0, 0, (int) map.getSide(), (int) map.getSide());
 		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()), actionsView);
 		setBackground(new Color(0,0,0));
 	}
@@ -50,10 +53,18 @@ public class MapView extends JComponent {
 	
 	public void addUnitToMap(Unit unit) {
 		this.removeAll();
-		UnitView unitView = new UnitView(unit);
+		UnitView unitView = new UnitView(unit, actionsView);
 		unitViews.add(unitView);
 		//addMouseListener(unitView);
 		updateUnitViews();
 		updateParcelViews();
 	}
+	
+	public void addStructureToMap(Structure structure) {
+		Parcel parcel = map.getParcelContainingPoint(structure.getPosition());
+		StructureView structureView = new StructureView(structure, parcel, actionsView);
+
+		//TODO COMPLETAR
+	}
+	
 }
