@@ -111,7 +111,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	        	System.out.println("entre a pass turn");
 	        	this.executePass();
 	        } 
-	        
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
@@ -119,11 +118,11 @@ public class ActionsView extends JPanel implements ActionListener {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
-			performingAction = false;
-			this.disableActionButtons();
     	}
+    	performingAction = false;
+    	disableActionButtons();
     }
-
+    
 	private String getSelectedPowerName() {
 		String[] powers = ((MagicalUnit) actionable).getPowerNames();
 		int n = JOptionPane.showOptionDialog(null,
@@ -153,7 +152,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private String getSelectedStructureName() {
-		
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
