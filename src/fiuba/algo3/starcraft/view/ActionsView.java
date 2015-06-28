@@ -206,6 +206,11 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
 		Transportable transportable = this.getSelectedPassenger((TransportUnit) actionable);
+		
+		if (transportable == null) {
+			this.disableActionButtons();
+		}
+		
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
 		this.disableActionButtons();
 	}
@@ -217,12 +222,22 @@ public class ActionsView extends JPanel implements ActionListener {
 
 	private void executeCreateUnit() throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		String unitName = this.getSelectedUnitName();
+		
+		if (unitName == null) {
+			this.disableActionButtons();
+		}
+		
 		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
 		this.disableActionButtons();
 	}
 
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
+		
+		if (structureName == null) {
+			this.disableActionButtons();
+		}
+		
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
 		this.disableActionButtons();
 	}
@@ -230,6 +245,11 @@ public class ActionsView extends JPanel implements ActionListener {
 	private void executeUsePower() {
 		// TODO Como espero a que el jugador clickee un punto de destino?
 		String powerName = this.getSelectedPowerName();
+		
+		if (powerName == null) {
+			this.disableActionButtons();
+		}
+		
 		//Point position = ;
 		//game.getActivePlayer().usePower(actionable, powerName, position);
 		this.disableActionButtons();
