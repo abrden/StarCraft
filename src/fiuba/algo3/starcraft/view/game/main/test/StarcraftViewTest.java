@@ -15,14 +15,15 @@ public class StarcraftViewTest {
 		ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
 			
 		try {
-			playerSetups.add(new PlayerSetup("Santi", "red", "Terran"));
-			playerSetups.add(new PlayerSetup("Agus", "blue", "Terran"));
+			playerSetups.add(new PlayerSetup("Santi", "Red", "Terran"));
+			playerSetups.add(new PlayerSetup("Agus", "Blue", "Protoss"));
 		} catch (NameIsTooShort e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			
-		game = new StarCraft(playerSetups);		
+		game = new StarCraft(playerSetups);
+		game.start(); // Donde deberiamos encajar esto?
 	}
 	
 	public static void initGame() {		

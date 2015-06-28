@@ -65,7 +65,6 @@ public class Land extends Surface{
 		drawableView.setImageName(imageToPresent);
 	}
 
-	@Override
 	public Iterable<ActionID> getActions() {
 		List<ActionID> actions = new ArrayList<ActionID>();
 		actions.add(ActionID.build);

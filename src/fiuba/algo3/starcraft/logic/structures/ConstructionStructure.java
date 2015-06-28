@@ -59,6 +59,13 @@ public class ConstructionStructure extends Structure {
 
 	public String[] getTemplateNames() {
 		String[] templateNames = new String[templates.size()];
-		return templates.toArray(templateNames);
+		
+		int i = 0;
+		for (UnitTemplate template : templates) {
+			templateNames[i] = template.getName();
+			i++;
+		}
+		
+		return templateNames;
 	}
 }
