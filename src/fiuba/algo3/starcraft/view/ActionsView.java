@@ -111,7 +111,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	        	System.out.println("entre a pass turn");
 	        	this.executePass();
 	        } 
-	        
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
@@ -119,11 +118,11 @@ public class ActionsView extends JPanel implements ActionListener {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
-			performingAction = false;
-			this.disableActionButtons();
     	}
+    	performingAction = false;
+    	disableActionButtons();
     }
-
+    
 	private String getSelectedPowerName() {
 		String[] powers = ((MagicalUnit) actionable).getPowerNames();
 		int n = JOptionPane.showOptionDialog(null,
@@ -153,7 +152,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	private String getSelectedStructureName() {
-		
 		String[] structuresAvaiable = game.getActivePlayer().getBuilder().getTemplateNames();
 		
 		String name = (String) JOptionPane.showInputDialog(
@@ -209,10 +207,10 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (transportable == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
-		this.disableActionButtons();
 	}
 
 	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded, NoReachableTransport {
@@ -225,10 +223,10 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (unitName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
-		this.disableActionButtons();
 	}
 
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
@@ -236,10 +234,10 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (structureName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
-		this.disableActionButtons();
 	}
 
 	private void executeUsePower() {
@@ -248,18 +246,17 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		if (powerName == null) {
 			this.disableActionButtons();
+			return;
 		}
 		
 		//Point position = ;
 		//game.getActivePlayer().usePower(actionable, powerName, position);
-		this.disableActionButtons();
 	}
 
 	private void executeMove() {
 		// TODO Como espero a que el jugador clickee un punto de destino?
 		//Point destination = ;
 		//game.getActivePlayer().move((Unit) actionable, destination);
-		this.disableActionButtons();
 	}
 	
 	private void enableActionButton(ActionID action) {

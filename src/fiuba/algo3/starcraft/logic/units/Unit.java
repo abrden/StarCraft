@@ -6,9 +6,10 @@ import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.*;
 import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.game.Drawable;
 
-public abstract class Unit implements Updatable, Drawable {
+public abstract class Unit implements Updatable, Drawable, Actionable {
 	
 	protected final String name;
 	protected final int vision;

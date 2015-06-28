@@ -8,16 +8,18 @@ import java.awt.event.MouseListener;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class UnitView extends DrawableView implements MouseListener {
+
+	private static final long serialVersionUID = 1L;
 	
 	private final int kBoundHeight = 70;
 	private final int kBoundWight = 60;
+
+	private Unit unit;
+	private ActionsView actionsView;
 	
-	
-	private static final long serialVersionUID = 1L;
-	Unit unit;
-	
-	public UnitView(Unit unit) {
+	public UnitView(Unit unit, ActionsView actionsView) {
 		this.unit = unit;
+		this.actionsView = actionsView;
 		unit.setDrawableView(this);
 		setBounds((int)unit.getPosition().getX(), (int)unit.getPosition().getY(), kBoundWight, kBoundHeight);
 		addMouseListener(this);
@@ -46,33 +48,21 @@ public class UnitView extends DrawableView implements MouseListener {
 		return 60;
 	}
 	
-	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		actionsView.showActions(this.unit);
 		System.out.println("clicked in unit " + unit.getName());
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}	
+	public void mouseReleased(MouseEvent arg0) {}	
 }
