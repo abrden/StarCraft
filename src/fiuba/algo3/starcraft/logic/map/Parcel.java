@@ -35,7 +35,7 @@ public class Parcel implements Actionable, Drawable{
 	public void setStructure(Structure structure) {
 		this.structure = structure;
 		
-		setDrawableView(drawableView);
+		if (drawableView != null) setDrawableView(drawableView);
 	}
 	
 	public void setAirSurface() {
