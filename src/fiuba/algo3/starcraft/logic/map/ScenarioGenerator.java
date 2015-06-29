@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 
 public class ScenarioGenerator {
@@ -68,25 +69,28 @@ public class ScenarioGenerator {
 	}
 	*/
 	
+	
 	public List<Point> generateBases(int quantity) {
 		Point center = new Point(this.map.getSide() / 2, this.map.getSide() / 2);
-		double radious = (map.getSide() / 2) - 10;
+		double radious = (map.getSide() / 2) - (StarCraft.BASE_SIDE / 2); //- BASE_SIDE/2
 		double angle = 2 * Math.PI / quantity;
 		Point currentRotationPoint = new Point(radious, 0);
+		Point shift = new Point((StarCraft.BASE_SIDE / 2), (StarCraft.BASE_SIDE / 2));
 		
 		ArrayList<Point> bases = new ArrayList<Point>();
 		
-		bases.add(currentRotationPoint.add(center));
+		bases.add(currentRotationPoint.add(center).substract(shift));
 		
 		for (int i = 0 ; i < quantity - 1; i++) {
 			double newX = (currentRotationPoint.getX() * Math.cos(angle)) - (currentRotationPoint.getY() * Math.sin(angle));
 			double newY = (currentRotationPoint.getX() * Math.sin(angle)) + (currentRotationPoint.getY() * Math.cos(angle));
 			currentRotationPoint = new Point(newX, newY);
-			
-			bases.add(currentRotationPoint.add(center));
+
+			bases.add(currentRotationPoint.add(center).substract(shift));
 		}
 		
 		return bases;
 	}
+	
 }
  

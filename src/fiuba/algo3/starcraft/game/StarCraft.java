@@ -31,7 +31,7 @@ public class StarCraft {
 	private static final int INITIAL_MINERAL = 200;
 	private static final int INITIAL_GAS = 0;
 	private static final int MAP_SIDE = 10000;
-	private static final int BASE_SIDE = 30;
+	public static final int BASE_SIDE = 1000;
 	private static final double RESERVOIR_DENSITY = 0.2;
 	private static final double AIR_DENSITY = 0.1;
 	private Player activePlayer;
@@ -42,7 +42,7 @@ public class StarCraft {
 		
 		int quantity = playerSetups.size();
 		List<Point> bases = this.generateBases(quantity);
-		//
+		
 		int i = 0;
 		for(PlayerSetup setup : playerSetups) {
 			this.generatePlayer(setup, bases.get(i));
@@ -52,7 +52,6 @@ public class StarCraft {
 	
 	private void generateMap() {
 		scenarioGenerator.assignAirDistributionInRect(new Point(0, 0), MAP_SIDE, AIR_DENSITY);
-		scenarioGenerator.assignReservoirDistributionInRect(ReservoirType.volcano, new Point(0, 0), (int) map.getSide(), 0.1);
 	}
 	
 	private List<Point> generateBases(int quantity) {
