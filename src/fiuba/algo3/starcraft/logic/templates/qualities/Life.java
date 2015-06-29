@@ -4,12 +4,15 @@ public class Life {
 	
 	private Shield shield;
 	private int health;
+	private final int maximumHealth;
 	
 	public Life(int health) {
+		this.maximumHealth = health;
 		this.health = health;
 	}
 
 	public Life(int health, int shield) {
+		this.maximumHealth = health;
 		this.health = health;
 		this.shield = new Shield(shield);
 	}
@@ -41,6 +44,15 @@ public class Life {
 	public void drain() {
 		this.destroyShield();
 		health = 0;
+	}
+
+	public int getMaximumHealth() {
+		return maximumHealth;
+	}
+
+	public int getMaximumShield() {
+		if (shield != null) return shield.getMaximum();
+		return 0;
 	}
 	
 }

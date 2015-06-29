@@ -101,4 +101,12 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	public boolean canCarryOtherUnits() {
 		return false;
 	}
+
+	public int getMaximumHealth() {
+		return life.getMaximumHealth();
+	}
+
+	public int getMaximumShield() {
+		return life.getMaximumShield();
+	}
 }

@@ -13,6 +13,10 @@ public class UnitView extends DrawableView implements MouseListener {
 	
 	private final int kBoundHeight = 70;
 	private final int kBoundWight = 60;
+	private final int lifeBarHeight = 4;
+	private final int lifeBarWidth = 60;
+	private final int healthBarYPosition = 66;
+	private final int shieldBarYPosition = 60;
 
 	private Unit unit;
 	private ActionsView actionsView;
@@ -34,18 +38,21 @@ public class UnitView extends DrawableView implements MouseListener {
 	
 	private void drawHealth(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(0, 60, calculateHealthBar() , 4);
+		g.fillRect(0, healthBarYPosition, calculateHealthBarWidth() , lifeBarHeight);
 	}
 	
 	private void drawShield(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(0, 66, calculateHealthBar() , 4);
-		
+		g.setColor(Color.gray);
+		g.fillRect(0, shieldBarYPosition, calculateShieldBarWidth() , lifeBarHeight);		
 	}
 	
-	//FIXME : need a property of max ammount of health for calculation
-	private int calculateHealthBar() {
-		return 60;
+	private int calculateHealthBarWidth() {
+		return ((unit.getHealth() * lifeBarWidth)/unit.getMaximumHealth());
+	}
+	
+	private int calculateShieldBarWidth() {
+		if (unit.getMaximumShield() == 0) return 0;
+		return ((unit.getShield() * lifeBarWidth)/unit.getMaximumShield());
 	}
 	
 	@Override
