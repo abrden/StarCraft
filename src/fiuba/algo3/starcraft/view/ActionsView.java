@@ -309,15 +309,14 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
-		Player activePlayer = game.getActivePlayer();
+		disableActionButtons();
+		messageBox.clear();
 		
+		Player activePlayer = game.getActivePlayer();		
 		if (performingAction || (actionable.hasOwner() && !activePlayer.actionableIsMine(actionable))) {
 			System.out.println("you entered this if performing action or actionable isnt yours");
 			return;
 		}
-		
-		disableActionButtons();
-		messageBox.clear();
 		
 		this.actionable = actionable;
 		
