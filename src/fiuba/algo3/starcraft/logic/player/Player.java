@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
@@ -84,11 +85,12 @@ public class Player {
 		return builder;
 	}
 	
+    public String getRace() {
+        return builder.getRace();
+    }
+	
 	public void newTurn() {
 		this.update();
-		
-		// Funciones para esperar acciones de la persona
-		
 	}
 
 	public Iterable<Unit> getUnits() {
@@ -185,7 +187,6 @@ public class Player {
 		resources.add(mineral, gas);
 	}
 	
-	// TODO ver si se usa solo en pruebas
 	public void pays(int mineral, int gas) throws InsufficientResources {
 		resources.remove(mineral, gas);
 	}
@@ -203,7 +204,6 @@ public class Player {
             map.getPositionNearStructure(unit);
         unit.setColor(this.getColor());
 		units.add(unit);
-		
 		try {
 			unit.addToMapView(this.map.getMapView());
 		} catch (Exception e) {
@@ -258,14 +258,22 @@ public class Player {
 		map.moveToLimbo(unit);
 	}
 
-
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());
         ((Unit) unit).setDestination(unit.getPosition());
 		transport.disembark(unit);
 	}
 
-    public String getRace() {
-        return builder.getRace();
-    }
+	public boolean actionableIsMine(Actionable actionable) {
+		if (units.contains(actionable)) {
+			System.out.println("I'm yours!");
+			return true;
+		}
+		if (structures.contains(actionable)) {
+			System.out.println("I'm yours!");
+			return true;
+		}
+		System.out.println("I'm not yours gtfo!");
+		return false;
+	}
 }

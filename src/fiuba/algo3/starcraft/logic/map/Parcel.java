@@ -81,4 +81,8 @@ public class Parcel implements Actionable, Drawable {
 			this.getLandForExplotation().setDrawableView(drawableView);
 		}
 	}
+	
+	public boolean hasOwner() {
+		return false;
+	}
 }

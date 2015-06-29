@@ -9,12 +9,14 @@ import javax.swing.*;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
+import fiuba.algo3.starcraft.game.GameOver;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
@@ -106,8 +108,6 @@ public class ActionsView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
     	performingAction = true;
     	
-    	
-    	
     	try {
 	        if (event.getSource() == move) {
 	        	System.out.println("entre a move");
@@ -138,7 +138,12 @@ public class ActionsView extends JPanel implements ActionListener {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
-    	}
+    	
+    	} catch (GameOver e) {
+    		JOptionPane.showMessageDialog(null, "The winner is " + e.getWinnersName());
+    		pass.setEnabled(false);
+		}
+    	
     	performingAction = false;
     	disableActionButtons();
     }
@@ -217,7 +222,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		return null;
 	}
 	
-	private void executePass() {
+	private void executePass() throws GameOver {
 		this.disableActionButtons();
 		messageBox.clear();
 		game.nextTurn();
@@ -308,11 +313,14 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
 	public void showActions(Actionable actionable) {
-		if (performingAction) 
-			return;
-		
 		disableActionButtons();
 		messageBox.clear();
+		
+		Player activePlayer = game.getActivePlayer();		
+		if (performingAction || (actionable.hasOwner() && !activePlayer.actionableIsMine(actionable))) {
+			System.out.println("you entered this if performing action or actionable isnt yours");
+			return;
+		}
 		
 		this.actionable = actionable;
 		

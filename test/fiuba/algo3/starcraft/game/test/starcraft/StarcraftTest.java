@@ -1,7 +1,7 @@
 package fiuba.algo3.starcraft.game.test.starcraft;
 
 import static org.junit.Assert.*;
-
+import fiuba.algo3.starcraft.game.GameOver;
 import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
@@ -10,6 +10,7 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
 import fiuba.algo3.starcraft.logic.structures.exceptions.MissingStructureRequired;
 import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ public class StarcraftTest {
 	}
 
 	@Test
-	public void testStarcraftCreatesMinesAfterManyTurnsResourcesIncrease() throws StepsLimitExceeded, NameIsTooShort, NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired {
+	public void testStarcraftCreatesMinesAfterManyTurnsResourcesIncrease() throws StepsLimitExceeded, NameIsTooShort, NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired, GameOver {
 		game.start();
 		player1 = game.getActivePlayer();
 		map.getParcelContainingPoint(new Point(150, 0)).setReservoir(ReservoirType.mine);

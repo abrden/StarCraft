@@ -130,4 +130,8 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	public void setDrawableView(DrawableView drawableView) {
 		drawableView.setImageName("UnitView/".concat((this.getName().concat(".png"))));
 	}
+	
+	public boolean hasOwner() {
+		return true;
+	}
 }

@@ -16,7 +16,6 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class StarCraft {
 
-
 	//TODO Eliminar luego de implementar mejora
 	public StarCraft() {}
 	public void setGame(Player player1, Player player2, Map map) {
@@ -37,7 +36,6 @@ public class StarCraft {
 	private Player activePlayer;
 	
 	public StarCraft(List<PlayerSetup> playerSetups) {
-		//TODO A JSON FILE GENERATES THE MAP INSTEAD OF SCENARIOGENERATOR
 		this.generateMap();
 		
 		int quantity = playerSetups.size();
@@ -99,14 +97,10 @@ public class StarCraft {
 		return activePlayer;
 	}
 
-	private void gameOver(Player winner) {
-		//DO STUFF
-	}
-
-	public void nextTurn() {
+	public void nextTurn() throws GameOver {
 		this.getRidOfLoosers();
 		if (players.size() == 1)
-			this.gameOver(players.get(0));
+			throw new GameOver(players.get(0).getName());
 		int index = players.indexOf(activePlayer);
 		if (index == players.size() - 1)
 			activePlayer = players.get(0);

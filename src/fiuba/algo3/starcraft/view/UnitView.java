@@ -65,7 +65,6 @@ public class UnitView extends DrawableView implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		actionsView.showActions(this.unit);
-		System.out.println("clicked in unit " + unit.getName());
 	}
 
 	@Override
