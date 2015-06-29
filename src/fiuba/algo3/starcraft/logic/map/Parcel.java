@@ -11,7 +11,7 @@ import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.view.DrawableView;
 
-public class Parcel implements Actionable, Drawable{
+public class Parcel implements Actionable, Drawable {
 	
 	private Point origin;
 	private double side;
@@ -35,7 +35,7 @@ public class Parcel implements Actionable, Drawable{
 	public void setStructure(Structure structure) {
 		this.structure = structure;
 		
-		setDrawableView(drawableView);
+		this.setDrawableView(drawableView);
 	}
 	
 	public void setAirSurface() {
@@ -77,7 +77,7 @@ public class Parcel implements Actionable, Drawable{
 		
 		if (structure != null) {
 			this.structure.setDrawableView(drawableView);
-		}else {
+		} else {
 			this.getLandForExplotation().setDrawableView(drawableView);
 		}
 	}

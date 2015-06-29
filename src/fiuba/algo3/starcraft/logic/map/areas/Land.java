@@ -13,7 +13,7 @@ import fiuba.algo3.starcraft.logic.map.resources.Volcano;
 import fiuba.algo3.starcraft.logic.units.Unit;
 import fiuba.algo3.starcraft.view.DrawableView;
 
-public class Land extends Surface{
+public class Land extends Surface {
 	
 	private Extractable extractableSurface;
 
@@ -46,19 +46,16 @@ public class Land extends Surface{
 
 	@Override
 	public void setDrawableView(DrawableView drawableView) {
-		String imageToPresent = "land2.jpg";
+		String imageToPresent = "land.jpg";
 		if (extractableSurface != null) {
 			try {
 				switch (extractableSurface.extractResource()) {
 				case gas:
-					imageToPresent = "volcano.jpg";
+					imageToPresent = "volcanoInLand.png";
 					break;
 				case mineral:
-					imageToPresent = "mine.jpg";
+					imageToPresent = "mineInLand.png";
 					break;
-				default:
-					break;
-					
 				}
 			} catch (NoResourcesToExtract e) {}
 		}

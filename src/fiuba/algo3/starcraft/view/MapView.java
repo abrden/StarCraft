@@ -8,7 +8,6 @@ import javax.swing.JComponent;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
-import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class MapView extends JComponent {
