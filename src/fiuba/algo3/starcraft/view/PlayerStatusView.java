@@ -1,5 +1,7 @@
 package fiuba.algo3.starcraft.view;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,8 +26,10 @@ public class PlayerStatusView extends JPanel {
 		
 		ImageIcon mineralIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/mineralIcon.png"));
 		mineral.setIcon(mineralIcon);
+		mineral.setForeground(Color.WHITE);
 		ImageIcon gasIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/gasIcon.png"));
 		gas.setIcon(gasIcon);
+		gas.setForeground(Color.WHITE);
 		
 		add(mineral);
 		add(gas);
