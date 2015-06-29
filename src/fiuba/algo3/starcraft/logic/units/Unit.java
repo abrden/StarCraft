@@ -6,6 +6,7 @@ import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.*;
 import fiuba.algo3.starcraft.view.DrawableView;
+import fiuba.algo3.starcraft.view.MapView;
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.game.Drawable;
@@ -19,7 +20,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	protected Point position;
     protected Point destination;
 	protected final int stepsPerTurn;
-
+	
     Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		if (position == null) throw new InvalidParameterException();
 		this.name = name;
@@ -29,7 +30,13 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 		this.vision = vision;
 		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
+		
+		
 	}
+    
+    public void addToMapView(MapView mapView) {
+    	mapView.addUnitToMap(this);
+    }
 	
 	public void reduceLife(int damage) {
 		life.reduce(damage);

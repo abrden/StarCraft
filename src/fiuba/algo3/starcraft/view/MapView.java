@@ -22,6 +22,8 @@ public class MapView extends JComponent {
 	public MapView(Map map, ActionsView actionsView) {
 		this.map = map;
 		
+		map.relateWithView(this);
+		
 		setBounds(0, 0, (int) map.getSide(), (int) map.getSide());
 		generatParcelViews(map.getParcelsContainedInARect(new Point(0,0),map.getSide()), actionsView);
 		setBackground(new Color(0,0,0));

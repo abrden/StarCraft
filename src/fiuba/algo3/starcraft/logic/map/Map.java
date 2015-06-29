@@ -15,6 +15,7 @@ import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.view.MapView;
 
 public class Map {
 
@@ -27,11 +28,21 @@ public class Map {
 	@SuppressWarnings("unused")
 	private ArrayList<Parcel> columns = new ArrayList<Parcel>();
 	
+	private MapView mapView;
+	
 	public Map(double side, StarCraft game) {
 		this.side = side;
 		createMatrix(side/PARCEL_SIDE);
 		createParcels(side/PARCEL_SIDE);
 		this.game = game;
+	}
+	
+	public void relateWithView(MapView mapView) {
+		this.mapView = mapView;
+	}
+	
+	public MapView getMapView() {
+		return this.mapView;
 	}
 	
 	private void createMatrix (double numberOfParcels){

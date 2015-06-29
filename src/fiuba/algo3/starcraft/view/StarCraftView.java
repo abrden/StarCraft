@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -16,6 +17,7 @@ public class StarCraftView extends JFrame {
 	private PlayerStatusView playerStatusView;
 	private ActionsView actionsView;
 	private MessageBox messageBox;
+	private JScrollPane scrollPane;
 	
 	private StarCraft game;
 	
@@ -72,6 +74,8 @@ public class StarCraftView extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(mapView,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(0, 0, screenSize.width, screenSize.height * 2 / 3);
         
+        this.scrollPane = scrollPane;
+                
         add(scrollPane);
 	}
 	
