@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.logic.units;
 
+import java.awt.*;
 import java.security.InvalidParameterException;
 
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -20,6 +21,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	protected Point position;
     protected Point destination;
 	protected final int stepsPerTurn;
+    protected Color color;
 	
     Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		if (position == null) throw new InvalidParameterException();
@@ -30,8 +32,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 		this.vision = vision;
 		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
-		
-		
+        this.color = color.black;
 	}
     
     public void addToMapView(MapView mapView) {
@@ -69,7 +70,15 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	public int getHealth() {
 		return life.getHealth();
 	}
-	
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return this.color;
+    }
+
 	public void setPosition(Point destination) {
 		this.position = destination;
 	}

@@ -3,6 +3,7 @@ package fiuba.algo3.starcraft.logic.test.map;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class MapTest {
 	
 	@Test
 	public void testMapDeterminesWhetherAPointIsInsideARadiousOfOtherPoint() {
-		assertTrue(map.isPointInsideRadiousOfPivotePoint(new Point(0,0), 10, new Point(1,0)));
+		assertTrue(map.isPointInsideRadiousOfPivotePoint(new Point(0, 0), 10, new Point(1, 0)));
 	}
 	
 	@Test 
@@ -67,6 +68,12 @@ public class MapTest {
 		
 		assertEquals(marine.getPosition().getX() == 10000, marine.getPosition().getY() == 10000);
 	}
-	
-	
+
+    @Test
+    public void testGetAdyacentParcels() {
+        Point point = new Point(500,500);
+        List<Parcel> list;
+        list = map.getAdyacentParcels(point,100);
+        assertEquals(list.size(),8);
+    }
 }
