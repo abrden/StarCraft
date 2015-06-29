@@ -15,8 +15,8 @@ public class StarcraftViewTest {
 		ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
 			
 		try {
-			playerSetups.add(new PlayerSetup("Santi", "Red", "Terran"));
-			playerSetups.add(new PlayerSetup("Agus", "Blue", "Protoss"));
+			playerSetups.add(new PlayerSetup("Ricky Fort", "Red", "Terran"));
+			playerSetups.add(new PlayerSetup("Ricky Maravilla", "Blue", "Protoss"));
 		} catch (NameIsTooShort e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

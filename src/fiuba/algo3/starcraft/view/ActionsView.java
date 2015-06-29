@@ -31,6 +31,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private StarCraft game;
 	private MessageBox messageBox;
+    private PlayerStatusView playerStatusView;
 	
 	private Actionable actionable;
 	
@@ -43,26 +44,12 @@ public class ActionsView extends JPanel implements ActionListener {
 	private JButton pass = new JButton("PASS TURN", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/next.png")));
 	
 	private boolean performingAction = false;
+
 	
-	/*
-	ImageIcon move = createImageIcon("");
-    ImageIcon usePower = createImageIcon("");
-    ImageIcon buildStructure = createImageIcon("");
-    ImageIcon createUnit = createImageIcon("");
-   	ImageIcon embark = createImageIcon("");
-    ImageIcon disembark = createImageIcon("");
-    ImageIcon pass = createImageIcon("");
-    
-    protected static ImageIcon createImageIcon(String path) {
-    java.net.URL imgURL = ButtonDemo.class.getResource(path);
-    ...//error handling omitted for clarity...
-    return new ImageIcon(imgURL);
-	}
-	*/
-	
-	ActionsView(StarCraft game, MessageBox messageBox) {
+	ActionsView(StarCraft game, MessageBox messageBox, PlayerStatusView playerStatusView) {
 		this.game = game;
 		this.messageBox = messageBox;
+        this.playerStatusView = playerStatusView;
 		
 		move.addActionListener(this);
 		usePower.addActionListener(this);
@@ -198,6 +185,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	private void executePass() {
 		this.disableActionButtons();
 		game.nextTurn();
+        playerStatusView.showActivePlayerStatus();
 	}
 	
 	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
@@ -225,7 +213,8 @@ public class ActionsView extends JPanel implements ActionListener {
 		}
 		
 		game.getActivePlayer().newUnitWithName(unitName, (ConstructionStructure) actionable);
-	}
+        playerStatusView.showActivePlayerStatus();
+    }
 
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
@@ -234,11 +223,10 @@ public class ActionsView extends JPanel implements ActionListener {
 			this.disableActionButtons();
 			return;
 		}
-		System.out.println("llegue " + structureName);
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
-		System.out.println("llegue");
-		
-		performingAction = false;
+        playerStatusView.showActivePlayerStatus();
+
+        performingAction = false;
 		disableActionButtons();
 	}
 
