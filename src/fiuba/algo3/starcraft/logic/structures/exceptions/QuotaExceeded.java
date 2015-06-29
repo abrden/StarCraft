@@ -4,4 +4,7 @@ public class QuotaExceeded extends Exception {
 
 	private static final long serialVersionUID = 4936204112655278809L;
 
+	public String getMessage() {
+		return "The population quota has been exceeded.";
+	}
 }
