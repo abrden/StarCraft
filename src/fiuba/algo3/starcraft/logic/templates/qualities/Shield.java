@@ -32,5 +32,9 @@ public class Shield {
 	public void destroy() {
 		shield = 0;
 	}
+
+	public int getMaximum() {
+		return maximumShield;
+	}
 	
 }
