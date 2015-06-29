@@ -60,11 +60,4 @@ public class MapView extends JComponent {
 		updateParcelViews();
 	}
 	
-	public void addStructureToMap(Structure structure) {
-		Parcel parcel = map.getParcelContainingPoint(structure.getPosition());
-		StructureView structureView = new StructureView(structure, parcel, actionsView);
-		
-		//TODO COMPLETAR
-	}
-	
 }

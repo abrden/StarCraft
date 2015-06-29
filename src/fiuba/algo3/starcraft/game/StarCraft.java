@@ -52,6 +52,7 @@ public class StarCraft {
 	
 	private void generateMap() {
 		scenarioGenerator.assignAirDistributionInRect(new Point(0, 0), MAP_SIDE, AIR_DENSITY);
+		scenarioGenerator.assignReservoirDistributionInRect(ReservoirType.volcano, new Point(0, 0), (int) map.getSide(), 0.1);
 	}
 	
 	private List<Point> generateBases(int quantity) {
