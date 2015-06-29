@@ -11,10 +11,10 @@ public class MessageBox extends JPanel {
 	private JTextArea textArea;
 	
     MessageBox() {
-    	this.textArea = new JTextArea();
+    	this.textArea = new JTextArea(3, 30);
     	textArea.setEditable(false);
     	JScrollPane scrollPane = new JScrollPane(textArea);
-    	add(scrollPane);
+    	this.add(scrollPane);
     }
     
     public void displayMessage(String message) {

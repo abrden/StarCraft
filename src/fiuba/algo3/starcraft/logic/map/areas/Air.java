@@ -22,7 +22,7 @@ public class Air extends Surface {
 
 	@Override
 	public void setDrawableView(DrawableView drawableView) {
-		drawableView.setImageName("space.jpg");
+		drawableView.setImageName("MapView/space.jpg");
 	}
 
 	@Override

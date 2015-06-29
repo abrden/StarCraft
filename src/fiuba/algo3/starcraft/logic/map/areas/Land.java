@@ -59,7 +59,7 @@ public class Land extends Surface {
 				}
 			} catch (NoResourcesToExtract e) {}
 		}
-		drawableView.setImageName(imageToPresent);
+		drawableView.setImageName("MapView/".concat(imageToPresent));
 	}
 
 	public Iterable<ActionID> getActions() {

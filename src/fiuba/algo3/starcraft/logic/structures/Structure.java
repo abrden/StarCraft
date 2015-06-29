@@ -61,6 +61,6 @@ public abstract class Structure implements Updatable, Actionable, Drawable {
 	}
 
 	public void setDrawableView(DrawableView drawableView) {
-		drawableView.setImageName(name.concat(".png"));
+		drawableView.setImageName("MapView/StructureView/".concat((this.getName().concat(".png"))));
 	}
 }

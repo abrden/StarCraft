@@ -184,6 +184,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private void executePass() {
 		this.disableActionButtons();
+		messageBox.clear();
 		game.nextTurn();
         playerStatusView.showActivePlayerStatus();
 	}

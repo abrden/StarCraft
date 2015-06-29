@@ -7,7 +7,6 @@ import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
-import fiuba.algo3.starcraft.view.DrawableView;
 
 public class MuggleUnit extends Unit implements Transportable {
 	
@@ -43,7 +42,6 @@ public class MuggleUnit extends Unit implements Transportable {
 		return attack.getSpaceDamage();
 	}
 
-	@Override
 	public Attack getAttack() {
 		return attack;
 	}
@@ -54,11 +52,6 @@ public class MuggleUnit extends Unit implements Transportable {
 
 	public void executeEMP() {
 		life.destroyShield();
-	}
-
-	public void setDrawableView(DrawableView drawableView) {
-		System.out.println("mi name es " + name);
-		drawableView.setImageName(name.concat(".png"));
 	}
 
 	public void killInFlight() {
