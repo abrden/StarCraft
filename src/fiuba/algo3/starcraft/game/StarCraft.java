@@ -16,14 +16,6 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 
 public class StarCraft {
 
-	//TODO Eliminar luego de implementar mejora
-	public StarCraft() {}
-	public void setGame(Player player1, Player player2, Map map) {
-		players.add(player1);
-		players.add(player2);
-		this.map = map;
-	}
-
 	public Map map = new Map(MAP_SIDE, this);
 	private List<Player> players = new ArrayList<Player>();
 	private ScenarioGenerator scenarioGenerator = new ScenarioGenerator(map);
@@ -68,7 +60,7 @@ public class StarCraft {
 		
 		players.add(new Player(setup.getName(), setup.getColor(), builder, base, new Resources(INITIAL_MINERAL, INITIAL_GAS), map));
 	}
-
+	
 	public Iterable<Unit> getEnemyUnits(Iterable<Unit> playerUnits) {
 		List<Unit> enemyUnits = new ArrayList<Unit>();
 		for (Player player : players) {
@@ -112,6 +104,14 @@ public class StarCraft {
 
 	public void start() {
 		activePlayer  = players.get(0);
+	}
+	
+	// Para testing sin mapa aleatorio
+	public StarCraft() {}
+	public void setGame(Player player1, Player player2, Map map) {
+		players.add(player1);
+		players.add(player2);
+		this.map = map;
 	}
 
 }

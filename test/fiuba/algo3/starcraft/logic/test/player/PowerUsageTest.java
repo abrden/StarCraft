@@ -1,6 +1,7 @@
 package fiuba.algo3.starcraft.logic.test.player;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,6 +44,7 @@ public class PowerUsageTest {
 	MuggleUnit marine;
 	MuggleUnit golliat;
 	MuggleUnit espectro;
+	
 	@Before
 	public void before() {
 		game = new StarCraft();
@@ -63,7 +65,7 @@ public class PowerUsageTest {
 		golliat = new GolliatTemplate().create(position2);
 		espectro = new EspectroTemplate().create(position3);
 	}
-	
+    
 	@Test
 	public void testEMPDestroysDragonsShield() throws InsufficientEnergy, NonexistentPower {
 		player2.receiveNewUnit(dragon);

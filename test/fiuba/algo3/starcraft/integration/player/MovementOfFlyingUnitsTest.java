@@ -1,16 +1,19 @@
 package fiuba.algo3.starcraft.integration.player;
 
+import java.util.ArrayList;
+
+import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Player;
-import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.EspectroTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,21 +22,23 @@ import static org.junit.Assert.assertEquals;
 public class MovementOfFlyingUnitsTest {
 
     StarCraft game;
-    Player player,player2;
+    Player player;
     Map map;
     MuggleUnit espectro, espectroAux;
     boolean xComp, yComp;
 
     @Before
-    public void before() {
-        game = new StarCraft();
-        map = new Map(1000,game);
-        player = new Player("Pepe",null,new TerranBuilder(),new Point(1,1),new Resources(9999,9999),map);
-        player2 = new Player("Pep",null,new TerranBuilder(),new Point(50,50),new Resources(9999,9999),map);
-        game.setGame(player,player2,map);
-        espectro = new EspectroTemplate().create(new Point(5, 5));
+    public void before() throws NameIsTooShort {
+        ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
+        playerSetups.add(new PlayerSetup("Pepe", "Red", "Terran"));
+		playerSetups.add(new PlayerSetup("Pepes", "Blue", "Terran"));
+		game = new StarCraft(playerSetups);
+        game.start();
+		espectro = new EspectroTemplate().create(new Point(5, 5));
+        player = game.getActivePlayer();
+        map = game.getMap();
     }
-
+    
     @Test
     public void testMoveEspectroFromPoint5_5ToPoint10_10() throws StepsLimitExceeded {
         player.receiveNewUnit(espectro);

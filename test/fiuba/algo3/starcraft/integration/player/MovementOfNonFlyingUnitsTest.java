@@ -1,6 +1,5 @@
 package fiuba.algo3.starcraft.integration.player;
 
-
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -12,6 +11,7 @@ import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +36,7 @@ public class MovementOfNonFlyingUnitsTest {
         game.setGame(player,player2,map);
         marine = new MarineTemplate().create(new Point(5, 5));
     }
-
+    
     @Test
     public void testMoveMarineFromPoint5_5ToPoint10_10() throws StepsLimitExceeded {
         player.receiveNewUnit(marine);
