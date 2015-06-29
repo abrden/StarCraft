@@ -11,6 +11,7 @@ import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
+import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
@@ -45,6 +46,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	private JButton pass = new JButton("PASS TURN", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/next.png")));
 	
 	private boolean performingAction = false;
+	private Point currentPoint;
 
 	
 	ActionsView(StarCraft game, MessageBox messageBox, PlayerStatusView playerStatusView) {
@@ -103,6 +105,9 @@ public class ActionsView extends JPanel implements ActionListener {
 	
     public void actionPerformed(ActionEvent event) {
     	performingAction = true;
+    	
+    	
+    	
     	try {
 	        if (event.getSource() == move) {
 	        	System.out.println("entre a move");

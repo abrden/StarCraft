@@ -200,7 +200,6 @@ public class Player {
 	public void receiveNewUnit(Unit unit) {
 		units.add(unit);
 		
-		
 		try {
 			unit.addToMapView(this.map.getMapView());
 		} catch (Exception e) {
