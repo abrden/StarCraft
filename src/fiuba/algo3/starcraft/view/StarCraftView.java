@@ -51,7 +51,7 @@ public class StarCraftView extends JFrame {
 		this.playerStatusView = playerStatusView;
 		
 		playerStatusView.setBounds(0, screenSize.height * 2 / 3, screenSize.width * 1 / 3, screenSize.height * 1 / 6);
-		playerStatusView.setBackground(Color.cyan);
+		playerStatusView.setBackground(Color.darkGray);
 		
 		add(playerStatusView);
 	}
@@ -60,7 +60,7 @@ public class StarCraftView extends JFrame {
 		this.messageBox = messageBox;
 		
 		messageBox.setBounds(0, screenSize.height * 5 / 6 , screenSize.width * 1 / 3, screenSize.height * 1 / 6);
-		messageBox.setBackground(Color.black);
+		messageBox.setBackground(Color.darkGray);
 		messageBox.displayMessage("Welcome to AlgoCraft");
 		add(messageBox);
 	}

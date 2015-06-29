@@ -14,7 +14,7 @@ public class MessageBox extends JPanel {
     	this.textArea = new JTextArea();
     	textArea.setEditable(false);
     	JScrollPane scrollPane = new JScrollPane(textArea);
-    	add(scrollPane);
+    	this.add(scrollPane);
     }
     
     public void displayMessage(String message) {
