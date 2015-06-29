@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
+import fiuba.algo3.starcraft.game.GameOver;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -107,8 +108,6 @@ public class ActionsView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
     	performingAction = true;
     	
-    	
-    	
     	try {
 	        if (event.getSource() == move) {
 	        	System.out.println("entre a move");
@@ -139,7 +138,12 @@ public class ActionsView extends JPanel implements ActionListener {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
-    	}
+    	
+    	} catch (GameOver e) {
+    		JOptionPane.showMessageDialog(null, "The winner is " + e.getWinnersName());
+    		pass.setEnabled(false);
+		}
+    	
     	performingAction = false;
     	disableActionButtons();
     }
@@ -218,7 +222,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		return null;
 	}
 	
-	private void executePass() {
+	private void executePass() throws GameOver {
 		this.disableActionButtons();
 		messageBox.clear();
 		game.nextTurn();
