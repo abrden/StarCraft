@@ -21,4 +21,9 @@ public class TerranBuilder extends Builder {
 		addDependency("Fabrica", "Barraca");
 		addDependency("Puerto Estelar", "Fabrica");
 	}
+
+    @Override
+    public String getRace() {
+        return "Terran";
+    }
 }

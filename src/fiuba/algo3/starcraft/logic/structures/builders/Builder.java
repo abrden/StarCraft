@@ -79,4 +79,5 @@ public abstract class Builder {
 		return templateNames;
 	}
 
+    public abstract String getRace();
 }
