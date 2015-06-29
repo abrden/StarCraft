@@ -22,9 +22,9 @@ public class PlayerStatusView extends JPanel {
 		
 		add(playerName);
 		
-		ImageIcon mineralIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/mineralIcon.png"));
+		ImageIcon mineralIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/mineralIcon.png"));
 		mineral.setIcon(mineralIcon);
-		ImageIcon gasIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/gasIcon.png"));
+		ImageIcon gasIcon = new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/gasIcon.png"));
 		gas.setIcon(gasIcon);
 		
 		add(mineral);
@@ -37,7 +37,7 @@ public class PlayerStatusView extends JPanel {
 		
 		playerName.setText(player.getName());
 		playerName.setForeground(player.getColor());
-		playerName.setIcon(new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/proto.png")));
+		playerName.setIcon(new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/proto.png")));
 		
 		mineral.setText(Integer.toString(player.getMineral()));
 		gas.setText(Integer.toString(player.getGas()));

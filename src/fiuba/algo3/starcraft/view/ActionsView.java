@@ -34,13 +34,13 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private Actionable actionable;
 	
-	private JButton move = new JButton("Move",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/move.png")));
-	private JButton usePower = new JButton("Use power",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/power.png")));
-	private JButton buildStructure = new JButton("Build structure",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/newStructure.png")));
-	private JButton createUnit = new JButton("Create unit",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/newUnit.png")));
-	private JButton embark = new JButton("Embark",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/embark.png")));
-	private JButton disembark = new JButton("Disembark",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/disembark.png")));
-	private JButton pass = new JButton("PASS TURN",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/next.png")));
+	private JButton move = new JButton("Move", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/move.png")));
+	private JButton usePower = new JButton("Use power", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/power.png")));
+	private JButton buildStructure = new JButton("Build structure", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/newStructure.png")));
+	private JButton createUnit = new JButton("Create unit", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/newUnit.png")));
+	private JButton embark = new JButton("Embark", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/embark.png")));
+	private JButton disembark = new JButton("Disembark", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/disembark.png")));
+	private JButton pass = new JButton("PASS TURN", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/next.png")));
 	
 	private boolean performingAction = false;
 	

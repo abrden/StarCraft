@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 import org.junit.Before;
@@ -73,6 +74,6 @@ public class ScenarioGeneratorTest {
 	public void testScenarioGiveCorrectAmmountOfPointsForBases() {
 		List<Point> points = scenario.generateBases(2);
 		
-		assertTrue(points.get(0).distance(points.get(1)) >= map.getSide() - 20);		
+		assertTrue(points.get(0).distance(points.get(1)) >= map.getSide() - StarCraft.BASE_SIDE);		
 	}
 }
