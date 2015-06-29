@@ -54,7 +54,7 @@ public class Land extends Surface{
 					imageToPresent = "volcano.jpg";
 					break;
 				case mineral:
-					imageToPresent = "mine.jpg";
+					imageToPresent = "mineInLand.jpg";
 					break;
 				default:
 					break;
