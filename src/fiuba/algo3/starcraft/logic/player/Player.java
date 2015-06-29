@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -191,7 +192,7 @@ public class Player {
 	}
 
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
-		constructionQueue.addUnit(structure.create(name, base, resources, this.currentPopulation(), this.populationQuota()));
+		constructionQueue.addUnit(structure.create(name, structure.getPosition(), resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
 	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
@@ -199,6 +200,9 @@ public class Player {
 	}
 	
 	public void receiveNewUnit(Unit unit) {
+        if (!map.getParcelContainingPoint(unit.getPosition()).letPass(unit))
+            map.getPositionNearStructure(unit);
+        unit.setColor(this.getColor());
 		units.add(unit);
 		try {
 			unit.addToMapView(this.map.getMapView());

@@ -17,6 +17,7 @@ public class UnitView extends DrawableView implements MouseListener {
 	private final int lifeBarWidth = 60;
 	private final int healthBarYPosition = 66;
 	private final int shieldBarYPosition = 60;
+    private final int nameYPosition = 55;
 
 	private Unit unit;
 	private ActionsView actionsView;
@@ -34,17 +35,23 @@ public class UnitView extends DrawableView implements MouseListener {
 		
 		drawHealth(g);
 		drawShield(g);
+        drawName(g);
 	}
 	
 	private void drawHealth(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(0, healthBarYPosition, calculateHealthBarWidth() , lifeBarHeight);
+		g.fillRect(0, healthBarYPosition, calculateHealthBarWidth(), lifeBarHeight);
 	}
 	
 	private void drawShield(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, shieldBarYPosition, calculateShieldBarWidth() , lifeBarHeight);		
 	}
+
+    private void drawName(Graphics g) {
+        g.setColor(unit.getColor());
+        g.drawString(unit.getName(),0,nameYPosition);
+    }
 	
 	private int calculateHealthBarWidth() {
 		return ((unit.getHealth() * lifeBarWidth)/unit.getMaximumHealth());

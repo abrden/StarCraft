@@ -11,6 +11,7 @@ import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
+import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
@@ -169,7 +170,7 @@ public class Map {
 		
 		ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
 		for (Unit unit : units) {
-			if (this.isPointInsideRadiousOfPivotePoint(position, range ==  0 ? range : 10, unit.getPosition())) {
+			if (this.isPointInsideRadiousOfPivotePoint(position, range == 0 ? range : 10, unit.getPosition())) {
 				//if (unit.canFly == canFly) unitsInCircle.add(unit)
 				unitsInCircle.add(unit);
 			}
@@ -189,4 +190,38 @@ public class Map {
 	public void removeStructureFrom(Point position) {
 		this.getParcelContainingPoint(position).setStructure(null);
 	}
+
+    public void getPositionNearStructure(Unit unit) {
+        List<Parcel> list = this.getAdyacentParcels(unit.getDestination(), 100);
+
+        for (Parcel parcel : list){
+            if (parcel.letPass(unit)){
+                unit.setPosition(new Point(parcel.getOrigin().getX(),parcel.getOrigin().getY()));
+                unit.setDestination(new Point(parcel.getOrigin().getX(),parcel.getOrigin().getY()));
+            }
+        }
+    }
+
+    public boolean onBounds(int x) {
+        return (x > 0 && x <= side);
+    }
+
+    public List<Parcel> getAdyacentParcels(Point point, int lenght) {
+        List<Parcel> list = new ArrayList<Parcel>();
+        int x = (int) (point.getX() - lenght);
+        int y;
+
+        for (int i = 0; i < 3; i++) {
+            y = (int) (point.getY() - lenght);
+            for (int j = 0; j < 3; j++) {
+                if (this.onBounds(x) && this.onBounds(y)) {
+                    if (this.getParcelContainingPoint(new Point(x, y)) != this.getParcelContainingPoint(point))
+                        list.add(this.getParcelContainingPoint(new Point(x, y)));
+                }
+                y += 100;
+            }
+            x += 100;
+        }
+        return list;
+    }
 }

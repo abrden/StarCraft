@@ -131,7 +131,7 @@ public class ActionsView extends JPanel implements ActionListener {
 	        	System.out.println("entre a disembark");
 	        	this.executeDisembark();
 	        } else if (event.getSource() == pass) {
-	        	System.out.println("entre a pass turn");
+	        	//System.out.println("entre a pass turn");
 	        	this.executePass();
 	        } 
     	} catch (MissingStructureRequired | InsufficientResources
