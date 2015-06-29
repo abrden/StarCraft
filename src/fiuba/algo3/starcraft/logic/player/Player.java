@@ -85,9 +85,6 @@ public class Player {
 	
 	public void newTurn() {
 		this.update();
-		
-		// Funciones para esperar acciones de la persona
-		
 	}
 
 	public Iterable<Unit> getUnits() {
@@ -184,7 +181,6 @@ public class Player {
 		resources.add(mineral, gas);
 	}
 	
-	// TODO ver si se usa solo en pruebas
 	public void pays(int mineral, int gas) throws InsufficientResources {
 		resources.remove(mineral, gas);
 	}
@@ -199,7 +195,6 @@ public class Player {
 	
 	public void receiveNewUnit(Unit unit) {
 		units.add(unit);
-		
 		try {
 			unit.addToMapView(this.map.getMapView());
 		} catch (Exception e) {
@@ -253,7 +248,6 @@ public class Player {
 		this.nearestTransportInUnitRange(unit).embark(unit);
 		map.moveToLimbo(unit);
 	}
-
 
 	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());

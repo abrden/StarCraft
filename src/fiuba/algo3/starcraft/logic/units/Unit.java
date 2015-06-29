@@ -30,8 +30,6 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 		this.vision = vision;
 		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
-		
-		
 	}
     
     public void addToMapView(MapView mapView) {
