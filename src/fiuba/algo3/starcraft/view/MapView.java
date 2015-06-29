@@ -54,7 +54,6 @@ public class MapView extends JComponent {
 		this.removeAll();
 		UnitView unitView = new UnitView(unit, actionsView);
 		unitViews.add(unitView);
-		//addMouseListener(unitView);
 		updateUnitViews();
 		updateParcelViews();
 	}

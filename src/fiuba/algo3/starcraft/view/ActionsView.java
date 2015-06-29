@@ -25,8 +25,11 @@ import fiuba.algo3.starcraft.logic.structures.exceptions.TemplateNotFound;
 import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
+import fiuba.algo3.starcraft.logic.units.Unit;
+import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
+import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
 public class ActionsView extends JPanel implements ActionListener {
@@ -134,7 +137,8 @@ public class ActionsView extends JPanel implements ActionListener {
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
-				| UnitCanotBeSetHere | NoReachableTransport e) {
+				| UnitCanotBeSetHere | NoReachableTransport | InsufficientEnergy
+				| NonexistentPower e) {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
@@ -146,6 +150,11 @@ public class ActionsView extends JPanel implements ActionListener {
     	
     	performingAction = false;
     	disableActionButtons();
+    }
+    
+    private Point getSelectedDestination() {
+    	// TODO COMPLETAR ESTO URGENTETETETEE
+    	return new Point(9010, 4500);
     }
     
 	private String getSelectedPowerName() {
@@ -271,22 +280,21 @@ public class ActionsView extends JPanel implements ActionListener {
 		disableActionButtons();
 	}
 
-	private void executeUsePower() {
-		// TODO Como espero a que el jugador clickee un punto de destino?
+	private void executeUsePower() throws InsufficientEnergy, NonexistentPower {
 		String powerName = this.getSelectedPowerName();
 		
 		if (powerName == null) {
 			this.disableActionButtons();
 			return;
-		}		
-		//Point position = ;
-		//game.getActivePlayer().usePower(actionable, powerName, position);
+		}
+		
+		Point position = this.getSelectedDestination();
+		game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, position);
 	}
 
 	private void executeMove() {
-		// TODO Como espero a que el jugador clickee un punto de destino?
-		//Point destination = ;
-		//game.getActivePlayer().move((Unit) actionable, destination);
+		Point destination = this.getSelectedDestination();
+		game.getActivePlayer().move((Unit) actionable, destination);
 	}
 	
 	private void enableActionButton(ActionID action) {
@@ -318,7 +326,6 @@ public class ActionsView extends JPanel implements ActionListener {
 		
 		Player activePlayer = game.getActivePlayer();		
 		if (performingAction || (actionable.hasOwner() && !activePlayer.actionableIsMine(actionable))) {
-			System.out.println("you entered this if performing action or actionable isnt yours");
 			return;
 		}
 		
