@@ -16,6 +16,7 @@ public abstract class DrawableView extends Container {
 	
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+		this.repaint();
 	}
 	
 	public void paint (Graphics g) {

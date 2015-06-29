@@ -230,7 +230,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
 		
-		
 		if (structureName == null) {
 			this.disableActionButtons();
 			return;
@@ -250,8 +249,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		if (powerName == null) {
 			this.disableActionButtons();
 			return;
-		}
-		
+		}		
 		//Point position = ;
 		//game.getActivePlayer().usePower(actionable, powerName, position);
 	}
