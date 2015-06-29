@@ -7,6 +7,11 @@ import fiuba.algo3.starcraft.game.Drawable;
 
 
 public abstract class Surface implements Extractable, Drawable, Actionable {
+	
 	public abstract boolean letPass(Unit unit);
+	
+	public boolean hasOwner() {
+		return false;
+	}
 	
 }

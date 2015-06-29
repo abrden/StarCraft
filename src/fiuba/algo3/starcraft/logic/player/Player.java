@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import fiuba.algo3.starcraft.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
@@ -82,6 +83,10 @@ public class Player {
 	public Builder getBuilder() {
 		return builder;
 	}
+	
+    public String getRace() {
+        return builder.getRace();
+    }
 	
 	public void newTurn() {
 		this.update();
@@ -255,7 +260,16 @@ public class Player {
 		transport.disembark(unit);
 	}
 
-    public String getRace() {
-        return builder.getRace();
-    }
+	public boolean actionableIsMine(Actionable actionable) {
+		if (units.contains(actionable)) {
+			System.out.println("I'm yours!");
+			return true;
+		}
+		if (structures.contains(actionable)) {
+			System.out.println("I'm yours!");
+			return true;
+		}
+		System.out.println("I'm not yours gtfo!");
+		return false;
+	}
 }
