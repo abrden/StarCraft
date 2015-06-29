@@ -37,7 +37,7 @@ public class PlayerStatusView extends JPanel {
 		
 		playerName.setText(player.getName());
 		playerName.setForeground(player.getColor());
-		playerName.setIcon(new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/proto.png")));
+		playerName.setIcon(new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/PlayerStatusView/"+player.getRace()+".png")));
 		
 		mineral.setText(Integer.toString(player.getMineral()));
 		gas.setText(Integer.toString(player.getGas()));

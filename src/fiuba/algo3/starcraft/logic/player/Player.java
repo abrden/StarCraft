@@ -254,4 +254,8 @@ public class Player {
         ((Unit) unit).setDestination(unit.getPosition());
 		transport.disembark(unit);
 	}
+
+    public String getRace() {
+        return builder.getRace();
+    }
 }

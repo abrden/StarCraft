@@ -20,4 +20,9 @@ public class ProtossBuilder extends Builder {
 		addDependency("Puerto Estelar", "Acceso");
 		addDependency("Archivos Templarios", "Puerto Estelar");
 	}
+
+    @Override
+    public String getRace() {
+        return "Protoss";
+    }
 }
