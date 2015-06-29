@@ -1,5 +1,6 @@
 package fiuba.algo3.starcraft.view;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -47,6 +48,35 @@ public class ActionsView extends JPanel implements ActionListener {
 
 	
 	ActionsView(StarCraft game, MessageBox messageBox, PlayerStatusView playerStatusView) {
+		move.setVerticalTextPosition(SwingConstants.BOTTOM);
+		move.setHorizontalTextPosition(SwingConstants.CENTER);
+		move.setBackground(Color.darkGray);
+		move.setForeground(Color.WHITE);
+		usePower.setVerticalTextPosition(SwingConstants.BOTTOM);
+		usePower.setHorizontalTextPosition(SwingConstants.CENTER);
+		usePower.setBackground(Color.darkGray);
+		usePower.setForeground(Color.WHITE);
+		buildStructure.setVerticalTextPosition(SwingConstants.BOTTOM);
+		buildStructure.setHorizontalTextPosition(SwingConstants.CENTER);
+		buildStructure.setBackground(Color.darkGray);
+		buildStructure.setForeground(Color.WHITE);
+		createUnit.setVerticalTextPosition(SwingConstants.BOTTOM);
+		createUnit.setHorizontalTextPosition(SwingConstants.CENTER);
+		createUnit.setBackground(Color.darkGray);
+		createUnit.setForeground(Color.WHITE);
+		embark.setVerticalTextPosition(SwingConstants.BOTTOM);
+		embark.setHorizontalTextPosition(SwingConstants.CENTER);
+		embark.setBackground(Color.darkGray);
+		embark.setForeground(Color.WHITE);
+		disembark.setVerticalTextPosition(SwingConstants.BOTTOM);
+		disembark.setHorizontalTextPosition(SwingConstants.CENTER);
+		disembark.setBackground(Color.darkGray);
+		disembark.setForeground(Color.WHITE);
+		pass.setVerticalTextPosition(SwingConstants.BOTTOM);
+		pass.setHorizontalTextPosition(SwingConstants.CENTER);
+		pass.setBackground(Color.darkGray);
+		pass.setForeground(Color.WHITE);
+		
 		this.game = game;
 		this.messageBox = messageBox;
         this.playerStatusView = playerStatusView;
