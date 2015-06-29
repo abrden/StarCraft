@@ -16,11 +16,11 @@ public class ParcelView extends DrawableView implements MouseListener{
 	public ParcelView(Parcel parcel, ActionsView actionsView) {
 		this.parcel = parcel;
 		this.actionsView = actionsView;
-		parcel.getLandForExplotation().setDrawableView(this);
+		parcel.setDrawableView(this);
 		this.setBounds((int)parcel.getOrigin().getX(), (int)parcel.getOrigin().getY(), (int)Map.PARCEL_SIDE, (int)Map.PARCEL_SIDE);
 		addMouseListener(this);
 	}
-
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		System.out.println("la parcela que toque fue X: " + parcel.getOrigin().getX() + " Y: " + parcel.getOrigin().getY());
@@ -28,11 +28,7 @@ public class ParcelView extends DrawableView implements MouseListener{
 	 	double mapClickY = (arg0.getPoint().getY() + parcel.getOrigin().getY());
 		System.out.println("" + mapClickX + ", " + mapClickY);
 		
-		if (this.parcel.getStructure() == null) {
-			actionsView.showActions(this.parcel.getStructure());
-		} else {
-			actionsView.showActions(this.parcel.getLandForExplotation());
-		}
+		actionsView.showActions(this.parcel);
 	}
 
 	@Override

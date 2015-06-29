@@ -232,12 +232,17 @@ public class ActionsView extends JPanel implements ActionListener {
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
 		
+		
 		if (structureName == null) {
 			this.disableActionButtons();
 			return;
 		}
-		
+		System.out.println("llegue " + structureName);
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
+		System.out.println("llegue");
+		
+		performingAction = false;
+		disableActionButtons();
 	}
 
 	private void executeUsePower() {
