@@ -4,9 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import fiuba.algo3.starcraft.game.ActionID;
 import fiuba.algo3.starcraft.game.Actionable;
@@ -36,13 +34,13 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private Actionable actionable;
 	
-	private JButton move = new JButton("Move");
-	private JButton usePower = new JButton("Use power");
-	private JButton buildStructure = new JButton("Build structure");
-	private JButton createUnit = new JButton("Create unit");
-	private JButton embark = new JButton("Embark");
-	private JButton disembark = new JButton("Disembark");
-	private JButton pass = new JButton("PASS TURN");
+	private JButton move = new JButton("Move",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/move.png")));
+	private JButton usePower = new JButton("Use power",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/power.png")));
+	private JButton buildStructure = new JButton("Build structure",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/newStructure.png")));
+	private JButton createUnit = new JButton("Create unit",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/newUnit.png")));
+	private JButton embark = new JButton("Embark",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/embark.png")));
+	private JButton disembark = new JButton("Disembark",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/disembark.png")));
+	private JButton pass = new JButton("PASS TURN",new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/next.png")));
 	
 	private boolean performingAction = false;
 	
@@ -232,7 +230,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
 		String structureName = this.getSelectedStructureName();
 		
-		
 		if (structureName == null) {
 			this.disableActionButtons();
 			return;
@@ -252,8 +249,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		if (powerName == null) {
 			this.disableActionButtons();
 			return;
-		}
-		
+		}		
 		//Point position = ;
 		//game.getActivePlayer().usePower(actionable, powerName, position);
 	}

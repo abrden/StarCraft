@@ -29,6 +29,7 @@ public class PlayerStatusView extends JPanel {
 		
 		add(mineral);
 		add(gas);
+        this.showActivePlayerStatus();
 	}
 	
 	public void showActivePlayerStatus() {
@@ -36,7 +37,7 @@ public class PlayerStatusView extends JPanel {
 		
 		playerName.setText(player.getName());
 		playerName.setForeground(player.getColor());
-		//playerName.setIcon(raceIcon);
+		playerName.setIcon(new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/proto.png")));
 		
 		mineral.setText(Integer.toString(player.getMineral()));
 		gas.setText(Integer.toString(player.getGas()));
