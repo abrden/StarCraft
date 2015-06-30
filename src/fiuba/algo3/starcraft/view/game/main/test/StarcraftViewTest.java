@@ -18,7 +18,6 @@ public class StarcraftViewTest {
 			playerSetups.add(new PlayerSetup("Ricky Fort", "Red", "Terran"));
 			playerSetups.add(new PlayerSetup("Ricky Maravilla", "Blue", "Protoss"));
 		} catch (NameIsTooShort e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			

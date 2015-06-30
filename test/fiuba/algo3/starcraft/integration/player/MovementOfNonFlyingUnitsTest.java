@@ -111,8 +111,8 @@ public class MovementOfNonFlyingUnitsTest {
 
         assertEquals(xComp, yComp);
     }
-/*  @Test
-    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() throws UnitCantGetToDestination {
+    @Test
+    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() throws UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         Point destinationPoint = new Point(499,499);
         player.receiveNewUnit(marine);
 
@@ -124,8 +124,8 @@ public class MovementOfNonFlyingUnitsTest {
         assertTrue(marine.getPosition().isSamePoint(destinationPoint));
     }
 
-    @Test
-    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() throws UnitCantGetToDestination {
+    @Test(expected = UnitCantGetToDestination.class)
+    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() throws UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         Point destinationPoint = new Point(433,533);
         map.getParcelContainingPoint(destinationPoint).setAirSurface();
         player.receiveNewUnit(marine);
@@ -143,5 +143,5 @@ public class MovementOfNonFlyingUnitsTest {
         System.out.println("a ver loco si estas bien " + marine.getPosition().getX() + " " + marine.getPosition().getY());
         
         assertTrue(!marine.getPosition().isSamePoint(destinationPoint));
-}*/
+    }
 }
