@@ -1,6 +1,6 @@
 package fiuba.algo3.starcraft.integration.player;
 
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;

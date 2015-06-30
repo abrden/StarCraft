@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.game;
+package fiuba.algo3.starcraft.logic.game;
 
 import java.util.ArrayList;
 import java.util.List;

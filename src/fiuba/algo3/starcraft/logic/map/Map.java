@@ -2,7 +2,7 @@ package fiuba.algo3.starcraft.logic.map;
 
 import java.util.*;
 
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;

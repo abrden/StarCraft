@@ -1,8 +1,8 @@
 package fiuba.algo3.starcraft.logic.map;
 
-import fiuba.algo3.starcraft.game.ActionID;
-import fiuba.algo3.starcraft.game.Actionable;
-import fiuba.algo3.starcraft.game.Drawable;
+import fiuba.algo3.starcraft.logic.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.Actionable;
+import fiuba.algo3.starcraft.logic.game.Drawable;
 import fiuba.algo3.starcraft.logic.map.areas.Air;
 import fiuba.algo3.starcraft.logic.map.areas.Land;
 import fiuba.algo3.starcraft.logic.map.areas.Surface;

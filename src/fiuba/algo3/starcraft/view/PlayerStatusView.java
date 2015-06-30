@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.player.Player;
 
 public class PlayerStatusView extends JPanel {

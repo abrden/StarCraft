@@ -3,14 +3,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.ActionID;
 import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 
 public class Clone extends Unit {
 	
 	private Unit cloned;
-	private final static int ATTACK_RANGE = 3;
+	private final static int ATTACK_RANGE = 0;
 	private final static Damage DAMAGE = new Damage(0,0);
 	
 	public Clone(Unit unit) {

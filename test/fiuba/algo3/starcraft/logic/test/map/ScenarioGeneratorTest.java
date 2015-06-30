@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;

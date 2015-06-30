@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 
 public class StarCraftView extends JFrame {
 

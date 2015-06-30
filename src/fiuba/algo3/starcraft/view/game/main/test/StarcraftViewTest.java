@@ -2,8 +2,8 @@ package fiuba.algo3.starcraft.view.game.main.test;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.starcraft.game.PlayerSetup;
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.PlayerSetup;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.view.StarCraftView;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
 

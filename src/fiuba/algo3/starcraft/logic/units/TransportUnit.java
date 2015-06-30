@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;

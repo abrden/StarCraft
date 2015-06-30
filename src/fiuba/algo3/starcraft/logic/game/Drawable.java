@@ -1,4 +1,4 @@
-package fiuba.algo3.starcraft.game;
+package fiuba.algo3.starcraft.logic.game;
 
 import fiuba.algo3.starcraft.view.DrawableView;
 

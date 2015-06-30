@@ -1,8 +1,9 @@
 package fiuba.algo3.starcraft.game.test.starcraft;
 
 import static org.junit.Assert.*;
-import fiuba.algo3.starcraft.game.GameOver;
-import fiuba.algo3.starcraft.game.PlayerSetup;
+import fiuba.algo3.starcraft.logic.game.GameOver;
+import fiuba.algo3.starcraft.logic.game.PlayerSetup;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
@@ -16,7 +17,6 @@ import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;

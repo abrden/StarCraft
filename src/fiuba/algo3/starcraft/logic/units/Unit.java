@@ -3,14 +3,14 @@ package fiuba.algo3.starcraft.logic.units;
 import java.awt.*;
 import java.security.InvalidParameterException;
 
+import fiuba.algo3.starcraft.logic.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.Actionable;
+import fiuba.algo3.starcraft.logic.game.Drawable;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.player.Updatable;
 import fiuba.algo3.starcraft.logic.templates.qualities.*;
 import fiuba.algo3.starcraft.view.DrawableView;
 import fiuba.algo3.starcraft.view.MapView;
-import fiuba.algo3.starcraft.game.ActionID;
-import fiuba.algo3.starcraft.game.Actionable;
-import fiuba.algo3.starcraft.game.Drawable;
 
 public abstract class Unit implements Updatable, Drawable, Actionable {
 	

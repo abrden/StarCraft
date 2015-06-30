@@ -3,7 +3,7 @@ package fiuba.algo3.starcraft.logic.units;
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.starcraft.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.ActionID;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.templates.qualities.Attack;
 import fiuba.algo3.starcraft.logic.templates.qualities.Life;

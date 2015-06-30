@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import fiuba.algo3.starcraft.game.PlayerSetup;
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.PlayerSetup;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.view.exceptions.ColorIsTaken;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTaken;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;

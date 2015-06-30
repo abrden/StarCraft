@@ -7,10 +7,10 @@ import java.util.List;
 
 import javax.swing.*;
 
-import fiuba.algo3.starcraft.game.ActionID;
-import fiuba.algo3.starcraft.game.Actionable;
-import fiuba.algo3.starcraft.game.GameOver;
-import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.logic.game.ActionID;
+import fiuba.algo3.starcraft.logic.game.Actionable;
+import fiuba.algo3.starcraft.logic.game.GameOver;
+import fiuba.algo3.starcraft.logic.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
