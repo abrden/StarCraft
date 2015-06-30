@@ -9,6 +9,7 @@ import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -42,11 +43,11 @@ public class StructureCreationTest {
 		
 		position = new Point(1,1);
 		position2 = new Point (270,340);
-		position3 = new Point (70,34);
+		position3 = new Point (170,334);
 	}
 	
 	@Test
-	public void testCreatingNewStructureSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingNewStructureSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) {
 			player2.newTurn();
@@ -57,17 +58,17 @@ public class StructureCreationTest {
 	}
 	
 	@Test(expected = NoResourcesToExtract.class)
-	public void testCreatingMineralExploiterInLandWithNoMineralThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingMineralExploiterInLandWithNoMineralThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.newStructureWithName("Centro Mineral", position);
 	}
 
 	@Test(expected = NoResourcesToExtract.class)
-	public void testCreatingGasExploiterInLandWithNoVolcanoThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingGasExploiterInLandWithNoVolcanoThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player2.newStructureWithName("Asimilador", position);
 	}
 
 	@Test
-	public void testCreatingGasExploiterInLandWithVolcano() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingGasExploiterInLandWithVolcano() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position).setReservoir(ReservoirType.volcano);
 		player1.newStructureWithName("Refineria", position);
 		for(int i = 0; i < 7; i++) {
@@ -79,7 +80,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test
-	public void testCreatingMineralExploiterInLandWithMine() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingMineralExploiterInLandWithMine() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Nexo Mineral", position);
 		for(int i = 0; i < 5; i++) {
@@ -91,7 +92,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test
-	public void testItsPossibleToCreateNonExploiterStructureInLandWithReservoir() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testItsPossibleToCreateNonExploiterStructureInLandWithReservoir() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Pilon", position);
 		for(int i = 0; i < 7; i++) {
@@ -103,7 +104,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test
-	public void testCreatingNewConstructionStructureSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingNewConstructionStructureSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player2.gains(1000,1000);
 		player2.newStructureWithName("Acceso", position2);
 		for(int i = 0; i < 9; i++) {
@@ -120,7 +121,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test
-	public void testCreatingPuertoEstelarHavingPreviousConstructionsSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingPuertoEstelarHavingPreviousConstructionsSetsItInParcelContainingPoint() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.gains(1000,1000);
 		player1.newStructureWithName("Barraca", position3);
 		for(int i = 0; i < 13; i++) {
@@ -143,7 +144,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test(expected = MissingStructureRequired.class)
-	public void testCreatingPuertoEstelarWithoutPreviousConstructionsThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingPuertoEstelarWithoutPreviousConstructionsThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.gains(1000,1000);
 		player1.newStructureWithName("Barraca", position3);
 		for(int i = 0; i < 13; i++) {
@@ -156,7 +157,7 @@ public class StructureCreationTest {
 	}
 
 	@Test
-	public void testMineralExploiterAndGasExploiterProduceEnoughResourcesToBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testMineralExploiterAndGasExploiterProduceEnoughResourcesToBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position3).setReservoir(ReservoirType.mine);
 		player2.newStructureWithName("Nexo Mineral", position3);
 		for(int i = 0; i < 5; i++) {
@@ -180,7 +181,7 @@ public class StructureCreationTest {
 	}
 	
 	@Test(expected = InsufficientResources.class)
-	public void testCreatingStructureWithoutResourcesThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testCreatingStructureWithoutResourcesThrowsException() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position3).setReservoir(ReservoirType.volcano);
 		player2.newStructureWithName("Asimilador", position3);
 		

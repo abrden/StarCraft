@@ -1,9 +1,9 @@
 package fiuba.algo3.starcraft.integration.player;
 
-
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -12,6 +12,7 @@ import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,9 +37,9 @@ public class MovementOfNonFlyingUnitsTest {
         game.setGame(player,player2,map);
         marine = new MarineTemplate().create(new Point(5, 5));
     }
-
+    
     @Test
-    public void testMoveMarineFromPoint5_5ToPoint10_10() throws StepsLimitExceeded {
+    public void testMoveMarineFromPoint5_5ToPoint10_10() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(marine);
 
         player.move(marine, new Point(10, 10));
@@ -50,7 +51,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded {
+    public void testMarineMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(marine);
 
         player.move(marine, new Point(50, 50));
@@ -66,7 +67,11 @@ public class MovementOfNonFlyingUnitsTest {
         map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(marine);
 
-        player.move(marine, new Point(12, 12));
+        try {
+			player.move(marine, new Point(12, 12));
+		} catch (UnitCantGetToDestination e) {
+			
+		}
 
         xComp = marine.getPosition().getX() < 12;
         yComp = marine.getPosition().getY() < 12;
@@ -75,13 +80,17 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineCantMoveThroughAParcelWithAStructure() throws StepsLimitExceeded {
+    public void testMarineCantMoveThroughAParcelWithAStructure() throws StepsLimitExceeded, UnitCantGetToDestination {
         ConstructionStructure barraca = new BarracaTemplate().create(new Point(10,10));
         player.receiveNewStructure(barraca);
         player.receiveNewUnit(marine);
 
-        player.move(marine, new Point(15, 15));
-
+        try {
+			player.move(marine, new Point(15, 15));
+		} catch (UnitCantGetToDestination e) {
+			
+		}
+        
         xComp = marine.getPosition().getX() < 10;
         yComp = marine.getPosition().getY() < 10;
 
@@ -89,7 +98,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testTwoMarinesCanBeOnTheSamePoint() throws StepsLimitExceeded {
+    public void testTwoMarinesCanBeOnTheSamePoint() throws StepsLimitExceeded, UnitCantGetToDestination {
         marineAux = new MarineTemplate().create(new Point(10,10));
         player.receiveNewUnit(marine);
         player.receiveNewUnit(marineAux);
@@ -103,7 +112,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() {
+    public void testMarineMovedToAFarAwayPointOnMapItTakesMultipleTurnsToGetThere() throws UnitCantGetToDestination {
         Point destinationPoint = new Point(499,499);
         player.receiveNewUnit(marine);
 
@@ -116,7 +125,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() {
+    public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() throws UnitCantGetToDestination {
         Point destinationPoint = new Point(433,533);
         map.getParcelContainingPoint(destinationPoint).setAirSurface();
         player.receiveNewUnit(marine);

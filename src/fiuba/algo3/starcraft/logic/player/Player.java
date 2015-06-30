@@ -2,7 +2,6 @@ package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,7 +10,9 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -136,7 +137,11 @@ public class Player {
         //Unidades caminan hasta el punto indicado en turnos anteriores
         for (Unit unit : units) {
             if (!unit.getPosition().isSamePoint(unit.getDestination()) && !unit.getPosition().isSamePoint(map.getLimbo())) {
-                this.move(unit, unit.getDestination());
+                try {
+					this.move(unit, unit.getDestination());
+				} catch (UnitCantGetToDestination e) {
+					
+				}
             }
         }
 	}
@@ -195,7 +200,8 @@ public class Player {
 		constructionQueue.addUnit(structure.create(name, structure.getPosition(), resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
-	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
+		if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	
@@ -216,7 +222,7 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Unit unit, Point destination) {
+	public void move(Unit unit, Point destination) throws UnitCantGetToDestination {
         unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
 		if (unit.getAttack() != null)
@@ -258,7 +264,7 @@ public class Player {
 		map.moveToLimbo(unit);
 	}
 
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCannotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());
         ((Unit) unit).setDestination(unit.getPosition());
 		transport.disembark(unit);

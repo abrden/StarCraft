@@ -12,6 +12,7 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
@@ -54,7 +55,7 @@ public class MapTest {
 	}
 	
 	@Test
-	public void testMapMovesAMarineMoreThanTheAmmountPerTurn() throws StepsLimitExceeded {
+	public void testMapMovesAMarineMoreThanTheAmmountPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
 		map.moveUnitToDestination(marine, new Point(200, 0));
 		
 		double finalX = 75 + marine.getStepsPerTurn();

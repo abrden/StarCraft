@@ -3,7 +3,8 @@ package fiuba.algo3.starcraft.integration.player;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
-import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
@@ -16,6 +17,7 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,7 +45,7 @@ public class TransportUnitTest {
     }
 
     @Test
-    public void testNaveTransporteMovesToSpaceThenToLandAndDisembarksBothNonFlyingUnits() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove, NoReachableTransport {
+    public void testNaveTransporteMovesToSpaceThenToLandAndDisembarksBothNonFlyingUnits() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoUnitToRemove, NoReachableTransport, UnitCantGetToDestination {
         map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(dragon);
@@ -69,7 +71,7 @@ public class TransportUnitTest {
     }
 
     @Test
-    public void testNaveTransporteMovesToSpaceDropsUnitThenMovesToLandAndDropsANonFlyingUnit() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove, NoReachableTransport {
+    public void testNaveTransporteMovesToSpaceDropsUnitThenMovesToLandAndDropsANonFlyingUnit() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoUnitToRemove, NoReachableTransport, UnitCantGetToDestination {
         map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(scout);
@@ -95,8 +97,8 @@ public class TransportUnitTest {
         assertTrue(zealot.getPosition().getX() == zealot.getPosition().getY());
     }
 
-    @Test(expected = UnitCanotBeSetHere.class)
-    public void testNaveTransporteMovesToSpaceDropsUnitAndThrowsException() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCanotBeSetHere, NoUnitToRemove, NoReachableTransport {
+    @Test(expected = UnitCannotBeSetHere.class)
+    public void testNaveTransporteMovesToSpaceDropsUnitAndThrowsException() throws StepsLimitExceeded, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoUnitToRemove, NoReachableTransport, UnitCantGetToDestination {
         map.getParcelContainingPoint(spacePoint).setAirSurface();
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(naveTransporte);
@@ -112,7 +114,7 @@ public class TransportUnitTest {
     }
     
     @Test
-    public void testIfNaveTransporteDiesAllOfTheirPassengersDie() throws StepsLimitExceeded, NoMoreSpaceInUnit, NoUnitToRemove, UnitCanotBeSetHere, NoReachableTransport {
+    public void testIfNaveTransporteDiesAllOfTheirPassengersDie() throws StepsLimitExceeded, NoMoreSpaceInUnit, NoUnitToRemove, UnitCannotBeSetHere, NoReachableTransport {
         player.receiveNewUnit(zealot);
         player.receiveNewUnit(scout);
         player.receiveNewUnit(naveTransporte);

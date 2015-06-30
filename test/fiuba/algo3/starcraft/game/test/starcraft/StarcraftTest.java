@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import fiuba.algo3.starcraft.game.GameOver;
 import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
@@ -44,7 +46,7 @@ public class StarcraftTest {
 	}
 
 	@Test
-	public void testStarcraftCreatesMinesAfterManyTurnsResourcesIncrease() throws StepsLimitExceeded, NameIsTooShort, NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired, GameOver {
+	public void testStarcraftCreatesMinesAfterManyTurnsResourcesIncrease() throws StepsLimitExceeded, NameIsTooShort, NoResourcesToExtract, InsufficientResources, TemplateNotFound, MissingStructureRequired, GameOver, StructureCannotBeSetHere {
 		game.start();
 		player1 = game.getActivePlayer();
 		map.getParcelContainingPoint(new Point(150, 0)).setReservoir(ReservoirType.mine);
@@ -77,7 +79,7 @@ public class StarcraftTest {
 	}
 	
 	@Test
-	public void testStarcraftMovesAMarineInAMapWithGapsAndStopsMovingAfterGap() throws StepsLimitExceeded {
+	public void testStarCraftMovesAMarineInAMapWithGapsAndStopsMovingAfterGap() throws StepsLimitExceeded {
 
 		ScenarioGenerator scenario = new ScenarioGenerator(map);
 		
@@ -86,9 +88,23 @@ public class StarcraftTest {
 
 		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
 		
-		map.moveUnitToDestination(marine, new Point(75,500));
+		try {
+			map.moveUnitToDestination(marine, new Point(75,500));
+		} catch (UnitCantGetToDestination e) {}
 				
 		assertTrue(marine.getPosition().getY() < 50);
 	}
 
+	@Test(expected = UnitCantGetToDestination.class)
+	public void testMarineMovingInAMapWithGapsThrowsException() throws StepsLimitExceeded, UnitCantGetToDestination {
+
+		ScenarioGenerator scenario = new ScenarioGenerator(map);
+		
+		scenario.assignAirDistributionInRect(new Point(50, 50),100,1);
+		game.setGame(null, null, map);
+
+		MuggleUnit marine = new MarineTemplate().create(new Point(75, 0));
+
+		map.moveUnitToDestination(marine, new Point(75,500));
+	}
 }

@@ -1,16 +1,20 @@
 package fiuba.algo3.starcraft.integration.player;
 
+import java.util.ArrayList;
+
+import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
-import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
-import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.EspectroTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,23 +23,25 @@ import static org.junit.Assert.assertEquals;
 public class MovementOfFlyingUnitsTest {
 
     StarCraft game;
-    Player player,player2;
+    Player player;
     Map map;
     MuggleUnit espectro, espectroAux;
     boolean xComp, yComp;
 
     @Before
-    public void before() {
-        game = new StarCraft();
-        map = new Map(1000,game);
-        player = new Player("Pepe",null,new TerranBuilder(),new Point(1,1),new Resources(9999,9999),map);
-        player2 = new Player("Pep",null,new TerranBuilder(),new Point(50,50),new Resources(9999,9999),map);
-        game.setGame(player,player2,map);
-        espectro = new EspectroTemplate().create(new Point(5, 5));
+    public void before() throws NameIsTooShort {
+        ArrayList<PlayerSetup> playerSetups = new ArrayList<PlayerSetup>();
+        playerSetups.add(new PlayerSetup("Pepe", "Red", "Terran"));
+		playerSetups.add(new PlayerSetup("Pepes", "Blue", "Terran"));
+		game = new StarCraft(playerSetups);
+        game.start();
+		espectro = new EspectroTemplate().create(new Point(5, 5));
+        player = game.getActivePlayer();
+        map = game.getMap();
     }
-
+    
     @Test
-    public void testMoveEspectroFromPoint5_5ToPoint10_10() throws StepsLimitExceeded {
+    public void testMoveEspectroFromPoint5_5ToPoint10_10() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(espectro);
 
         player.move(espectro, new Point(10, 10));
@@ -47,7 +53,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testEspectroMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded {
+    public void testEspectroMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(espectro);
 
         player.move(espectro, new Point(50, 50));
@@ -59,7 +65,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testEspectroCanMoveThroughSpace() throws StepsLimitExceeded {
+    public void testEspectroCanMoveThroughSpace() throws StepsLimitExceeded, UnitCantGetToDestination {
         map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(espectro);
 
@@ -77,7 +83,9 @@ public class MovementOfFlyingUnitsTest {
         player.receiveNewStructure(barraca);
         player.receiveNewUnit(espectro);
 
-        player.move(espectro, new Point(15, 15));
+        try {
+			player.move(espectro, new Point(15, 15));
+		} catch (UnitCantGetToDestination e) {}
 
         xComp = espectro.getPosition().getX() == 15;
         yComp = espectro.getPosition().getY() == 15;
@@ -86,7 +94,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testTwoEspectrosCanBeOnTheSamePoint() throws StepsLimitExceeded {
+    public void testTwoEspectrosCanBeOnTheSamePoint() throws StepsLimitExceeded, UnitCantGetToDestination {
         espectroAux = new EspectroTemplate().create(new Point(10,10));
         player.receiveNewUnit(espectro);
         player.receiveNewUnit(espectroAux);
