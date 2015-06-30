@@ -44,7 +44,6 @@ public class Player {
 	private Map map;
 
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
-    private Iterable<Point> inConstructionStructures;
 
     public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
 		this.name = name;
