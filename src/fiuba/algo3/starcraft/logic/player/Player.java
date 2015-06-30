@@ -10,7 +10,8 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -194,7 +195,8 @@ public class Player {
 		constructionQueue.addUnit(structure.create(name, structure.getPosition(), resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
-	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+		if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetThere();
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	
@@ -257,7 +259,7 @@ public class Player {
 		map.moveToLimbo(unit);
 	}
 
-	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+	public void disembark(TransportUnit transport, Transportable unit) throws NoUnitToRemove, StepsLimitExceeded, UnitCannotBeSetHere {
         map.setUnit((Unit) unit, transport.getPosition());
         ((Unit) unit).setDestination(unit.getPosition());
 		transport.disembark(unit);

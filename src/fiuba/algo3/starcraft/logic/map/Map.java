@@ -9,7 +9,7 @@ import java.util.List;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -89,12 +89,12 @@ public class Map {
 		return (pivotePoint.distance(otherPoint)) <= radious;
 	}
 
-	public void setUnit(Unit unit, Point position) throws UnitCanotBeSetHere {
+	public void setUnit(Unit unit, Point position) throws UnitCannotBeSetHere {
         if (unit.canFly()) return;
 		if (this.getParcelContainingPoint(position).letPass(unit))
             unit.setPosition(position);
         else
-            throw new UnitCanotBeSetHere();
+            throw new UnitCannotBeSetHere();
 	}
 	
 	public void setStructure(Structure structure, Point point) {

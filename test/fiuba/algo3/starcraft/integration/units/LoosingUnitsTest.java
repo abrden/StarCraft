@@ -8,6 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
@@ -34,7 +35,7 @@ public class LoosingUnitsTest {
 	}
 	
 	@Test
-	public void testLoosingSoleUnitDecreasesPopulationTo0() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testLoosingSoleUnitDecreasesPopulationTo0() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		player.newStructureWithName("Pilon", position);
 		for (int i = 0; i < 6; i++) player.newTurn();
 		assertEquals(player.populationQuota(), 5);
@@ -54,7 +55,7 @@ public class LoosingUnitsTest {
 	}
 	
 	@Test
-	public void testLoosingUnitDecreasesPopulation() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testLoosingUnitDecreasesPopulation() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		player.newStructureWithName("Pilon", position);
 		for (int i = 0; i < 6; i++) player.newTurn();
 		assertEquals(player.populationQuota(), 5);

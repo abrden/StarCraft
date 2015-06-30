@@ -15,7 +15,8 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.UnitCanotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
@@ -137,8 +138,8 @@ public class ActionsView extends JPanel implements ActionListener {
     	} catch (MissingStructureRequired | InsufficientResources
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
-				| UnitCanotBeSetHere | NoReachableTransport | InsufficientEnergy
-				| NonexistentPower e) {
+				| UnitCannotBeSetHere | NoReachableTransport | InsufficientEnergy
+				| NonexistentPower | StructureCannotBeSetThere e) {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
@@ -238,7 +239,7 @@ public class ActionsView extends JPanel implements ActionListener {
         playerStatusView.showActivePlayerStatus();
 	}
 	
-	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCanotBeSetHere {
+	private void executeDisembark() throws NoUnitToRemove, StepsLimitExceeded, UnitCannotBeSetHere {
 		Transportable transportable = this.getSelectedPassenger((TransportUnit) actionable);
 		
 		if (transportable == null) {
@@ -266,7 +267,7 @@ public class ActionsView extends JPanel implements ActionListener {
         playerStatusView.showActivePlayerStatus();
     }
 
-	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		String structureName = this.getSelectedStructureName();
 		
 		if (structureName == null) {

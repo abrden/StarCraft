@@ -8,6 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
@@ -57,7 +58,7 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testTerranPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Deposito() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testTerranPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Deposito() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		Player player = new Player(null, null, new TerranBuilder(), null, new Resources(100,0), map);
 		
 		player.newStructureWithName("Deposito Suministro", position);
@@ -67,7 +68,7 @@ public class PlayerTest {
 	}
 	
 	@Test
-	public void testProtossPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Pilon() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract {
+	public void testProtossPlayerPopulationQuotaIncreasesTo5IfHeBuilds1Pilon() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		Player player = new Player(null, null, new ProtossBuilder(), null, new Resources(100,0), map);
 		
 		player.newStructureWithName("Pilon", position);

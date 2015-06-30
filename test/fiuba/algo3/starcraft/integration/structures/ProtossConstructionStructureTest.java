@@ -1,8 +1,8 @@
 package fiuba.algo3.starcraft.integration.structures;
 
 import static org.junit.Assert.*;
-
 import fiuba.algo3.starcraft.logic.structures.exceptions.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +10,7 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -37,7 +38,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testAccesoCanBeConstructedInParcelWithVolcano() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+	public void testAccesoCanBeConstructedInParcelWithVolcano() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		Parcel parcel = map.getParcelContainingPoint(position);
 		parcel.setReservoir(ReservoirType.volcano);
 		
@@ -48,7 +49,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testAccesoCanBeConstructedInParcelWithMine() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+	public void testAccesoCanBeConstructedInParcelWithMine() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		Parcel parcel = map.getParcelContainingPoint(position);
 		parcel.setReservoir(ReservoirType.mine);
 		
@@ -59,7 +60,7 @@ public class ProtossConstructionStructureTest {
 	}
 	
 	@Test
-	public void testAccesoCanBeConstructedInParcelWithNoExtractableSurface() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract {
+	public void testAccesoCanBeConstructedInParcelWithNoExtractableSurface() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
 		Parcel parcel = map.getParcelContainingPoint(position);
 		
 		player.newStructureWithName("Acceso", position);
