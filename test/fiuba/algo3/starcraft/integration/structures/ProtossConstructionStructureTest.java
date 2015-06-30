@@ -120,7 +120,7 @@ public class ProtossConstructionStructureTest {
 		Resources resources = new Resources(200,0);
 		ConstructionStructure puerto = new PuertoEstelarProtossTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", new Point(500,500), resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte Protoss", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 8; i++) {
 			construction.lowerRelease();
 		}

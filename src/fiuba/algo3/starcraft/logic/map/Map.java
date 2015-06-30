@@ -1,10 +1,6 @@
 package fiuba.algo3.starcraft.logic.map;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
@@ -102,6 +98,17 @@ public class Map {
 		parcel.setStructure(structure);
 	}
 
+    public boolean structuresInConstruction(Point position, Collection<Point> structuresInConstruction) {
+        for (Point point : structuresInConstruction)
+            if(position.isSamePoint(point)) return true;
+
+        if (game == null) return false;
+        for (Point point : game.getEnemyInConstructionStructures(structuresInConstruction)){
+            if(position.isSamePoint(point)) return true;
+        }
+        return false;
+    }
+
 	public void resourceRequiredIsThere(Structure structure, Point position) throws NoResourcesToExtract {
 		Parcel parcel = this.getParcelContainingPoint(position);
 		ExtractableType resource = parcel.getLandForExplotation().extractResource();
@@ -197,7 +204,7 @@ public class Map {
         for (Parcel parcel : list){
             if (parcel.letPass(unit)){
                 unit.setPosition(new Point(parcel.getOrigin().getX(),parcel.getOrigin().getY()));
-                unit.setDestination(new Point(parcel.getOrigin().getX(),parcel.getOrigin().getY()));
+                unit.setDestination(new Point(parcel.getOrigin().getX(), parcel.getOrigin().getY()));
             }
         }
     }

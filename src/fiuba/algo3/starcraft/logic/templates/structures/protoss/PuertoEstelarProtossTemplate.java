@@ -10,7 +10,7 @@ import fiuba.algo3.starcraft.logic.templates.units.protoss.ScoutTemplate;
 
 public class PuertoEstelarProtossTemplate extends ConstructionTemplate {
 
-	private static final String NAME = "Puerto Estelar";
+	private static final String NAME = "Puerto Estelar Protoss";
 	private static final Value VALUE = new Value(150,150);
 	private static final int CONSTRUCTION_TIME = 10;
 	private static final int HEALTH = 600;

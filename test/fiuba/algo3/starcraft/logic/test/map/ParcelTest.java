@@ -28,15 +28,15 @@ public class ParcelTest {
 
 	@Before
 	public void before() {
-		parcel = new Parcel(new Point(0,0), 10);
 		map = new Map(1000,null);
+        parcel = map.getParcelContainingPoint(new Point(0,0));
 		depot = new Depot("Deposito Suministro", new Life(500), new Point(2,5));
 	}
 
 	@Test
 	public void testParcelRecognizesIfContainsAPointFromMap() {
 		assertTrue(parcel.containsPoint(new Point(5,5)));
-		assertFalse(parcel.containsPoint(new Point(11,5)));
+		assertFalse(parcel.containsPoint(new Point(101,55)));
 	}
 
 	@Test 
@@ -57,9 +57,10 @@ public class ParcelTest {
 	}
 	
 	@Test
-	// TODO Implementar
 	public void testParcelHasToDisablePassingThroughALandWithABuilding() {
-
+        parcel.setStructure(depot);
+        MuggleUnit marine = (new MarineTemplate()).create(new Point(500,500));
+        assertTrue(!parcel.letPass(marine));
 	}
 	
 	@Test

@@ -17,8 +17,8 @@ public class ProtossBuilder extends Builder {
 		addTemplate(new PuertoEstelarProtossTemplate());
 		addTemplate(new ArchivosTemplariosTemplate());
 		
-		addDependency("Puerto Estelar", "Acceso");
-		addDependency("Archivos Templarios", "Puerto Estelar");
+		addDependency("Puerto Estelar Protoss", "Acceso");
+		addDependency("Archivos Templarios", "Puerto Estelar Protoss");
 	}
 
     @Override

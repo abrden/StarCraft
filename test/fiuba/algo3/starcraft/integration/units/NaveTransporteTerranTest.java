@@ -50,7 +50,7 @@ public class NaveTransporteTerranTest {
 		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(position4);
 		player.receiveNewStructure(puerto);
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", position2, player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction = puerto.create("Nave Transporte Terran", position2, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

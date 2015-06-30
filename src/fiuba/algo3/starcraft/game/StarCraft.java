@@ -72,6 +72,17 @@ public class StarCraft {
 		return enemyUnits;
 	}
 
+    public Iterable<Point> getEnemyInConstructionStructures(Iterable<Point> inConstructionStructures) {
+        List <Point> enemyInConstructionStructures = new ArrayList<Point>();
+        for (Player player : players) {
+            if (inConstructionStructures == player.getInConstructionStructures())
+                continue;
+            for (Point point : player.getInConstructionStructures())
+                enemyInConstructionStructures.add(point);
+        }
+        return enemyInConstructionStructures;
+    }
+
 	private void getRidOfLoosers() {
 		List<Player> loosers = new ArrayList<Player>();
 		for (Player player : players) {
