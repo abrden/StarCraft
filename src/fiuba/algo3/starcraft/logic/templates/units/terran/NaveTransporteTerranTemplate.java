@@ -8,7 +8,7 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
 public class NaveTransporteTerranTemplate extends TransportTemplate {
 
-	private static final String NAME = "Nave Transporte";
+	private static final String NAME = "Nave Transporte Terran";
 	private static final Value VALUE = new Value(100,100);
 	private static final int CONSTRUCTION_TIME = 7;
 	private static final int VISION = 8;

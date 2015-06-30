@@ -11,7 +11,7 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.NaveTransporteTerranTe
 
 public class PuertoEstelarTerranTemplate extends ConstructionTemplate {
 
-	private static final String NAME = "Puerto Estelar";
+	private static final String NAME = "Puerto Estelar Terran";
 	private static final Value VALUE = new Value(150,100);
 	private static final int CONSTRUCTION_TIME = 10;
 	private static final int HEALTH = 1300;

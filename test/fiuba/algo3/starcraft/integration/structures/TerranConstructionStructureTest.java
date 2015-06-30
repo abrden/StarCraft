@@ -82,7 +82,7 @@ public class TerranConstructionStructureTest {
 		Resources resources = new Resources(100,100);
 		ConstructionStructure puerto = new PuertoEstelarTerranTemplate().create(new Point(500,500));
 		
-		Construction<Unit> construction = puerto.create("Nave Transporte", new Point(500,500), resources, 0, 2);
+		Construction<Unit> construction = puerto.create("Nave Transporte Terran", new Point(500,500), resources, 0, 2);
 		for(int i = 0; i < 7; i++) {
 			construction.lowerRelease();
 		}

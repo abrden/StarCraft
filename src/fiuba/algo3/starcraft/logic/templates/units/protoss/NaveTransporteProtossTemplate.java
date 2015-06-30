@@ -8,7 +8,7 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
 public class NaveTransporteProtossTemplate extends TransportTemplate {
 
-	private static final String NAME = "Nave Transporte";
+	private static final String NAME = "Nave Transporte Protoss";
 	private static final Value VALUE = new Value(200,0);
 	private static final int CONSTRUCTION_TIME = 8;
 	private static final int VISION = 8;

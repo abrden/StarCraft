@@ -50,7 +50,7 @@ public class StructuresDependenceTest {
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(new FabricaTemplate().create(position));
 		
-		new TerranBuilder().create("Puerto Estelar", position2, initialResources, built, map);
+		new TerranBuilder().create("Puerto Estelar Terran", position2, initialResources, built, map);
 	}
 	
 	@Test
@@ -60,12 +60,12 @@ public class StructuresDependenceTest {
 		built.add(new BarracaTemplate().create(position));
 		built.add(new FabricaTemplate().create(position));
 		
-		Construction<Structure> construction = new TerranBuilder().create("Puerto Estelar", position2, initialResources, built, map);
+		Construction<Structure> construction = new TerranBuilder().create("Puerto Estelar Terran", position2, initialResources, built, map);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
 
-		assertEquals((construction.gather()).getName(), "Puerto Estelar");
+		assertEquals((construction.gather()).getName(), "Puerto Estelar Terran");
 		assertEquals(initialResources.getMineral(), 0);
 		assertEquals(initialResources.getGas(), 0);
 	}
@@ -90,7 +90,7 @@ public class StructuresDependenceTest {
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(new PilonTemplate().create(position));
 		
-		new TerranBuilder().create("Puerto Estelar", position2, initialResources, built, map);
+		new TerranBuilder().create("Puerto Estelar Terran", position2, initialResources, built, map);
 	}
 
 	@Test(expected = MissingStructureRequired.class)
@@ -123,12 +123,12 @@ public class StructuresDependenceTest {
 		Collection<Structure> built = new LinkedList<Structure>();
 		built.add(new AccesoTemplate().create(position));
 		
-		Construction<Structure> construction = new ProtossBuilder().create("Puerto Estelar", position2, initialResources, built, map);
+		Construction<Structure> construction = new ProtossBuilder().create("Puerto Estelar Protoss", position2, initialResources, built, map);
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}
 
-		assertEquals((construction.gather()).getName(), "Puerto Estelar");
+		assertEquals((construction.gather()).getName(), "Puerto Estelar Protoss");
 		assertEquals(initialResources.getMineral(), 0);
 		assertEquals(initialResources.getGas(), 0);
 	}

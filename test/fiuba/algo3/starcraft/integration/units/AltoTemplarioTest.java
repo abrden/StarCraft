@@ -43,7 +43,7 @@ public class AltoTemplarioTest {
 		for(int i = 0; i < 6; i++) player.newTurn();
 		player.newStructureWithName("Acceso", position2);
 		for(int i = 0; i < 9; i++) player.newTurn();
-		player.newStructureWithName("Puerto Estelar", position3);
+		player.newStructureWithName("Puerto Estelar Protoss", position3);
 		for(int i = 0; i < 11; i++) player.newTurn();
 		
 		ConstructionStructure archivos = new ArchivosTemplariosTemplate().create(position4);

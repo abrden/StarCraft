@@ -48,7 +48,7 @@ public class NaveTransporteProtossTest {
 		ConstructionStructure puerto = new PuertoEstelarProtossTemplate().create(position3);
 		player.receiveNewStructure(puerto);
 		
-		Construction<Unit> construction =  puerto.create("Nave Transporte", position4, player.getResources(), player.currentPopulation(), player.populationQuota());
+		Construction<Unit> construction =  puerto.create("Nave Transporte Protoss", position4, player.getResources(), player.currentPopulation(), player.populationQuota());
 		while(!construction.itsFinished()) {
 			construction.lowerRelease();
 		}

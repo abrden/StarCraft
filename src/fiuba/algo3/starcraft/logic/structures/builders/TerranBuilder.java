@@ -19,7 +19,7 @@ public class TerranBuilder extends Builder {
 		addTemplate(new PuertoEstelarTerranTemplate());
 		
 		addDependency("Fabrica", "Barraca");
-		addDependency("Puerto Estelar", "Fabrica");
+		addDependency("Puerto Estelar Terran", "Fabrica");
 	}
 
     @Override

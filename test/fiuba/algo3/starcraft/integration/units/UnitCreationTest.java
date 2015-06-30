@@ -95,7 +95,7 @@ public class UnitCreationTest {
 			player2.newTurn();
 			player1.newTurn();
 		}
-		player1.newStructureWithName("Puerto Estelar", position);
+		player1.newStructureWithName("Puerto Estelar Terran", position);
 		for(int i = 0; i < 11; i++) {
 			player2.newTurn();
 			player1.newTurn();
@@ -149,20 +149,20 @@ public class UnitCreationTest {
 			player1.newTurn();
 			player2.newTurn();
 		}
-		player2.newStructureWithName("Puerto Estelar", position);
+		player2.newStructureWithName("Puerto Estelar Protoss", position);
 		for(int i = 0; i < 11; i++) {
 			player1.newTurn();
 			player2.newTurn();
 		}
 		ConstructionStructure puerto = (ConstructionStructure) map.getParcelContainingPoint(position).getStructure();
 		
-		player2.newUnitWithName("Nave Transporte", puerto);
+		player2.newUnitWithName("Nave Transporte Protoss", puerto);
 		for(int i = 0; i < 11; i++) {
 			player1.newTurn();
 			player2.newTurn();
 		}
 		
-		assertEquals(((LinkedList<Unit>) player2.getUnits()).peekFirst().getName(), "Nave Transporte");
+		assertEquals(((LinkedList<Unit>) player2.getUnits()).peekFirst().getName(), "Nave Transporte Protoss");
 	}
 	
 	@Test
@@ -199,7 +199,7 @@ public class UnitCreationTest {
 			player1.newTurn();
 			player2.newTurn();
 		}
-		player2.newStructureWithName("Puerto Estelar", position5);
+		player2.newStructureWithName("Puerto Estelar Protoss", position5);
 		for(int i = 0; i < 11; i++) {
 			player1.newTurn();
 			player2.newTurn();

@@ -111,13 +111,13 @@ public class StructureCreationTest {
 			player1.newTurn();
 			player2.newTurn();
 		}
-		player2.newStructureWithName("Puerto Estelar", position);
+		player2.newStructureWithName("Puerto Estelar Protoss", position);
 		for(int i = 0; i < 12; i++) {
 			player1.newTurn();
 			player2.newTurn();
 		}
 
-		assertEquals(map.getParcelContainingPoint(position).getStructure().getName(), "Puerto Estelar");
+		assertEquals(map.getParcelContainingPoint(position).getStructure().getName(), "Puerto Estelar Protoss");
 	}
 	
 	@Test
@@ -134,13 +134,13 @@ public class StructureCreationTest {
 			player1.newTurn();
 		}
 		
-		player1.newStructureWithName("Puerto Estelar", position);
+		player1.newStructureWithName("Puerto Estelar Terran", position);
 		for(int i = 0; i < 11; i++) {
 			player2.newTurn();
 			player1.newTurn();
 		}
 
-		assertEquals(map.getParcelContainingPoint(position).getStructure().getName(), "Puerto Estelar");
+		assertEquals(map.getParcelContainingPoint(position).getStructure().getName(), "Puerto Estelar Terran");
 	}
 	
 	@Test(expected = MissingStructureRequired.class)
@@ -152,7 +152,7 @@ public class StructureCreationTest {
 			player1.newTurn();
 		}
 		
-		player1.newStructureWithName("Puerto Estelar", position);
+		player1.newStructureWithName("Puerto Estelar Terran", position);
 		assertTrue(false);
 	}
 
