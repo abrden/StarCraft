@@ -19,7 +19,7 @@ public class Parcel implements Actionable, Drawable {
 	private DrawableView drawableView;
 	private Surface surface = new Land();
     private String inConstruction = "/MapView/StructureView/InConstruction.png";
-	
+    
 	public Parcel(Point origin, double side) {
 		this.origin = origin;
 		this.side = side;

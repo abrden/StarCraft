@@ -5,6 +5,10 @@ import java.awt.event.MouseListener;
 
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Parcel;
+import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
+import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
+import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
 
 public class ParcelView extends DrawableView implements MouseListener{
 	
@@ -27,6 +31,14 @@ public class ParcelView extends DrawableView implements MouseListener{
 	 	double mapClickX = (arg0.getPoint().getX() + parcel.getOrigin().getX());
 	 	double mapClickY = (arg0.getPoint().getY() + parcel.getOrigin().getY());
 		System.out.println("" + mapClickX + ", " + mapClickY);
+		
+		
+		try {
+			actionsView.setActionPoint(new Point(mapClickX, mapClickY));
+		} catch (UnitCantGetToDestination | InsufficientEnergy
+				| NonexistentPower e) {
+			e.printStackTrace();
+		}
 		
 		if (this.parcel.getStructure() != null) {
 			actionsView.showActions(this.parcel.getStructure());

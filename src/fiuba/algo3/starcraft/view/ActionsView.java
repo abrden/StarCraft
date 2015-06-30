@@ -52,8 +52,8 @@ public class ActionsView extends JPanel implements ActionListener {
 	private JButton disembark = new JButton("Disembark", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/disembark.png")));
 	private JButton pass = new JButton("PASS TURN", new ImageIcon(getClass().getClassLoader().getResource("fiuba/algo3/starcraft/presets/ActionsView/next.png")));
 	
-	private boolean performingAction = false;
-	private Point currentPoint;
+	private boolean waitingToMove;
+	private boolean waitingToExecutePower;
 
 	
 	ActionsView(StarCraft game, MessageBox messageBox, PlayerStatusView playerStatusView) {
@@ -111,8 +111,6 @@ public class ActionsView extends JPanel implements ActionListener {
 	}
 	
     public void actionPerformed(ActionEvent event) {
-    	performingAction = true;
-    	
     	try {
 	        if (event.getSource() == move) {
 	        	System.out.println("entre a move");
@@ -150,13 +148,22 @@ public class ActionsView extends JPanel implements ActionListener {
     		pass.setEnabled(false);
 		}
     	
-    	performingAction = false;
     	disableActionButtons();
     }
     
-    private Point getSelectedDestination() {
-    	// TODO COMPLETAR ESTO URGENTETETETEE
-    	return new Point(9010, 4500);
+    public void setActionPoint(Point destination) throws UnitCantGetToDestination, InsufficientEnergy, NonexistentPower {
+    	if (waitingToMove) {
+      		game.getActivePlayer().move((Unit) actionable, destination);
+    	}
+    	if (waitingToExecutePower) {
+    		String powerName = this.getSelectedPowerName();
+    		game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, destination);
+    	}
+    	
+    	waitingToMove = false;
+    	waitingToExecutePower = false;
+    	
+    	System.out.println("entre al action point como un campeon");
     }
     
 	private String getSelectedPowerName() {
@@ -278,28 +285,34 @@ public class ActionsView extends JPanel implements ActionListener {
 		game.getActivePlayer().newStructureWithName(structureName, ((Parcel) actionable).getOrigin());
         playerStatusView.showActivePlayerStatus();
 
-        performingAction = false;
 		disableActionButtons();
 	}
 
 	private void executeUsePower() throws InsufficientEnergy, NonexistentPower {
 		String powerName = this.getSelectedPowerName();
 		
+		waitingToExecutePower = true;
+		
 		if (powerName == null) {
 			this.disableActionButtons();
 			return;
 		}
 		
-		Point position = this.getSelectedDestination();
-		game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, position);
+		
+		
+		//game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, position);
 	}
 
-	private void executeMove() throws UnitCantGetToDestination {
-		Point destination = this.getSelectedDestination();
-		game.getActivePlayer().move((Unit) actionable, destination);
+	private void executeMove() throws UnitCantGetToDestination {		
+		waitingToMove = true;
+		
+		//game.getActivePlayer().move((Unit) actionable, destination);
 	}
 	
 	private void enableActionButton(ActionID action) {
+		if (waitingToMove || waitingToExecutePower) {
+			return ;
+		}
 		switch (action) {
 		case move:
 			move.setEnabled(true);
@@ -327,7 +340,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		messageBox.clear();
 		
 		Player activePlayer = game.getActivePlayer();		
-		if (performingAction || (actionable.hasOwner() && !activePlayer.actionableIsMine(actionable))) {
+		if ((actionable.hasOwner() && !activePlayer.actionableIsMine(actionable))) {
 			return;
 		}
 		

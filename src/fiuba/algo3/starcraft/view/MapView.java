@@ -50,6 +50,8 @@ public class MapView extends JComponent {
 		}
 	}
 	
+	
+	
 	public void addUnitToMap(Unit unit) {
 		this.removeAll();
 		UnitView unitView = new UnitView(unit, actionsView);
