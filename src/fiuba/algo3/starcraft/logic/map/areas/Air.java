@@ -29,4 +29,9 @@ public class Air extends Surface {
 	public Iterable<ActionID> getActions() {
 		return new ArrayList<ActionID>();
 	}
+
+    @Override
+    public boolean canMove() {
+        return false;
+    }
 }

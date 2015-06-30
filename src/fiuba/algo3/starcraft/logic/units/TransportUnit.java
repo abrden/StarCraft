@@ -48,6 +48,7 @@ public class TransportUnit extends Unit {
 	}
 
 	public void update() {
+        movedThisTurn = false;
 		life.regenerateShield();
 	}
 

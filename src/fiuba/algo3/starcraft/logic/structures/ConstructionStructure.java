@@ -58,7 +58,12 @@ public class ConstructionStructure extends Structure implements Actionable {
 		return actions;
 	}
 
-	public String[] getTemplateNames() {
+    @Override
+    public boolean canMove() {
+        return false;
+    }
+
+    public String[] getTemplateNames() {
 		String[] templateNames = new String[templates.size()];
 		
 		int i = 0;

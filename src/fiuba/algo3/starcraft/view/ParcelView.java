@@ -9,6 +9,7 @@ import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
 import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
+import fiuba.algo3.starcraft.logic.units.exceptions.UnitAlreadyMovedThisTurn;
 
 public class ParcelView extends DrawableView implements MouseListener{
 	
@@ -16,10 +17,12 @@ public class ParcelView extends DrawableView implements MouseListener{
 	private Parcel parcel;
 	
 	private ActionsView actionsView;
+    private MessageBox messageBox;
 	
-	public ParcelView(Parcel parcel, ActionsView actionsView) {
+	public ParcelView(Parcel parcel, ActionsView actionsView, MessageBox messageBox) {
 		this.parcel = parcel;
 		this.actionsView = actionsView;
+        this.messageBox = messageBox;
 		parcel.setDrawableView(this);
 		this.setBounds((int)parcel.getOrigin().getX(), (int)parcel.getOrigin().getY(), (int)Map.PARCEL_SIDE, (int)Map.PARCEL_SIDE);
 		addMouseListener(this);
@@ -36,10 +39,11 @@ public class ParcelView extends DrawableView implements MouseListener{
 		try {
 			actionsView.setActionPoint(new Point(mapClickX, mapClickY));
 		} catch (UnitCantGetToDestination | InsufficientEnergy
-				| NonexistentPower e) {
+				| NonexistentPower | UnitAlreadyMovedThisTurn e) {
 			e.printStackTrace();
+            messageBox.displayMessage(e.getMessage());
 		}
-		
+
 		if (this.parcel.getStructure() != null) {
 			actionsView.showActions(this.parcel.getStructure());
 			return;

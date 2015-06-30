@@ -47,6 +47,7 @@ public class MuggleUnit extends Unit implements Transportable {
 	}
 	
 	public void update() {
+        movedThisTurn = false;
 		life.regenerateShield();
 	}
 

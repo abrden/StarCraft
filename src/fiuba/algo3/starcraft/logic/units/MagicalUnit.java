@@ -43,6 +43,7 @@ public class MagicalUnit extends Unit implements Transportable {
 	
 	public void update() {
 		// Gana energia del turno
+        movedThisTurn = false;
 		energy += energyGainPerTurn;
 		if (energy > maximumEnergy) energy = maximumEnergy;
 		

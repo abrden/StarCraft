@@ -5,4 +5,6 @@ public interface Actionable {
 	public Iterable<ActionID> getActions();
 	
 	public boolean hasOwner();
+
+    public boolean canMove();
 }

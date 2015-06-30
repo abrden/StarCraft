@@ -22,6 +22,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
     protected Point destination;
 	protected final int stepsPerTurn;
     protected Color color;
+    protected boolean movedThisTurn;
     
     DrawableView drawableView;
 	
@@ -35,6 +36,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 		this.stepsPerTurn = stepsPerTurn;
 		this.populationQuota = populationQuota;
         this.color = Color.black;
+        this.movedThisTurn = false;
 	}
     
     public void addToMapView(MapView mapView) {
@@ -92,6 +94,14 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
     public void setDestination(Point destination) {
         this.destination = destination;
     }
+
+    public void setMovedThisTurn(boolean status) {
+        movedThisTurn = status;
+    }
+
+    public boolean getMovedThisTurn() {
+        return movedThisTurn;
+    }
 	
 	public abstract void update();
 
@@ -141,4 +151,8 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	public boolean hasOwner() {
 		return true;
 	}
+
+    public boolean canMove() {
+        return !movedThisTurn;
+    }
 }

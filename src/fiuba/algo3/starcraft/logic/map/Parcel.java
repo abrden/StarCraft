@@ -95,4 +95,9 @@ public class Parcel implements Actionable, Drawable {
 	public boolean hasOwner() {
 		return false;
 	}
+
+    @Override
+    public boolean canMove() {
+        return false;
+    }
 }

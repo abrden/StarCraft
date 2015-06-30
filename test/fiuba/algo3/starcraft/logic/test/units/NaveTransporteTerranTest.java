@@ -18,6 +18,7 @@ import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
+import fiuba.algo3.starcraft.logic.units.exceptions.UnitAlreadyMovedThisTurn;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,7 +85,7 @@ public class NaveTransporteTerranTest {
     }
 
     @Test(expected = UnitCannotBeSetHere.class)
-    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoReachableTransport, UnitCantGetToDestination {
+    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoReachableTransport, UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         Map map = new Map(1000,null);
         Parcel parcel = map.getParcelContainingPoint(new Point(495,495));
         parcel.setAirSurface();

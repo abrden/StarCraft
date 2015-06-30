@@ -28,11 +28,7 @@ import fiuba.algo3.starcraft.logic.units.MagicalUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
-import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
-import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
-import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
-import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
-import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+import fiuba.algo3.starcraft.logic.units.exceptions.*;
 
 public class ActionsView extends JPanel implements ActionListener {
 
@@ -151,9 +147,11 @@ public class ActionsView extends JPanel implements ActionListener {
     	disableActionButtons();
     }
     
-    public void setActionPoint(Point destination) throws UnitCantGetToDestination, InsufficientEnergy, NonexistentPower {
-    	if (waitingToMove) {
-      		game.getActivePlayer().move((Unit) actionable, destination);
+    public void setActionPoint(Point destination) throws UnitCantGetToDestination, InsufficientEnergy, NonexistentPower, UnitAlreadyMovedThisTurn {
+    	if (waitingToMove && actionable.canMove()) {
+            System.out.println("Entre aca cuando no deberia haberlo hecho");
+            System.out.println(actionable.canMove());
+            game.getActivePlayer().move((Unit) actionable, destination);
     	}
     	if (waitingToExecutePower) {
     		String powerName = this.getSelectedPowerName();

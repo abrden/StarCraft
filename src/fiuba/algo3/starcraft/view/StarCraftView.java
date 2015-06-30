@@ -42,7 +42,7 @@ public class StarCraftView extends JFrame {
         ActionsView actionsView = new ActionsView(game, messageBox, playerStatusView);
         setActionsView(actionsView);
         
-        MapView mapView = new MapView(game.map, actionsView);
+        MapView mapView = new MapView(game.map, actionsView, messageBox);
         setMapView(mapView);
         
         setVisible(true);

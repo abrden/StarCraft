@@ -67,4 +67,9 @@ public class Land extends Surface {
 		actions.add(ActionID.build);
 		return actions;
 	}
+
+    @Override
+    public boolean canMove() {
+        return false;
+    }
 }

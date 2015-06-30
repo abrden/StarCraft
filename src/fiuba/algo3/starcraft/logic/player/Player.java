@@ -28,11 +28,7 @@ import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
 import fiuba.algo3.starcraft.logic.units.Unit;
-import fiuba.algo3.starcraft.logic.units.exceptions.InsufficientEnergy;
-import fiuba.algo3.starcraft.logic.units.exceptions.NoMoreSpaceInUnit;
-import fiuba.algo3.starcraft.logic.units.exceptions.NoUnitToRemove;
-import fiuba.algo3.starcraft.logic.units.exceptions.NonexistentPower;
-import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
+import fiuba.algo3.starcraft.logic.units.exceptions.*;
 
 public class Player {
 	
@@ -139,8 +135,8 @@ public class Player {
         for (Unit unit : units) {
             if (!unit.getPosition().isSamePoint(unit.getDestination()) && !unit.getPosition().isSamePoint(map.getLimbo())) {
                 try {
-					this.move(unit, unit.getDestination());
-				} catch (UnitCantGetToDestination e) {
+                    this.move(unit, unit.getDestination());
+				} catch (UnitCantGetToDestination | UnitAlreadyMovedThisTurn e) {
 
 				}
             }
@@ -227,9 +223,11 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Unit unit, Point destination) throws UnitCantGetToDestination {
+	public void move(Unit unit, Point destination) throws UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
+        if (unit.getMovedThisTurn()) throw new UnitAlreadyMovedThisTurn();
         unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
+        unit.setMovedThisTurn(true);
 		if (unit.getAttack() != null)
 			this.attack((MuggleUnit) unit);
 	}

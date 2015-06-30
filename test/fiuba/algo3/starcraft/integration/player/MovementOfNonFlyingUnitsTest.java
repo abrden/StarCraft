@@ -13,6 +13,7 @@ import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
 
+import fiuba.algo3.starcraft.logic.units.exceptions.UnitAlreadyMovedThisTurn;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +40,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
     
     @Test
-    public void testMoveMarineFromPoint5_5ToPoint10_10() throws StepsLimitExceeded, UnitCantGetToDestination {
+    public void testMoveMarineFromPoint5_5ToPoint10_10() throws StepsLimitExceeded, UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         player.receiveNewUnit(marine);
 
         player.move(marine, new Point(10, 10));
@@ -51,7 +52,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
+    public void testMarineMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         player.receiveNewUnit(marine);
 
         player.move(marine, new Point(50, 50));
@@ -63,7 +64,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineCantMoveThroughSpace() throws StepsLimitExceeded {
+    public void testMarineCantMoveThroughSpace() throws StepsLimitExceeded, UnitAlreadyMovedThisTurn {
         map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(marine);
 
@@ -80,7 +81,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testMarineCantMoveThroughAParcelWithAStructure() throws StepsLimitExceeded, UnitCantGetToDestination {
+    public void testMarineCantMoveThroughAParcelWithAStructure() throws StepsLimitExceeded, UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         ConstructionStructure barraca = new BarracaTemplate().create(new Point(10,10));
         player.receiveNewStructure(barraca);
         player.receiveNewUnit(marine);
@@ -98,7 +99,7 @@ public class MovementOfNonFlyingUnitsTest {
     }
 
     @Test
-    public void testTwoMarinesCanBeOnTheSamePoint() throws StepsLimitExceeded, UnitCantGetToDestination {
+    public void testTwoMarinesCanBeOnTheSamePoint() throws StepsLimitExceeded, UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         marineAux = new MarineTemplate().create(new Point(10,10));
         player.receiveNewUnit(marine);
         player.receiveNewUnit(marineAux);
@@ -142,5 +143,5 @@ public class MovementOfNonFlyingUnitsTest {
         System.out.println("a ver loco si estas bien " + marine.getPosition().getX() + " " + marine.getPosition().getY());
         
         assertTrue(!marine.getPosition().isSamePoint(destinationPoint));
-    }*/
+}*/
 }

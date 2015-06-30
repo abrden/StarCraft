@@ -25,6 +25,7 @@ public class Clone extends Unit {
 	}
 	
 	public void update() {
+        movedThisTurn = false;
 		life.regenerateShield();
 	}
 

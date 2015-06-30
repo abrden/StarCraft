@@ -19,4 +19,9 @@ public class Depot extends Structure implements Actionable {
 	public int getPopulationQuotaIncrement() {
 		return POPULATION_QUOTA_INCREMENT;
 	}
+
+    @Override
+    public boolean canMove() {
+        return false;
+    }
 }
