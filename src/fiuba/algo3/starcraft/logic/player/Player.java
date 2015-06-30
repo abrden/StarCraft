@@ -42,14 +42,16 @@ public class Player {
 	private Resources resources;
 	private Point base;
 	private Collection<Structure> structures;
+    private Collection<Point> structuresInConstruction;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
 	private Map map;
-	
+
 	private static final int POPULATION_QUOTA_MAXIMUM = 200;
-	
-	public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
+    private Iterable<Point> inConstructionStructures;
+
+    public Player(String name, Color color, Builder builder, Point base, Resources initialResources, Map map) {
 		this.name = name;
 		this.color = color;
 		this.builder = builder;
@@ -57,19 +59,20 @@ public class Player {
 		this.resources = initialResources;
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
+        this.structuresInConstruction = new LinkedList<Point>();
 		this.constructionQueue = new ConstructionQueue();
 		this.activePowers = new LinkedList<Power>();
 		this.map = map;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public Color getColor() {
 		return color;
 	}
-	
+
 	public int getMineral() {
 		return resources.getMineral();
 	}
@@ -77,7 +80,7 @@ public class Player {
 	public int getGas() {
 		return resources.getGas();
 	}
-	
+
 	public Resources getResources() {
 		return resources;
 	}
@@ -85,11 +88,11 @@ public class Player {
 	public Builder getBuilder() {
 		return builder;
 	}
-	
+
     public String getRace() {
         return builder.getRace();
     }
-	
+
 	public void newTurn() {
 		this.update();
 	}
@@ -97,33 +100,33 @@ public class Player {
 	public Iterable<Unit> getUnits() {
 		return units;
 	}
-	
+
 	public int numberOfUnits() {
 		return units.size();
 	}
-	
+
 	public int numberOfStructures() {
 		return structures.size();
 	}
-	
+
 	private void update() {
 		// Pierde referencia a Units y Structures muertas
 		this.getRidOfDeadUnits();
 		this.getRidOfDeadStructures();
-		
+
 		// Recolecta las nuevas Units y Structures y disminuye la release de las que siguen en construccion
 		constructionQueue.update(this);
-		
+
 		// Sus estructuras le dan los recursos recolectados
 		for (Structure structure : structures)
 			structure.getResources(this);
-		
+
 		// Regeneracion de escudos y ganancia de energia en MagicalUnits
 		for (Structure structure : structures)
 			structure.update();
 		for (Unit unit : units)
 			unit.update();
-		
+
 		// Actualizacion de poderes
 		Collection<Power> finishedPowers = new LinkedList<Power>();
 		for (Power power : activePowers) {
@@ -131,7 +134,7 @@ public class Player {
 				power.execute();
 			} else finishedPowers.add(power);
 		}
-		for (Power power : finishedPowers)	
+		for (Power power : finishedPowers)
 			activePowers.remove(power);
 
         //Unidades caminan hasta el punto indicado en turnos anteriores
@@ -140,7 +143,7 @@ public class Player {
                 try {
 					this.move(unit, unit.getDestination());
 				} catch (UnitCantGetToDestination e) {
-					
+
 				}
             }
         }
@@ -151,10 +154,10 @@ public class Player {
 		for (Unit unit : units)
 			if (!unit.itsAlive())
 				dead.add(unit);
-		for (Unit unit : dead) 
+		for (Unit unit : dead)
 			units.remove(unit);
 	}
-	
+
 	private void getRidOfDeadStructures() {
 		LinkedList<Structure> dead = new LinkedList<Structure>();
 		for (Structure structure : structures)
@@ -172,14 +175,14 @@ public class Player {
 	public int populationSpace() {
 		return (this.populationQuota() - this.currentPopulation());
 	}
-	
+
 	public int currentPopulation() {
 		int population = 0;
 		for (Unit unit : units)
 			population = population + unit.getPopulationQuota();
 		return population;
 	}
-	
+
 	public int populationQuota() {
 		int populationQuota = 0;
 		for (Structure structure : structures)
@@ -187,11 +190,11 @@ public class Player {
 		if (populationQuota > POPULATION_QUOTA_MAXIMUM) return POPULATION_QUOTA_MAXIMUM;
 		else return populationQuota;
 	}
-	
+
 	public void gains(int mineral, int gas) {
 		resources.add(mineral, gas);
 	}
-	
+
 	public void pays(int mineral, int gas) throws InsufficientResources {
 		resources.remove(mineral, gas);
 	}
@@ -199,13 +202,16 @@ public class Player {
 	public void newUnitWithName(String name, ConstructionStructure structure) throws InsufficientResources, QuotaExceeded, TemplateNotFound {
 		constructionQueue.addUnit(structure.create(name, structure.getPosition(), resources, this.currentPopulation(), this.populationQuota()));
 	}
-	
+
 	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
-		if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
+        if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
+        if (map.structuresInConstruction(position,structuresInConstruction)) throw new StructureCannotBeSetHere();
+        map.getParcelContainingPoint(position).setConstruction();
+        structuresInConstruction.add(position);
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
-	
-	public void receiveNewUnit(Unit unit) {
+
+    public void receiveNewUnit(Unit unit) {
         if (!map.getParcelContainingPoint(unit.getPosition()).letPass(unit))
             map.getPositionNearStructure(unit);
         unit.setColor(this.getColor());
@@ -213,12 +219,13 @@ public class Player {
 		try {
 			unit.addToMapView(this.map.getMapView());
 		} catch (Exception e) {
-			
+
 		}
 	}
 
 	public void receiveNewStructure(Structure structure) {
 		map.setStructure(structure, structure.getPosition());
+        structuresInConstruction.remove(structure.getPosition());
 		structures.add(structure);
 	}
 	
@@ -282,4 +289,8 @@ public class Player {
 		System.out.println("I'm not yours gtfo!");
 		return false;
 	}
+
+    public Iterable<Point> getInConstructionStructures() {
+        return structuresInConstruction;
+    }
 }

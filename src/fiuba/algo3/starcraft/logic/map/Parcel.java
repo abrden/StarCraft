@@ -18,6 +18,7 @@ public class Parcel implements Actionable, Drawable {
 	private Structure structure;
 	private DrawableView drawableView;
 	private Surface surface = new Land();
+    private String inConstruction = "/MapView/StructureView/InConstruction.png";
 	
 	public Parcel(Point origin, double side) {
 		this.origin = origin;
@@ -37,6 +38,10 @@ public class Parcel implements Actionable, Drawable {
 		
 		if (drawableView != null) setDrawableView(drawableView);
 	}
+
+    public void setConstruction() {
+        drawableView.setImageName(inConstruction);
+    }
 	
 	public void setAirSurface() {
 		surface = new Air();
