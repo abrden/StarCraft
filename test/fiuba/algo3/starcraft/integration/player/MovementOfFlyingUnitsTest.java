@@ -6,6 +6,7 @@ import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
@@ -40,7 +41,7 @@ public class MovementOfFlyingUnitsTest {
     }
     
     @Test
-    public void testMoveEspectroFromPoint5_5ToPoint10_10() throws StepsLimitExceeded {
+    public void testMoveEspectroFromPoint5_5ToPoint10_10() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(espectro);
 
         player.move(espectro, new Point(10, 10));
@@ -52,7 +53,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testEspectroMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded {
+    public void testEspectroMovementStopsWhenItReachesItMaximumStepsPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
         player.receiveNewUnit(espectro);
 
         player.move(espectro, new Point(50, 50));
@@ -64,7 +65,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testEspectroCanMoveThroughSpace() throws StepsLimitExceeded {
+    public void testEspectroCanMoveThroughSpace() throws StepsLimitExceeded, UnitCantGetToDestination {
         map.getParcelContainingPoint(new Point(12,12)).setAirSurface();
         player.receiveNewUnit(espectro);
 
@@ -82,7 +83,9 @@ public class MovementOfFlyingUnitsTest {
         player.receiveNewStructure(barraca);
         player.receiveNewUnit(espectro);
 
-        player.move(espectro, new Point(15, 15));
+        try {
+			player.move(espectro, new Point(15, 15));
+		} catch (UnitCantGetToDestination e) {}
 
         xComp = espectro.getPosition().getX() == 15;
         yComp = espectro.getPosition().getY() == 15;
@@ -91,7 +94,7 @@ public class MovementOfFlyingUnitsTest {
     }
 
     @Test
-    public void testTwoEspectrosCanBeOnTheSamePoint() throws StepsLimitExceeded {
+    public void testTwoEspectrosCanBeOnTheSamePoint() throws StepsLimitExceeded, UnitCantGetToDestination {
         espectroAux = new EspectroTemplate().create(new Point(10,10));
         player.receiveNewUnit(espectro);
         player.receiveNewUnit(espectroAux);

@@ -12,6 +12,7 @@ import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
@@ -136,7 +137,11 @@ public class Player {
         //Unidades caminan hasta el punto indicado en turnos anteriores
         for (Unit unit : units) {
             if (!unit.getPosition().isSamePoint(unit.getDestination()) && !unit.getPosition().isSamePoint(map.getLimbo())) {
-                this.move(unit, unit.getDestination());
+                try {
+					this.move(unit, unit.getDestination());
+				} catch (UnitCantGetToDestination e) {
+					
+				}
             }
         }
 	}
@@ -217,7 +222,7 @@ public class Player {
 		structures.add(structure);
 	}
 	
-	public void move(Unit unit, Point destination) {
+	public void move(Unit unit, Point destination) throws UnitCantGetToDestination {
         unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
 		if (unit.getAttack() != null)

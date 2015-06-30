@@ -10,8 +10,8 @@ import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.map.resources.ExtractableType;
-import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.units.TransportUnit;
 import fiuba.algo3.starcraft.logic.units.Transportable;
@@ -115,7 +115,9 @@ public class Map {
     public Point getLimbo() {
         return new Point(side * 10, side * 10);
     }
-	public void moveUnitToDestination(Unit transportable, Point position) {
+    
+	public void moveUnitToDestination(Unit transportable, Point position) throws UnitCantGetToDestination {
+		int partitions = 1000;
 		Point initialPoint = transportable.getPosition();
 		Point finalPoint = position;
 			
@@ -126,20 +128,20 @@ public class Map {
 			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));		
 			Point correctSizePoint = normalPoint.multiply(transportable.getStepsPerTurn());
 						
-			diferentialDirection = correctSizePoint.divide(1000);
+			diferentialDirection = correctSizePoint.divide(partitions);
 		} else {
-			diferentialDirection = direction.divide(1000);
+			diferentialDirection = direction.divide(partitions);
 		}
 		
 		Point pathPoint = initialPoint;
-		//FIXME: 1000 hardcoded and is ammount of partitions o distance vector
-		for (int i = 0; i < 1000 ; i ++) {
+
+		for (int i = 0; i < partitions ; i ++) {
 			Parcel parcelOfPath = this.getParcelContainingPoint(pathPoint);
 				
 			if (parcelOfPath.letPass(transportable)) {
 				transportable.setPosition(pathPoint);
 				pathPoint = pathPoint.add(diferentialDirection);
-			} else break;
+			} else throw new UnitCantGetToDestination();
 		}	
 	}
 	
@@ -152,7 +154,6 @@ public class Map {
 		return this.unitsInCircle(position, range, playerUnits).subList(0, 1);
 	}
 	
-	//FIXME: lets try to implement canFly in unit, transportUnit can fly, thats a fact
 	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
@@ -166,12 +167,11 @@ public class Map {
 		return transports;
 	}
 	
-	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units/*, canFly*/) {
+	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
 		
 		ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
 		for (Unit unit : units) {
 			if (this.isPointInsideRadiousOfPivotePoint(position, range == 0 ? range : 10, unit.getPosition())) {
-				//if (unit.canFly == canFly) unitsInCircle.add(unit)
 				unitsInCircle.add(unit);
 			}
 		}  
@@ -192,7 +192,7 @@ public class Map {
 	}
 
     public void getPositionNearStructure(Unit unit) {
-        List<Parcel> list = this.getAdyacentParcels(unit.getDestination(), 100);
+        List<Parcel> list = this.getAdyacentParcels(unit.getDestination(), PARCEL_SIDE);
 
         for (Parcel parcel : list){
             if (parcel.letPass(unit)){
@@ -206,7 +206,7 @@ public class Map {
         return (x > 0 && x <= side);
     }
 
-    public List<Parcel> getAdyacentParcels(Point point, int lenght) {
+    public List<Parcel> getAdyacentParcels(Point point, double lenght) {
         List<Parcel> list = new ArrayList<Parcel>();
         int x = (int) (point.getX() - lenght);
         int y;
@@ -218,9 +218,9 @@ public class Map {
                     if (this.getParcelContainingPoint(new Point(x, y)) != this.getParcelContainingPoint(point))
                         list.add(this.getParcelContainingPoint(new Point(x, y)));
                 }
-                y += 100;
+                y += PARCEL_SIDE;
             }
-            x += 100;
+            x += PARCEL_SIDE;
         }
         return list;
     }

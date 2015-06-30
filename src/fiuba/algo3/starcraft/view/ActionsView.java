@@ -17,6 +17,7 @@ import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
 import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
 import fiuba.algo3.starcraft.logic.structures.exceptions.InsufficientResources;
@@ -139,7 +140,7 @@ public class ActionsView extends JPanel implements ActionListener {
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
 				| UnitCannotBeSetHere | NoReachableTransport | InsufficientEnergy
-				| NonexistentPower | StructureCannotBeSetHere e) {
+				| NonexistentPower | StructureCannotBeSetHere | UnitCantGetToDestination e) {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
@@ -293,7 +294,7 @@ public class ActionsView extends JPanel implements ActionListener {
 		game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, position);
 	}
 
-	private void executeMove() {
+	private void executeMove() throws UnitCantGetToDestination {
 		Point destination = this.getSelectedDestination();
 		game.getActivePlayer().move((Unit) actionable, destination);
 	}

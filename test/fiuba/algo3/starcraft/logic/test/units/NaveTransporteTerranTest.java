@@ -5,6 +5,7 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
+import fiuba.algo3.starcraft.logic.map.exceptions.UnitCantGetToDestination;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
@@ -83,7 +84,7 @@ public class NaveTransporteTerranTest {
     }
 
     @Test(expected = UnitCannotBeSetHere.class)
-    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoReachableTransport {
+    public void testNaveTransporteTerranCantDisembarkANonFlyingUnitInSpace() throws StepsLimitExceeded, NoUnitToRemove, NoMoreSpaceInUnit, UnitCannotBeSetHere, NoReachableTransport, UnitCantGetToDestination {
         Map map = new Map(1000,null);
         Parcel parcel = map.getParcelContainingPoint(new Point(495,495));
         parcel.setAirSurface();
