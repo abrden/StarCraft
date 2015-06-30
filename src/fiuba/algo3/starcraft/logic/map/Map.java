@@ -129,14 +129,14 @@ public class Map {
     }
     
 	public void moveUnitToDestination(Unit transportable, Point position) throws UnitCantGetToDestination {
-		int partitions = 1000;
+		int partitions = 10000;
 		Point initialPoint = transportable.getPosition();
 		Point finalPoint = position;
 			
 		Point direction = finalPoint.substract(initialPoint);
 		Point diferentialDirection;
 		
-		if (finalPoint.distance(initialPoint) >= transportable.getStepsPerTurn()) {
+		if (finalPoint.distance(initialPoint) >= (transportable.getStepsPerTurn() * PARCEL_SIDE)) {
 			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));		
 			Point correctSizePoint = normalPoint.multiply(transportable.getStepsPerTurn());
 						

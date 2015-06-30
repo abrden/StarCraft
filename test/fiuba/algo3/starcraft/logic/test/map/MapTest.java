@@ -58,7 +58,7 @@ public class MapTest {
 	public void testMapMovesAMarineMoreThanTheAmmountPerTurn() throws StepsLimitExceeded, UnitCantGetToDestination {
 		map.moveUnitToDestination(marine, new Point(200, 0));
 		
-		double finalX = 75 + marine.getStepsPerTurn();
+		double finalX = 75 + marine.getStepsPerTurn() * 100;
 				
 		assertTrue(marine.getPosition().getX() <= finalX);
 	}

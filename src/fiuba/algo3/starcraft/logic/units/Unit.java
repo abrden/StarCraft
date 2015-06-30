@@ -22,6 +22,8 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
     protected Point destination;
 	protected final int stepsPerTurn;
     protected Color color;
+    
+    DrawableView drawableView;
 	
     Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		if (position == null) throw new InvalidParameterException();
@@ -41,6 +43,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	
 	public void reduceLife(int damage) {
 		life.reduce(damage);
+		
 	}
 
 	public boolean itsAlive() {
@@ -81,6 +84,9 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 
 	public void setPosition(Point destination) {
 		this.position = destination;
+		
+		if(drawableView != null) 
+			drawableView.setLocation((int)destination.getX(), (int)destination.getY());
 	}
 
     public void setDestination(Point destination) {
@@ -128,6 +134,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	}
 	
 	public void setDrawableView(DrawableView drawableView) {
+		this.drawableView = drawableView;
 		drawableView.setImageName("UnitView/".concat((this.getName().concat(".png"))));
 	}
 	
