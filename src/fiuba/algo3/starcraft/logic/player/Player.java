@@ -42,7 +42,6 @@ public class Player {
 	private Resources resources;
 	private Point base;
 	private Collection<Structure> structures;
-    private Collection<Point> structuresInConstruction;
 	private Collection<Unit> units;
 	private ConstructionQueue constructionQueue;
 	private Collection<Power> activePowers;
@@ -59,7 +58,6 @@ public class Player {
 		this.resources = initialResources;
 		this.structures = new LinkedList<Structure>();
 		this.units = new LinkedList<Unit>();
-        this.structuresInConstruction = new LinkedList<Point>();
 		this.constructionQueue = new ConstructionQueue();
 		this.activePowers = new LinkedList<Power>();
 		this.map = map;
@@ -205,9 +203,9 @@ public class Player {
 
 	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
         if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
-        if (map.structuresInConstruction(position,structuresInConstruction)) throw new StructureCannotBeSetHere();
+        if (map.structureInConstruction(position)) throw new StructureCannotBeSetHere();
         map.getParcelContainingPoint(position).setConstruction();
-        structuresInConstruction.add(position);
+        map.addStructureInConstruction(position);
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 
@@ -225,7 +223,7 @@ public class Player {
 
 	public void receiveNewStructure(Structure structure) {
 		map.setStructure(structure, structure.getPosition());
-        structuresInConstruction.remove(structure.getPosition());
+        map.removeStructureInConstruction(structure.getPosition());
 		structures.add(structure);
 	}
 	
@@ -289,8 +287,4 @@ public class Player {
 		System.out.println("I'm not yours gtfo!");
 		return false;
 	}
-
-    public Iterable<Point> getInConstructionStructures() {
-        return structuresInConstruction;
-    }
 }
