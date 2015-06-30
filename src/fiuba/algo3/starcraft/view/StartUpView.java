@@ -2,18 +2,25 @@ package fiuba.algo3.starcraft.view;
 
 import fiuba.algo3.starcraft.game.PlayerSetup;
 import fiuba.algo3.starcraft.game.StarCraft;
+import fiuba.algo3.starcraft.view.exceptions.ColorIsTaken;
+import fiuba.algo3.starcraft.view.exceptions.NameIsTaken;
+import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class StartUpView extends JFrame implements ActionListener {
 
     private StarCraft game;
-    private List<PlayerSetup> list;
+    private List<PlayerSetup> list = new ArrayList<PlayerSetup>();
+    private int numberOfPlayers;
+    private int createdPlayers = 1;
+    private PlayerSetup setup;
+
 
     private JLayeredPane jLayeredPane;
     private JPanel logoPanel;
@@ -23,12 +30,8 @@ public class StartUpView extends JFrame implements ActionListener {
     private JPanel playerSetupPanel;
     private JButton startButton;
     private JButton aboutButton;
-    JLabel agustina;
-    JLabel francisco;
-    JLabel santiago;
-    JLabel padronA;
-    JLabel padronF;
-    JLabel padronS;
+    private JLabel aboutLabel;
+    private JButton backButton;
     private JLabel logo;
     private JLabel howMany;
     private JComboBox numberOfPlayersOptions;
@@ -61,12 +64,8 @@ public class StartUpView extends JFrame implements ActionListener {
         logoPanel = new JPanel();
         startPanel = new JPanel();
         aboutPanel = new JPanel();
-        agustina = new JLabel();
-        francisco = new JLabel();
-        santiago = new JLabel();
-        padronA = new JLabel();
-        padronF = new JLabel();
-        padronS = new JLabel();
+        aboutLabel = new JLabel();
+        backButton = new JButton();
         logo = new JLabel();
         startButton = new JButton();
         aboutButton = new JButton();
@@ -127,54 +126,198 @@ public class StartUpView extends JFrame implements ActionListener {
     private void aboutPanel() {
         aboutPanel.setBackground(Color.white);
         aboutPanel.setLayout(null);
+        aboutLabel.setText("<html>FACULTAD DE INGENIERIA<br>DE LA UNIVERSIDAD DE BUENOS AIRES<br>" +
+                "ALGORITMOS Y PROGRAMACION III [75.07]<br><br><br>" +
+                "Agustina Barbetta<br>Padrón: 96528<br><br>" +
+                "Francisco Ordoñez<br>Padrón: 96478<br><br>" +
+                "Santiago Lazzari<br>Padrón: 96735</html>");
+        aboutLabel.setBounds(200, 50, 500, 200);
+        backButton.setText("Back");
+        backButton.addActionListener(this);
+        backButton.setBounds(200, 275, 100, 40);
 
-        agustina.setText("Agustina Barbetta");
-        francisco.setText("Francisco Ordoñez");
-        santiago.setText("Santiago Lazzari");
-        padronA.setText("Padrón: 96528");
-        padronF.setText("Padrón: 96478");
-        padronS.setText("Padrón: 96735");
-
-        agustina.setBounds(200,125,500,40);
-        francisco.setBounds(200, 185, 500, 40);
-        santiago.setBounds(200, 245, 200, 40);
-        padronA.setBounds(200,145,500,40);
-        padronF.setBounds(200,205, 500, 40);
-        padronS.setBounds(200,265,500,40);
-
-        aboutPanel.add(agustina);
-        aboutPanel.add(francisco);
-        aboutPanel.add(santiago);
-        aboutPanel.add(padronA);
-        aboutPanel.add(padronF);
-        aboutPanel.add(padronS);
-
+        aboutPanel.add(backButton);
+        aboutPanel.add(aboutLabel);
         add(aboutPanel, BorderLayout.CENTER);
         aboutPanel.setVisible(true);
+
+    }
+
+    private void numberOfPlayersPanel() {
+        backButton.setText("Back");
+        backButton.addActionListener(this);
+        backButton.setBounds(200, 275, 100, 40);
+        numberOfPlayersPanel.add(backButton);
+        numberOfPlayersPanel.setBackground(Color.white);
+        add(numberOfPlayersPanel, BorderLayout.SOUTH);
+        numberOfPlayersPanel.setVisible(true);
+        JOptionPane pane = new JOptionPane();
+        numberOfPlayersPanel.add(pane);
+        pane.setVisible(false);
+        String[] s = new String[] { "2", "3", "4" };
+        int n = pane.showOptionDialog(null,
+                "How many players?",
+                "Player selection",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                s,
+                s[0]);
+
+        if (n < 3 && n >= 0) {
+            this.numberOfPlayers = Integer.parseInt(s[n]);
+            numberOfPlayersPanel.setVisible(false);
+            this.playerSetupPanelInit();
+        }
+    }
+
+    private void playerSetupPanelInit() {
+        playerSetupPanel.setBackground(Color.white);
+        playerSetupPanel.setLayout(new FlowLayout());
+        playerSetupPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        add(playerSetupPanel);
+        playerSetupPanel.add(playerSetupTitle);
+
+        nameLabel.setText("Name:");
+        playerSetupPanel.add(nameLabel);
+        nameField.setText("Type your name");
+        nameField.setToolTipText("");
+        nameField.selectAll();
+        nameField.addActionListener(this);
+        playerSetupPanel.add(nameField);
+
+        colorLabel.setText("Color:");
+        playerSetupPanel.add(colorLabel);
+        colorOption.add(redColorButton);
+        redColorButton.setText("Red");
+        colorOption.add(blueColorButton);
+        blueColorButton.setText("Blue");
+        colorOption.add(yellowColorButton);
+        yellowColorButton.setText("Yellow");
+        colorOption.add(greenColorButton);
+        greenColorButton.setText("Green");
+        playerSetupPanel.add(redColorButton);
+        playerSetupPanel.add(blueColorButton);
+        playerSetupPanel.add(yellowColorButton);
+        playerSetupPanel.add(greenColorButton);
+
+        playerSetupPanel.add(new JLabel("                                                              "));
+        raceLabel.setText("Race:");
+        playerSetupPanel.add(raceLabel);
+        raceOption.add(protossButton);
+        protossButton.setText("Protoss");
+        raceOption.add(terranButton);
+        terranButton.setText("Terran");
+        playerSetupPanel.add(protossButton);
+        playerSetupPanel.add(terranButton);
+        playerSetupPanel.add(new JLabel("                                "));
+        playerSetupNextButton.setText("Next");
+        playerSetupNextButton.addActionListener(this);
+        playerSetupPanel.add(playerSetupNextButton);
+
+        this.playerSetupPanel();
+    }
+
+    public void playerSetupPanel() {
+        playerSetupPanel.setVisible(true);
+        nameField.selectAll();
+        playerSetupTitle.setText("Player " + createdPlayers + " |");
+
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        //performingAction = true;
             if (event.getSource() == startButton) {
                 System.out.println("Start");
                 this.startButtonActionPerformed(event);
             } else if (event.getSource() == aboutButton) {
                 System.out.println("About");
                 this.aboutButtonActionPerformed(event);
+            } else if (event.getSource() == backButton) {
+                System.out.println("Back");
+                this.backButtonActionPerformed(event);
+            } else if (event.getSource() == playerSetupNextButton) {
+                this.playerSetupNextButton();
             }
-            //performingAction = false;
-            //disableActionButtons();
+    }
+
+    private void playerSetupNextButton() {
+        this.createPlayerSetup();
+        if (createdPlayers == numberOfPlayers){
+            game = new StarCraft(list);
+            game.start();
+            StarCraftView starcraftView = new StarCraftView(game);
+            starcraftView.setVisible(true);
+            dispose();
+        }
+        createdPlayers++;
+        this.playerSetupPanel();
+    }
+
+    private void createPlayerSetup() {
+        try {
+            setup = new PlayerSetup(this.getPlayerName(),this.getPlayerColor(),this.getPlayerRace());
+            this.checkPlayerSetup(setup);
+            list.add(setup);
+        } catch (NameIsTooShort | NameIsTaken | ColorIsTaken e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            this.playerSetupPanel();
+        }
+    }
+
+    private boolean checkPlayerSetup(PlayerSetup newSetup) throws NameIsTaken, ColorIsTaken {
+        for (PlayerSetup setup : list) {
+            if (setup.getName().equals(newSetup.getName()))
+                throw new NameIsTaken();
+            if (setup.getColor().equals(newSetup.getColor()))
+                throw new ColorIsTaken();
+        }
+        return true;
+    }
+
+    private void backButtonActionPerformed(ActionEvent event) {
+        startPanel.setVisible(true);
+        aboutPanel.setVisible(false);
+        numberOfPlayersPanel.setVisible(false);
     }
 
     private void startButtonActionPerformed(ActionEvent event) {
         startPanel.setVisible(false);
-        numberOfPlayersPanel.setVisible(true);
+        aboutPanel.setVisible(false);
         playerSetupPanel.setVisible(false);
+        this.numberOfPlayersPanel();
     }
+
     private void aboutButtonActionPerformed(ActionEvent event) {
         startPanel.setVisible(false);
+        numberOfPlayersPanel.setVisible(false);
         this.aboutPanel();
+    }
+
+    public String getPlayerName() {
+        return nameField.getText();
+    }
+    public String getPlayerRace() {
+        if(terranButton.isSelected())
+            return terranButton.getText();
+        if(protossButton.isSelected())
+            return protossButton.getText();
+        else
+            return "Terran";
+    }
+
+    public String getPlayerColor() {
+        List<JRadioButton> list = new ArrayList<>();
+        list.add(yellowColorButton);
+        list.add(blueColorButton);
+        list.add(redColorButton);
+        list.add(greenColorButton);
+
+        for (JRadioButton button : list) {
+            if (button.isSelected())
+                return button.getText();
+        }
+        return "Red";
     }
 
     public static void main(String[] args) {
