@@ -40,7 +40,11 @@ public class Parcel implements Actionable, Drawable {
 	}
 
     public void setConstruction() {
-        drawableView.setImageName(inConstruction);
+        try{
+            drawableView.setImageName(inConstruction);
+        }
+        catch(NullPointerException e){
+        }
     }
 	
 	public void setAirSurface() {
@@ -58,6 +62,7 @@ public class Parcel implements Actionable, Drawable {
 	}
 	
 	public boolean letPass(Unit unit) {
+        if (unit.canFly()) return true;
 		return (surface.letPass(unit) && (structure == null));
 	}
 	

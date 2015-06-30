@@ -99,12 +99,10 @@ public class Map {
 	}
 
     public boolean structuresInConstruction(Point position, Collection<Point> structuresInConstruction) {
-        System.out.println("mias");
-        System.out.println(structuresInConstruction);
         for (Point point : structuresInConstruction)
             if(position.isSamePoint(point)) return true;
-        System.out.println("en construccion del enemigo");
-        System.out.println(game.getEnemyInConstructionStructures(structuresInConstruction));
+
+        if (game == null) return false;
         for (Point point : game.getEnemyInConstructionStructures(structuresInConstruction)){
             if(position.isSamePoint(point)) return true;
         }
