@@ -9,7 +9,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -34,7 +34,7 @@ public class ZealotTest {
 	}
 	
 	@Test
-	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetThere {
+	public void testZealotCreationWith1Pilon1AccesoAnd100M() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetHere {
 		player.newStructureWithName("Pilon", position);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		

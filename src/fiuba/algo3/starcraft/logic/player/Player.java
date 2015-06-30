@@ -10,7 +10,7 @@ import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.structures.ConstructionQueue;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -195,8 +195,8 @@ public class Player {
 		constructionQueue.addUnit(structure.create(name, structure.getPosition(), resources, this.currentPopulation(), this.populationQuota()));
 	}
 	
-	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
-		if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetThere();
+	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
+		if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
 		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 	

@@ -8,7 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Depot;
@@ -35,7 +35,7 @@ public class ProtossDepotTest {
 	}
 	
 	@Test
-	public void testPopulationQuotais5With1Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais5With1Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Pilon", position);
 		/* Pilon tarda 5 turnos en hacerse, al sexto estara listo para utilizar */
 		for(int i = 0; i < 6; i++) player.newTurn();
@@ -44,7 +44,7 @@ public class ProtossDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {		
+	public void testPopulationQuotais10With2Pilon() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {		
 		player.newStructureWithName("Pilon", position);
 		player.newStructureWithName("Pilon", position2);
 		for(int i = 0; i < 6; i++) player.newTurn();
@@ -53,7 +53,7 @@ public class ProtossDepotTest {
 	}
 	
 	@Test
-	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Pilon", position);
 		player.newStructureWithName("Pilon", position2);
 		for(int i = 0; i < 6; i++) player.newTurn();
@@ -64,7 +64,7 @@ public class ProtossDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2PilonsAnd5IfOneIsDestroyed() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais10With2PilonsAnd5IfOneIsDestroyed() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Pilon", position2);
 		for(int i = 0; i < 6; i++) player.newTurn();
 		assertEquals(player.populationQuota(), 5);	

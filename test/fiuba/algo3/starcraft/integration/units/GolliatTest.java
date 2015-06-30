@@ -9,7 +9,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -38,7 +38,7 @@ public class GolliatTest {
 	}
 
 	@Test
-	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetThere {
+	public void testGolliatCreationWith1DepositoSuministro1Barraca1FabricaAnd100M150G() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position2);
@@ -59,7 +59,7 @@ public class GolliatTest {
 	}
 
 	@Test(expected = QuotaExceeded.class)
-	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetThere {
+	public void testCantCreateAThirdGolliatWith1Depot() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position2);
@@ -81,7 +81,7 @@ public class GolliatTest {
 	}
 
 	@Test
-	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetThere {
+	public void test2GolliatCreationAnd1GolliatDeadLeavesPopulationAt1() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position2);

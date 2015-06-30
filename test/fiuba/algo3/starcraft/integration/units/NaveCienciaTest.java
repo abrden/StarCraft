@@ -9,7 +9,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Construction;
@@ -37,7 +37,7 @@ public class NaveCienciaTest {
 		player = new Player(null, null, new TerranBuilder(), position, initialResources, map);
 	}
 	@Test
-	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetThere {
+	public void testNeveCienciaCreationWith1PuertoEstelarAnd100M225G() throws QuotaExceeded, InsufficientResources, TemplateNotFound, MissingStructureRequired, ConstructionNotFinished, NoResourcesToExtract, ConstructorIsDead, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) player.newTurn();
 		player.newStructureWithName("Barraca", position2);

@@ -10,7 +10,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
@@ -58,7 +58,7 @@ public class UnitCreationTest {
 	}
 	
 	@Test
-	public void testMarineCreationWithBarraca() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testMarineCreationWithBarraca() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.gains(10000,10000);
 		player1.newStructureWithName("Deposito Suministro", position);
 		for(int i = 0; i < 7; i++) {
@@ -82,7 +82,7 @@ public class UnitCreationTest {
 	}
 	
 	@Test
-	public void testNaveCienciaCreationWithPuerto() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testNaveCienciaCreationWithPuerto() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.gains(10000,10000);
 		player1.newStructureWithName("Deposito Suministro", position4);
 		player1.newStructureWithName("Barraca", position3);
@@ -112,7 +112,7 @@ public class UnitCreationTest {
 	}
 
 	@Test(expected = QuotaExceeded.class)
-	public void testCreationWithoutSpaceInPopulationThrowsException() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testCreationWithoutSpaceInPopulationThrowsException() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.newStructureWithName("Barraca", position3);
 		for(int i = 0; i < 13; i++) {
 			player2.newTurn();
@@ -125,7 +125,7 @@ public class UnitCreationTest {
 	}
 	
 	@Test(expected = InsufficientResources.class)
-	public void testCreationWithoutResourcesThrowsException() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testCreationWithoutResourcesThrowsException() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		player1.gains(100,0);
 		player1.newStructureWithName("Deposito Suministro", position4);
 		player1.newStructureWithName("Barraca", position3);
@@ -141,7 +141,7 @@ public class UnitCreationTest {
 	}
 	
 	@Test
-	public void testNaveCreationWithPuerto() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testNaveCreationWithPuerto() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		player2.gains(10000,10000);
 		player2.newStructureWithName("Pilon", position4);
 		player2.newStructureWithName("Acceso", position3);
@@ -166,7 +166,7 @@ public class UnitCreationTest {
 	}
 	
 	@Test
-	public void testAltoTemplarioCreationWithCollectedResources() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testAltoTemplarioCreationWithCollectedResources() throws InsufficientResources, QuotaExceeded, TemplateNotFound, MissingStructureRequired, NoResourcesToExtract, StructureCannotBeSetHere {
 		map.getParcelContainingPoint(position).setReservoir(ReservoirType.mine);
 		map.getParcelContainingPoint(position2).setReservoir(ReservoirType.volcano);
 		player2.newStructureWithName("Asimilador", position2);

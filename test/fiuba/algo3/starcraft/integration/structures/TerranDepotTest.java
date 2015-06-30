@@ -8,7 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
 import fiuba.algo3.starcraft.logic.structures.Depot;
@@ -34,7 +34,7 @@ public class TerranDepotTest {
 	}
 	
 	@Test
-	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais5With1Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
 		for(int i = 0; i < 7; i++) player.newTurn();
@@ -43,7 +43,7 @@ public class TerranDepotTest {
 	}
 
 	@Test
-	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais10With2Deposito() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		player.newStructureWithName("Deposito Suministro", position2);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */
@@ -53,7 +53,7 @@ public class TerranDepotTest {
 	}
 	
 	@Test
-	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	public void testPopulationQuotais10With2PilonIndependentlyOfTurns() throws InsufficientResources, MissingStructureRequired, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		player.newStructureWithName("Deposito Suministro", position);
 		player.newStructureWithName("Deposito Suministro", position2);
 		/* Deposito tarda 6 turnos en hacerse, al septimo estara listo para utilizar */

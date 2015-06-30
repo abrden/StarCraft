@@ -15,7 +15,7 @@ import fiuba.algo3.starcraft.logic.map.Parcel;
 import fiuba.algo3.starcraft.logic.map.Point;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoResourcesToExtract;
-import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetThere;
+import fiuba.algo3.starcraft.logic.map.exceptions.StructureCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.map.exceptions.UnitCannotBeSetHere;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.structures.ConstructionStructure;
@@ -139,7 +139,7 @@ public class ActionsView extends JPanel implements ActionListener {
 				| TemplateNotFound | NoResourcesToExtract | QuotaExceeded
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
 				| UnitCannotBeSetHere | NoReachableTransport | InsufficientEnergy
-				| NonexistentPower | StructureCannotBeSetThere e) {
+				| NonexistentPower | StructureCannotBeSetHere e) {
     		
     		System.out.println("Hubo una excepcion!" + e.getClass().toString());
 			messageBox.displayMessage(e.getMessage());
@@ -267,7 +267,7 @@ public class ActionsView extends JPanel implements ActionListener {
         playerStatusView.showActivePlayerStatus();
     }
 
-	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetThere {
+	private void executeBuildStructure() throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
 		String structureName = this.getSelectedStructureName();
 		
 		if (structureName == null) {
