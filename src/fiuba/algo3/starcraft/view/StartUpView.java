@@ -5,8 +5,10 @@ import fiuba.algo3.starcraft.game.StarCraft;
 import fiuba.algo3.starcraft.view.exceptions.ColorIsTaken;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTaken;
 import fiuba.algo3.starcraft.view.exceptions.NameIsTooShort;
+import fiuba.algo3.starcraft.view.exceptions.PlayerSetupIncomplete;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -15,12 +17,13 @@ import java.util.List;
 
 public class StartUpView extends JFrame implements ActionListener {
 
-    private StarCraft game;
+	private static final long serialVersionUID = -8434982376834691380L;
+	
+	private StarCraft game;
     private List<PlayerSetup> list = new ArrayList<PlayerSetup>();
     private int numberOfPlayers;
     private int createdPlayers = 1;
     private PlayerSetup setup;
-
 
     private JLayeredPane jLayeredPane;
     private JPanel logoPanel;
@@ -33,9 +36,9 @@ public class StartUpView extends JFrame implements ActionListener {
     private JLabel aboutLabel;
     private JButton backButton;
     private JLabel logo;
-    private JLabel howMany;
-    private JComboBox numberOfPlayersOptions;
-    private JButton numberOfPlayersNextButton;
+    //private JLabel howMany;
+    //private JComboBox numberOfPlayersOptions;
+    //private JButton numberOfPlayersNextButton;
     private JLabel playerSetupTitle;
     private JLabel nameLabel;
     private JTextField nameField;
@@ -70,9 +73,9 @@ public class StartUpView extends JFrame implements ActionListener {
         startButton = new JButton();
         aboutButton = new JButton();
         numberOfPlayersPanel = new JPanel();
-        howMany = new JLabel();
-        numberOfPlayersOptions = new JComboBox();
-        numberOfPlayersNextButton = new JButton();
+        //howMany = new JLabel();
+        //numberOfPlayersOptions = new JComboBox();
+        //numberOfPlayersNextButton = new JButton();
         playerSetupPanel = new JPanel();
         nameField = new JTextField();
         playerSetupNextButton = new JButton();
@@ -151,11 +154,9 @@ public class StartUpView extends JFrame implements ActionListener {
         numberOfPlayersPanel.setBackground(Color.white);
         add(numberOfPlayersPanel, BorderLayout.SOUTH);
         numberOfPlayersPanel.setVisible(true);
-        JOptionPane pane = new JOptionPane();
-        numberOfPlayersPanel.add(pane);
-        pane.setVisible(false);
+
         String[] s = new String[] { "2", "3", "4" };
-        int n = pane.showOptionDialog(null,
+        int n = JOptionPane.showOptionDialog(this,
                 "How many players?",
                 "Player selection",
                 JOptionPane.YES_NO_OPTION,
@@ -176,16 +177,26 @@ public class StartUpView extends JFrame implements ActionListener {
         playerSetupPanel.setLayout(new FlowLayout());
         playerSetupPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         add(playerSetupPanel);
+        
+        playerSetupPanel.add(Box.createHorizontalStrut(600));
+        playerSetupPanel.add(Box.createVerticalStrut(50));
+        
         playerSetupPanel.add(playerSetupTitle);
 
+        playerSetupPanel.add(Box.createHorizontalStrut(600));
+        playerSetupPanel.add(Box.createVerticalStrut(50));
+        
         nameLabel.setText("Name:");
         playerSetupPanel.add(nameLabel);
-        nameField.setText("Type your name");
+        nameField.setColumns(14);
         nameField.setToolTipText("");
         nameField.selectAll();
         nameField.addActionListener(this);
         playerSetupPanel.add(nameField);
 
+        playerSetupPanel.add(Box.createHorizontalStrut(600));
+        playerSetupPanel.add(Box.createVerticalStrut(50));
+        
         colorLabel.setText("Color:");
         playerSetupPanel.add(colorLabel);
         colorOption.add(redColorButton);
@@ -201,7 +212,9 @@ public class StartUpView extends JFrame implements ActionListener {
         playerSetupPanel.add(yellowColorButton);
         playerSetupPanel.add(greenColorButton);
 
-        playerSetupPanel.add(new JLabel("                                                              "));
+        playerSetupPanel.add(Box.createHorizontalStrut(600));
+        playerSetupPanel.add(Box.createVerticalStrut(50));
+        
         raceLabel.setText("Race:");
         playerSetupPanel.add(raceLabel);
         raceOption.add(protossButton);
@@ -210,7 +223,10 @@ public class StartUpView extends JFrame implements ActionListener {
         terranButton.setText("Terran");
         playerSetupPanel.add(protossButton);
         playerSetupPanel.add(terranButton);
-        playerSetupPanel.add(new JLabel("                                "));
+        
+        playerSetupPanel.add(Box.createHorizontalStrut(600));
+        playerSetupPanel.add(Box.createVerticalStrut(150));
+        
         playerSetupNextButton.setText("Next");
         playerSetupNextButton.addActionListener(this);
         playerSetupPanel.add(playerSetupNextButton);
@@ -221,8 +237,10 @@ public class StartUpView extends JFrame implements ActionListener {
     public void playerSetupPanel() {
         playerSetupPanel.setVisible(true);
         nameField.selectAll();
-        playerSetupTitle.setText("Player " + createdPlayers + " |");
-
+        playerSetupTitle.setText("Player " + createdPlayers);
+        nameField.setText("");
+        colorOption.clearSelection();
+        raceOption.clearSelection();
     }
 
     @Override
@@ -240,29 +258,28 @@ public class StartUpView extends JFrame implements ActionListener {
                 this.playerSetupNextButton();
             }
     }
-
+    
     private void playerSetupNextButton() {
-        this.createPlayerSetup();
-        if (createdPlayers == numberOfPlayers){
+        try {
+			this.createPlayerSetup();
+			if (createdPlayers == numberOfPlayers){
             game = new StarCraft(list);
             game.start();
             StarCraftView starcraftView = new StarCraftView(game);
             starcraftView.setVisible(true);
             dispose();
-        }
-        createdPlayers++;
+			}
+			createdPlayers++;
+		} catch (NameIsTaken | ColorIsTaken | NameIsTooShort | PlayerSetupIncomplete e) {
+            JOptionPane.showMessageDialog(null, e.getMessage() + "\n Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
         this.playerSetupPanel();
     }
 
-    private void createPlayerSetup() {
-        try {
-            setup = new PlayerSetup(this.getPlayerName(),this.getPlayerColor(),this.getPlayerRace());
-            this.checkPlayerSetup(setup);
-            list.add(setup);
-        } catch (NameIsTooShort | NameIsTaken | ColorIsTaken e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            this.playerSetupPanel();
-        }
+    private void createPlayerSetup() throws NameIsTaken, ColorIsTaken, NameIsTooShort, PlayerSetupIncomplete {
+        setup = new PlayerSetup(this.getPlayerName(),this.getPlayerColor(),this.getPlayerRace());
+        this.checkPlayerSetup(setup);
+        list.add(setup);
     }
 
     private boolean checkPlayerSetup(PlayerSetup newSetup) throws NameIsTaken, ColorIsTaken {
@@ -297,16 +314,16 @@ public class StartUpView extends JFrame implements ActionListener {
     public String getPlayerName() {
         return nameField.getText();
     }
-    public String getPlayerRace() {
+    public String getPlayerRace() throws PlayerSetupIncomplete {
         if(terranButton.isSelected())
             return terranButton.getText();
         if(protossButton.isSelected())
             return protossButton.getText();
         else
-            return "Terran";
+            throw new PlayerSetupIncomplete();
     }
 
-    public String getPlayerColor() {
+    public String getPlayerColor() throws PlayerSetupIncomplete {
         List<JRadioButton> list = new ArrayList<>();
         list.add(yellowColorButton);
         list.add(blueColorButton);
@@ -317,13 +334,11 @@ public class StartUpView extends JFrame implements ActionListener {
             if (button.isSelected())
                 return button.getText();
         }
-        return "Red";
+        throw new PlayerSetupIncomplete();
     }
 
     public static void main(String[] args) {
         new StartUpView();
-
     }
 
 }
-
