@@ -21,17 +21,19 @@ public class Map {
 	
 	private double side;
 	@SuppressWarnings({"rawtypes"})
-	private ArrayList<ArrayList> row = new ArrayList<ArrayList>();
+	private List<ArrayList> row = new ArrayList<ArrayList>();
 	@SuppressWarnings("unused")
-	private ArrayList<Parcel> columns = new ArrayList<Parcel>();
-	
+	private List<Parcel> columns = new ArrayList<Parcel>();
+    private List<Point> structuresInConstruction;
+
 	private MapView mapView;
 	
 	public Map(double side, StarCraft game) {
 		this.side = side;
 		createMatrix(side/PARCEL_SIDE);
-		createParcels(side/PARCEL_SIDE);
+		createParcels(side / PARCEL_SIDE);
 		this.game = game;
+        structuresInConstruction = new ArrayList<Point>();
 	}
 	
 	public void relateWithView(MapView mapView) {
@@ -98,15 +100,18 @@ public class Map {
 		parcel.setStructure(structure);
 	}
 
-    public boolean structuresInConstruction(Point position, Collection<Point> structuresInConstruction) {
+    public boolean structureInConstruction(Point position) {
         for (Point point : structuresInConstruction)
             if(position.isSamePoint(point)) return true;
-
-        if (game == null) return false;
-        for (Point point : game.getEnemyInConstructionStructures(structuresInConstruction)){
-            if(position.isSamePoint(point)) return true;
-        }
         return false;
+    }
+
+    public void addStructureInConstruction(Point point) {
+        structuresInConstruction.add(point);
+    }
+
+    public void removeStructureInConstruction(Point point) {
+        structuresInConstruction.add(point);
     }
 
 	public void resourceRequiredIsThere(Structure structure, Point position) throws NoResourcesToExtract {
