@@ -117,8 +117,12 @@ public class Player {
 		// Regeneracion de escudos y ganancia de energia en MagicalUnits
 		for (Structure structure : structures)
 			structure.update();
-		for (Unit unit : units)
-			unit.update();
+		for (Unit unit : units){
+            if (unit.getAttack() != null){
+                this.attack((MuggleUnit) unit);
+            }
+            unit.update();
+        }
 
 		// Actualizacion de poderes
 		Collection<Power> finishedPowers = new LinkedList<Power>();
@@ -227,20 +231,16 @@ public class Player {
         unit.setDestination(destination);
 		map.moveUnitToDestination(unit, destination);
         unit.setMovedThisTurn(true);
-		if (unit.getAttack() != null)
-			this.attack((MuggleUnit) unit);
 	}
 	
 	public void attack(MuggleUnit unit) {
-		
 		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
-		
-		if (opponentUnits.size() > 0) {
+        if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
 			if (closestUnit.canFly()) {
-				closestUnit.reduceLife(unit.getAttackLandDamage());
-			} else {
 				closestUnit.reduceLife(unit.getAttackSpaceDamage());
+			} else {
+				closestUnit.reduceLife(unit.getAttackLandDamage());
 			}
 		}
 	}
