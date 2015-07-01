@@ -199,9 +199,9 @@ public class Player {
 	public void newStructureWithName(String name, Point position) throws MissingStructureRequired, InsufficientResources, TemplateNotFound, NoResourcesToExtract, StructureCannotBeSetHere {
         if (map.getParcelContainingPoint(position).getStructure() != null) throw new StructureCannotBeSetHere();
         if (map.structureInConstruction(position)) throw new StructureCannotBeSetHere();
+		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
         map.getParcelContainingPoint(position).setConstruction();
         map.addStructureInConstruction(position);
-		constructionQueue.addStructure(builder.create(name, position, resources, structures, map));
 	}
 
     public void receiveNewUnit(Unit unit) {
