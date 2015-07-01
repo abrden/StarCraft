@@ -5,7 +5,7 @@ import fiuba.algo3.starcraft.logic.units.Unit;
 public class Radiacion extends Power {
 
 	private static final int COST = 75;
-	private static final int RANGE = 1;
+	private static final int RANGE = 100;
 	private Unit target;
 	public static final int DAMAGE = 40;
 	

@@ -118,16 +118,16 @@ public class PowerUsageTest {
 	@Test
 	public void testEMPDOutOfRangeDoesntHurtOpponentUnits() throws InsufficientEnergy, NonexistentPower {
 		player2.receiveNewUnit(dragon);
-		int dragonInitialShield = dragon.getShield();
 		player2.receiveNewUnit(templario);
-		for (int i = 0; i < 5; i++) templario.update();
-		player1.receiveNewUnit(nave);
-		for (int i = 0; i < 5; i++) nave.update();
-		
-		player1.usePower(nave, "EMP", position3);
+        player1.receiveNewUnit(nave);
+        //int dragonInitialShield = dragon.getShield();
 
-		assertEquals(dragon.getShield(), dragonInitialShield);
-		player2.usePower(templario, "Alucinacion", position);
+		for (int i = 0; i < 50; i++) templario.update();
+		for (int i = 0; i < 50; i++) nave.update();
+
+        player1.usePower(nave, "EMP", position3);
+
+		assertEquals(dragon.getShield(), 0);
 	}
 	
 	@Test
