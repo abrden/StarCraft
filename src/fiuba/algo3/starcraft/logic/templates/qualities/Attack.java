@@ -1,7 +1,5 @@
 package fiuba.algo3.starcraft.logic.templates.qualities;
 
-import fiuba.algo3.starcraft.logic.templates.qualities.Damage;
-
 public class Attack {
 	
 	private Damage damage;

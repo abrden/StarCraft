@@ -149,8 +149,6 @@ public class ActionsView extends JPanel implements ActionListener {
     
     public void setActionPoint(Point destination) throws UnitCantGetToDestination, InsufficientEnergy, NonexistentPower, UnitAlreadyMovedThisTurn {
     	if (waitingToMove && actionable.canMove()) {
-            System.out.println("Entre aca cuando no deberia haberlo hecho");
-            System.out.println(actionable.canMove());
             game.getActivePlayer().move((Unit) actionable, destination);
     	}
     	if (waitingToExecutePower) {
@@ -229,9 +227,9 @@ public class ActionsView extends JPanel implements ActionListener {
 		String name = passengerRepresentation[0];
 		int health = Integer.parseInt(passengerRepresentation[1]);
 		int shield = Integer.parseInt(passengerRepresentation[2]);
-		
-		for (Transportable passenger : passengers) {
-			if ((name == passenger.getName()) && (health == passenger.getHealth()) && (shield == passenger.getShield()))
+
+        for (Transportable passenger : passengers) {
+			if ((name.equals(passenger.getName())) && (health == passenger.getHealth()) && (shield == passenger.getShield()))
 				return passenger;
 		}
 		
@@ -240,6 +238,8 @@ public class ActionsView extends JPanel implements ActionListener {
 	
 	private void executePass() throws GameOver {
 		this.disableActionButtons();
+        waitingToMove = false;
+        waitingToExecutePower = false;
 		messageBox.clear();
 		game.nextTurn();
         playerStatusView.showActivePlayerStatus();
@@ -252,8 +252,7 @@ public class ActionsView extends JPanel implements ActionListener {
 			this.disableActionButtons();
 			return;
 		}
-		
-		game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
+        game.getActivePlayer().disembark((TransportUnit) actionable, transportable);
 	}
 
 	private void executeEmbark() throws NoMoreSpaceInUnit, StepsLimitExceeded, NoReachableTransport {
@@ -295,16 +294,11 @@ public class ActionsView extends JPanel implements ActionListener {
 			this.disableActionButtons();
 			return;
 		}
-		
-		
-		
-		//game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, position);
 	}
 
 	private void executeMove() throws UnitCantGetToDestination {		
 		waitingToMove = true;
-		
-		//game.getActivePlayer().move((Unit) actionable, destination);
+
 	}
 	
 	private void enableActionButton(ActionID action) {

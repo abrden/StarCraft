@@ -167,6 +167,7 @@ public class Map {
 	}
 	
 	public List<Unit> enemyUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) {
+        if (game == null) return new LinkedList<Unit>();
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
 	
@@ -180,13 +181,12 @@ public class Map {
 	}
 	
 	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
-		
-		ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
-		for (Unit unit : units) {
-			if (this.isPointInsideRadiousOfPivotePoint(position, range == 0 ? range : 10, unit.getPosition())) {
+        ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
+        for (Unit unit : units) {
+			if (this.isPointInsideRadiousOfPivotePoint(position, range , unit.getPosition())) {
 				unitsInCircle.add(unit);
 			}
-		}  
+		}
 		
 		// Sorting
 		Collections.<Unit>sort(unitsInCircle, new Comparator<Unit>() {
@@ -195,8 +195,7 @@ public class Map {
                 return (int) (unit1.getPosition().distance(position) - unit2.getPosition().distance(position));
             }
         });
-		
-		return unitsInCircle;
+        return unitsInCircle;
 	}
 
 	public void removeStructureFrom(Point position) {
