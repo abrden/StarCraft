@@ -148,9 +148,15 @@ public class ActionsView extends JPanel implements ActionListener {
     }
     
     public void setActionPoint(Point destination) throws UnitCantGetToDestination, InsufficientEnergy, NonexistentPower, UnitAlreadyMovedThisTurn {
-    	if (waitingToMove && actionable.canMove()) {
-            game.getActivePlayer().move((Unit) actionable, destination);
-    	}
+        if (waitingToMove && actionable.canMove()) {
+            try {
+                game.getActivePlayer().move((Unit) actionable, destination);
+            } catch (UnitCantGetToDestination | UnitAlreadyMovedThisTurn e) {
+                e.printStackTrace();
+                System.out.println("lalalalal");
+                messageBox.displayMessage(e.getMessage());
+            }
+        }
     	if (waitingToExecutePower) {
     		String powerName = this.getSelectedPowerName();
     		game.getActivePlayer().usePower((MagicalUnit) actionable, powerName, destination);
@@ -158,8 +164,6 @@ public class ActionsView extends JPanel implements ActionListener {
     	
     	waitingToMove = false;
     	waitingToExecutePower = false;
-    	
-    	System.out.println("entre al action point como un campeon");
     }
     
 	private String getSelectedPowerName() {

@@ -84,7 +84,7 @@ public class Map {
 	}
 	
 	public boolean isPointInsideRadiousOfPivotePoint(Point pivotePoint, double radious, Point otherPoint) {
-		return (pivotePoint.distance(otherPoint)) <= radious;
+		return (pivotePoint.distance(otherPoint) <= radious);
 	}
 
 	public void setUnit(Unit unit, Point position) throws UnitCannotBeSetHere {
@@ -184,8 +184,6 @@ public class Map {
         ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
         
         for (Unit unit : units) {
-        	
-        	System.out.println("entre ");
 			if (this.isPointInsideRadiousOfPivotePoint(position, range , unit.getPosition())) {
 				unitsInCircle.add(unit);
 			}

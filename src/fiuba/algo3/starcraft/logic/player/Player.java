@@ -149,8 +149,11 @@ public class Player {
 	private void getRidOfDeadUnits() {
 		LinkedList<Unit> dead = new LinkedList<Unit>();
 		for (Unit unit : units)
-			if (!unit.itsAlive())
-				dead.add(unit);
+			if (!unit.itsAlive()){
+                dead.add(unit);
+                //unit.setPosition(map.getDeadLimbo());
+                //unit.setDestination(map.getDeadLimbo());
+            }
 		for (Unit unit : dead)
 			units.remove(unit);
 	}
@@ -234,7 +237,7 @@ public class Player {
 	}
 	
 	public void attack(MuggleUnit unit) {
-		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange() * (int)map.PARCEL_SIDE, this.getUnits());
+		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
         if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
 			if (closestUnit.canFly()) {
