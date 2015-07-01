@@ -109,25 +109,18 @@ public class ActionsView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
     	try {
 	        if (event.getSource() == move) {
-	        	System.out.println("entre a move");
 	        	this.executeMove();
 	        } else if (event.getSource() == usePower) {
-	        	System.out.println("entre a use power");
 	        	this.executeUsePower();
 	        } else if (event.getSource() == buildStructure) {
-	        	System.out.println("entre a build structure");
 	        	this.executeBuildStructure();
 	        } else if (event.getSource() == createUnit) {
-	        	System.out.println("entre a create unit");
 	        	this.executeCreateUnit();
 	        } else if (event.getSource() == embark) {
-	        	System.out.println("entre a embark");
 	        	this.executeEmbark();
 	        } else if (event.getSource() == disembark) {
-	        	System.out.println("entre a disembark");
 	        	this.executeDisembark();
 	        } else if (event.getSource() == pass) {
-	        	//System.out.println("entre a pass turn");
 	        	this.executePass();
 	        } 
     	} catch (MissingStructureRequired | InsufficientResources
@@ -135,8 +128,7 @@ public class ActionsView extends JPanel implements ActionListener {
 				| NoMoreSpaceInUnit | StepsLimitExceeded | NoUnitToRemove
 				| UnitCannotBeSetHere | NoReachableTransport | InsufficientEnergy
 				| NonexistentPower | StructureCannotBeSetHere | UnitCantGetToDestination e) {
-    		
-    		System.out.println("Hubo una excepcion!" + e.getClass().toString());
+
 			messageBox.displayMessage(e.getMessage());
     	
     	} catch (GameOver e) {

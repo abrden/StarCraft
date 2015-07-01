@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import fiuba.algo3.starcraft.logic.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
@@ -270,7 +271,7 @@ public class Player {
 			for (Unit clone : ((Cloner) power).getClones())
 				this.receiveNewUnit(clone);
 		if (!power.itsFinished()) activePowers.add(power);
-	}
+    }
 	
 	private TransportUnit nearestTransportInUnitRange(Transportable unit) throws NoReachableTransport {
 		return map.transportUnitsInCircle(unit.getPosition(), unit.getStepsPerTurn() * (int)map.PARCEL_SIDE , units).get(0);
@@ -289,14 +290,11 @@ public class Player {
 
 	public boolean actionableIsMine(Actionable actionable) {
 		if (units.contains(actionable)) {
-			System.out.println("I'm yours!");
 			return true;
 		}
 		if (structures.contains(actionable)) {
-			System.out.println("I'm yours!");
 			return true;
 		}
-		System.out.println("I'm not yours gtfo!");
 		return false;
 	}
 }
