@@ -217,18 +217,22 @@ public class ActionsView extends JPanel implements ActionListener {
 			i++;
 		}
 		
-		String[] passengerRepresentation = ((String) JOptionPane.showInputDialog(
+		String passengerRepresentation = ((String) JOptionPane.showInputDialog(
 		                    null,
 		                    "Which unit would you like to disembark?",
 		                    "Unit selection",
 		                    JOptionPane.PLAIN_MESSAGE,
 		                    null,     //do not use a custom Icon
 		                    passengerRepresentations,
-		                    "-")).split(" - ");
+		                    "-"));
+		
+		if (passengerRepresentation == null) return null;
+		
+		String passengerData[] = passengerRepresentation.split(" - ");
 
-		String name = passengerRepresentation[0];
-		int health = Integer.parseInt(passengerRepresentation[1]);
-		int shield = Integer.parseInt(passengerRepresentation[2]);
+		String name = passengerData[0];
+		int health = Integer.parseInt(passengerData[1]);
+		int shield = Integer.parseInt(passengerData[2]);
 		
 		for (Transportable passenger : passengers) {
 			if ((name == passenger.getName()) && (health == passenger.getHealth()) && (shield == passenger.getShield()))
