@@ -14,15 +14,15 @@ public class DragonTemplate extends MuggleTemplate {
 	private static final String NAME = "Dragon";
 	private static final Value VALUE = new Value(125,50);
 	private static final int CONSTRUCTION_TIME = 6;
-	private static final int VISION = 8;
+	private static final int VISION = 800;
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 100;
 	private static final int SHIELD = 80;
 	private static final int TRANSPORTATION_QUOTA = 4;
 	private static final Damage DAMAGE = new Damage(20,20);
-	private static final int DAMAGE_RANGE = 4;
+	private static final int DAMAGE_RANGE = 400;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 13;
+	private static final int STEPS_PER_TURN = 230;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {

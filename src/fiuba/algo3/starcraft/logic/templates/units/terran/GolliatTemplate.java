@@ -14,14 +14,14 @@ public class GolliatTemplate extends MuggleTemplate {
 	private static final String NAME = "Golliat";
 	private static final Value VALUE = new Value(100,50);
 	private static final int CONSTRUCTION_TIME = 6;
-	private static final int VISION = 8;
+	private static final int VISION = 800;
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 125;
 	private static final int TRANSPORTATION_QUOTA = 2;
 	private static final Damage DAMAGE = new Damage(12,10);
-	private static final int DAMAGE_RANGE = 6;
+	private static final int DAMAGE_RANGE = 600;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 13;
+	private static final int STEPS_PER_TURN = 160;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {

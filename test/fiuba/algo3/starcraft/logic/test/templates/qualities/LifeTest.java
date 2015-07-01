@@ -50,6 +50,6 @@ public class LifeTest {
 		life.reduce(150);
 		life.regenerateShield();
 
-		assertEquals(life.getShield(), 20);
+		assertEquals(life.getShield(), 1);
 	}
 }

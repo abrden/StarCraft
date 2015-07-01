@@ -11,12 +11,12 @@ public class NaveTransporteProtossTemplate extends TransportTemplate {
 	private static final String NAME = "Nave Transporte Protoss";
 	private static final Value VALUE = new Value(200,0);
 	private static final int CONSTRUCTION_TIME = 8;
-	private static final int VISION = 8;
+	private static final int VISION = 8000;
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 80;
 	private static final int SHIELD = 60;
 	private static final int CAPACITY = 8;
-	private static final int STEPS_PER_TURN = 40;
+	private static final int STEPS_PER_TURN = 1000;
 	
 	public TransportUnit create(Point position) {
 		return new TransportUnit(NAME, new Life(HEALTH, SHIELD), position, VISION,

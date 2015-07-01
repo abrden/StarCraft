@@ -185,8 +185,8 @@ public class PowerUsageTest {
 		
 		assertEquals(clone.getName(), "Zealot");
 		assertEquals(clone.getShield(), 60);
-		assertEquals(clone.getStepsPerTurn(), 19);
-		assertEquals(clone.getVision(), 7);
+		assertEquals(clone.getStepsPerTurn(), 350);
+		assertEquals(clone.getVision(), 700);
 	}
 
 	@Test
