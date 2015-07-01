@@ -24,7 +24,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
     protected Color color;
     protected boolean movedThisTurn;
     
-    DrawableView drawableView;
+    private DrawableView drawableView;
 	
     Unit(String name, Life life, Point position, int vision, int stepsPerTurn, int populationQuota) {
 		if (position == null) throw new InvalidParameterException();
@@ -46,6 +46,7 @@ public abstract class Unit implements Updatable, Drawable, Actionable {
 	public void reduceLife(int damage) {
 		life.reduce(damage);
 		
+		if (this.drawableView != null) drawableView.repaint();
 	}
 
 	public boolean itsAlive() {

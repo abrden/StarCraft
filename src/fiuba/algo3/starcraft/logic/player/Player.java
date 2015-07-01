@@ -234,7 +234,7 @@ public class Player {
 	}
 	
 	public void attack(MuggleUnit unit) {
-		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange(), this.getUnits());
+		List<Unit> opponentUnits = map.enemyUnitsInCircle(unit.getPosition(), unit.getAttackRange() * (int)map.PARCEL_SIDE, this.getUnits());
         if (opponentUnits.size() > 0) {
 			Unit closestUnit = opponentUnits.get(0);
 			if (closestUnit.canFly()) {
@@ -258,7 +258,7 @@ public class Player {
 	}
 	
 	private TransportUnit nearestTransportInUnitRange(Transportable unit) throws NoReachableTransport {
-		return map.transportUnitsInCircle(unit.getPosition(), unit.getStepsPerTurn(), units).get(0);
+		return map.transportUnitsInCircle(unit.getPosition(), unit.getStepsPerTurn() * (int)map.PARCEL_SIDE , units).get(0);
 	}
 	
 	public void embark(Transportable unit) throws NoMoreSpaceInUnit, StepsLimitExceeded, NoReachableTransport {

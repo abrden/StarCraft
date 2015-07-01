@@ -182,7 +182,10 @@ public class Map {
 	
 	private List<Unit> unitsInCircle(final Point position, int range, Iterable<Unit> units) {
         ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
+        
         for (Unit unit : units) {
+        	
+        	System.out.println("entre ");
 			if (this.isPointInsideRadiousOfPivotePoint(position, range , unit.getPosition())) {
 				unitsInCircle.add(unit);
 			}

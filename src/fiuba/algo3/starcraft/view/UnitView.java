@@ -31,6 +31,10 @@ public class UnitView extends DrawableView implements MouseListener {
 	}
 	
 	public void paint (Graphics g) {
+		if (!unit.itsAlive()) {
+			this.removeNotify();
+		}
+		
 		super.paint(g);
 		
 		drawHealth(g);
