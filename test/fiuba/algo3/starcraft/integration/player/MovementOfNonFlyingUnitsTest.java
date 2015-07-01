@@ -12,13 +12,12 @@ import fiuba.algo3.starcraft.logic.templates.structures.terran.BarracaTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.MarineTemplate;
 import fiuba.algo3.starcraft.logic.units.MuggleUnit;
 import fiuba.algo3.starcraft.logic.units.exceptions.StepsLimitExceeded;
-
 import fiuba.algo3.starcraft.logic.units.exceptions.UnitAlreadyMovedThisTurn;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class MovementOfNonFlyingUnitsTest {
