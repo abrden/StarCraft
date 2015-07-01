@@ -62,6 +62,22 @@ public class AttackTest {
     }
 
     @Test
+    public void testZealotKillsMarineFirstWhenBothInAttackRange() {
+        zealot = new ZealotTemplate().create(new Point(55,70));
+        player1.receiveNewUnit(marine);
+        player2.receiveNewUnit(zealot);
+
+        while(marine.itsAlive()) {
+            player1.newTurn();
+            player2.newTurn();
+        }
+
+        assertTrue(!marine.itsAlive());
+        assertTrue(zealot.itsAlive());
+
+    }
+
+    @Test
     public void testZealotCantAttackAnEspectro() {
         player1.receiveNewUnit(espectro);
         player2.receiveNewUnit(zealot);
@@ -101,4 +117,6 @@ public class AttackTest {
         assertTrue(!zealot.itsAlive());
         assertTrue(!naveProtoss.itsAlive());
     }
+
+
 }

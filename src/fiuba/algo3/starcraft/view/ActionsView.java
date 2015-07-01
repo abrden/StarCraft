@@ -153,7 +153,6 @@ public class ActionsView extends JPanel implements ActionListener {
                 game.getActivePlayer().move((Unit) actionable, destination);
             } catch (UnitCantGetToDestination | UnitAlreadyMovedThisTurn e) {
                 e.printStackTrace();
-                System.out.println("lalalalal");
                 messageBox.displayMessage(e.getMessage());
             }
         }

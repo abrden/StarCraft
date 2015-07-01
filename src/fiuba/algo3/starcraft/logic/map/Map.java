@@ -136,7 +136,7 @@ public class Map {
 		Point direction = finalPoint.substract(initialPoint);
 		Point diferentialDirection;
 		
-		if (finalPoint.distance(initialPoint) >= (transportable.getStepsPerTurn() * PARCEL_SIDE)) {
+		if (finalPoint.distance(initialPoint) >= (transportable.getStepsPerTurn())) {
 			Point normalPoint = direction.divide(finalPoint.distance(initialPoint));		
 			Point correctSizePoint = normalPoint.multiply(transportable.getStepsPerTurn());
 						

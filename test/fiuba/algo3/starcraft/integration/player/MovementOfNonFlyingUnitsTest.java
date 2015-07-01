@@ -31,7 +31,7 @@ public class MovementOfNonFlyingUnitsTest {
     @Before
     public void before() {
         game = new StarCraft();
-        map = new Map(1000,game);
+        map = new Map(10000,game);
         player = new Player("Pepe",null,new TerranBuilder(),new Point(1,1),new Resources(9999,9999),map);
         player2 = new Player("Pep",null,new TerranBuilder(),new Point(50,50),new Resources(9999,9999),map);
         game.setGame(player,player2,map);
@@ -103,7 +103,7 @@ public class MovementOfNonFlyingUnitsTest {
         player.receiveNewUnit(marine);
         player.receiveNewUnit(marineAux);
 
-        player.move(marineAux, new Point(5,5));
+        player.move(marineAux, new Point(5, 5));
 
         xComp = marine.getPosition().getX() == 5 && marineAux.getPosition().getX() == 5;
         yComp = marine.getPosition().getY() == 5 && marineAux.getPosition().getY() == 5;
