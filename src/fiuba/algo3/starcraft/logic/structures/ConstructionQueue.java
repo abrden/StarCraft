@@ -50,6 +50,7 @@ public class ConstructionQueue {
             }
 
         this.getRidOfDeadUnits(deadUnits);
+
 		return releases;
 	}
 	
@@ -63,6 +64,7 @@ public class ConstructionQueue {
 			} catch (ConstructorIsDead e) {
                 continue;
             }
+
 		return releases;
 	}
 
@@ -76,6 +78,13 @@ public class ConstructionQueue {
 	}
 
 	public boolean isEmpty() {
-		return structures.size() == 0 && units.size() == 0;
-	}
+
+        for (Construction<Structure> str : structures)
+            if (!str.isRealeased()) return false;
+
+        for (Construction<Unit> unit : units)
+            if (!unit.isRealeased()) return false;
+
+        return true;
+    }
 }

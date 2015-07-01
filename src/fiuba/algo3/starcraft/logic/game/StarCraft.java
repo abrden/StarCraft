@@ -88,7 +88,8 @@ public class StarCraft {
 		List<Player> loosers = new ArrayList<Player>();
 		for (Player player : players) {
 			if ((player.getMineral() < 100) && (player.getGas() < 100) && (player.numberOfUnits() == 0) && (player.numberOfStructures() == 0) && (player.constructionQueueIsEmpty())) {
-				loosers.add(player);
+
+                loosers.add(player);
 			}
 		}
 		players.removeAll(loosers);

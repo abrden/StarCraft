@@ -8,11 +8,13 @@ public class Construction<T> {
 	private T construction;
 	private int releaseIn;
     private ConstructionStructure motherStructure;
+    private boolean released;
 	
 	public Construction(T constructed, int releaseTurn, ConstructionStructure structure) {
 		this.construction = constructed;
 		this.releaseIn = releaseTurn;
         this.motherStructure = structure;
+        this.released = false;
 	}
 	
 	public void lowerRelease() {
@@ -30,7 +32,13 @@ public class Construction<T> {
             if (!motherStructure.itsAlive())
             throw new ConstructorIsDead();
         }
-		if (this.itsFinished()) return construction;
-		else throw new ConstructionNotFinished();
+		if (this.itsFinished()) {
+            released = true;
+            return construction;
+        } else throw new ConstructionNotFinished();
 	}
+
+    public boolean isRealeased() {
+        return released;
+    }
 }
