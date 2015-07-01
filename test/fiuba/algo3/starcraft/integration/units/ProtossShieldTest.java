@@ -19,7 +19,7 @@ import fiuba.algo3.starcraft.logic.units.TransportUnit;
 
 public class ProtossShieldTest {
 
-	int regenerationRate = 20;
+	int regenerationRate = 1;
 	Map map;
 	Player player;
 	Point position;
@@ -77,6 +77,6 @@ public class ProtossShieldTest {
 		
 		for(int i = 0; i < 34; i++) player.newTurn();
 		
-		assertEquals(dragon.getShield(), maxShield);
+		assertEquals(dragon.getShield(), 74);
 	}
 }

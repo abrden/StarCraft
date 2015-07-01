@@ -12,7 +12,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static final String NAME = "Alto Templario";
 	private static final Value VALUE = new Value(50,150);
 	private static final int CONSTRUCTION_TIME = 7;
-	private static final int VISION = 7;
+	private static final int VISION = 700;
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 40;
 	private static final int SHIELD = 40;
@@ -20,7 +20,7 @@ public class AltoTemplarioTemplate extends MagicalTemplate {
 	private static final int MAXIMUM_ENERGY = 200;
 	private static final int ENERGY_GAIN_PER_TURN = 15;
 	private static final int TRANSPORTATION_QUOTA = 4;
-	private static final int STEPS_PER_TURN = 15;
+	private static final int STEPS_PER_TURN = 250;
 	private static final boolean CAN_FLY = false;
 	
 	public MagicalUnit create(Point position) {

@@ -40,7 +40,7 @@ public class ZealotTest {
     }
 
     @Test
-    public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo60() {
+    public void testDeal100DamageToZealotShieldIsNow0In5TurnsRegeneratesTo5() {
         Unit zealot = new ZealotTemplate().create(new Point(500,500));
         assertEquals(60, zealot.getShield());
         
@@ -50,6 +50,6 @@ public class ZealotTest {
         for (int i = 0; i < 5; i++)
             zealot.update();
 
-        assertEquals(60, zealot.getShield());
+        assertEquals(5, zealot.getShield());
     }
 }

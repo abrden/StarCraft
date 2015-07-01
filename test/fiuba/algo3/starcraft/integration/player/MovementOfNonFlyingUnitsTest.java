@@ -124,24 +124,20 @@ public class MovementOfNonFlyingUnitsTest {
         assertTrue(marine.getPosition().isSamePoint(destinationPoint));
     }
 
-    @Test(expected = UnitCantGetToDestination.class)
+    @Test
     public void testMarineMovedToAFarAwayPointWithSpaceItWillStopJustOutsideItsParcel() throws UnitCantGetToDestination, UnitAlreadyMovedThisTurn {
         Point destinationPoint = new Point(433,533);
         map.getParcelContainingPoint(destinationPoint).setAirSurface();
         player.receiveNewUnit(marine);
 
-        System.out.println("entre re loco");
-        
-        player.move(marine, destinationPoint);
-
-        System.out.println("entre re loco");
-
-        for (int i = 0; i < 100; i++) {
-            player.newTurn();
+        try{
+            player.move(marine, destinationPoint);
+        }catch (UnitCantGetToDestination e){
         }
 
-        System.out.println("a ver loco si estas bien " + marine.getPosition().getX() + " " + marine.getPosition().getY());
-        
+        for (int i = 0; i < 100; i++)
+            player.newTurn();
+
         assertTrue(!marine.getPosition().isSamePoint(destinationPoint));
     }
 }

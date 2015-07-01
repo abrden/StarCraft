@@ -11,11 +11,11 @@ public class NaveTransporteTerranTemplate extends TransportTemplate {
 	private static final String NAME = "Nave Transporte Terran";
 	private static final Value VALUE = new Value(100,100);
 	private static final int CONSTRUCTION_TIME = 7;
-	private static final int VISION = 8;
+	private static final int VISION = 8000;
 	private static final int POPULATION_QUOTA = 2;
 	private static final int HEALTH = 150;
 	private static final int CAPACITY = 8;
-	private static final int STEPS_PER_TURN = 40;
+	private static final int STEPS_PER_TURN = 1000;
 
 	public TransportUnit create(Point position) {
 		return new TransportUnit(NAME, new Life(HEALTH), position, VISION,

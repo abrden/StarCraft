@@ -13,14 +13,14 @@ public class MarineTemplate extends MuggleTemplate {
 	private static final String NAME = "Marine";
 	private static final Value VALUE = new Value(50,0);
 	private static final int CONSTRUCTION_TIME = 3;
-	private static final int VISION = 7;
+	private static final int VISION = 700;
 	private static final int POPULATION_QUOTA = 1;
 	private static final int HEALTH = 40;
 	private static final int TRANSPORTATION_QUOTA = 1;
 	private static final Damage DAMAGE = new Damage(6,6);
-	private static final int DAMAGE_RANGE = 4;
+	private static final int DAMAGE_RANGE = 400;
 	private static final Attack ATTACK = new Attack(DAMAGE, DAMAGE_RANGE);
-	private static final int STEPS_PER_TURN = 15;
+	private static final int STEPS_PER_TURN = 200;
 	private static final boolean CAN_FLY = false;
 	
 	public MuggleUnit create(Point position) {

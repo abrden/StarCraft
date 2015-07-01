@@ -29,7 +29,7 @@ public class ConstructionStructureTest {
 		assertEquals(life.getShield(), 85);		
 		constructor.update();
 		
-		assertEquals(life.getShield(), 105);
+		assertEquals(life.getShield(), 86);
 	}
 	
 	@Test(expected = TemplateNotFound.class)

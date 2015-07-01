@@ -4,7 +4,7 @@ public class Shield {
 	
 	private int shield;
 	private final int maximumShield;
-	private final static int REGENERATION_RATIO = 20;
+	private final static int REGENERATION_RATIO = 1;
 	
 	public Shield(int shield) {
 		this.maximumShield = shield;
