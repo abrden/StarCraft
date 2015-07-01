@@ -170,8 +170,14 @@ public class Map {
         if (game == null) return new LinkedList<Unit>();
 		return this.unitsInCircle(position, range, game.getEnemyUnits(playerUnits));
 	}
-	
-	public List<TransportUnit> transportUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) throws NoReachableTransport {
+
+    public List<Structure> enemyStructuresInCircle(final Point position, int range, Iterable<Structure> structures) {
+        if (game == null) return new LinkedList<Structure>();
+        return this.structuresInCircle(position, range, game.getEnemyStructures(structures));
+    }
+
+
+    public List<TransportUnit> transportUnitsInCircle(final Point position, int range, Iterable<Unit> playerUnits) throws NoReachableTransport {
 		LinkedList<TransportUnit> transports = new LinkedList<TransportUnit>();
 		for (Unit unit : this.unitsInCircle(position, range, playerUnits)) {
 			if (unit.canCarryOtherUnits()) transports.addLast((TransportUnit) unit);
@@ -184,7 +190,7 @@ public class Map {
         ArrayList<Unit> unitsInCircle = new ArrayList<Unit>();
         
         for (Unit unit : units) {
-			if (this.isPointInsideRadiousOfPivotePoint(position, range , unit.getPosition())) {
+			if (this.isPointInsideRadiousOfPivotePoint(position, range, unit.getPosition())) {
 				unitsInCircle.add(unit);
 			}
 		}
@@ -198,6 +204,25 @@ public class Map {
         });
         return unitsInCircle;
 	}
+
+    private List<Structure> structuresInCircle(final Point position, int range, Iterable<Structure> enemyStructures) {
+        ArrayList<Structure> structureInCircle = new ArrayList<Structure>();
+
+        for (Structure str : enemyStructures) {
+            if (this.isPointInsideRadiousOfPivotePoint(position, range, str.getPosition())) {
+                structureInCircle.add(str);
+            }
+        }
+
+        // Sorting
+        Collections.<Structure>sort(structureInCircle, new Comparator<Structure>() {
+            @Override
+            public int compare(Structure str1,Structure str2) {
+                return (int) (str1.getPosition().distance(position) - str2.getPosition().distance(position));
+            }
+        });
+        return structureInCircle;
+    }
 
 	public void removeStructureFrom(Point position) {
 		this.getParcelContainingPoint(position).setStructure(null);

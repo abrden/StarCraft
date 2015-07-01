@@ -6,8 +6,10 @@ import fiuba.algo3.starcraft.logic.map.*;
 import fiuba.algo3.starcraft.logic.map.exceptions.NoReachableTransport;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
+import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
+import fiuba.algo3.starcraft.logic.templates.structures.protoss.PilonTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.NaveTransporteProtossTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.protoss.ZealotTemplate;
 import fiuba.algo3.starcraft.logic.templates.units.terran.EspectroTemplate;
@@ -22,7 +24,6 @@ import org.junit.Test;
 import fiuba.algo3.starcraft.logic.map.Point;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,6 +34,7 @@ public class AttackTest {
     private Player player1,player2;
     private Unit marine, zealot, espectro, naveProtoss;
     private Map map;
+    private Structure pilon;
 
     @Before
     public void before() {
@@ -46,6 +48,8 @@ public class AttackTest {
         zealot = new ZealotTemplate().create(new Point(55,450));
         espectro = new EspectroTemplate().create(new Point(55,445));
         naveProtoss = new NaveTransporteProtossTemplate().create(new Point(55,470));
+
+        pilon = new PilonTemplate().create(new Point(70,70));
     }
 
     @Test
@@ -84,7 +88,7 @@ public class AttackTest {
 
         player2.newTurn();
 
-        assertEquals(espectro.getHealth(),espectro.getMaximumHealth());
+        assertEquals(espectro.getHealth(), espectro.getMaximumHealth());
     }
 
     @Test
@@ -118,5 +122,14 @@ public class AttackTest {
         assertTrue(!naveProtoss.itsAlive());
     }
 
+    @Test
+    public void testMarineCanAttackAPilon() {
+        player1.receiveNewUnit(marine);
+        player2.receiveNewStructure(pilon);
+        int pilonMaxShield = pilon.getShield();
 
+        player1.newTurn();
+
+        assertEquals(pilon.getShield(),pilonMaxShield - marine.getAttack().getLandDamage());
+    }
 }

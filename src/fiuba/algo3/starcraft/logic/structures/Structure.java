@@ -19,8 +19,8 @@ public abstract class Structure implements Updatable, Actionable, Drawable {
 	protected Point position;
 	protected Life life;
 	protected String name;
-	
-	Structure(String name, Life life, Point position) {
+
+    Structure(String name, Life life, Point position) {
 		if (position == null) throw new InvalidParameterException();
 		this.name = name;
 		this.life = life;
@@ -67,4 +67,13 @@ public abstract class Structure implements Updatable, Actionable, Drawable {
 	public boolean hasOwner() {
 		return true;
 	}
+
+    public int getHealth() {
+        return life.getHealth();
+    }
+
+    public int getShield() {
+        return life.getShield();
+    }
+
 }

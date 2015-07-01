@@ -9,6 +9,7 @@ import fiuba.algo3.starcraft.logic.map.ScenarioGenerator;
 import fiuba.algo3.starcraft.logic.map.resources.ReservoirType;
 import fiuba.algo3.starcraft.logic.player.Player;
 import fiuba.algo3.starcraft.logic.player.Resources;
+import fiuba.algo3.starcraft.logic.structures.Structure;
 import fiuba.algo3.starcraft.logic.structures.builders.Builder;
 import fiuba.algo3.starcraft.logic.structures.builders.ProtossBuilder;
 import fiuba.algo3.starcraft.logic.structures.builders.TerranBuilder;
@@ -71,6 +72,17 @@ public class StarCraft {
 		}
 		return enemyUnits;
 	}
+
+    public Iterable<Structure> getEnemyStructures(Iterable<Structure> structures) {
+        List<Structure> enemyStr = new ArrayList<Structure>();
+        for (Player player : players) {
+            if (structures == player.getStructures())
+                continue;
+            for (Structure str : player.getStructures())
+                enemyStr.add(str);
+        }
+        return enemyStr;
+    }
 
 	private void getRidOfLoosers() {
 		List<Player> loosers = new ArrayList<Player>();

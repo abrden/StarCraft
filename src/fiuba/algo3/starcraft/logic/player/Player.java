@@ -2,6 +2,7 @@ package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -94,6 +95,10 @@ public class Player {
 		return units;
 	}
 
+    public Iterable<Structure> getStructures() {
+        return structures;
+    }
+
 	public int numberOfUnits() {
 		return units.size();
 	}
@@ -117,6 +122,8 @@ public class Player {
 		// Regeneracion de escudos y ganancia de energia en MagicalUnits
 		for (Structure structure : structures)
 			structure.update();
+
+        //ataque automatico al inicio de cada turno
 		for (Unit unit : units){
             if (unit.getAttack() != null){
                 this.attack((MuggleUnit) unit);
@@ -151,8 +158,6 @@ public class Player {
 		for (Unit unit : units)
 			if (!unit.itsAlive()){
                 dead.add(unit);
-                //unit.setPosition(map.getDeadLimbo());
-                //unit.setDestination(map.getDeadLimbo());
             }
 		for (Unit unit : dead)
 			units.remove(unit);
@@ -163,7 +168,7 @@ public class Player {
 		for (Structure structure : structures)
 			if (!structure.itsAlive())
 				dead.add(structure);
-		for (Structure structure : dead) {
+        for (Structure structure : dead) {
 			map.removeStructureFrom(structure.getPosition());
 			structures.remove(structure);
 		}
@@ -245,7 +250,14 @@ public class Player {
 			} else {
 				closestUnit.reduceLife(unit.getAttackLandDamage());
 			}
+            return;
 		}
+        //si no hay unidades busca estructuras
+        List<Structure> opponentStructures = map.enemyStructuresInCircle(unit.getPosition(), unit.getAttackRange(), this.getStructures());
+        if (opponentStructures.size() > 0) {
+            Structure closestStructure = opponentStructures.get(0);
+            closestStructure.reduceLife(unit.getAttackLandDamage());
+        }
 	}
 	
 	public void usePower(MagicalUnit unit, String name, Point position) throws InsufficientEnergy, NonexistentPower {
