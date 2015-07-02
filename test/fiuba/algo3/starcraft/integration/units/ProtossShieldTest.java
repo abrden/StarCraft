@@ -71,7 +71,6 @@ public class ProtossShieldTest {
 	
 	@Test
 	public void testMuggleUnitShieldRegeneratesTilMax() {
-		int maxShield = dragon.getShield();
 		player.receiveNewUnit(dragon);
 		dragon.reduceLife(40);
 		

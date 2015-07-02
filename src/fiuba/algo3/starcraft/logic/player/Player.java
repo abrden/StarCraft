@@ -2,11 +2,9 @@ package fiuba.algo3.starcraft.logic.player;
 
 import java.awt.Color;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import fiuba.algo3.starcraft.logic.game.Actionable;
 import fiuba.algo3.starcraft.logic.map.Map;
 import fiuba.algo3.starcraft.logic.map.Point;
